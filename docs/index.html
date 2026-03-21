@@ -2160,8 +2160,8 @@ body {
     h += '<div class="yday-stat"><span class="yday-stat-value">' + top1Pct + '%</span><span class="yday-stat-label">&#9678;的中率</span><span class="yday-stat-sub">' + top1Hits + '/' + totalRaces + '</span></div>';
     h += '</div>';
 
-    raceCards.sort(function(a, b) { return b.conf - a.conf; });
-    var showCards = raceCards.filter(function(r) { return r.bet > 0; }).slice(0, 15);
+    raceCards.sort(function(a, b) { return b.pnl - a.pnl || b.conf - a.conf; });
+    var showCards = raceCards.filter(function(r) { return r.bet > 0; });
 
     for (var i = 0; i < showCards.length; i++) {
       var rc = showCards[i];
