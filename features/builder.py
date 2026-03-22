@@ -151,6 +151,39 @@ class FeatureBuilder:
         ].copy()
         logger.info("Target results: %d", len(target_results))
 
+        # --- ノイズレース除外（学習データのクリーニング） ---
+        pre_filter = len(target_results["race_id"].unique())
+
+        # 1. ガールズケイリン除外（全選手class=NULL）
+        race_class_counts = target_results.groupby("race_id")["class"].apply(
+            lambda x: x.isna().all()
+        )
+        girls_races = set(race_class_counts[race_class_counts].index)
+        if girls_races:
+            target_results = target_results[~target_results["race_id"].isin(girls_races)]
+            logger.info("Girls keirin excluded: %d races", len(girls_races))
+
+        # 2. 事故・落車再乗レース除外（着順が実力を反映しない）
+        if "margin" in target_results.columns:
+            incident_races = set(
+                target_results[
+                    target_results["margin"].astype(str).str.contains("事故|落車再乗", na=False)
+                ]["race_id"].unique()
+            )
+            if incident_races:
+                target_results = target_results[~target_results["race_id"].isin(incident_races)]
+                logger.info("Incident races excluded: %d races", len(incident_races))
+
+        # 3. 少人数レース除外（≤4人、ライン特徴量が無意味）
+        rider_counts = target_results.groupby("race_id")["rider_id"].nunique()
+        small_races = set(rider_counts[rider_counts <= 4].index)
+        if small_races:
+            target_results = target_results[~target_results["race_id"].isin(small_races)]
+            logger.info("Small races (<=4 riders) excluded: %d races", len(small_races))
+
+        post_filter = len(target_results["race_id"].unique())
+        logger.info("Races after cleaning: %d (removed %d)", post_filter, pre_filter - post_filter)
+
         # --- レース条件特徴量 ---
         race_map = races_df.set_index("race_id")
         target_results["race_grade_num"] = target_results["race_id"].map(
