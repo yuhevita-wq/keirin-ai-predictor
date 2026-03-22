@@ -1321,13 +1321,13 @@ body {
         var comboOdds = sorted.slice(1, 5).map(function(r) { return r.exacta_odds; }).filter(function(v) { return v != null; });
         var isTorigami = comboOdds.length > 0 && Math.max.apply(null, comboOdds) < 4.0;
         var maxOdds = comboOdds.length > 0 ? Math.max.apply(null, comboOdds) : null;
-        // F2/G2は賭け対象外、HIGH限定（信頼度≥1.00）
+        // F2/G2/G3は賭け対象外、HIGH限定（信頼度≥1.50）
         var rGrade = rows[0].grade || '';
-        if (gap >= 1.00 && rGrade !== 'F2' && rGrade !== 'G2') {
-          var bi = getBetCategory(gap, false, rGrade);
+        var bi = getBetCategory(gap, false, rGrade, maxOdds);
+        if (bi.unit > 0) {
           _recData.push({
             id: id, velodrome: rows[0].velodrome, raceNumber: rows[0].race_number,
-            grade: rows[0].grade, startTime: rows[0].start_time || '', gap: gap, isHigh: gap >= 1.00, isMedPlus: gap >= 0.80 && gap < 1.00,
+            grade: rows[0].grade, startTime: rows[0].start_time || '', gap: gap, isHigh: bi.unit > 0,
             betCat: bi, triCat: getTrifectaCategory(gap, rows[0].grade === 'F2'),
             betLabel: bi.label, top5: sorted.slice(0, 5), isTorigami: isTorigami, maxOdds: maxOdds
           });
@@ -1827,9 +1827,12 @@ body {
   }
 
   /* ── 賭けカテゴリ判定 ── */
-  function getBetCategory(conf, isF2, grade) {
-    if (isF2 || grade === 'G2') return { lvl: "low", label: "SKIP", rec: "見送り（" + (grade || "F2") + "）", color: "#94a3b8", unit: 0 };
-    if (conf >= 1.00) return { lvl: "high", label: "HIGH", rec: "500円×4点=2,000円", color: "#dc2626", unit: 500 };
+  function getBetCategory(conf, isF2, grade, maxOdds) {
+    if (isF2 || grade === 'G2' || grade === 'G3') return { lvl: "low", label: "SKIP", rec: "見送り（" + (grade || "F2") + "）", color: "#94a3b8", unit: 0 };
+    if (conf >= 1.50) {
+      if (maxOdds !== undefined && maxOdds > 0 && maxOdds < 4.0) return { lvl: "low", label: "SKIP", rec: "見送り（トリガミ）", color: "#94a3b8", unit: 0 };
+      return { lvl: "high", label: "HIGH", rec: "500円×4点=2,000円", color: "#dc2626", unit: 500 };
+    }
     return { lvl: "low", label: "LOW", rec: "見送り", color: "#94a3b8", unit: 0 };
   }
   function getTrifectaCategory(conf, isF2) {
@@ -1844,8 +1847,10 @@ body {
     const gap12 = (sorted[0].predicted_score || 0) - (sorted[1].predicted_score || 0);
     const rGrade = sorted[0].grade || '';
     const isF2 = rGrade === 'F2';
-    const bet = getBetCategory(gap12, isF2, rGrade);
-    const barPct = (isF2 || rGrade === 'G2') ? 0 : Math.min(gap12 / 2.5 * 100, 100);
+    const comboOdds2 = sorted.slice(1, 5).map(r => r.exacta_odds).filter(v => v != null);
+    const mxOdds2 = comboOdds2.length > 0 ? Math.max(...comboOdds2) : undefined;
+    const bet = getBetCategory(gap12, isF2, rGrade, mxOdds2);
+    const barPct = (isF2 || rGrade === 'G2' || rGrade === 'G3') ? 0 : Math.min(gap12 / 2.5 * 100, 100);
     let h = '<div class="bet-section">';
     h += '<div class="honmei-box">';
     h += '<div class="honmei-row">';
@@ -1872,8 +1877,10 @@ body {
     const gap12 = top[0].score - top[1].score;
     const dGrade = (data[0] && data[0].grade) || '';
     const isF2 = dGrade === 'F2';
-    const bet = getBetCategory(gap12, isF2, dGrade);
-    const barPct = (isF2 || dGrade === 'G2') ? 0 : Math.min(gap12 / 2.5 * 100, 100);
+    const comboOdds3 = data.slice(1, 5).map(d => d.exacta_odds).filter(v => v != null);
+    const mxOdds3 = comboOdds3.length > 0 ? Math.max(...comboOdds3) : undefined;
+    const bet = getBetCategory(gap12, isF2, dGrade, mxOdds3);
+    const barPct = (isF2 || dGrade === 'G2' || dGrade === 'G3') ? 0 : Math.min(gap12 / 2.5 * 100, 100);
 
     let h = '<div class="bet-section">';
 
@@ -2032,7 +2039,9 @@ body {
       var conf = sorted.length >= 2 ? sorted[0].predicted_score - sorted[1].predicted_score : 0;
       var wGrade = rows[0].grade || '';
       var isF2 = wGrade === 'F2';
-      var betInfo = getBetCategory(conf, isF2, wGrade);
+      var wOdds = sorted.slice(1, 5).map(function(r) { return r.exacta_odds; }).filter(function(v) { return v != null; });
+      var wMaxOdds = wOdds.length > 0 ? Math.max.apply(null, wOdds) : undefined;
+      var betInfo = getBetCategory(conf, isF2, wGrade, wMaxOdds);
       var betUnit = betInfo.unit;
       var raceN2Bet = betUnit * 4;
       var raceN2Ret = 0;
@@ -2172,7 +2181,7 @@ body {
       while (true) {
         var { data: batch, error } = await sb
           .from("prediction_detail")
-          .select("race_id, race_date, bike_number, predicted_score, predicted_rank, finish_position, grade")
+          .select("race_id, race_date, bike_number, predicted_score, predicted_rank, finish_position, grade, exacta_odds")
           .gte("race_date", "2026-01-01")
           .lte("predicted_rank", 5)
           .order("race_date")
@@ -2230,7 +2239,12 @@ body {
         var conf = sorted.length >= 2 ? sorted[0].predicted_score - sorted[1].predicted_score : 0;
         var raceGrade = rows[0].race_grade || rows[0].grade || '';
         var isF2 = raceGrade === 'F2';
-        var betInfo = getBetCategory(conf, isF2, raceGrade);
+        // トリガミ判定: predicted_rank 2-5 の exacta_odds の最大値
+        var maxOdds = 0;
+        for (var si = 1; si < sorted.length; si++) {
+          if (sorted[si].exacta_odds && sorted[si].exacta_odds > maxOdds) maxOdds = sorted[si].exacta_odds;
+        }
+        var betInfo = getBetCategory(conf, isF2, raceGrade, maxOdds);
 
         var isTop1Hit = sorted[0] && sorted[0].finish_position === 1;
         if (isTop1Hit) top1Hits++;

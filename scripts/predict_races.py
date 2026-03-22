@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import (
     NETKEIRIN_BASE_URL, VELODROME_CODES, RESULTS_DIR, CLASS_MAP,
     MARKS, LINE_BONUS, STRONGEST_LINE_BONUS,
+    TORIGAMI_ODDS_THRESHOLD,
     get_bet_category,
 )
 from db.schema import get_connection, insert_race, insert_rider, insert_entry, insert_prediction
@@ -266,8 +267,8 @@ def predict_races(date: str, velodromes: str = "major"):
 
             # 2連単オッズ取得（◎→○,▲,△,△ の4点）
             exacta_odds_map = {}  # rider_id → exacta_odds
-            torigami_warn = ""
-            if gap_label in ("HIGH", "MED+", "MED"):
+            torigami_skip = False
+            if gap_label == "HIGH":
                 odds_data = scraper.scrape_exacta_odds(race_id)
                 if odds_data:
                     honmei_bike = bike_map.get(df.iloc[0]["rider_id"], "")
@@ -282,14 +283,17 @@ def predict_races(date: str, velodromes: str = "major"):
                             if odds_val is not None:
                                 exacta_odds_map[target_rid] = odds_val
                                 combo_odds.append(odds_val)
-                        # トリガミ判定: 全4点のオッズが4.0未満なら確実に損
-                        if combo_odds and max(combo_odds) < 4.0:
-                            torigami_warn = " *** トリガミ注意 ***"
+                        # トリガミフィルタ: 全4点のオッズが閾値未満なら見送り
+                        if combo_odds and max(combo_odds) < TORIGAMI_ODDS_THRESHOLD:
+                            torigami_skip = True
+                            gap_label = "SKIP"
+                            bet_rec = "見送り（トリガミ）"
 
             print(f"\n{'='*50}")
             print(f"  {velodrome} {rnum}R")
             print(f"  信頼度: {score_gap:.2f}")
-            print(f"  2連単: ({gap_label}) → {bet_rec}{torigami_warn}")
+            torigami_note = " [トリガミSKIP]" if torigami_skip else ""
+            print(f"  2連単: ({gap_label}) -> {bet_rec}{torigami_note}")
             print(f"{'='*50}")
 
             for i, row in df.iterrows():

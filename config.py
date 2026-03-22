@@ -113,10 +113,10 @@ LINE_BONUS = {
 }
 STRONGEST_LINE_BONUS = 0.20
 
-# ── 賭け戦略（HIGH限定: MED/MED+はROI<65%で赤字のため廃止） ──
+# ── 賭け戦略（HIGH限定: conf>=1.5のみ黒字、1.0-1.5はROI<96%で赤字） ──
 BET_STRATEGY = [
     # (最低信頼度, ラベル, 1点あたり金額, 推奨表示)
-    (1.00, "HIGH", 500, "500円×4点=2,000円"),
+    (1.50, "HIGH", 500, "500円×4点=2,000円"),
 ]
 BET_SKIP_LABEL = "LOW"
 BET_SKIP_REC = "見送り"
@@ -127,6 +127,10 @@ BET_F2_REC = "見送り（F2）"
 TRIFECTA_STRATEGY = []
 TRIFECTA_POINTS = 6
 
+# ── トリガミフィルタ ──
+# 4点全てのオッズがこの値未満なら見送り（的中しても投資回収不可）
+TORIGAMI_ODDS_THRESHOLD = 4.0
+
 # ── デフォルト値 ──
 DEFAULT_GEAR_RATIO = 3.93
 DEFAULT_RIDER_COUNT = 9
@@ -135,8 +139,8 @@ DEFAULT_DAYS_SINCE_LAST_RACE = 90.0
 DEFAULT_AVG_MARGIN = 2.0
 
 
-# G2はROI 26.9%で大幅赤字のため賭け対象外
-BET_EXCLUDE_GRADES = {"F2", "G2"}
+# F2/G2/G3はROI大幅赤字のため賭け対象外（G3: ROI 46%）
+BET_EXCLUDE_GRADES = {"F2", "G2", "G3"}
 
 
 def get_bet_category(confidence: float, grade: str = "") -> tuple[str, str, int]:
