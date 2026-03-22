@@ -77,13 +77,20 @@ class LineFeatureBuilder(BaseFeatureBuilder):
                     line_groups[lg] = []
                 line_groups[lg].append(e)
 
+        # ガールズケイリン判定（全選手class=None → ライン特徴量が無意味）
+        is_girls = all(e["class"] is None for e in entries)
+
         # ライン強度スコア
         line_scores = {}
         for lg, members in line_groups.items():
             classes = [CLASS_MAP.get(e["class"], 6) for e in members]
             line_scores[lg] = sum(7 - c for c in classes)
 
-        strongest = max(line_scores, key=line_scores.get) if line_scores else None
+        # ガールズは全ライン同スコアなのでstrongest判定を無効化
+        if is_girls or not line_scores:
+            strongest = None
+        else:
+            strongest = max(line_scores, key=line_scores.get)
 
         # 各選手の特徴量を生成
         all_feats = {}

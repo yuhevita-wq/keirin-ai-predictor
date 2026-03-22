@@ -195,6 +195,13 @@ def predict_races(date: str, velodromes: str = "major"):
                 logger.debug("No entries for %s", race_id)
                 continue
 
+            # ガールズケイリン判定（全選手class=None）
+            is_girls = all(e.get("class") is None for e in entries)
+            grade = entry_data.get("grade")
+            if is_girls and grade != "F2":
+                logger.info("ガールズケイリン検出: %s → F2に変更 (元: %s)", race_id, grade)
+                grade = "F2"
+
             # DBに保存
             formatted_date = f"{date[:4]}-{date[4:6]}-{date[6:8]}"
             race_data = {
@@ -203,7 +210,7 @@ def predict_races(date: str, velodromes: str = "major"):
                 "velodrome": entry_data.get("velodrome", ""),
                 "race_number": entry_data.get("race_number"),
                 "race_name": entry_data.get("race_name"),
-                "grade": entry_data.get("grade"),
+                "grade": grade,
                 "rider_count": len(entries),
                 "start_time": entry_data.get("start_time"),
             }

@@ -515,13 +515,22 @@ class FeatureBuilder:
                     "line_role": row.get("line_role"),
                 })
 
+            # ガールズケイリン判定（全選手class=None → ライン特徴量が無意味）
+            is_girls = all(m["class"] is None
+                          for members in line_groups.values()
+                          for m in members)
+
             # ライン強度スコア
             line_scores = {}
             for lg, members in line_groups.items():
                 classes = [CLASS_MAP.get(m["class"], 6) for m in members]
                 line_scores[lg] = sum(7 - c for c in classes)
 
-            strongest = max(line_scores, key=line_scores.get) if line_scores else None
+            # ガールズは全ライン同スコアなのでstrongest判定を無効化
+            if is_girls or not line_scores:
+                strongest = None
+            else:
+                strongest = max(line_scores, key=line_scores.get)
 
             for _, row in group.iterrows():
                 rider_id = row["rider_id"]
