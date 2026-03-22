@@ -1341,9 +1341,6 @@ body {
       var medCount = _recData.filter(function(r) { return r.betLabel === 'MED' && !r.isTorigami; }).length;
       var tgCount = _recData.filter(function(r) { return r.isTorigami; }).length;
       var n2Invest = highCount * 2000 + medPlusCount * 800 + medCount * 400;
-      var s3Invest = 0;
-      _recData.forEach(function(r) { if (!r.isTorigami && r.triCat.unit > 0) s3Invest += r.triCat.unit * 6; });
-      var totalInvest = n2Invest + s3Invest;
 
       var h = '<div class="rec-banner" id="recBanner">';
       h += '<div class="rec-banner-title">&#9733; 本日のおすすめ</div>';
@@ -1353,7 +1350,7 @@ body {
       if (medCount > 0) h += '<span class="rec-banner-count">MED ' + medCount + '件</span>';
       if (tgCount > 0) h += '<span class="rec-banner-count" style="color:#94a3b8">見送り ' + tgCount + '件</span>';
       h += '</div>';
-      h += '<div class="rec-banner-total">2連単 ' + n2Invest.toLocaleString() + '円 + 3連単 ' + s3Invest.toLocaleString() + '円 = 合計 ' + totalInvest.toLocaleString() + '円</div>';
+      h += '<div class="rec-banner-total">2連単 合計 ' + n2Invest.toLocaleString() + '円</div>';
       h += '<div class="rec-banner-arrow">すべて見る &#8250;</div>';
       h += '</div>';
 
@@ -1384,8 +1381,6 @@ body {
     var medCount = _recData.filter(function(r) { return r.betLabel === 'MED' && !r.isTorigami; }).length;
     var tgCount = _recData.filter(function(r) { return r.isTorigami; }).length;
     var n2Invest = highCount * 2000 + medPlusCount * 800 + medCount * 400;
-    var s3Invest = 0;
-    _recData.forEach(function(r) { if (!r.isTorigami && r.triCat.unit > 0) s3Invest += r.triCat.unit * 6; });
 
     var h = '';
     h += '<div class="rec-list-summary">';
@@ -1395,9 +1390,7 @@ body {
     if (tgCount > 0) h += '<div class="rec-list-stat"><span class="rec-list-stat-value" style="color:#94a3b8">' + tgCount + '</span><span class="rec-list-stat-label">見送り</span></div>';
     h += '</div>';
     h += '<div style="display:flex;gap:8px;margin:0 16px 8px;font-size:11px;color:var(--muted)">';
-    h += '<span>2連単: ' + n2Invest.toLocaleString() + '円</span>';
-    h += '<span>3連単: ' + s3Invest.toLocaleString() + '円</span>';
-    h += '<span style="font-weight:600;color:var(--text)">合計: ' + (n2Invest + s3Invest).toLocaleString() + '円</span>';
+    h += '<span style="font-weight:600;color:var(--text)">2連単 合計: ' + n2Invest.toLocaleString() + '円</span>';
     h += '</div>';
 
     // ソート切替ボタン + オッズ更新ボタン
@@ -1841,11 +1834,8 @@ body {
     return { lvl: "low", label: "LOW", rec: "見送り", color: "#94a3b8", unit: 0 };
   }
   function getTrifectaCategory(conf, isF2) {
-    if (isF2) return { label: "SKIP", rec: "見送り（F2）", color: "#94a3b8", unit: 0 };
-    if (conf >= 2.00) return { label: "S3-HIGH", rec: "500円×6点=3,000円", color: "#7c3aed", unit: 500 };
-    if (conf >= 1.50) return { label: "S3-MED+", rec: "200円×6点=1,200円", color: "#9333ea", unit: 200 };
-    if (conf >= 1.00) return { label: "S3-MED", rec: "100円×6点=600円", color: "#a855f7", unit: 100 };
-    return { label: "LOW", rec: "見送り", color: "#94a3b8", unit: 0 };
+    // 3連単戦略は廃止（ROI 92.4%で赤字のため）
+    return { label: "SKIP", rec: "廃止", color: "#94a3b8", unit: 0 };
   }
 
   /* ── 信頼度（結果あり用） ── */
@@ -1868,12 +1858,6 @@ body {
     h += '<span class="honmei-bet-label">2連単◎→○▲△△:</span>';
     h += '<span class="honmei-bet-amount" style="color:' + bet.color + '">' + bet.rec + '</span>';
     h += '</div>';
-    if (tri.unit > 0) {
-      h += '<div class="honmei-bet">';
-      h += '<span class="honmei-bet-label">3連単◎-○▲△-○▲△:</span>';
-      h += '<span class="honmei-bet-amount" style="color:' + tri.color + '">' + tri.rec + '</span>';
-      h += '</div>';
-    }
     h += '<div class="honmei-bar"><div class="honmei-bar-fill" style="width:' + barPct + '%;background:' + bet.color + '"></div></div>';
     h += '</div></div>';
     return h;
@@ -1905,12 +1889,6 @@ body {
     h += '<span class="honmei-bet-label">2連単◎→○▲△△:</span>';
     h += '<span class="honmei-bet-amount" style="color:' + bet.color + '">' + bet.rec + '</span>';
     h += '</div>';
-    if (tri.unit > 0) {
-      h += '<div class="honmei-bet">';
-      h += '<span class="honmei-bet-label">3連単◎-○▲△-○▲△:</span>';
-      h += '<span class="honmei-bet-amount" style="color:' + tri.color + '">' + tri.rec + '</span>';
-      h += '</div>';
-    }
     h += '<div class="honmei-bar"><div class="honmei-bar-fill" style="width:' + barPct + '%;background:' + bet.color + '"></div></div>';
     h += '</div>';
 
@@ -1927,26 +1905,6 @@ body {
       h += '<div class="bet-row"><span class="bet-combo">' + e.a.bike + ' → ' + e.b.bike + '</span>';
       h += '<span class="bet-names">' + e.a.name + '→' + e.b.name + '</span>';
       h += '<span class="bet-tag ' + e.cls + '">' + e.tag + '</span></div>';
-    }
-
-    if (top.length >= 4) {
-      h += '<div class="bet-group-label">3連単（◎-○▲△-○▲△ 6点フォーメーション）</div>';
-      const p = [top[1], top[2], top[3]].filter(Boolean);
-      const tr = [];
-      for (const p2 of p) {
-        for (const p3 of p) {
-          if (p2.bike !== p3.bike) {
-            var tag = (p2 === top[1] && p3 === top[2]) ? "本命" : (p2 === top[1] || p3 === top[1]) ? "対抗" : "穴";
-            var cls = tag === "本命" ? "tag-honmei" : tag === "対抗" ? "tag-honmei" : "tag-chuuana";
-            tr.push({ a: top[0], b: p2, c: p3, tag: tag, cls: cls });
-          }
-        }
-      }
-      for (const t of tr) {
-        h += '<div class="bet-row"><span class="bet-combo">' + t.a.bike + ' → ' + t.b.bike + ' → ' + t.c.bike + '</span>';
-        h += '<span class="bet-names">' + t.a.name + '→' + t.b.name + '→' + t.c.name + '</span>';
-        h += '<span class="bet-tag ' + t.cls + '">' + t.tag + '</span></div>';
-      }
     }
 
     h += '<div class="bet-group-label">ワイド（3着以内の2人）</div>';
@@ -2154,9 +2112,7 @@ body {
 
     // P&Lサマリー
     h += '<div class="yday-summary">';
-    h += '<div class="yday-stat"><span class="yday-stat-value" style="color:' + pnlColor + '">' + (totalPnl >= 0 ? '+' : '') + totalPnl.toLocaleString() + '円</span><span class="yday-stat-label">合計</span></div>';
-    h += '<div class="yday-stat"><span class="yday-stat-value" style="color:' + n2Color + ';font-size:14px">' + (n2Pnl >= 0 ? '+' : '') + n2Pnl.toLocaleString() + '</span><span class="yday-stat-label">2連単</span></div>';
-    h += '<div class="yday-stat"><span class="yday-stat-value" style="color:' + s3Color + ';font-size:14px">' + (s3Pnl >= 0 ? '+' : '') + s3Pnl.toLocaleString() + '</span><span class="yday-stat-label">3連単</span></div>';
+    h += '<div class="yday-stat"><span class="yday-stat-value" style="color:' + n2Color + '">' + (n2Pnl >= 0 ? '+' : '') + n2Pnl.toLocaleString() + '円</span><span class="yday-stat-label">2連単収支</span></div>';
     h += '<div class="yday-stat"><span class="yday-stat-value">' + top1Pct + '%</span><span class="yday-stat-label">&#9678;的中率</span><span class="yday-stat-sub">' + top1Hits + '/' + totalRaces + '</span></div>';
     h += '</div>';
 
@@ -2198,9 +2154,7 @@ body {
 
       h += '<div class="yday-bottom">';
       var n2p = rc.n2Ret - rc.n2Bet;
-      var s3p = rc.s3Ret - rc.s3Bet;
       h += '<span style="font-size:10px;color:' + (n2p >= 0 ? '#16a34a' : '#94a3b8') + '">2連単' + (n2p >= 0 ? '+' : '') + n2p.toLocaleString() + '</span>';
-      if (rc.s3Bet > 0) h += '<span style="font-size:10px;color:' + (s3p >= 0 ? '#16a34a' : '#94a3b8') + ';margin-left:6px">3連単' + (s3p >= 0 ? '+' : '') + s3p.toLocaleString() + '</span>';
       h += '<span class="yday-top3-label" style="margin-left:auto">Top3: ' + rc.overlap + '/3</span>';
       for (var d = 0; d < 3; d++) {
         h += '<span class="yday-dot ' + (d < rc.overlap ? 'yday-dot-hit' : 'yday-dot-miss') + '"></span>';
@@ -2393,12 +2347,8 @@ body {
       h += '</div>';
 
       h += '<div class="pnl-stats">';
-      h += '<div class="pnl-stat-card"><span class="pnl-stat-value" style="color:' + pnlColor + '">' + (totalPnl >= 0 ? '+' : '') + totalPnl.toLocaleString() + '円</span><span class="pnl-stat-label">合計損益</span></div>';
-      h += '<div class="pnl-stat-card"><span class="pnl-stat-value">' + roi + '%</span><span class="pnl-stat-label">合計ROI</span></div>';
-      h += '<div class="pnl-stat-card"><span class="pnl-stat-value" style="color:' + n2Color + '">' + (n2Pnl >= 0 ? '+' : '') + n2Pnl.toLocaleString() + '円</span><span class="pnl-stat-label">2連単 (ROI ' + n2Roi + '%)</span></div>';
-      h += '<div class="pnl-stat-card"><span class="pnl-stat-value" style="color:' + s3Color + '">' + (s3Pnl >= 0 ? '+' : '') + s3Pnl.toLocaleString() + '円</span><span class="pnl-stat-label">3連単 (ROI ' + s3Roi + '%)</span></div>';
+      h += '<div class="pnl-stat-card"><span class="pnl-stat-value" style="color:' + n2Color + '">' + (n2Pnl >= 0 ? '+' : '') + n2Pnl.toLocaleString() + '円</span><span class="pnl-stat-label">2連単損益 (ROI ' + n2Roi + '%)</span></div>';
       h += '<div class="pnl-stat-card"><span class="pnl-stat-value">' + n2HitRate + '%</span><span class="pnl-stat-label">2連単的中 (' + nisyatanHits + '/' + n2Races + ')</span></div>';
-      h += '<div class="pnl-stat-card"><span class="pnl-stat-value">' + s3HitRate + '%</span><span class="pnl-stat-label">3連単的中 (' + sanrentanHits + '/' + s3Races + ')</span></div>';
       h += '<div class="pnl-stat-card"><span class="pnl-stat-value">' + top1Pct + '%</span><span class="pnl-stat-label">◎的中率 (' + top1Hits + '/' + totalRaces + ')</span></div>';
       h += '<div class="pnl-stat-card"><span class="pnl-stat-value">' + sortedDates.length + '日</span><span class="pnl-stat-label">開催日数</span></div>';
       h += '</div>';
@@ -2412,21 +2362,18 @@ body {
         var d = sortedDates[i];
         var dp = dailyPnl[d];
         var dayN2 = dp.n2Ret - dp.n2Bet;
-        var dayS3 = dp.s3Ret - dp.s3Bet;
-        var dayPnl = dayN2 + dayS3;
-        var dayColor = dayPnl >= 0 ? "#16a34a" : "#dc2626";
+        var dayColor = dayN2 >= 0 ? "#16a34a" : "#dc2626";
         var hitPct = dp.races > 0 ? (dp.hits / dp.races * 100).toFixed(0) : "0";
         h += '<div class="pnl-daily-row">';
         h += '<span class="pnl-daily-date">' + formatDate(d) + '</span>';
-        h += '<span class="pnl-daily-val" style="color:' + dayColor + '">' + (dayPnl >= 0 ? '+' : '') + dayPnl.toLocaleString() + '円</span>';
-        h += '<span class="pnl-daily-sub">2連単' + (dayN2 >= 0 ? '+' : '') + dayN2.toLocaleString() + ' / 3連単' + (dayS3 >= 0 ? '+' : '') + dayS3.toLocaleString() + '</span>';
+        h += '<span class="pnl-daily-val" style="color:' + dayColor + '">' + (dayN2 >= 0 ? '+' : '') + dayN2.toLocaleString() + '円</span>';
         h += '</div>';
       }
       h += '</div>';
 
       el.innerHTML = h;
 
-      // Chart.js描画（3ライン: 2連単/3連単/合計）
+      // Chart.js描画（2連単累積収支）
       if (_pnlChart) { _pnlChart.destroy(); _pnlChart = null; }
       var ctx = document.getElementById("pnlChart").getContext("2d");
       _pnlChart = new Chart(ctx, {
@@ -2435,31 +2382,13 @@ body {
           labels: labels,
           datasets: [
             {
-              label: "2連単+3連単",
-              data: cumCombo,
+              label: "2連単",
+              data: cumN2,
               borderColor: "#16a34a",
               backgroundColor: "rgba(22,163,74,0.06)",
               borderWidth: 2.5,
               pointRadius: 0,
               fill: true,
-              tension: 0.2,
-            },
-            {
-              label: "2連単",
-              data: cumN2,
-              borderColor: "#2563eb",
-              borderWidth: 1.8,
-              pointRadius: 0,
-              fill: false,
-              tension: 0.2,
-            },
-            {
-              label: "3連単",
-              data: cumS3,
-              borderColor: "#f59e0b",
-              borderWidth: 1.8,
-              pointRadius: 0,
-              fill: false,
               tension: 0.2,
             }
           ]

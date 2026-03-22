@@ -21,7 +21,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from config import (
     SUPABASE_URL, SUPABASE_SERVICE_KEY, SUPABASE_ANON_KEY,
     RESULTS_DIR, VELODROME_CODES, MARKS,
-    get_bet_category, get_trifecta_category,
+    get_bet_category,
 )
 
 LOG_DIR = RESULTS_DIR / "logs"
@@ -185,15 +185,11 @@ def generate_detail_report(conn, formatted_date: str, date_str: str) -> str:
         hit_mark = "✓" if race_top1_hit else "✗"
         lines.append(f"  → ◎{hit_mark}  Top3一致: {t3}/3")
 
-    # === 2連単 & 3連単 収支分析 ===
+    # === 2連単 収支分析 ===
     n2_investment = 0
     n2_payout = 0
     n2_bets = 0
     n2_hits = 0
-    s3_investment = 0
-    s3_payout = 0
-    s3_bets = 0
-    s3_hits = 0
 
     for race in race_rows:
         race_id = race["race_id"]
@@ -245,24 +241,6 @@ def generate_detail_report(conn, formatted_date: str, date_str: str) -> str:
                 n2_payout += won
                 n2_hits += 1
 
-        # ── 3連単 ──
-        _, _, s3_bet = get_trifecta_category(confidence, grade)
-        if s3_bet > 0 and len(preds_for_pnl) >= 4:
-            partners = [p["bike_number"] or 0 for p in preds_for_pnl[1:4]]
-            tickets_s3 = []
-            for p2 in partners:
-                for p3 in partners:
-                    if p2 != p3:
-                        tickets_s3.append(f"{honmei_bike}>{p2}>{p3}")
-
-            s3_investment += s3_bet * len(tickets_s3)
-            s3_bets += 1
-
-            if pay_row and pay_row["sanrentan_combo"] and pay_row["sanrentan_combo"] in tickets_s3:
-                won = pay_row["sanrentan_payout"] / 100 * s3_bet
-                s3_payout += won
-                s3_hits += 1
-
     # サマリー
     lines.append(f"\n{'=' * 60}")
     lines.append(f"  サマリー ({formatted_date})")
@@ -282,23 +260,6 @@ def generate_detail_report(conn, formatted_date: str, date_str: str) -> str:
         lines.append(f"  回収率: {roi:.1f}%")
         lines.append(f"  収支: {n2_payout - n2_investment:+,.0f}円")
 
-    if s3_bets > 0:
-        roi_s3 = s3_payout / s3_investment * 100 if s3_investment > 0 else 0
-        lines.append(f"\n  --- 3連単 収支 ---")
-        lines.append(f"  ベット対象: {s3_bets}R")
-        lines.append(f"  3連単的中: {s3_hits}/{s3_bets} ({s3_hits/s3_bets*100:.1f}%)")
-        lines.append(f"  投資: {s3_investment:,}円")
-        lines.append(f"  回収: {s3_payout:,.0f}円")
-        lines.append(f"  回収率: {roi_s3:.1f}%")
-        lines.append(f"  収支: {s3_payout - s3_investment:+,.0f}円")
-
-    if n2_bets > 0 or s3_bets > 0:
-        total_inv = n2_investment + s3_investment
-        total_pay = n2_payout + s3_payout
-        total_roi = total_pay / total_inv * 100 if total_inv > 0 else 0
-        lines.append(f"\n  --- 合計 ---")
-        lines.append(f"  投資: {total_inv:,}円  回収: {total_pay:,.0f}円")
-        lines.append(f"  回収率: {total_roi:.1f}%  収支: {total_pay - total_inv:+,.0f}円")
 
     lines.append("=" * 60)
 
