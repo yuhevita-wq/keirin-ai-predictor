@@ -1321,9 +1321,10 @@ body {
         var comboOdds = sorted.slice(1, 5).map(function(r) { return r.exacta_odds; }).filter(function(v) { return v != null; });
         var isTorigami = comboOdds.length > 0 && Math.max.apply(null, comboOdds) < 4.0;
         var maxOdds = comboOdds.length > 0 ? Math.max.apply(null, comboOdds) : null;
-        // F2は賭け対象外（バックテストで回収率64.5%）
-        if (gap >= 0.50 && rows[0].grade !== 'F2') {
-          var bi = getBetCategory(gap, false);
+        // F2/G2は賭け対象外、HIGH限定（信頼度≥1.00）
+        var rGrade = rows[0].grade || '';
+        if (gap >= 1.00 && rGrade !== 'F2' && rGrade !== 'G2') {
+          var bi = getBetCategory(gap, false, rGrade);
           _recData.push({
             id: id, velodrome: rows[0].velodrome, raceNumber: rows[0].race_number,
             grade: rows[0].grade, startTime: rows[0].start_time || '', gap: gap, isHigh: gap >= 1.00, isMedPlus: gap >= 0.80 && gap < 1.00,
@@ -1826,11 +1827,9 @@ body {
   }
 
   /* ── 賭けカテゴリ判定 ── */
-  function getBetCategory(conf, isF2) {
-    if (isF2) return { lvl: "low", label: "SKIP", rec: "見送り（F2）", color: "#94a3b8", unit: 0 };
+  function getBetCategory(conf, isF2, grade) {
+    if (isF2 || grade === 'G2') return { lvl: "low", label: "SKIP", rec: "見送り（" + (grade || "F2") + "）", color: "#94a3b8", unit: 0 };
     if (conf >= 1.00) return { lvl: "high", label: "HIGH", rec: "500円×4点=2,000円", color: "#dc2626", unit: 500 };
-    if (conf >= 0.80) return { lvl: "mid", label: "MED+", rec: "200円×4点=800円", color: "#ea580c", unit: 200 };
-    if (conf >= 0.50) return { lvl: "mid", label: "MED", rec: "100円×4点=400円", color: "#d97706", unit: 100 };
     return { lvl: "low", label: "LOW", rec: "見送り", color: "#94a3b8", unit: 0 };
   }
   function getTrifectaCategory(conf, isF2) {
@@ -1843,10 +1842,10 @@ body {
     const sorted = data.slice().sort((a, b) => a.predicted_rank - b.predicted_rank);
     if (sorted.length < 2) return '';
     const gap12 = (sorted[0].predicted_score || 0) - (sorted[1].predicted_score || 0);
-    const isF2 = (sorted[0].grade || '') === 'F2';
-    const bet = getBetCategory(gap12, isF2);
-    const tri = getTrifectaCategory(gap12, isF2);
-    const barPct = isF2 ? 0 : Math.min(gap12 / 2.5 * 100, 100);
+    const rGrade = sorted[0].grade || '';
+    const isF2 = rGrade === 'F2';
+    const bet = getBetCategory(gap12, isF2, rGrade);
+    const barPct = (isF2 || rGrade === 'G2') ? 0 : Math.min(gap12 / 2.5 * 100, 100);
     let h = '<div class="bet-section">';
     h += '<div class="honmei-box">';
     h += '<div class="honmei-row">';
@@ -1871,10 +1870,10 @@ body {
     }));
 
     const gap12 = top[0].score - top[1].score;
-    const isF2 = (data[0] && (data[0].grade || '')) === 'F2';
-    const bet = getBetCategory(gap12, isF2);
-    const tri = getTrifectaCategory(gap12, isF2);
-    const barPct = isF2 ? 0 : Math.min(gap12 / 2.5 * 100, 100);
+    const dGrade = (data[0] && data[0].grade) || '';
+    const isF2 = dGrade === 'F2';
+    const bet = getBetCategory(gap12, isF2, dGrade);
+    const barPct = (isF2 || dGrade === 'G2') ? 0 : Math.min(gap12 / 2.5 * 100, 100);
 
     let h = '<div class="bet-section">';
 
@@ -2031,9 +2030,9 @@ body {
       top3Total += Math.min(3, actualTop3Set.size);
 
       var conf = sorted.length >= 2 ? sorted[0].predicted_score - sorted[1].predicted_score : 0;
-      var isF2 = rows[0].grade === 'F2';
-      var betInfo = getBetCategory(conf, isF2);
-      var triInfo = getTrifectaCategory(conf, isF2);
+      var wGrade = rows[0].grade || '';
+      var isF2 = wGrade === 'F2';
+      var betInfo = getBetCategory(conf, isF2, wGrade);
       var betUnit = betInfo.unit;
       var raceN2Bet = betUnit * 4;
       var raceN2Ret = 0;
@@ -2252,8 +2251,7 @@ body {
         var conf = sorted.length >= 2 ? sorted[0].predicted_score - sorted[1].predicted_score : 0;
         var raceGrade = rows[0].race_grade || rows[0].grade || '';
         var isF2 = raceGrade === 'F2';
-        var betInfo = getBetCategory(conf, isF2);
-        var triInfo = getTrifectaCategory(conf, isF2);
+        var betInfo = getBetCategory(conf, isF2, raceGrade);
 
         var isTop1Hit = sorted[0] && sorted[0].finish_position === 1;
         if (isTop1Hit) top1Hits++;

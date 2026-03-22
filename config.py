@@ -113,12 +113,10 @@ LINE_BONUS = {
 }
 STRONGEST_LINE_BONUS = 0.20
 
-# ── 賭け戦略 ──
+# ── 賭け戦略（HIGH限定: MED/MED+はROI<65%で赤字のため廃止） ──
 BET_STRATEGY = [
     # (最低信頼度, ラベル, 1点あたり金額, 推奨表示)
     (1.00, "HIGH", 500, "500円×4点=2,000円"),
-    (0.80, "MED+", 200, "200円×4点=800円"),
-    (0.50, "MED",  100, "100円×4点=400円"),
 ]
 BET_SKIP_LABEL = "LOW"
 BET_SKIP_REC = "見送り"
@@ -137,10 +135,14 @@ DEFAULT_DAYS_SINCE_LAST_RACE = 90.0
 DEFAULT_AVG_MARGIN = 2.0
 
 
+# G2はROI 26.9%で大幅赤字のため賭け対象外
+BET_EXCLUDE_GRADES = {"F2", "G2"}
+
+
 def get_bet_category(confidence: float, grade: str = "") -> tuple[str, str, int]:
     """信頼度とグレードから2連単カテゴリを判定。(label, rec, bet_per_ticket) を返す。"""
-    if grade == "F2":
-        return BET_F2_LABEL, BET_F2_REC, 0
+    if grade in BET_EXCLUDE_GRADES:
+        return BET_SKIP_LABEL, f"見送り（{grade}）", 0
     for min_conf, label, amount, rec in BET_STRATEGY:
         if confidence >= min_conf:
             return label, rec, amount
