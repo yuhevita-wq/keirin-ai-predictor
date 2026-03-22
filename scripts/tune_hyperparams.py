@@ -2,12 +2,19 @@
 
 時系列CVのNDCG@3を目的関数としてLightGBMのパラメータを自動探索する。
 最適パラメータで最終モデルを保存する。
+
+Usage:
+    python scripts/tune_hyperparams.py
+    python scripts/tune_hyperparams.py --n-trials 100
+    python scripts/tune_hyperparams.py --apply  # 最適パラメータでモデル保存
 """
 
 import sys
+import io
 import logging
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 import lightgbm as lgb
 import numpy as np
@@ -55,7 +62,7 @@ def ndcg_at_3(test_df: pd.DataFrame, predictions: np.ndarray) -> float:
 
 
 def top1_accuracy(test_df: pd.DataFrame, predictions: np.ndarray) -> float:
-    """◎的中率を計算"""
+    """Top1的中率を計算"""
     test_df = test_df.copy()
     test_df["pred_score"] = predictions
     hits = 0
@@ -71,6 +78,20 @@ def top1_accuracy(test_df: pd.DataFrame, predictions: np.ndarray) -> float:
             hits += 1
 
     return hits / total if total > 0 else 0.0
+
+
+def _to_relevance(y: pd.Series, groups: list[int]) -> np.ndarray:
+    """着順をグループ単位でrelevanceに変換"""
+    relevance = np.zeros(len(y), dtype=np.float32)
+    offset = 0
+    for size in groups:
+        group_y = y.iloc[offset:offset + size]
+        max_pos = int(group_y.max()) if len(group_y) > 0 else 9
+        relevance[offset:offset + size] = np.clip(
+            max_pos - group_y.values + 1, 0, None
+        )
+        offset += size
+    return relevance
 
 
 def time_series_cv_score(df: pd.DataFrame, feature_cols: list[str],
@@ -105,7 +126,6 @@ def time_series_cv_score(df: pd.DataFrame, feature_cols: list[str],
         y_val = val_df["finish_position"]
         group_val = val_df.groupby("race_id").size().tolist()
 
-        # relevance変換（レース単位）
         y_rel = _to_relevance(y_train, group_train)
         y_val_rel = _to_relevance(y_val, group_val)
 
@@ -118,7 +138,10 @@ def time_series_cv_score(df: pd.DataFrame, feature_cols: list[str],
             num_boost_round=1000,
             valid_sets=[val_data],
             valid_names=["valid"],
-            callbacks=[lgb.early_stopping(50), lgb.log_evaluation(0)],
+            callbacks=[
+                lgb.early_stopping(50, first_metric_only=True, verbose=False),
+                lgb.log_evaluation(-1),
+            ],
         )
 
         predictions = model.predict(X_val)
@@ -128,36 +151,24 @@ def time_series_cv_score(df: pd.DataFrame, feature_cols: list[str],
     return np.mean(ndcg_scores) if ndcg_scores else 0.0
 
 
-def _to_relevance(y: pd.Series, groups: list[int]) -> np.ndarray:
-    """着順をグループ単位でrelevanceに変換"""
-    relevance = np.zeros(len(y), dtype=np.float32)
-    offset = 0
-    for size in groups:
-        group_y = y.iloc[offset:offset + size]
-        max_pos = int(group_y.max()) if len(group_y) > 0 else 9
-        relevance[offset:offset + size] = np.clip(
-            max_pos - group_y.values + 1, 0, None
-        )
-        offset += size
-    return relevance
-
-
 def objective(trial: optuna.Trial, df: pd.DataFrame,
               feature_cols: list[str]) -> float:
-    """Optuna目的関数: 時系列CVのNDCG@3を最大化"""
+    """Optuna目的関数: 時系列CVのNDCG@3を最大化（探索範囲拡大版）"""
     params = {
         "objective": "lambdarank",
         "metric": "ndcg",
         "ndcg_eval_at": [3],
         "verbose": -1,
-        "bagging_freq": 5,
-        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.1, log=True),
-        "num_leaves": trial.suggest_int("num_leaves", 15, 63),
-        "min_data_in_leaf": trial.suggest_int("min_data_in_leaf", 50, 300),
-        "feature_fraction": trial.suggest_float("feature_fraction", 0.4, 0.9),
-        "bagging_fraction": trial.suggest_float("bagging_fraction", 0.6, 0.95),
-        "lambda_l1": trial.suggest_float("lambda_l1", 0.0, 2.0),
-        "lambda_l2": trial.suggest_float("lambda_l2", 0.0, 2.0),
+        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.15, log=True),
+        "num_leaves": trial.suggest_int("num_leaves", 15, 127),
+        "min_data_in_leaf": trial.suggest_int("min_data_in_leaf", 30, 300),
+        "feature_fraction": trial.suggest_float("feature_fraction", 0.4, 0.95),
+        "bagging_fraction": trial.suggest_float("bagging_fraction", 0.5, 0.95),
+        "bagging_freq": trial.suggest_int("bagging_freq", 1, 7),
+        "lambda_l1": trial.suggest_float("lambda_l1", 0.0, 5.0),
+        "lambda_l2": trial.suggest_float("lambda_l2", 0.0, 5.0),
+        "max_depth": trial.suggest_int("max_depth", -1, 15),
+        "min_gain_to_split": trial.suggest_float("min_gain_to_split", 0.0, 1.0),
     }
 
     return time_series_cv_score(df, feature_cols, params)
@@ -165,9 +176,9 @@ def objective(trial: optuna.Trial, df: pd.DataFrame,
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Optunaハイパーパラメータ最適化")
-    parser.add_argument("--n-trials", type=int, default=50, help="試行回数 (default: 50)")
-    parser.add_argument("--apply", action="store_true", help="最適パラメータで最終モデルを保存")
+    parser = argparse.ArgumentParser(description="Optuna hyperparameter tuning")
+    parser.add_argument("--n-trials", type=int, default=75, help="Trial count (default: 75)")
+    parser.add_argument("--apply", action="store_true", help="Save model with best params")
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -181,8 +192,11 @@ def main():
     all_df = all_df.dropna(subset=["finish_position"])
     logger.info("Dataset: %d rows, %d features", len(all_df), len(feature_cols))
 
-    # Optuna探索
-    study = optuna.create_study(direction="maximize")
+    # Optuna
+    study = optuna.create_study(
+        direction="maximize",
+        sampler=optuna.samplers.TPESampler(seed=42),
+    )
     study.optimize(
         lambda trial: objective(trial, all_df, feature_cols),
         n_trials=args.n_trials,
@@ -190,10 +204,10 @@ def main():
     )
 
     logger.info("=" * 60)
-    logger.info("Best NDCG@3: %.4f", study.best_value)
+    logger.info("Best NDCG@3: %.6f", study.best_value)
     logger.info("Best params: %s", study.best_params)
 
-    # Top5を表示
+    # Top5
     trials_df = study.trials_dataframe()
     trials_df = trials_df.sort_values("value", ascending=False)
     logger.info("\nTop 5 trials:\n%s",
@@ -201,13 +215,12 @@ def main():
                           [c for c in trials_df.columns if c.startswith("params_")]
                           ].head(5).to_string())
 
-    # 最適パラメータで評価（85/15分割）
+    # 最適パラメータで85/15評価
     best_params = {
         "objective": "lambdarank",
         "metric": "ndcg",
         "ndcg_eval_at": [3],
         "verbose": -1,
-        "bagging_freq": 5,
         **study.best_params,
     }
 
@@ -247,25 +260,24 @@ def main():
     logger.info("  NDCG@3: %.4f", final_ndcg)
     logger.info("  Top1:   %.1f%%", final_top1 * 100)
 
-    # パラメータ出力（config.pyにコピペ用）
-    logger.info("\n=== config.py LGBM_PARAMS に設定するパラメータ ===")
-    config_params = {
-        "objective": "lambdarank",
-        "metric": "ndcg",
-        "ndcg_eval_at": [3],
-        **{k: round(v, 4) if isinstance(v, float) else v
-           for k, v in study.best_params.items()},
-        "bagging_freq": 5,
-        "verbose": -1,
-    }
-    logger.info("LGBM_PARAMS = %s", config_params)
+    # config.pyへのコピペ用出力
+    print("\n=== config.py LGBM_PARAMS ===")
+    print("LGBM_PARAMS = {")
+    print('    "objective": "lambdarank",')
+    print('    "metric": "ndcg",')
+    print('    "ndcg_eval_at": [3],')
+    for k, v in study.best_params.items():
+        if isinstance(v, int):
+            print(f'    "{k}": {v},')
+        else:
+            print(f'    "{k}": {round(v, 4)},')
+    print('    "verbose": -1,')
+    print("}")
 
     if args.apply:
-        # 最終モデル保存
         from models.lgbm_ranker import LGBMRanker
         ranker = LGBMRanker(params=best_params)
         ranker.train(X_train, y_train, group_train, X_test, y_test, group_test)
-
         RESULTS_DIR.mkdir(parents=True, exist_ok=True)
         model_path = str(RESULTS_DIR / "model_lgbm.pkl")
         ranker.save(model_path)
@@ -273,6 +285,7 @@ def main():
 
         importance = ranker.feature_importance()
         logger.info("Feature importance:\n%s", importance.to_string())
+        importance.to_csv(str(RESULTS_DIR / "feature_importance.csv"), index=False)
 
 
 if __name__ == "__main__":

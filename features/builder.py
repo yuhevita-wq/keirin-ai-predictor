@@ -73,7 +73,7 @@ class FeatureBuilder:
             "race_number",
             "entry_frame_number",
             "entry_bike_number",
-            # 出走表データ (4)
+            # 出走表データ (5)
             "entry_competition_score",
             "entry_win_rate",
             "entry_place_rate",
