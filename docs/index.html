@@ -2006,7 +2006,7 @@ body {
     for (var r of data) { if (!groups[r.race_id]) groups[r.race_id] = []; groups[r.race_id].push(r); }
 
     var totalRaces = 0, top1Hits = 0, top3Overlap = 0, top3Total = 0;
-    var n2Bet = 0, n2Return = 0, s3Bet = 0, s3Return = 0;
+    var n2Bet = 0, n2Return = 0;
     var raceCards = [];
 
     for (var raceId of Object.keys(groups).sort()) {
@@ -2036,7 +2036,6 @@ body {
       var betUnit = betInfo.unit;
       var raceN2Bet = betUnit * 4;
       var raceN2Ret = 0;
-      var raceS3Bet = 0, raceS3Ret = 0;
       var nisyatanPayout = payoutMap[raceId] || 0;
 
       // 2連単
@@ -2050,41 +2049,21 @@ body {
         }
       }
 
-      // 3連単
-      if (triInfo.unit > 0 && sorted.length >= 4) {
-        var honmeiBike = sorted[0].bike_number;
-        var partners = sorted.slice(1, 4).map(function(r) { return r.bike_number; });
-        var triTickets = [];
-        for (var p2 of partners) { for (var p3 of partners) { if (p2 !== p3) triTickets.push(honmeiBike + ">" + p2 + ">" + p3); } }
-        raceS3Bet = triInfo.unit * triTickets.length;
-        var sInfo = sanrentanMap[raceId];
-        if (sInfo && sInfo.combo && triTickets.indexOf(sInfo.combo) >= 0) {
-          raceS3Ret = Math.floor(sInfo.payout * triInfo.unit / 100);
-        }
-      }
-
       n2Bet += raceN2Bet; n2Return += raceN2Ret;
-      s3Bet += raceS3Bet; s3Return += raceS3Ret;
-      var racePnl = (raceN2Ret - raceN2Bet) + (raceS3Ret - raceS3Bet);
+      var racePnl = raceN2Ret - raceN2Bet;
       raceCards.push({
         raceId: raceId, velodrome: rows[0].velodrome, raceNumber: rows[0].race_number,
-        grade: rows[0].grade, conf: conf, isHighConf: conf >= 1.00, isMed: conf >= 0.50 && conf < 1.00,
+        grade: rows[0].grade, conf: conf, isHighConf: conf >= 1.00,
         isTop1Hit: isTop1Hit, overlap: overlap, predTop3: predTop3,
-        n2Bet: raceN2Bet, n2Ret: raceN2Ret, s3Bet: raceS3Bet, s3Ret: raceS3Ret,
-        bet: raceN2Bet + raceS3Bet, ret: raceN2Ret + raceS3Ret, pnl: racePnl, payout: nisyatanPayout,
+        n2Bet: raceN2Bet, n2Ret: raceN2Ret,
+        bet: raceN2Bet, ret: raceN2Ret, pnl: racePnl, payout: nisyatanPayout,
         isTorigami: false
       });
     }
 
     var top1Pct = totalRaces > 0 ? (top1Hits / totalRaces * 100).toFixed(1) : "0.0";
-    var totalBet = n2Bet + s3Bet;
-    var totalReturn = n2Return + s3Return;
-    var totalPnl = totalReturn - totalBet;
     var n2Pnl = n2Return - n2Bet;
-    var s3Pnl = s3Return - s3Bet;
-    var pnlColor = totalPnl >= 0 ? "#16a34a" : "#dc2626";
     var n2Color = n2Pnl >= 0 ? "#16a34a" : "#dc2626";
-    var s3Color = s3Pnl >= 0 ? "#16a34a" : "#dc2626";
     var betRaces = raceCards.filter(function(r) { return r.bet > 0; }).length;
 
     var h = '<div class="yday-section">';
@@ -2235,9 +2214,9 @@ body {
 
       // 日別P&L計算（2連単+3連単）
       var dailyPnl = {};
-      var n2Bet = 0, n2Return = 0, s3Bet = 0, s3Return = 0;
-      var totalRaces = 0, top1Hits = 0, n2Races = 0, s3Races = 0;
-      var nisyatanHits = 0, sanrentanHits = 0;
+      var n2Bet = 0, n2Return = 0;
+      var totalRaces = 0, top1Hits = 0, n2Races = 0;
+      var nisyatanHits = 0;
 
       for (var raceId of Object.keys(byRace)) {
         var race = byRace[raceId];
@@ -2256,7 +2235,7 @@ body {
         var isTop1Hit = sorted[0] && sorted[0].finish_position === 1;
         if (isTop1Hit) top1Hits++;
 
-        var raceN2Bet = 0, raceN2Ret = 0, raceS3Bet = 0, raceS3Ret = 0;
+        var raceN2Bet = 0, raceN2Ret = 0;
 
         // 2連単
         if (betInfo.unit > 0) {
@@ -2275,67 +2254,33 @@ body {
           }
         }
 
-        // 3連単
-        if (triInfo.unit > 0 && sorted.length >= 4) {
-          s3Races++;
-          var partners = sorted.slice(1, 4).map(function(r) { return r.bike_number; });
-          var triTickets = [];
-          var honmeiBike = sorted[0].bike_number;
-          for (var p2 of partners) {
-            for (var p3 of partners) {
-              if (p2 !== p3) triTickets.push(honmeiBike + ">" + p2 + ">" + p3);
-            }
-          }
-          raceS3Bet = triInfo.unit * triTickets.length;
-          var sInfo = sanrentanMap[raceId];
-          if (sInfo && sInfo.combo && triTickets.indexOf(sInfo.combo) >= 0) {
-            raceS3Ret = Math.floor(sInfo.payout * triInfo.unit / 100);
-            sanrentanHits++;
-          }
-        }
-
         n2Bet += raceN2Bet; n2Return += raceN2Ret;
-        s3Bet += raceS3Bet; s3Return += raceS3Ret;
-        if (!dailyPnl[date]) dailyPnl[date] = { n2Bet: 0, n2Ret: 0, s3Bet: 0, s3Ret: 0, races: 0, hits: 0 };
+        if (!dailyPnl[date]) dailyPnl[date] = { n2Bet: 0, n2Ret: 0, races: 0, hits: 0 };
         dailyPnl[date].n2Bet += raceN2Bet;
         dailyPnl[date].n2Ret += raceN2Ret;
-        dailyPnl[date].s3Bet += raceS3Bet;
-        dailyPnl[date].s3Ret += raceS3Ret;
         dailyPnl[date].races++;
         if (isTop1Hit) dailyPnl[date].hits++;
       }
 
-      // チャートデータ作成（3ライン: 2連単/3連単/合計）
+      // チャートデータ作成（2連単累積収支）
       var sortedDates = Object.keys(dailyPnl).sort();
       var labels = [];
-      var cumN2 = [], cumS3 = [], cumCombo = [];
-      var cn2 = 0, cs3 = 0;
+      var cumN2 = [];
+      var cn2 = 0;
 
       for (var sd of sortedDates) {
         var dp = dailyPnl[sd];
         cn2 += dp.n2Ret - dp.n2Bet;
-        cs3 += dp.s3Ret - dp.s3Bet;
         var dd = new Date(sd + "T00:00:00");
         labels.push((dd.getMonth()+1) + "/" + dd.getDate());
         cumN2.push(cn2);
-        cumS3.push(cs3);
-        cumCombo.push(cn2 + cs3);
       }
 
-      var totalBet = n2Bet + s3Bet;
-      var totalReturn = n2Return + s3Return;
-      var totalPnl = totalReturn - totalBet;
-      var roi = totalBet > 0 ? ((totalReturn / totalBet) * 100).toFixed(1) : "0.0";
       var n2Roi = n2Bet > 0 ? ((n2Return / n2Bet) * 100).toFixed(1) : "0.0";
-      var s3Roi = s3Bet > 0 ? ((s3Return / s3Bet) * 100).toFixed(1) : "0.0";
       var top1Pct = totalRaces > 0 ? (top1Hits / totalRaces * 100).toFixed(1) : "0.0";
       var n2HitRate = n2Races > 0 ? (nisyatanHits / n2Races * 100).toFixed(1) : "0.0";
-      var s3HitRate = s3Races > 0 ? (sanrentanHits / s3Races * 100).toFixed(1) : "0.0";
-      var pnlColor = totalPnl >= 0 ? "#16a34a" : "#dc2626";
       var n2Pnl = n2Return - n2Bet;
-      var s3Pnl = s3Return - s3Bet;
       var n2Color = n2Pnl >= 0 ? "#16a34a" : "#dc2626";
-      var s3Color = s3Pnl >= 0 ? "#16a34a" : "#dc2626";
 
       // HTML構築
       var h = '<div class="section-header" style="margin-bottom:12px">';
