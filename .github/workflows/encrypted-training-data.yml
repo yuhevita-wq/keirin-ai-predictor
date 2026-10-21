@@ -1,6 +1,9 @@
 name: Encrypted Training Data Collection
 
 on:
+  push:
+    paths:
+      - ".github/workflows/encrypted-training-data.yml"
   workflow_dispatch:
     inputs:
       target_date:
