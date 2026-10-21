@@ -20,6 +20,8 @@ These files add independent data collection to this fork; upstream AI source rem
 - One standalone SQLite training shard **per day**, built from the inherited parsers.
 - Each shard is encrypted locally with GPG AES256. Only its `.sqlite.gpg`
   ciphertext is uploaded to a GitHub Release named `training-data-YYYY-MM`.
+- A separate unencrypted `netkeirin-YYYY-MM-DD.report.json` audit manifest is
+  stored alongside it. This contains race IDs and reasons for missing records.
 - The repository and Releases are PUBLIC; encrypted assets are downloadable by
   others, so the passphrase must be strong and kept private.
 - A simple numeric run report (source/date/number of races/rows/errors) is
@@ -35,8 +37,11 @@ These files add independent data collection to this fork; upstream AI source rem
   historical backfill needs a separate, verified procedure to avoid silent gaps.
 - Some historical source pages may not retain all entry or odds fields.
 - Collected final odds are not equivalent to odds captured 15 minutes before a race.
-- An incomplete run refuses to publish a shard. Retry the failed date after
-  investigating counts/errors; absence of a release asset means NOT collected.
+- A partially collected day **is encrypted and archived**, with `status: partial`
+  and missing race IDs in the public audit manifest. This is archival only:
+  **exclude partial days from training/backtesting until missing entries are reviewed**.
+  A wholly empty result fails without publishing. Recollect the same date after
+  fixing the source; the Release asset is overwritten by a later run.
 - Stop and reassess any time a data source denies access, rate-limits or changes
   its interface. Do not bypass access restrictions. Respect source provider terms.
 - The collector does not place bets or automatically retrain/publish any AI.
