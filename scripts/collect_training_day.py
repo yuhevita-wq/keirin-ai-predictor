@@ -37,12 +37,20 @@ def main():
     scraper = KeirinScraper()
     ds = day.strftime("%Y%m%d")
     race_ids = set()
+    out_of_date_ids = set()
     errors = 0
     missing = []
     program_errors = []
     for venue in VELODROME_CODES:
         try:
-            race_ids.update(get_race_ids_from_program(scraper, ds + venue))
+            # A race-program page can list all event days including tomorrow.
+            # Only process completed races actually scheduled on the requested date.
+            found = get_race_ids_from_program(scraper, ds + venue)
+            for race_id in found:
+                if len(race_id) == 12 and race_id[:8] == ds:
+                    race_ids.add(race_id)
+                else:
+                    out_of_date_ids.add(race_id)
         except Exception as exc:
             logger.warning("Program %s: %s", venue, exc)
             program_errors.append({"venue_code": venue, "reason": type(exc).__name__})
@@ -119,6 +127,8 @@ def main():
     report = {
         "source": "netkeirin", "date": day.isoformat(),
         "discovered_races": len(race_ids), **counts,
+        "ignored_other_date_races": len(out_of_date_ids),
+        "ignored_other_date_race_ids": sorted(out_of_date_ids),
         "errors": errors, "pilot_limit": args.max_races,
         "missing_payout_races": counts["races"] - counts["payouts"],
         "missing_races": missing, "program_errors": program_errors,
