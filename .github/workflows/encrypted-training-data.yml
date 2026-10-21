@@ -14,6 +14,9 @@ on:
         type: string
   schedule:
     - cron: "29 21 * * *" # 06:29 JST, yesterday's result day
+  push:
+    paths:
+      - "docs/collector-pilot-retry.txt" # temporary pilot trigger; remove after launch
 
 permissions:
   contents: write
@@ -74,9 +77,11 @@ jobs:
           if ! gh release view "$TAG" >/dev/null 2>&1; then
             gh release create "$TAG" --target "$GITHUB_SHA" \
               --title "Encrypted training data $TAG" \
-              --notes "Encrypted daily SQLite shards only; keep the secret offline."
+              --notes "Encrypted SQLite shards with public numeric audit reports; status may be partial. Keep the secret offline."
           fi
           gh release upload "$TAG" encrypted/*.gpg --clobber
+          cp collection_report.json "encrypted/netkeirin-$RUN_DATE.report.json"
+          gh release upload "$TAG" "encrypted/netkeirin-$RUN_DATE.report.json" --clobber
       - name: Save non-sensitive audit counts
         if: always()
         uses: actions/upload-artifact@v4
