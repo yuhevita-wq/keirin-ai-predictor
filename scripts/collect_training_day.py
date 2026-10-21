@@ -4,6 +4,7 @@ import argparse
 import json
 import sys
 import logging
+from bs4 import BeautifulSoup
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -80,7 +81,21 @@ def main():
                     })
                     insert_result(conn, dict(row, race_id=race_id))
                     counts["results"] += 1
+                # scripts.init_db.scrape_db_result() does not populate payouts.
+                # Parse the HTML already cached by that parser first, then
+                # fall back to the separate result page when necessary.
                 payout = res.get("payouts") or {}
+                if not payout:
+                    html = scraper._get(
+                        f"{config.NETKEIRIN_BASE_URL}/db/result/?race_id={race_id}"
+                    )
+                    payout = scraper._parse_payout_table(BeautifulSoup(html, "lxml"))
+                if not payout:
+                    try:
+                        alternate = scraper.scrape_race_result(race_id)
+                        payout = alternate.get("payouts") or {}
+                    except Exception as exc:
+                        logger.warning("Payout page %s: %s", race_id, exc)
                 if payout.get("nisyatan_payout") or payout.get("sanrentan_payout"):
                     insert_payout(conn, dict(payout, race_id=race_id))
                     counts["payouts"] += 1
@@ -95,10 +110,12 @@ def main():
         "source": "netkeirin", "date": day.isoformat(),
         "discovered_races": len(race_ids), **counts,
         "errors": errors, "pilot_limit": args.max_races,
+        "missing_payout_races": counts["races"] - counts["payouts"],
         "complete": bool(
             not args.max_races and race_ids
             and counts["races"] == len(race_ids)
-            and counts["entries"] >= counts["races"] * 3 and not errors
+            and counts["entries"] >= counts["races"] * 3
+            and counts["payouts"] > 0 and not errors
         ),
     }
     Path("collection_report.json").write_text(
