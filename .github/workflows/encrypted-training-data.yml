@@ -66,19 +66,36 @@ jobs:
             --passphrase-fd 0 --symmetric --cipher-algo AES256 \
             --output "$ARCHIVE" db/keirin.db
           test -s "$ARCHIVE"
-      - name: Store encrypted shard in a monthly GitHub Release
+      - name: Save encrypted shard as a 90-day GitHub Actions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-netkeirin-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            encrypted/*.sqlite.gpg
+            collection_report.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Try durable encrypted GitHub Release backup
         shell: bash
         run: |
           set -euo pipefail
           TAG="training-data-$(echo "$RUN_DATE" | cut -c1-7)"
           if ! gh release view "$TAG" >/dev/null 2>&1; then
-            gh release create "$TAG" --target "$GITHUB_SHA" \
+            if ! gh release create "$TAG" --target "$GITHUB_SHA" \
               --title "Encrypted training data $TAG" \
-              --notes "Encrypted SQLite shards with public numeric audit reports; status may be partial. Keep the secret offline."
+              --notes "Encrypted SQLite shards with public numeric audit reports; status may be partial. Keep the secret offline."; then
+              echo "::warning::Release create denied. Encrypted data is saved as a 90-day Actions artifact; enable workflow write permissions to store durably."
+              exit 0
+            fi
           fi
-          gh release upload "$TAG" encrypted/*.gpg --clobber
+          if ! gh release upload "$TAG" encrypted/*.gpg --clobber; then
+            echo "::warning::Release upload denied. The encrypted Actions artifact is available for 90 days."
+            exit 0
+          fi
           cp collection_report.json "encrypted/netkeirin-$RUN_DATE.report.json"
-          gh release upload "$TAG" "encrypted/netkeirin-$RUN_DATE.report.json" --clobber
+          if ! gh release upload "$TAG" "encrypted/netkeirin-$RUN_DATE.report.json" --clobber; then
+            echo "::warning::Audit report Release upload denied; it remains in the Actions artifact."
+          fi
       - name: Save non-sensitive audit counts
         if: always()
         uses: actions/upload-artifact@v4
