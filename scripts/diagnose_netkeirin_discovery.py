@@ -25,7 +25,7 @@ for label, group in CASES:
         text = response.text
         soup = BeautifulSoup(text, "html.parser")
         title = soup.title.get_text(" ", strip=True)[:160] if soup.title else ""
-        ids = sorted(set(re.findall(r"race_id=(\\d{12})", text)))
+        ids = sorted(set(re.findall(r"race_id=(\d{12})", text)))
         hrefs = [tag.get("href", "") for tag in soup.find_all("a", href=True)]
         race_links = [urlparse(h).path + ("?race_id=" + h.split("race_id=", 1)[1][:12]
                       if "race_id=" in h else "") for h in hrefs if "race" in h.lower()][:8]
