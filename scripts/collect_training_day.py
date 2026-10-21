@@ -38,11 +38,14 @@ def main():
     ds = day.strftime("%Y%m%d")
     race_ids = set()
     errors = 0
+    missing = []
+    program_errors = []
     for venue in VELODROME_CODES:
         try:
             race_ids.update(get_race_ids_from_program(scraper, ds + venue))
         except Exception as exc:
             logger.warning("Program %s: %s", venue, exc)
+            program_errors.append({"venue_code": venue, "reason": type(exc).__name__})
             errors += 1
 
     race_list = sorted(race_ids)
@@ -58,6 +61,12 @@ def main():
                 entries = entry.get("entries") or []
                 meta = res if res.get("date") and res.get("velodrome") else entry
                 if not results or not entries or not meta.get("date") or not meta.get("velodrome"):
+                    reason = (
+                        "missing_results" if not results else
+                        "missing_entries" if not entries else "missing_race_metadata"
+                    )
+                    missing.append({"race_id": race_id, "reason": reason})
+                    logger.warning("Missing %s: %s", race_id, reason)
                     errors += 1
                     continue
                 insert_race(conn, dict(meta, race_id=race_id, rider_count=len(entries or results)))
@@ -104,6 +113,7 @@ def main():
             except Exception as exc:
                 conn.rollback()
                 logger.warning("Race %s: %s", race_id, exc)
+                missing.append({"race_id": race_id, "reason": type(exc).__name__})
                 errors += 1
 
     report = {
@@ -111,6 +121,7 @@ def main():
         "discovered_races": len(race_ids), **counts,
         "errors": errors, "pilot_limit": args.max_races,
         "missing_payout_races": counts["races"] - counts["payouts"],
+        "missing_races": missing, "program_errors": program_errors,
         "complete": bool(
             not args.max_races and race_ids
             and counts["races"] == len(race_ids)
@@ -118,12 +129,21 @@ def main():
             and counts["payouts"] > 0 and not errors
         ),
     }
+    report["status"] = "complete" if report["complete"] else "partial"
+    # Partial shards can help later backfill, but MUST NOT be treated as
+    # complete training dates or a valid backtest set.
     Path("collection_report.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print(json.dumps(report, ensure_ascii=False))
+    if not counts["races"] or not counts["entries"] or not counts["results"]:
+        raise SystemExit("No usable races, entries and results; refusing to publish an empty shard")
     if not report["complete"]:
-        raise SystemExit("Partial/empty collection; no shard will be published")
+        logger.warning(
+            "Partial day: %d / %d discovered races. Encrypted archival allowed; "
+            "exclude from model training until missing races have been audited.",
+            counts["races"], len(race_ids),
+        )
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
