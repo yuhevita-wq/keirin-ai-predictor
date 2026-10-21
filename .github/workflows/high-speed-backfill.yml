@@ -197,6 +197,11 @@ jobs:
               git push origin HEAD:"${GITHUB_REF_NAME}"
             fi
           fi
+      - name: Fail visibly when no durable nonzero day was collected
+        if: ${{ steps.finish.outputs.archived == '0' }}
+        run: |
+          echo "::error::No durable nonzero collection days. Historical cursor was preserved; automatic continuation is stopped."
+          exit 1
       - name: Immediately queue next batch when source is healthy
         if: ${{ steps.finish.outputs.should_continue == 'true' && needs.plan.outputs.manual != 'true' }}
         env:

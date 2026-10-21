@@ -116,6 +116,8 @@ def main():
                              (race_id, json.dumps({'result': res, 'entry': entry, 'payouts': payout}, ensure_ascii=False)))
                 conn.commit()
                 counts["races"] += 1
+                if counts['races'] % 10 == 0:
+                    logger.info('Collected %d / %d races for %s', counts['races'], len(race_list), ds)
             except Exception as exc:
                 conn.rollback()
                 logger.warning("Race %s: %s", race_id, exc)
