@@ -14,9 +14,6 @@ on:
         type: string
   schedule:
     - cron: "29 21 * * *" # 06:29 JST, yesterday's result day
-  push:
-    paths:
-      - "docs/collector-run-once.txt" # one-time initial trigger (removed after test)
 
 permissions:
   contents: write
