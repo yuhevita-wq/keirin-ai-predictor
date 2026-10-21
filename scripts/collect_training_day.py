@@ -2,10 +2,13 @@
 """Collect a day's netkeirin result, entry, payout data using upstream parsers."""
 import argparse
 import json
+import sys
 import logging
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 logger = logging.getLogger(__name__)
 
@@ -53,7 +56,7 @@ def main():
                 results = res.get("results") or []
                 entries = entry.get("entries") or []
                 meta = res if res.get("date") and res.get("velodrome") else entry
-                if not results or not meta.get("date") or not meta.get("velodrome"):
+                if not results or not entries or not meta.get("date") or not meta.get("velodrome"):
                     errors += 1
                     continue
                 insert_race(conn, dict(meta, race_id=race_id, rider_count=len(entries or results)))
@@ -94,7 +97,8 @@ def main():
         "errors": errors, "pilot_limit": args.max_races,
         "complete": bool(
             not args.max_races and race_ids
-            and counts["races"] == len(race_ids) and not errors
+            and counts["races"] == len(race_ids)
+            and counts["entries"] >= counts["races"] * 3 and not errors
         ),
     }
     Path("collection_report.json").write_text(
