@@ -10,9 +10,11 @@ import requests
 from bs4 import BeautifulSoup
 
 CASES = [
-    ("tachikawa_2023_01_04", "2023010428"),
-    ("maebashi_2023_02_26", "2023022622"),
-    ("odawara_2026_10_20", "2026102036"),
+    ("known_2023_06_25_opening", "2023062571"),
+    ("wrong_2023_06_26_day_two", "2023062671"),
+    ("known_2024_04_28_opening", "2024042856"),
+    ("known_2026_01_07_opening", "2026010743"),
+    ("known_2023_01_04_opening", "2023010428"),
 ]
 URL = "https://keirin.netkeiba.com/db/race_program/?kaisai_group_id="
 AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
