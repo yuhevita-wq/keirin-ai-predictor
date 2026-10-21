@@ -1,0 +1,2 @@
+2026-10-21: Initial user-authorized encrypted data collection smoke test.
+GitHub Actions collects yesterday's completed netkeirin races; secret gate required.
