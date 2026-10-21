@@ -44,6 +44,7 @@ class KeirinScraper:
 
         time.sleep(SCRAPE_DELAY)
         resp = self.session.get(url, timeout=30)
+        resp.raise_for_status()  # Do not cache 403/404/429 response bodies as valid race pages.
         resp.encoding = resp.apparent_encoding or "utf-8"
         html = resp.text
         cache_file.write_text(html, encoding="utf-8")
