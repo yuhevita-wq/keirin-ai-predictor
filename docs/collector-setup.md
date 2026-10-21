@@ -18,8 +18,13 @@ These files add independent data collection to this fork; upstream AI source rem
 ## Data storage
 
 - One standalone SQLite training shard **per day**, built from the inherited parsers.
-- Each shard is encrypted locally with GPG AES256. Only its `.sqlite.gpg`
-  ciphertext is uploaded to a GitHub Release named `training-data-YYYY-MM`.
+- Each shard is encrypted locally with GPG AES256. The ciphertext and audit
+  report are uploaded first as a GitHub Actions artifact (90-day retention).
+- The workflow then tries to copy the ciphertext to a GitHub Release named
+  `training-data-YYYY-MM` for long-term storage. A 403 error in this optional
+  step means only the 90-day artifact was stored. Check **Settings → Actions →
+  General → Workflow permissions → Read and write permissions**. The
+  `contents: write` declaration in workflow YAML alone may not grant permission.
 - A separate unencrypted `netkeirin-YYYY-MM-DD.report.json` audit manifest is
   stored alongside it. This contains race IDs and reasons for missing records.
 - The repository and Releases are PUBLIC; encrypted assets are downloadable by
@@ -54,3 +59,10 @@ These files add independent data collection to this fork; upstream AI source rem
 The collected records use this fork's original collection parsers and schema.
 The new runner is `scripts/collect_training_day.py` and the scheduler is
 `.github/workflows/encrypted-training-data.yml`.
+
+## Race date boundary
+
+Some netkeirin event-program pages enumerate races of subsequent event days.
+The collector filters by the first eight digits of `race_id` and only accepts
+the requested `YYYYMMDD`. Out-of-date IDs are counted separately and are not
+missing target-day races.
