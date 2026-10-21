@@ -14,9 +14,6 @@ on:
         type: string
   schedule:
     - cron: "29 21 * * *" # 06:29 JST, yesterday's result day
-  push:
-    paths:
-      - "docs/collector-retry-03.txt" # temporary trigger for this pilot
 
 permissions:
   contents: write
