@@ -1,0 +1,1 @@
+2026-10-21: user-requested retry after detecting 43/58 partial netkeirin results; collector now archives partial shards with missing race audit.
