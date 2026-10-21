@@ -34,7 +34,7 @@ def get_race_ids_from_program(scraper: KeirinScraper, kaisai_group_id: str) -> l
     """race_programページから全race_idを抽出"""
     cache_key = f"race_program_{kaisai_group_id}"
     cached = scraper._get_json_cache(cache_key)
-    if cached is not None:
+    if cached:  # Never treat an empty discovery as a durable negative cache.
         return cached
 
     url = f"{NETKEIRIN_BASE_URL}/db/race_program/?kaisai_group_id={kaisai_group_id}"
@@ -43,7 +43,8 @@ def get_race_ids_from_program(scraper: KeirinScraper, kaisai_group_id: str) -> l
     # race_id= の後の12桁数字を全て抽出
     race_ids = sorted(set(re.findall(r"race_id=(\d{12})", html)))
 
-    scraper._set_json_cache(cache_key, race_ids)
+    if race_ids:
+        scraper._set_json_cache(cache_key, race_ids)
     return race_ids
 
 
