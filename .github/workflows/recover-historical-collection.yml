@@ -33,8 +33,23 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Prove all three Komatsushima dates and real entry result payout parsers
         run: python scripts/verify_live_discovery.py
-      - name: Collect one complete historical day and encrypt SQLite
-        run: python scripts/backfill_training_data.py --source netkeirin --start-date 2023-09-06 --days 1
+      - name: Restore freshly collected 78-race pilot from this recovery task
+        uses: actions/download-artifact@v4
+        with:
+          name: verified-collection-recovery-39693046127
+          run-id: 39693046127
+          github-token: ${{ github.token }}
+      - name: Verify the original encrypted 78-race pilot before archival
+        run: |
+          test -s encrypted/netkeirin-2023-09-06.sqlite.gpg
+          printf %s "$COLLECTOR_PASSPHRASE" | gpg --batch --pinentry-mode loopback --passphrase-fd 0 --decrypt encrypted/netkeirin-2023-09-06.sqlite.gpg > /tmp/verified-pilot.sqlite
+          python - <<'PYTHON'
+          import sqlite3
+          with sqlite3.connect('/tmp/verified-pilot.sqlite') as conn:
+              assert conn.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
+              assert conn.execute('SELECT COUNT(*) FROM races').fetchone()[0] == 78
+          PYTHON
+          rm /tmp/verified-pilot.sqlite
       - name: Require nonzero complete day before full restart
         run: |
           python - <<'PY'
@@ -44,7 +59,7 @@ jobs:
           assert r['source_report']['payouts'] == r['races'], r
           print('VERIFIED_REAL_RACES', r['races'], 'ENTRIES', r['entries'], 'RESULTS', r['results'])
           PY
-      - name: Publish AES256 data permanently before restarting
+      - name: Publish AES256 data to permanent monthly Git archive before restarting
         run: python scripts/publish_encrypted_days.py
       - name: Restart eight parallel shards from reset January checkpoint
         run: gh workflow run high-speed-backfill.yml --ref "${GITHUB_REF_NAME}"
