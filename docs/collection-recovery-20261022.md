@@ -46,3 +46,13 @@ Regression checks: link query parsing and HTML entities, second-day opening-ID s
 Recovery run 39693046127 collected all 78 published races on 2023-09-06: 538 entries, 532 classified result rows and 78 payout records; collection errors were zero. The six-row difference between entries and classified finishes is retained in the audit rather than equating starters with numeric finish positions.
 
 Release creation returned `HTTP 403: Resource not accessible by integration` despite declared Contents write permission. The encrypted pilot was preserved in artifact 12390246700. The permanent publisher therefore uses existing Contents permission to write encrypted files and numeric audits to dedicated `collected-data-YYYY-MM` Git branches. Non-forced ref updates and retries preserve simultaneous shards; no repository permission is expanded. The pilot is restored from the same recovery run, decrypted only on the runner for a SQLite integrity/count check, then permanently archived. It is freshly collected data from this task, not an imported legacy dataset.
+
+## Confirmed completion of recovery
+
+- Recovery workflow: https://github.com/yuhevita-wq/keirin-ai-predictor/actions/runs/39694260167 — success.
+- Restored GPG file decrypted successfully with the existing secret; SQLite `PRAGMA integrity_check` returned `ok`, and the races table contained exactly 78 rows.
+- Permanent archive: https://github.com/yuhevita-wq/keirin-ai-predictor/blob/collected-data-2023-09/encrypted/netkeirin-2023-09-06.sqlite.gpg — 166,866 bytes, Git blob d1a7c3643559a08f8e71b2fad3e47da7434afeca.
+- Numeric audit: `collected-data-2023-09/reports/netkeirin-2023-09-06.json`.
+- Bulk collection restarted: https://github.com/yuhevita-wq/keirin-ai-predictor/actions/runs/39694328097.
+- The plan log confirms 2023-01-01 through 2023-02-25, 56 dates, eight disjoint seven-day shards. The next batch will replay the remaining failed dates. The 112 dates are queued for recollection, not claimed to be completed.
+- Permanent Git archival and restart correction: fd80a4905eef77352df8d2348acbfa2af8881fc0.
