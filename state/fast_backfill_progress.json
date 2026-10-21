@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "next_date": "2023-04-23",
+  "next_date": "2023-01-01",
   "days_attempted": 112,
   "days_archived": 0,
   "days_failed": 112,
@@ -185,5 +185,7 @@
       "2023-04-22"
     ],
     "manual": false
-  }
+  },
+  "recovery_previous_next_date": "2023-04-23",
+  "recovery_reason": "Replay all 112 zero-race attempts after live-tested discovery repair"
 }

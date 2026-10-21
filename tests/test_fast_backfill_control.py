@@ -33,8 +33,8 @@ class FastBackfillTests(unittest.TestCase):
             results = root / "downloaded" / "shards" / "shard-0"
             results.mkdir(parents=True)
             summary = {"days": [
-                {"date": "2023-01-01", "status": "complete"},
-                {"date": "2023-01-02", "status": "partial"},
+                {"date": "2023-01-01", "status": "complete", "races": 12, "durable": True},
+                {"date": "2023-01-02", "status": "partial", "races": 11, "durable": True},
             ]}
             (results / "backfill_summary.json").write_text(json.dumps(summary), encoding="utf-8")
             args = type("Args", (), {
@@ -50,6 +50,21 @@ class FastBackfillTests(unittest.TestCase):
             self.assertEqual(new["days_archived"], 2)
             self.assertEqual(new["days_partial"], 1)
             self.assertEqual(new["failed_dates"], ["2023-01-03"])
+
+    def test_zero_batch_keeps_cursor_and_stops_chain(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            checkpoint = root / 'state' / 'fast_backfill_progress.json'
+            args = type('Args', (), {
+                'batch_start': '2023-01-01', 'batch_end': '2023-01-03',
+                'results_dir': d, 'manual': False,
+            })()
+            with patch.object(mod, 'FAST_STATE', checkpoint), patch.object(mod, 'output_vars') as output:
+                mod.do_finalize(args)
+            state = json.loads(checkpoint.read_text())
+            self.assertEqual(state['next_date'], '2023-01-01')
+            self.assertEqual(state['days_archived'], 0)
+            self.assertEqual(output.call_args.kwargs['should_continue'], 'false')
 
 
 if __name__ == "__main__":

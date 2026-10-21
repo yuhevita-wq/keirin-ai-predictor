@@ -32,7 +32,7 @@ db_lock = threading.Lock()
 
 def get_race_ids_from_program(scraper: KeirinScraper, kaisai_group_id: str) -> list[str]:
     """race_programページから全race_idを抽出"""
-    cache_key = f"race_program_{kaisai_group_id}"
+    cache_key = f"race_program_v3_{kaisai_group_id}"
     cached = scraper._get_json_cache(cache_key)
     if cached:  # Never treat an empty discovery as a durable negative cache.
         return cached
@@ -41,16 +41,23 @@ def get_race_ids_from_program(scraper: KeirinScraper, kaisai_group_id: str) -> l
     html = scraper._get(url)
 
     # race_id= の後の12桁数字を全て抽出
-    race_ids = sorted(set(re.findall(r"race_id=(\d{12})", html)))
+    from data.discovery import race_ids_from_html
+    race_ids = race_ids_from_html(html)
 
     if race_ids:
         scraper._set_json_cache(cache_key, race_ids)
+    if not race_ids:
+        # Public special pages expose the same meeting; no alternate client or access bypass.
+        html = scraper._get(f"{NETKEIRIN_BASE_URL}/race/special/race_info/?kaisai_group_id={kaisai_group_id}")
+        race_ids = race_ids_from_html(html)
+        if race_ids:
+            scraper._set_json_cache(cache_key, race_ids)
     return race_ids
 
 
 def scrape_db_result(scraper: KeirinScraper, race_id: str) -> dict:
     """netkeirinの /db/result/ ページからレース結果を取得"""
-    cache_key = f"db_result_{race_id}"
+    cache_key = f"db_result_v3_{race_id}"
     cached = scraper._get_json_cache(cache_key)
     if cached:
         return cached
@@ -89,6 +96,7 @@ def scrape_db_result(scraper: KeirinScraper, race_id: str) -> dict:
                 result["line_group"] = bike_to_line[bn]["line_group"]
                 result["line_role"] = bike_to_line[bn]["line_role"]
 
+    race_info["payouts"] = scraper._parse_payout_table(soup)
     race_info["results"] = results
     race_info["rider_count"] = len(results)
 

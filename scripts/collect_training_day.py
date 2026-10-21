@@ -41,20 +41,11 @@ def main():
     errors = 0
     missing = []
     program_errors = []
-    for venue in VELODROME_CODES:
-        try:
-            # A race-program page can list all event days including tomorrow.
-            # Only process completed races actually scheduled on the requested date.
-            found = get_race_ids_from_program(scraper, ds + venue)
-            for race_id in found:
-                if len(race_id) == 12 and race_id[:8] == ds:
-                    race_ids.add(race_id)
-                else:
-                    out_of_date_ids.add(race_id)
-        except Exception as exc:
-            logger.warning("Program %s: %s", venue, exc)
-            program_errors.append({"venue_code": venue, "reason": type(exc).__name__})
-            errors += 1
+    from data.discovery import discover_day
+    import data.scraper as scraper_module
+    scraper_module.SCRAPE_DELAY = max(scraper_module.SCRAPE_DELAY, 2.5)
+    race_ids, program_errors = discover_day(scraper, ds, VELODROME_CODES)
+    errors += len(program_errors)
 
     race_list = sorted(race_ids)
     if args.max_races:
@@ -85,6 +76,7 @@ def main():
                     insert_rider(conn, {
                         "rider_id": rid, "name": row.get("rider_name") or "unknown",
                         "class": row.get("class"), "prefecture": row.get("prefecture"),
+                        "period": row.get("period"),
                     })
                     insert_entry(conn, dict(row, race_id=race_id))
                     counts["entries"] += 1
@@ -95,6 +87,7 @@ def main():
                     insert_rider(conn, {
                         "rider_id": rid, "name": row.get("rider_name") or "unknown",
                         "class": row.get("class"), "prefecture": row.get("prefecture"),
+                        "period": row.get("period"),
                     })
                     insert_result(conn, dict(row, race_id=race_id))
                     counts["results"] += 1
@@ -116,6 +109,11 @@ def main():
                 if payout.get("nisyatan_payout") or payout.get("sanrentan_payout"):
                     insert_payout(conn, dict(payout, race_id=race_id))
                     counts["payouts"] += 1
+                # Keep every parsed field (age, period, comment, line, all payouts)
+                # alongside the upstream model tables in the encrypted SQLite.
+                conn.execute('CREATE TABLE IF NOT EXISTS source_records (race_id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+                conn.execute('INSERT OR REPLACE INTO source_records VALUES (?, ?)',
+                             (race_id, json.dumps({'result': res, 'entry': entry, 'payouts': payout}, ensure_ascii=False)))
                 conn.commit()
                 counts["races"] += 1
             except Exception as exc:
@@ -124,6 +122,11 @@ def main():
                 missing.append({"race_id": race_id, "reason": type(exc).__name__})
                 errors += 1
 
+    # Counts must describe committed rows, including rollback after a malformed race.
+    with get_connection() as conn:
+        for key, table in [('races', 'races'), ('entries', 'entries'),
+                           ('results', 'race_results'), ('payouts', 'race_payouts')]:
+            counts[key] = conn.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0]
     report = {
         "source": "netkeirin", "date": day.isoformat(),
         "discovered_races": len(race_ids), **counts,
@@ -136,7 +139,7 @@ def main():
             not args.max_races and race_ids
             and counts["races"] == len(race_ids)
             and counts["entries"] >= counts["races"] * 3
-            and counts["payouts"] > 0 and not errors
+            and counts["payouts"] == counts["races"] and not errors
         ),
     }
     report["status"] = "complete" if report["complete"] else "partial"

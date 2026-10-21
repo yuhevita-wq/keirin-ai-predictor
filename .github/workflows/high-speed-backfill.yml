@@ -1,9 +1,6 @@
 name: High-Speed Fresh Historical Data Collection
 
 on:
-  push:
-    paths:
-      - ".github/workflows/high-speed-backfill.yml"
   workflow_dispatch:
     inputs:
       start_date:
@@ -130,7 +127,10 @@ jobs:
           python scripts/backfill_training_data.py --source netkeirin \
             --start-date "${{ steps.partition.outputs.shard_start }}" \
             --days "${{ steps.partition.outputs.shard_days }}"
-      - name: Save encrypted shards plus gap audit regardless of incomplete days
+      - name: Publish encrypted days to permanent monthly Releases
+        if: ${{ success() && steps.partition.outputs.shard_days != '0' }}
+        run: python scripts/publish_encrypted_days.py
+      - name: Save encrypted shards and durable audit even after partial failure
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -141,25 +141,6 @@ jobs:
             backfill_summary.json
           if-no-files-found: warn
           retention-days: 90
-      - name: Copy encrypted shards to durable monthly releases
-        if: ${{ success() && steps.partition.outputs.shard_days != '0' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          for archive in encrypted/*.sqlite.gpg; do
-            [ -f "$archive" ] || continue
-            basename="${archive##*/}"
-            datepart="${basename#netkeirin-}"
-            tag="training-data-${datepart:0:7}"
-            if ! gh release view "$tag" >/dev/null 2>&1; then
-              gh release create "$tag" --target "$GITHUB_SHA" \
-                --title "$tag fresh encrypted data" \
-                --notes "Fresh-source encrypted SQLite only. Keep decryption key offline." || true
-            fi
-            if ! gh release upload "$tag" "$archive" --clobber; then
-              echo "::warning::Durable archive denied for $basename; 90-day artifact retained."
-            fi
-          done
 
   finalize:
     needs: [plan, collect]
@@ -181,7 +162,7 @@ jobs:
           pattern: fast-shard-${{ github.run_id }}-*
           path: downloaded/shards
       - id: finish
-        name: Merge audit and advance checkpoint past missing dates
+        name: Merge durable counts and stop cursor on empty batches
         shell: bash
         env:
           MANUAL: ${{ needs.plan.outputs.manual }}
@@ -212,7 +193,8 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Advance fresh netkeirin historical collection checkpoint"
             if ! git push origin HEAD:"${GITHUB_REF_NAME}"; then
-              echo "::warning::Checkpoint push blocked; Actions artifact has recovery copy."
+              git pull --rebase origin "${GITHUB_REF_NAME}"
+              git push origin HEAD:"${GITHUB_REF_NAME}"
             fi
           fi
       - name: Immediately queue next batch when source is healthy

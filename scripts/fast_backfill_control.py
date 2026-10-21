@@ -121,6 +121,8 @@ def do_finalize(args):
         result = found.get(key, {"date": key, "status": "failed", "reason": "missing_shard_manifest"})
         if result.get("status") not in ("complete", "partial", "failed"):
             result["status"] = "failed"
+        if result['status'] != 'failed' and (int(result.get('races', 0)) <= 0 or not result.get('durable')):
+            result = dict(result, status='failed', reason='missing_races_or_durable_archive')
         completed.append(result)
         day += timedelta(days=1)
 
@@ -128,9 +130,10 @@ def do_finalize(args):
     partial = sum(r["status"] == "partial" for r in completed)
     failed = [r["date"] for r in completed if r["status"] == "failed"]
     failed_set = set(state.get("failed_dates", []))
+    failed_set.difference_update(r["date"] for r in completed if r["status"] == "complete")
     failed_set.update(failed)
     state["failed_dates"] = sorted(failed_set)
-    if advance_cursor:
+    if advance_cursor and archived > 0:
         state["next_date"] = (end + timedelta(days=1)).isoformat()
         state["days_attempted"] += len(completed)
         state["days_archived"] += archived
@@ -141,6 +144,7 @@ def do_finalize(args):
         "attempted": len(completed), "archived": archived,
         "partial": partial, "failed": len(failed),
         "missing_days": failed, "manual": args.manual,
+        "zero_race_batch": archived == 0,
     }
     write_state(state)
     output_vars(archived=archived, failed=len(failed), partial=partial,

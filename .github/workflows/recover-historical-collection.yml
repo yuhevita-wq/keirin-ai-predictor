@@ -1,0 +1,62 @@
+name: Verify Recovery Then Restart Fresh Collection
+on:
+  push:
+    paths:
+      - '.github/workflows/recover-historical-collection.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: verify-fresh-collection-recovery
+  cancel-in-progress: false
+jobs:
+  verify-and-restart:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      GH_TOKEN: ${{ github.token }}
+      TZ: Asia/Tokyo
+      KEIRIN_ALLOW_SQLITE_FALLBACK: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require existing private encryption key
+        shell: bash
+        run: test "${#COLLECTOR_PASSPHRASE}" -ge 32
+      - name: Install collector dependencies
+        run: python -m pip install --disable-pip-version-check requests beautifulsoup4 lxml pandas numpy click python-dotenv
+      - name: Test extraction and zero-race checkpoint safeguards
+        run: python -m unittest discover -s tests -v
+      - name: Prove all three Komatsushima dates and real entry result payout parsers
+        run: python scripts/verify_live_discovery.py
+      - name: Collect one complete historical day and encrypt SQLite
+        run: python scripts/backfill_training_data.py --source netkeirin --start-date 2023-09-06 --days 1
+      - name: Require nonzero complete day before full restart
+        run: |
+          python - <<'PY'
+          import json
+          r = json.load(open('backfill_summary.json'))['days'][0]
+          assert r['status'] == 'complete' and r['races'] > 0, r
+          assert r['source_report']['payouts'] == r['races'], r
+          print('VERIFIED_REAL_RACES', r['races'], 'ENTRIES', r['entries'], 'RESULTS', r['results'])
+          PY
+      - name: Publish AES256 data permanently before restarting
+        run: python scripts/publish_encrypted_days.py
+      - name: Restart eight parallel shards from reset January checkpoint
+        run: gh workflow run high-speed-backfill.yml --ref "${GITHUB_REF_NAME}"
+      - name: Keep proof and encrypted backup
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-collection-recovery-${{ github.run_id }}
+          path: |
+            reports/recovery_live_verification.json
+            backfill_summary.json
+            backfill_reports/*.json
+            encrypted/*.sqlite.gpg
+          if-no-files-found: warn
+          retention-days: 90

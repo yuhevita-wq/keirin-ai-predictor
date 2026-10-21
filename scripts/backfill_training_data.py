@@ -102,6 +102,10 @@ def main():
             json.dumps(outcome, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         print(json.dumps(outcome, ensure_ascii=False), flush=True)
+        if not outcome.get('races'):
+            # A single malformed race is tolerated by the day collector. A whole
+            # empty day is a source-health failure; preserve cursor and stop shard.
+            break
 
     summary = {"source": args.source, "start": dates[0].isoformat(),
                "end": dates[-1].isoformat(), "days": outcomes}
@@ -110,7 +114,8 @@ def main():
     )
     # Explicit manual re-collections do not move the scheduled cursor.
     if not args.start_date:
-        state["next_date"] = (dates[-1] + timedelta(days=1)).isoformat()
+        if any(x.get("races", 0) > 0 for x in outcomes):
+            state["next_date"] = (date.fromisoformat(outcomes[-1]["date"]) + timedelta(days=1)).isoformat()
         state["days_attempted"] = int(state.get("days_attempted", 0)) + len(outcomes)
         state["days_archived"] = int(state.get("days_archived", 0)) + sum(x["status"] != "failed" for x in outcomes)
         state["days_failed"] = int(state.get("days_failed", 0)) + sum(x["status"] == "failed" for x in outcomes)

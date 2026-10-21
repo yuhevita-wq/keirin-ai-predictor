@@ -160,7 +160,7 @@ class KeirinScraper:
         Static table (RaceCard_Simple_Table_Static): 本紙, 選手名, 競走得点,
             脚質, S, B, 逃げ, まくり, 差し, マーク, 1着~着外, 勝率~3連対率, ギヤ倍数, コメント
         """
-        cache_key = f"race_entry_{race_id}"
+        cache_key = f"race_entry_v3_{race_id}"
         cached = self._get_json_cache(cache_key)
         if cached:
             return cached
@@ -376,8 +376,11 @@ class KeirinScraper:
         if len(tables) < 2:
             return entries
 
-        # 2番目のテーブル（詳細版）を使用
+        # Use named headers: the source added H between S and B.
         detail_table = tables[1]
+        headers = {re.sub(r"\s+", "", c.get_text()): i
+                   for i, c in enumerate(detail_table.select('tr')[0].select('th, td'))}
+
 
         for row in detail_table.select("tbody tr, tr"):
             cells = row.select("td")
@@ -421,16 +424,15 @@ class KeirinScraper:
                 # 脚質 (index 6)
                 leg_type = cells[6].get_text(strip=True) if len(cells) > 6 else None
 
-                # S, B, 逃げ, まくり, 差し, マーク (index 7-12)
-                # 1着, 2着, 3着, 着外 (index 13-16)
-                # 勝率, 2連対率, 3連対率 (index 17-19)
-                win_rate = self._safe_float(cells[17].get_text(strip=True)) if len(cells) > 17 else None
-                place_rate = self._safe_float(cells[18].get_text(strip=True)) if len(cells) > 18 else None
-                top3_rate = self._safe_float(cells[19].get_text(strip=True)) if len(cells) > 19 else None
-                # ギヤ倍数 (index 20)
-                gear_ratio = self._safe_float(cells[20].get_text(strip=True)) if len(cells) > 20 else None
-                # コメント (index 21, 最後)
-                comment = cells[21].get_text(strip=True) if len(cells) > 21 else ""
+                def value(label):
+                    idx = headers.get(label)
+                    return cells[idx].get_text(' ', strip=True) if idx is not None and idx < len(cells) else ''
+                win_rate = self._safe_float(value('勝率'))
+                place_rate = self._safe_float(value('2連対率'))
+                top3_rate = self._safe_float(value('3連対率'))
+                gear_ratio = self._safe_float(value('ギヤ倍数'))
+                comment = value('選手コメント')
+                leg_type = re.sub(r'[^逃追両]', '', leg_type or '')
 
                 entry = {
                     "race_id": race_id,
