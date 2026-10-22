@@ -1,0 +1,28 @@
+{
+  "date": "2024-04-19",
+  "source": "netkeirin",
+  "status": "complete",
+  "races": 68,
+  "entries": 472,
+  "results": 466,
+  "errors": 0,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2024-04-19",
+    "discovered_races": 68,
+    "races": 68,
+    "entries": 472,
+    "results": 466,
+    "payouts": 68,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 0,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [],
+    "program_errors": [],
+    "complete": true,
+    "status": "complete"
+  }
+}
