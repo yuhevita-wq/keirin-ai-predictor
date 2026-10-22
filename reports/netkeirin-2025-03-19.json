@@ -1,0 +1,77 @@
+{
+  "date": "2025-03-19",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 90,
+  "entries": 629,
+  "results": 627,
+  "errors": 12,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2025-03-19",
+    "discovered_races": 102,
+    "races": 90,
+    "entries": 629,
+    "results": 627,
+    "payouts": 90,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 12,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202503192501",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192502",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192503",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192504",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192505",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192506",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192507",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192508",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192509",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192510",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192511",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202503192512",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
