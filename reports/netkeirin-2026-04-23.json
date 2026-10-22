@@ -1,0 +1,28 @@
+{
+  "date": "2026-04-23",
+  "source": "netkeirin",
+  "status": "complete",
+  "races": 93,
+  "entries": 672,
+  "results": 661,
+  "errors": 0,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2026-04-23",
+    "discovered_races": 93,
+    "races": 93,
+    "entries": 672,
+    "results": 661,
+    "payouts": 93,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 0,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [],
+    "program_errors": [],
+    "complete": true,
+    "status": "complete"
+  }
+}
