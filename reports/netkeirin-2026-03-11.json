@@ -1,0 +1,49 @@
+{
+  "date": "2026-03-11",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 66,
+  "entries": 459,
+  "results": 448,
+  "errors": 5,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2026-03-11",
+    "discovered_races": 71,
+    "races": 66,
+    "entries": 459,
+    "results": 448,
+    "payouts": 66,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 5,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202603117308",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202603117309",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202603117310",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202603117311",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202603117312",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
