@@ -1,0 +1,28 @@
+{
+  "date": "2025-09-18",
+  "source": "netkeirin",
+  "status": "complete",
+  "races": 90,
+  "entries": 623,
+  "results": 620,
+  "errors": 0,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2025-09-18",
+    "discovered_races": 90,
+    "races": 90,
+    "entries": 623,
+    "results": 620,
+    "payouts": 90,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 0,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [],
+    "program_errors": [],
+    "complete": true,
+    "status": "complete"
+  }
+}
