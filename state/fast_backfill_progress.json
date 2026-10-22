@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "next_date": "2024-05-19",
-  "days_attempted": 616,
-  "days_archived": 504,
+  "next_date": "2024-07-14",
+  "days_attempted": 672,
+  "days_archived": 560,
   "days_failed": 112,
-  "days_partial": 22,
+  "days_partial": 23,
   "failed_dates": [
     "2023-01-24",
     "2023-01-25",
@@ -15,8 +15,8 @@
     "2023-04-04"
   ],
   "last_batch": {
-    "from": "2024-03-24",
-    "to": "2024-05-18",
+    "from": "2024-05-19",
+    "to": "2024-07-13",
     "attempted": 56,
     "archived": 56,
     "partial": 1,
