@@ -1,0 +1,121 @@
+{
+  "date": "2023-01-25",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 54,
+  "entries": 368,
+  "results": 366,
+  "errors": 23,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2023-01-25",
+    "discovered_races": 77,
+    "races": 54,
+    "entries": 368,
+    "results": 366,
+    "payouts": 54,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 23,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202301255501",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255502",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255503",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255504",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255505",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255506",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255507",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255508",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255509",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255510",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301255511",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258601",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258602",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258603",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258604",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258605",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258606",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258607",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258608",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258609",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258610",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258611",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202301258612",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
