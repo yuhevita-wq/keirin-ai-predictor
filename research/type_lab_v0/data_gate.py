@@ -12,6 +12,7 @@ import collections
 import csv
 import gzip
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -19,6 +20,8 @@ from pathlib import Path
 # This is a reported reference, NOT a recount by this script.
 REFERENCE_FULL_ARCHIVE_RACES = 133_485
 REFERENCE_ORIGINAL_7_9 = 107_072 + 11_282
+REFERENCE_BY_YEAR = {"2021": 23668, "2022": 24325, "2023": 24923, "2024": 24540, "2025": 24174, "2026": 11855}
+REFERENCE_BY_CARS = {7: 107072, 9: 11282}
 
 
 def read_csv(path, required):
@@ -153,8 +156,15 @@ def tally(*, universe, entries, results, odds, exclusions=None,
     # Strict: sources cannot be silently reduced even if the remaining rows are healthy.
     if len(U) < minimum_universe:
         issues.append(f"universe below minimum {minimum_universe}: {len(U)}")
-    if not source_revision.strip() or source_revision.strip().lower() in ("unknown", "latest", "main"):
-        issues.append("source_revision must be immutable source commit SHA")
+    if not re.fullmatch(r"[0-9a-f]{40}", source_revision.strip().lower()):
+        issues.append("source_revision must be a full 40-character Git commit SHA")
+    if minimum_universe >= REFERENCE_FULL_ARCHIVE_RACES:
+        for year, expected in REFERENCE_BY_YEAR.items():
+            if year_count[year] < expected:
+                issues.append(f"historical coverage below reference in {year}: {year_count[year]} < {expected}")
+        for cars, expected in REFERENCE_BY_CARS.items():
+            if n_count[cars] < expected:
+                issues.append(f"historical coverage below reference for {cars}-car: {n_count[cars]} < {expected}")
     if not len(U):
         issues.append("empty universe")
     if duplicate_cars:
