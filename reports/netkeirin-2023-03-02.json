@@ -1,0 +1,28 @@
+{
+  "date": "2023-03-02",
+  "source": "netkeirin",
+  "status": "complete",
+  "races": 54,
+  "entries": 376,
+  "results": 370,
+  "errors": 0,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2023-03-02",
+    "discovered_races": 54,
+    "races": 54,
+    "entries": 376,
+    "results": 370,
+    "payouts": 54,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 0,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [],
+    "program_errors": [],
+    "complete": true,
+    "status": "complete"
+  }
+}
