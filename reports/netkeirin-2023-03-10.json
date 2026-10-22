@@ -1,0 +1,33 @@
+{
+  "date": "2023-03-10",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 60,
+  "entries": 434,
+  "results": 428,
+  "errors": 1,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2023-03-10",
+    "discovered_races": 61,
+    "races": 60,
+    "entries": 434,
+    "results": 428,
+    "payouts": 60,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 1,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202303104203",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
