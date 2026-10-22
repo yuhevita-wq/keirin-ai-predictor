@@ -1,0 +1,33 @@
+{
+  "date": "2023-08-26",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 94,
+  "entries": 666,
+  "results": 654,
+  "errors": 1,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2023-08-26",
+    "discovered_races": 95,
+    "races": 94,
+    "entries": 666,
+    "results": 654,
+    "payouts": 94,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 1,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202308264501",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
