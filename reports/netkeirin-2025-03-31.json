@@ -1,0 +1,28 @@
+{
+  "date": "2025-03-31",
+  "source": "netkeirin",
+  "status": "complete",
+  "races": 54,
+  "entries": 373,
+  "results": 369,
+  "errors": 0,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2025-03-31",
+    "discovered_races": 54,
+    "races": 54,
+    "entries": 373,
+    "results": 369,
+    "payouts": 54,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 0,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [],
+    "program_errors": [],
+    "complete": true,
+    "status": "complete"
+  }
+}
