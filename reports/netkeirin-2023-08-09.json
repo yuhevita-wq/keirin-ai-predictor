@@ -1,0 +1,65 @@
+{
+  "date": "2023-08-09",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 63,
+  "entries": 432,
+  "results": 422,
+  "errors": 9,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2023-08-09",
+    "discovered_races": 72,
+    "races": 63,
+    "entries": 432,
+    "results": 422,
+    "payouts": 63,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 9,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202308098501",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098502",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098503",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098504",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098505",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098506",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098507",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098508",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202308098509",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
