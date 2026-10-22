@@ -62,3 +62,27 @@ jobs:
             research-repo/type_lab_v0_smoke.json
             research-repo/type_lab_v0_result.json
           retention-days: 14
+
+  
+  source-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-repo
+          persist-credentials: false
+      - name: Checkout source Git tree only (all paths, no odds/secret transfer)
+        shell: bash
+        run: |
+          git clone --filter=blob:none --no-checkout --depth 1 \
+            https://github.com/yuhevita-wq/keirin-market-analysis-.git source-repo
+      - name: Inventory full immutable source tree
+        run: |
+          python research-repo/research/type_lab_v0/inventory.py source-repo source-inventory
+      - name: Store full inventory with checksums and source revision
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-archive-file-inventory
+          path: source-inventory/
+          retention-days: 30
