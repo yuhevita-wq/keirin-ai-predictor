@@ -99,7 +99,7 @@ class TypeLabBootSmoke(unittest.TestCase):
     def test_reject_missing_forecast(self):
         sample = make_race()
         sample["predicted_odds"] = {}
-        with self.assertRaisesRegex(ValueError, "missing full"):
+        with self.assertRaisesRegex(ValueError, "odds and probabilities must both be provided"):
             boot.run(sample, self.original)
 
     def test_reject_invalid_probabilities(self):
