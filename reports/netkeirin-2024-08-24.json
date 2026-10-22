@@ -1,0 +1,37 @@
+{
+  "date": "2024-08-24",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 105,
+  "entries": 750,
+  "results": 742,
+  "errors": 2,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2024-08-24",
+    "discovered_races": 107,
+    "races": 105,
+    "entries": 750,
+    "results": 742,
+    "payouts": 105,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 2,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202408242601",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202408242602",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
