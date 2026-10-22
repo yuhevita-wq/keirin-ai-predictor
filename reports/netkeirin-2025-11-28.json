@@ -1,0 +1,33 @@
+{
+  "date": "2025-11-28",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 59,
+  "entries": 410,
+  "results": 404,
+  "errors": 1,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2025-11-28",
+    "discovered_races": 60,
+    "races": 59,
+    "entries": 410,
+    "results": 404,
+    "payouts": 59,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 1,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202511283105",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
