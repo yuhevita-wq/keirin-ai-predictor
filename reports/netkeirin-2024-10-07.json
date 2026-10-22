@@ -1,0 +1,28 @@
+{
+  "date": "2024-10-07",
+  "source": "netkeirin",
+  "status": "complete",
+  "races": 73,
+  "entries": 503,
+  "results": 500,
+  "errors": 0,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2024-10-07",
+    "discovered_races": 73,
+    "races": 73,
+    "entries": 503,
+    "results": 500,
+    "payouts": 73,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 0,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [],
+    "program_errors": [],
+    "complete": true,
+    "status": "complete"
+  }
+}
