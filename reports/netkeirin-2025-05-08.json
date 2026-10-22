@@ -1,0 +1,33 @@
+{
+  "date": "2025-05-08",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 48,
+  "entries": 336,
+  "results": 333,
+  "errors": 1,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2025-05-08",
+    "discovered_races": 49,
+    "races": 48,
+    "entries": 336,
+    "results": 333,
+    "payouts": 48,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 1,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202505085106",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
