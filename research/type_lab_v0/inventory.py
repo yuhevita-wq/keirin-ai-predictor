@@ -20,6 +20,7 @@ for item in data.split(b"\0"):
     mode,kind,sha=meta.decode().split()
     path=filename.decode("utf-8","surrogateescape")
     entries.append({"path":path,"sha":sha,"type":kind})
+if not entries: raise SystemExit("empty source Git tree; archive inventory FAIL")
 entries.sort(key=lambda r:r["path"])
 (out/"tree_inventory.json").write_text(json.dumps({"repository":"yuhevita-wq/keirin-market-analysis-","revision":revision,"n_files":len(entries),"files":entries},ensure_ascii=False),encoding="utf-8")
 top=collections.Counter(x["path"].split("/")[0] for x in entries)
