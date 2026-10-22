@@ -1,0 +1,28 @@
+{
+  "date": "2025-08-24",
+  "source": "netkeirin",
+  "status": "complete",
+  "races": 59,
+  "entries": 427,
+  "results": 418,
+  "errors": 0,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2025-08-24",
+    "discovered_races": 59,
+    "races": 59,
+    "entries": 427,
+    "results": 418,
+    "payouts": 59,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 0,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [],
+    "program_errors": [],
+    "complete": true,
+    "status": "complete"
+  }
+}
