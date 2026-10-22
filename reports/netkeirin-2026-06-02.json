@@ -1,0 +1,61 @@
+{
+  "date": "2026-06-02",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 84,
+  "entries": 597,
+  "results": 592,
+  "errors": 8,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2026-06-02",
+    "discovered_races": 92,
+    "races": 84,
+    "entries": 597,
+    "results": 592,
+    "payouts": 84,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 8,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202606023106",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202606027401",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202606027402",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202606027403",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202606027404",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202606027405",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202606027406",
+        "reason": "missing_results"
+      },
+      {
+        "race_id": "202606027407",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
