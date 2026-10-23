@@ -19,6 +19,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
+from joblib import dump
 
 ROOT=Path("exacta_outputs")
 DATA=ROOT/"matched_2shatan_all_f1.csv"
@@ -186,6 +187,10 @@ def main():
     test=frame[frame["phase"]=="test_2026Q1"].copy()
     assert len(tr)>500 and len(val)>500 and len(test)>100
     models=policy_tree_data(tr,val)
+    for model_name, model_record in models.items():
+        dump({'model':model_record['model'],'features':FEATURES,
+              'training_period':TRAIN,'candidate_name':model_name},
+             ROOT/(model_name+'.joblib'))
     scored=prepare_policy_candidates(frame,models)
     tr=scored[scored["phase"]=="develop_2025Q3"]
     val=scored[scored["phase"]=="selection_2025Q4"]
@@ -233,6 +238,12 @@ def main():
                   "train":chosen["train"],"validation":chosen["validation"],
                   "test":metrics(selected_b,"final_unseen_2026Q1"),
                   "test_roi_bootstrap_ci95":bootstrap_ci_rows(selected_b)}
+        interval=selected["test_roi_bootstrap_ci95"]
+        selected["deployment_approved"]=bool(
+            selected["test"]["roi_percent"] is not None and
+            selected["test"]["roi_percent"]>100 and
+            interval and interval[0]>100)
+        selected["deployment_note"]="Not deployable unless reserved-period ROI and its bootstrap lower bound both exceed 100%."
         scored["selected_ticket"]=0
         idx=apply_strategy(scored,n,t).index
         scored.loc[idx,"selected_ticket"]=1
@@ -260,7 +271,9 @@ def main():
             "selected_ticket"]].to_csv(ROOT/"all_ticket_policy_predictions.csv",index=False)
     report={
       "status":"complete","research_question":"Does use of full fixed-AI score geometry yield robust positive payout return?",
-      "model_unchanged":True,"source":"frozen 44-feature model + official exacta winning payouts",
+      "model_unchanged":True,"base_AI_overwrite":False,
+      "purchase_model_files":[k+".joblib" for k in models],
+      "source":"frozen 44-feature model + official exacta winning payouts",
       "race_counts_by_phase":counts,"candidate_ticket_rows_by_phase":{
         k:int((scored["phase"]==k).sum()) for k in counts},
       "parse_errors":bad,
