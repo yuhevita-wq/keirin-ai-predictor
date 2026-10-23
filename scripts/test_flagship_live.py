@@ -29,70 +29,36 @@ assert normalize_race_id("202610234812")=="202610234812"
 assert create_race_id("2026-10-23","四日市",12)=="202610234812"
 from scripts.haruq_operating_policy import apply_user_policy, DISPLAY_NAME, POLICY_VERSION
 
-# These new operating rules MUST NOT mutate the original 03/21 bet output.
-for confidence, tier, decision, approved_tri_points, review_tri_points, original_tri_points in [
-    (0.49, "LOW", "SKIP", 0, 0, 0),
-    (0.9999, "LOW", "SKIP", 0, 0, 0),
-    (1.00, "S3-MED", "REVIEW", 0, 6, 6),
-    (1.499999, "S3-MED", "REVIEW", 0, 6, 6),
-    (1.50, "S3-MED+", "REJECT", 0, 0, 6),
-    (1.999999, "S3-MED+", "REJECT", 0, 0, 6),
-    (2.00, "S3-HIGH", "BUY", 6, 0, 6),
-    (2.5, "S3-HIGH", "BUY", 6, 0, 6),
-]:
-    original = strict_tickets(ordered, confidence, "F1")
-    before = repr(original)
-    policy = apply_user_policy(original)
-    assert repr(original) == before
-    assert policy["name"] == DISPLAY_NAME == "ハルキュー"
-    assert policy["policy_version"] == POLICY_VERSION
-    assert policy["trifecta_tier"] == tier
-    assert policy["trifecta_decision"] == decision
-    assert original["trifecta"]["points"] == original_tri_points
-    assert policy["approved_bets"]["trifecta"]["points"] == approved_tri_points
-    assert policy["under_review"]["trifecta"]["points"] == review_tri_points
-    assert policy["approved_bets"]["exacta"] == original["exacta"]
-    assert policy["approved_total_yen"] == (
-        original["exacta"]["total_yen"] + (3000 if decision == "BUY" else 0)
-    )
-    if decision == "REVIEW":
-        assert policy["under_review"]["trifecta"]["tickets"] == expected_tri
-        assert policy["under_review"]["trifecta"]["conditional_total_yen"] == 600
-        assert policy["under_review"]["trifecta"]["counts_as_purchase"] is False
-    if decision == "REJECT":
-        assert policy["approved_bets"]["trifecta"]["tickets"] == []
-        assert policy["under_review"]["trifecta"]["tickets"] == []
-    if decision == "BUY":
-        assert policy["approved_bets"]["trifecta"]["tickets"] == expected_tri
-        assert policy["approved_bets"]["trifecta"]["stake_per_ticket_yen"] == 500
+# Frozen 03/21 baseline is unchanged at every exact score threshold.
+for score,ex_orig,tri_orig in [(0.49,0,0),(0.5,100,0),(0.8,200,0),
+                               (1.0,500,100),(1.49999,500,100),
+                               (1.5,500,200),(1.99999,500,200),(2.0,500,500)]:
+    orig=strict_tickets(ordered,score,"F1")
+    assert orig["exacta"]["stake_per_ticket_yen"]==ex_orig
+    assert orig["trifecta"]["stake_per_ticket_yen"]==tri_orig
+    before=repr(orig)
+    decision=apply_user_policy(orig)
+    assert repr(orig)==before
+    assert decision["policy_version"]==POLICY_VERSION
+    assert decision["name"]==DISPLAY_NAME=="ハルキュー"
+    assert decision["approved_bets"]["exacta"]["total_yen"]==(2000 if score>=1.0 else 0)
+    assert decision["approved_bets"]["trifecta"]["total_yen"]==(3000 if score>=2.0 else 0)
+    assert decision["approved_total_yen"]==(2000 if score>=1.0 else 0)+(3000 if score>=2.0 else 0)
+    assert decision["under_review"]["trifecta"]["tickets"]==[]
+    assert decision["user_review_required_for_med"] is False
+    assert decision["trifecta_decision"]==("BUY" if score>=2.0 else "REJECT")
+    assert decision["trifecta_high_only"] and decision["exacta_high_only"]
+    if score>=2.0:assert decision["approved_bets"]["trifecta"]["tickets"]==expected_tri
+    if score<1.0:assert decision["approved_bets"]["exacta"]["tickets"]==[]
 
-f2 = apply_user_policy(strict_tickets(ordered, 10.0, "F2"))
-assert f2["approved_total_yen"] == 0
-assert f2["trifecta_decision"] == "SKIP"
-# F2 eligible: the original 03/21 baseline stays SKIP, while HARUQ
-# transparently overrides ONLY the F2 purchase eligibility for both markets.
-for score,expected_label,exacta_per in [(0.50,"LOW",100),(1.0,"S3-MED",500),
-                                        (1.50,"S3-MED+",500),(2.0,"S3-HIGH",500)]:
-    untouched=strict_tickets(ordered,score,"F2")
-    assert untouched["exacta"]["points"] == 0
-    assert untouched["trifecta"]["points"] == 0
-    eligible=strict_tickets(ordered,score,"F2",allow_f2=True)
-    assert eligible["exacta"]["points"] == 4
-    assert eligible["exacta"]["stake_per_ticket_yen"] == exacta_per
-    assert eligible["trifecta"]["label"] == expected_label
-    decision=apply_user_policy(eligible)
-    assert decision["policy_version"].endswith("_F2_ELIGIBLE_V2")
-    if expected_label=="S3-HIGH":
-        assert decision["approved_bets"]["trifecta"]["total_yen"] == 3000
-        assert decision["trifecta_decision"] == "BUY"
-    elif expected_label=="S3-MED+":
-        assert decision["approved_bets"]["trifecta"]["total_yen"] == 0
-        assert decision["trifecta_decision"] == "REJECT"
-    elif expected_label=="S3-MED":
-        assert decision["trifecta_decision"]=="REVIEW"
-        assert decision["under_review"]["trifecta"]["conditional_total_yen"]==600
-print("HARUQ_F2_ELIGIBILITY_TESTS_PASSED")
-
+# F2 is eligible ONLY for user-approved HaruQ, not retroactively for original.
+for score in [0.4,0.5,0.8,1.0,1.5,2.0,2.5]:
+    f2_original=strict_tickets(ordered,score,"F2")
+    assert f2_original["exacta"]["points"]==0 and f2_original["trifecta"]["points"]==0
+    result=apply_user_policy(strict_tickets(ordered,score,"F2",allow_f2=True))
+    assert result["approved_bets"]["exacta"]["total_yen"]==(2000 if score>=1 else 0)
+    assert result["approved_bets"]["trifecta"]["total_yen"]==(3000 if score>=2 else 0)
+    assert result["approved_total_yen"]==(2000 if score>=1 else 0)+(3000 if score>=2 else 0)
+print("HARUQ_HIGH_ONLY_V3_TESTS_PASSED")
 print("HARUQ_USER_POLICY_TESTS_PASSED")
-
 print("FLAGSHIP_FIXED_LOGIC_TESTS_PASSED")
