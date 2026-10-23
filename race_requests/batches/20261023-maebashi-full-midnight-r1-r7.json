@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-23",
+  "site": "maebashi",
+  "description": "Run all seven midnight races with existing frozen HaruQ model and current operating policy; report HIGH only from model score",
+  "race_ids": [
+    "202610232201",
+    "202610232202",
+    "202610232203",
+    "202610232204",
+    "202610232205",
+    "202610232206",
+    "202610232207"
+  ]
+}
