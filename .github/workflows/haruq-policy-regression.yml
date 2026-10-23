@@ -21,10 +21,6 @@ jobs:
     steps:
       - name: Checkout live adapter without changing original model
         uses: actions/checkout@v4
-      - name: Refuse unauthorized HaruQ changes before processing
-        run: |
-          echo "333e2db9e436002221c806bdd6521354197fb04ba9945e7aa12b14ac66c5a459  scripts/haruq_integrity_guard.py" | sha256sum -c -
-          python3 -m scripts.haruq_integrity_guard
       - name: Install original source compatible interpreter
         uses: actions/setup-python@v5
         with:

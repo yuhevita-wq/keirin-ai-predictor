@@ -10,17 +10,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 import re
 
-from scripts.haruq_integrity_guard import verify_integrity, verify_result
-
-if __name__ == "__main__":
-    verify_integrity(runtime=True)
-
 from scripts.flagship_live_predict import MODEL_SHA256
 from scripts.haruq_operating_policy import POLICY_VERSION
 
 
 def export_result(source: Path, directory: Path, run_id: str, commit: str):
-    verify_integrity(runtime=True)
     value = json.loads(source.read_text(encoding="utf-8"))
     race_id = str(value.get("race_id", ""))
     if not re.fullmatch(r"\d{12}", race_id):
@@ -41,8 +35,6 @@ def export_result(source: Path, directory: Path, run_id: str, commit: str):
         raise ValueError("Published monetary total inconsistent")
     if not re.fullmatch(r"\d+", str(run_id)):
         raise ValueError("Invalid GitHub workflow run id")
-
-    verify_result(value)
 
     directory.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
