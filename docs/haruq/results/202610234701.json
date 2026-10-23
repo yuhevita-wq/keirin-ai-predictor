@@ -1,7 +1,7 @@
 {
   "system": "FLAGSHIP_HARUQUBE_20260321_V1",
   "display_name": "ハルキュー",
-  "status": "発走前",
+  "status": "過去レースの実験",
   "race_id": "202610234701",
   "date": "2026-10-23",
   "velodrome": "松阪",
@@ -59,14 +59,14 @@
   ],
   "bets": {
     "exacta": {
-      "label": "SKIP",
+      "label": "LOW",
       "stake_per_ticket_yen": 0,
       "points": 0,
       "total_yen": 0,
       "tickets": []
     },
     "trifecta": {
-      "label": "SKIP",
+      "label": "LOW",
       "decision": "SKIP",
       "decision_ja": "見送り",
       "tickets": [],
@@ -91,23 +91,25 @@
       "tickets": []
     }
   },
+  "f2_purchase_override_applied": true,
+  "f2_all_grades_eligible": true,
   "s3_decision": "見送り",
   "s3_policy": {
     "name": "ハルキュー",
-    "policy_version": "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_V1",
-    "trifecta_tier": "SKIP",
+    "policy_version": "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_F2_ELIGIBLE_V2",
+    "trifecta_tier": "LOW",
     "trifecta_decision": "SKIP",
     "trifecta_decision_ja": "見送り",
     "approved_bets": {
       "exacta": {
-        "label": "SKIP",
+        "label": "LOW",
         "stake_per_ticket_yen": 0,
         "points": 0,
         "total_yen": 0,
         "tickets": []
       },
       "trifecta": {
-        "label": "SKIP",
+        "label": "LOW",
         "decision": "SKIP",
         "decision_ja": "見送り",
         "tickets": [],
@@ -118,7 +120,7 @@
     },
     "under_review": {
       "trifecta": {
-        "label": "SKIP",
+        "label": "LOW",
         "tickets": [],
         "points": 0,
         "stake_per_ticket_yen": 0,
@@ -132,7 +134,7 @@
     "user_review_required_for_med": false
   },
   "med_under_review": {
-    "label": "SKIP",
+    "label": "LOW",
     "tickets": [],
     "points": 0,
     "stake_per_ticket_yen": 0,
@@ -149,9 +151,9 @@
   "torigami_filter_applied": false,
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610234701",
   "web_record": {
-    "source_run_id": 39944944846,
-    "source_commit": "b2970c6d163aad99e0fe3035067efd39008446a8",
-    "created_at": "2026-10-23T11:17:23Z",
+    "source_run_id": 39947874701,
+    "source_commit": "3875f678f8eeb8dc87a7c14ba12797e20e7275bb",
+    "created_at": "2026-10-23T11:42:20Z",
     "origin": "verified-github-actions-output"
   }
 }

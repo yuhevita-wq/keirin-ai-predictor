@@ -11,11 +11,11 @@
       "confidence": 0.50199978,
       "status": "発走前",
       "s3_decision": "見送り",
-      "trifecta_tier": "SKIP",
-      "exacta_tier": "SKIP",
-      "total_yen": 0,
-      "updated_at": "2026-10-23T11:17:50Z",
-      "run_id": 39944944846
+      "trifecta_tier": "LOW",
+      "exacta_tier": "MED",
+      "total_yen": 400,
+      "updated_at": "2026-10-23T11:42:49Z",
+      "run_id": 39947874701
     },
     {
       "race_id": "202610234706",
@@ -26,11 +26,11 @@
       "confidence": 0.99900955,
       "status": "発走前",
       "s3_decision": "見送り",
-      "trifecta_tier": "SKIP",
-      "exacta_tier": "SKIP",
-      "total_yen": 0,
-      "updated_at": "2026-10-23T11:17:45Z",
-      "run_id": 39944944846
+      "trifecta_tier": "LOW",
+      "exacta_tier": "MED+",
+      "total_yen": 800,
+      "updated_at": "2026-10-23T11:42:44Z",
+      "run_id": 39947874701
     },
     {
       "race_id": "202610234705",
@@ -41,11 +41,11 @@
       "confidence": 0.09191172,
       "status": "発走前",
       "s3_decision": "見送り",
-      "trifecta_tier": "SKIP",
-      "exacta_tier": "SKIP",
+      "trifecta_tier": "LOW",
+      "exacta_tier": "LOW",
       "total_yen": 0,
-      "updated_at": "2026-10-23T11:17:41Z",
-      "run_id": 39944944846
+      "updated_at": "2026-10-23T11:42:39Z",
+      "run_id": 39947874701
     },
     {
       "race_id": "202610234704",
@@ -56,11 +56,11 @@
       "confidence": 0.07804421,
       "status": "発走前",
       "s3_decision": "見送り",
-      "trifecta_tier": "SKIP",
-      "exacta_tier": "SKIP",
+      "trifecta_tier": "LOW",
+      "exacta_tier": "LOW",
       "total_yen": 0,
-      "updated_at": "2026-10-23T11:17:37Z",
-      "run_id": 39944944846
+      "updated_at": "2026-10-23T11:42:35Z",
+      "run_id": 39947874701
     },
     {
       "race_id": "202610234703",
@@ -71,11 +71,11 @@
       "confidence": 0.14479575,
       "status": "発走前",
       "s3_decision": "見送り",
-      "trifecta_tier": "SKIP",
-      "exacta_tier": "SKIP",
+      "trifecta_tier": "LOW",
+      "exacta_tier": "LOW",
       "total_yen": 0,
-      "updated_at": "2026-10-23T11:17:32Z",
-      "run_id": 39944944846
+      "updated_at": "2026-10-23T11:42:30Z",
+      "run_id": 39947874701
     },
     {
       "race_id": "202610234702",
@@ -86,11 +86,11 @@
       "confidence": 0.89471958,
       "status": "発走前",
       "s3_decision": "見送り",
-      "trifecta_tier": "SKIP",
-      "exacta_tier": "SKIP",
-      "total_yen": 0,
-      "updated_at": "2026-10-23T11:17:28Z",
-      "run_id": 39944944846
+      "trifecta_tier": "LOW",
+      "exacta_tier": "MED+",
+      "total_yen": 800,
+      "updated_at": "2026-10-23T11:42:25Z",
+      "run_id": 39947874701
     },
     {
       "race_id": "202610234701",
@@ -99,13 +99,13 @@
       "race_number": 1,
       "start_time": "20:41",
       "confidence": 0.3760601,
-      "status": "発走前",
+      "status": "過去レースの実験",
       "s3_decision": "見送り",
-      "trifecta_tier": "SKIP",
-      "exacta_tier": "SKIP",
+      "trifecta_tier": "LOW",
+      "exacta_tier": "LOW",
       "total_yen": 0,
-      "updated_at": "2026-10-23T11:17:23Z",
-      "run_id": 39944944846
+      "updated_at": "2026-10-23T11:42:20Z",
+      "run_id": 39947874701
     },
     {
       "race_id": "202610235311",
