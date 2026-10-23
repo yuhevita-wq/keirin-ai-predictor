@@ -60,20 +60,17 @@
   "bets": {
     "exacta": {
       "label": "MED",
-      "stake_per_ticket_yen": 100,
-      "points": 4,
-      "total_yen": 400,
-      "tickets": [
-        "1>2",
-        "1>3",
-        "1>4",
-        "1>6"
-      ]
+      "stake_per_ticket_yen": 0,
+      "points": 0,
+      "tickets": [],
+      "total_yen": 0,
+      "decision": "REJECT",
+      "decision_ja": "買わない（HIGH未満）"
     },
     "trifecta": {
       "label": "LOW",
-      "decision": "SKIP",
-      "decision_ja": "見送り",
+      "decision": "REJECT",
+      "decision_ja": "買わない（S3-HIGH未満）",
       "tickets": [],
       "points": 0,
       "stake_per_ticket_yen": 0,
@@ -98,30 +95,27 @@
   },
   "f2_purchase_override_applied": true,
   "f2_all_grades_eligible": true,
-  "s3_decision": "見送り",
+  "s3_decision": "買わない（S3-HIGH未満）",
   "s3_policy": {
     "name": "ハルキュー",
-    "policy_version": "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_F2_ELIGIBLE_V2",
+    "policy_version": "HARUQ_HIGH_ONLY_ALL_MARKETS_F2_ELIGIBLE_V3",
     "trifecta_tier": "LOW",
-    "trifecta_decision": "SKIP",
-    "trifecta_decision_ja": "見送り",
+    "trifecta_decision": "REJECT",
+    "trifecta_decision_ja": "買わない（S3-HIGH未満）",
     "approved_bets": {
       "exacta": {
         "label": "MED",
-        "stake_per_ticket_yen": 100,
-        "points": 4,
-        "total_yen": 400,
-        "tickets": [
-          "1>2",
-          "1>3",
-          "1>4",
-          "1>6"
-        ]
+        "stake_per_ticket_yen": 0,
+        "points": 0,
+        "tickets": [],
+        "total_yen": 0,
+        "decision": "REJECT",
+        "decision_ja": "買わない（HIGH未満）"
       },
       "trifecta": {
         "label": "LOW",
-        "decision": "SKIP",
-        "decision_ja": "見送り",
+        "decision": "REJECT",
+        "decision_ja": "買わない（S3-HIGH未満）",
         "tickets": [],
         "points": 0,
         "stake_per_ticket_yen": 0,
@@ -136,12 +130,15 @@
         "stake_per_ticket_yen": 0,
         "conditional_total_yen": 0,
         "counts_as_purchase": false,
-        "decision": "なし"
+        "decision": "なし（MEDも購入対象外）"
       }
     },
-    "approved_total_yen": 400,
+    "approved_total_yen": 0,
     "never_modify_model": true,
-    "user_review_required_for_med": false
+    "user_review_required_for_med": false,
+    "exacta_high_only": true,
+    "trifecta_high_only": true,
+    "f2_eligible": true
   },
   "med_under_review": {
     "label": "LOW",
@@ -150,9 +147,9 @@
     "stake_per_ticket_yen": 0,
     "conditional_total_yen": 0,
     "counts_as_purchase": false,
-    "decision": "なし"
+    "decision": "なし（MEDも購入対象外）"
   },
-  "total_yen": 400,
+  "total_yen": 0,
   "feature_source": "historical 2026-03-21 build_race_features",
   "model_sha256": "e70690f4538b77e927a042e7ae2db312f8a0a4f16bf72def37e7ccad3568c193",
   "no_manual_selection": true,
@@ -161,9 +158,11 @@
   "torigami_filter_applied": false,
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610234707",
   "web_record": {
-    "source_run_id": 39947874701,
-    "source_commit": "3875f678f8eeb8dc87a7c14ba12797e20e7275bb",
-    "created_at": "2026-10-23T11:42:49Z",
-    "origin": "verified-github-actions-output"
+    "source_run_id": 39950964404,
+    "source_job_id": 120405441569,
+    "source_commit": "38ba0b888b585b99ac613f15a9ab71e41122cae7",
+    "created_at": "2026-10-23T12:09:39Z",
+    "origin": "verified-github-actions-output",
+    "publication_method": "Recovered exact batch model log after index merge conflict"
   }
 }
