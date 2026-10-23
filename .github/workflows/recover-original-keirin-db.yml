@@ -1,0 +1,58 @@
+name: Recover original keirin.db from public upstream release
+
+on:
+  push:
+    branches:
+      - research/recover-original-keirin-db-20261023
+    paths:
+      - .github/workflows/recover-original-keirin-db.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recover-original-db:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github/workflows/recover-original-keirin-db.yml
+          sparse-checkout-cone-mode: false
+      - name: Download ORIGINAL published SQLite from upstream (not a generated replacement)
+        run: |
+          set -euo pipefail
+          mkdir -p recovered
+          curl --fail --location --show-error --silent --retry 6 --retry-delay 5 --connect-timeout 20 \
+            "https://github.com/haruqube/keirin-ai-predictor/releases/download/data-latest/keirin.db" \
+            --output recovered/keirin.db
+          test "$(stat -c%s recovered/keirin.db)" -gt 50000000
+      - name: Check SQLite integrity and summarize table counts without modification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import sqlite3, hashlib, json
+          path=Path("recovered/keirin.db")
+          with path.open("rb") as f:
+              assert f.read(16) == b"SQLite format 3\x00", "Not SQLite"
+          c=sqlite3.connect("file:"+str(path.resolve())+"?mode=ro",uri=True)
+          valid=c.execute("PRAGMA quick_check").fetchone()[0]
+          assert valid == "ok", valid
+          tables=[v[0] for v in c.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")]
+          counts={t:c.execute('SELECT COUNT(*) FROM "'+t.replace('"','""')+'"').fetchone()[0] for t in tables}
+          s={"source":"https://github.com/haruqube/keirin-ai-predictor/releases/download/data-latest/keirin.db",
+             "size_bytes":path.stat().st_size,"sha256":hashlib.sha256(path.read_bytes()).hexdigest(),
+             "sqlite_quick_check":valid,"tables":counts}
+          Path("recovered/keirin_db_audit.json").write_text(json.dumps(s,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(s,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: original-haruqube-keirin-db
+          path: recovered/
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: error
