@@ -1,0 +1,64 @@
+name: Base AI 44-Feature Improvement and ROI Diagnostics
+
+on:
+  push:
+    paths:
+      - ".github/workflows/base-ai-44-improvement.yml"
+      - "scripts/experiment_base_ai_44_improvement.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: base-ai-44-improvement
+  cancel-in-progress: false
+
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      OMP_NUM_THREADS: "2"
+    steps:
+      - name: Checkout original base AI
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install unchanged LambdaRank runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1
+      - name: Verify experiment syntax
+        run: python -m py_compile scripts/experiment_base_ai_44_improvement.py
+      - name: Download prior 44-feature model
+        uses: actions/download-artifact@v4
+        with:
+          name: base-ai-44-audit
+          run-id: 39911266752
+          github-token: ${{ github.token }}
+          path: prior_training
+      - name: Download original database and model safely
+        run: |
+          set -euo pipefail
+          mkdir -p db results improvement_outputs
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            --max-time 300 --output db/keirin.db \
+            https://github.com/haruqube/keirin-ai-predictor/releases/download/data-latest/keirin.db
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            --max-time 120 --output results/model_lgbm.pkl \
+            https://github.com/haruqube/keirin-ai-predictor/releases/download/data-latest/model_lgbm.pkl
+      - name: Train and select same 44-feature LambdaRank on validation only
+        run: python scripts/experiment_base_ai_44_improvement.py
+      - name: Save model and out-of-sample ROI evidence separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: base-ai-44-improvement-evidence
+          path: improvement_outputs/
+          if-no-files-found: warn
+          retention-days: 90
