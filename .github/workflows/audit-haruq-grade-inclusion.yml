@@ -76,7 +76,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -u scripts/audit_haruq_grade_inclusion.py \
+          python -u -m scripts.audit_haruq_grade_inclusion \
             --model flagship_inputs/haruqube_20260321_fresh_model.pkl \
             --archived-report flagship_inputs/report.json \
             --archived-ledger flagship_inputs/holdout_all_selected_tickets.csv \
