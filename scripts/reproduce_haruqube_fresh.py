@@ -86,7 +86,7 @@ def prepare_db():
     con.execute("PRAGMA foreign_keys=ON")
     con.execute("CREATE TABLE IF NOT EXISTS source_records (race_id TEXT PRIMARY KEY, payload TEXT NOT NULL)")
     branches = shell(["git", "for-each-ref", "--format=%(refname:short)",
-                      "refs/remotes/origin/collected-data-"]).decode().splitlines()
+                      "refs/remotes/origin/collected-data-*"]).decode().splitlines()
     branches = sorted(x for x in branches if re.fullmatch(r"origin/collected-data-20\d\d-\d\d", x))
     if len(branches) < 24:
         raise RuntimeError(f"Only {len(branches)} monthly branches fetched; expected at least 24")
