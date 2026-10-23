@@ -52,15 +52,23 @@ def normal(x):
 def stage_of(raw):
     s=normal(raw)
     checks=[
-        ("決勝",["決勝"]),("準決勝",["準決","準決勝"]),
+        ("準決勝",["準決"]),
+        ("準々決勝",["準々決"]),
+        ("決勝",["決勝","ファイナル"]),
         ("初日特選",["初日特選","初特選"]),
-        ("二次予選",["二次予選","2次予選"]),
+        ("特別選抜",["特別選抜"]),
+        ("特別一般",["特一般"]),
+        ("二次予選",["二次予選","二予選","二予"]),
+        ("一次予選",["一次予選","一予選"]),
+        ("特別予選",["特予選"]),
         ("予選",["予選"]),
-        ("一般",["一般"]),("選抜",["選抜"]),
-        ("特選",["特選"]),("特別選抜",["特別選抜"]),
+        ("特別優秀",["特秀","特別優秀"]),
+        ("特選",["特選"]),
+        ("一般",["一般"]),
+        ("選抜",["選抜"]),
         ("敗者戦",["敗者"]),
     ]
-    # specificity first before e.g. "特選"
+    # Specific labels must win over substring labels (準決勝 != 決勝).
     for key,parts in checks:
         if any(t in s for t in parts):
             return key
@@ -365,7 +373,7 @@ def learn(frame,raceframe,audit,types,provenance,problems):
     learned=None
     if chosen:
         name,th=chosen["name"],chosen["threshold"]
-        learned={"strategy":name,"price_threshold":th,"model_detail":models[name],
+        learned={"strategy":name,"predicted_return_threshold":th,"model_detail":models[name],
                  "develop":chosen["train"],"validation":chosen["validation"]}
         for phase in ("test_q4","test_q1"):
             b=filter_strategy(scores[scores["phase"]==phase],name,th)
