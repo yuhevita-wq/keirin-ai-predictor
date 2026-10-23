@@ -136,6 +136,8 @@ jobs:
           git add -f docs/haruq/results/*.json docs/haruq/results/runs/*.json
           git diff --cached --quiet && exit 1
           git commit -m "HaruQ midnight batch results ${GITHUB_RUN_ID} [skip ci]"
+          # Restore CI-only copies of original 03/21 sources; do NOT rewrite frozen refs.
+          git restore -- config.py features/builder.py features/line_features.py
           for attempt in 1 2 3 4; do
             git fetch origin "${GITHUB_REF_NAME}"
             git rebase "origin/${GITHUB_REF_NAME}"
