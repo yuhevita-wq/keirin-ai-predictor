@@ -1,0 +1,951 @@
+{
+  "status": "LEDGER_ARITHMETIC_VERIFIED_NOT_LIVE",
+  "verification": {
+    "checked": 11821,
+    "all_outcome_stake_invariants_valid": true
+  },
+  "original_report_totals_match": true,
+  "record_count": 11821,
+  "grades": [
+    "F1",
+    "G1",
+    "G2",
+    "G3",
+    "GP"
+  ],
+  "f2_appears_in_original_selected_ledger": false,
+  "source": {
+    "train": "2023-01-01 to 2024-12-31",
+    "validation": "2025-01-01 to 2025-06-30",
+    "holdout": "2025-07-01 to 2026-09-30"
+  },
+  "original_report": {
+    "2026-03-21_exacta": {
+      "attempted_races": 7154,
+      "payout_verified_races": 7154,
+      "unverifiable_payouts": 0,
+      "hits": 3520,
+      "invested_yen": 8704800,
+      "returned_yen": 11085300,
+      "profit_yen": 2380500,
+      "roi_percent": 127.347,
+      "tiers": {
+        "HIGH": {
+          "attempted_races": 3344,
+          "payout_verified_races": 3344,
+          "unverifiable_payouts": 0,
+          "hits": 2032,
+          "invested_yen": 6688000,
+          "returned_yen": 9229850,
+          "profit_yen": 2541850,
+          "roi_percent": 138.006
+        },
+        "MED": {
+          "attempted_races": 2578,
+          "payout_verified_races": 2578,
+          "unverifiable_payouts": 0,
+          "hits": 975,
+          "invested_yen": 1031200,
+          "returned_yen": 1011510,
+          "profit_yen": -19690,
+          "roi_percent": 98.091
+        },
+        "MED+": {
+          "attempted_races": 1232,
+          "payout_verified_races": 1232,
+          "unverifiable_payouts": 0,
+          "hits": 513,
+          "invested_yen": 985600,
+          "returned_yen": 843940,
+          "profit_yen": -141660,
+          "roi_percent": 85.627
+        }
+      }
+    },
+    "2026-03-21_trifecta": {
+      "attempted_races": 3344,
+      "payout_verified_races": 3344,
+      "unverifiable_payouts": 0,
+      "hits": 1103,
+      "invested_yen": 4623600,
+      "returned_yen": 8676640,
+      "profit_yen": 4053040,
+      "roi_percent": 187.66,
+      "tiers": {
+        "S3-HIGH": {
+          "attempted_races": 928,
+          "payout_verified_races": 928,
+          "unverifiable_payouts": 0,
+          "hits": 472,
+          "invested_yen": 2784000,
+          "returned_yen": 7055050,
+          "profit_yen": 4271050,
+          "roi_percent": 253.414
+        },
+        "S3-MED": {
+          "attempted_races": 1766,
+          "payout_verified_races": 1766,
+          "unverifiable_payouts": 0,
+          "hits": 452,
+          "invested_yen": 1059600,
+          "returned_yen": 1040170,
+          "profit_yen": -19430,
+          "roi_percent": 98.166
+        },
+        "S3-MED+": {
+          "attempted_races": 650,
+          "payout_verified_races": 650,
+          "unverifiable_payouts": 0,
+          "hits": 179,
+          "invested_yen": 780000,
+          "returned_yen": 581420,
+          "profit_yen": -198580,
+          "roi_percent": 74.541
+        }
+      }
+    },
+    "2026-03-22_rule_on_0321_model": {
+      "attempted_races": 1323,
+      "payout_verified_races": 1323,
+      "unverifiable_payouts": 0,
+      "hits": 997,
+      "invested_yen": 2646000,
+      "returned_yen": 5306550,
+      "profit_yen": 2660550,
+      "roi_percent": 200.55
+    },
+    "2026-03-21_combined": {
+      "attempted_races": 10498,
+      "payout_verified_races": 10498,
+      "unverifiable_payouts": 0,
+      "hits": 4623,
+      "invested_yen": 13328400,
+      "returned_yen": 19761940,
+      "profit_yen": 6433540,
+      "roi_percent": 148.269
+    }
+  },
+  "tiers": {
+    "2026-03-21_exacta/HIGH": {
+      "attempts": 3344,
+      "verified": 3344,
+      "unverifiable": 0,
+      "hits": 2032,
+      "stake_yen": 6688000,
+      "return_yen": 9229850,
+      "profit_yen": 2541850,
+      "roi": 138.006
+    },
+    "2026-03-21_exacta/MED": {
+      "attempts": 2578,
+      "verified": 2578,
+      "unverifiable": 0,
+      "hits": 975,
+      "stake_yen": 1031200,
+      "return_yen": 1011510,
+      "profit_yen": -19690,
+      "roi": 98.091
+    },
+    "2026-03-21_exacta/MED+": {
+      "attempts": 1232,
+      "verified": 1232,
+      "unverifiable": 0,
+      "hits": 513,
+      "stake_yen": 985600,
+      "return_yen": 843940,
+      "profit_yen": -141660,
+      "roi": 85.627
+    },
+    "2026-03-21_trifecta/S3-HIGH": {
+      "attempts": 928,
+      "verified": 928,
+      "unverifiable": 0,
+      "hits": 472,
+      "stake_yen": 2784000,
+      "return_yen": 7055050,
+      "profit_yen": 4271050,
+      "roi": 253.414
+    },
+    "2026-03-21_trifecta/S3-MED": {
+      "attempts": 1766,
+      "verified": 1766,
+      "unverifiable": 0,
+      "hits": 452,
+      "stake_yen": 1059600,
+      "return_yen": 1040170,
+      "profit_yen": -19430,
+      "roi": 98.166
+    },
+    "2026-03-21_trifecta/S3-MED+": {
+      "attempts": 650,
+      "verified": 650,
+      "unverifiable": 0,
+      "hits": 179,
+      "stake_yen": 780000,
+      "return_yen": 581420,
+      "profit_yen": -198580,
+      "roi": 74.541
+    },
+    "2026-03-22_rule_on_0321_model/HIGH": {
+      "attempts": 1323,
+      "verified": 1323,
+      "unverifiable": 0,
+      "hits": 997,
+      "stake_yen": 2646000,
+      "return_yen": 5306550,
+      "profit_yen": 2660550,
+      "roi": 200.55
+    }
+  },
+  "grade_year": {
+    "2026-03-21_exacta/HIGH/F1/2025": {
+      "attempts": 1045,
+      "verified": 1045,
+      "unverifiable": 0,
+      "hits": 647,
+      "stake_yen": 2090000,
+      "return_yen": 2918300,
+      "profit_yen": 828300,
+      "roi": 139.632
+    },
+    "2026-03-21_exacta/HIGH/F1/2026": {
+      "attempts": 1546,
+      "verified": 1546,
+      "unverifiable": 0,
+      "hits": 969,
+      "stake_yen": 3092000,
+      "return_yen": 4327350,
+      "profit_yen": 1235350,
+      "roi": 139.953
+    },
+    "2026-03-21_exacta/HIGH/G1/2025": {
+      "attempts": 66,
+      "verified": 66,
+      "unverifiable": 0,
+      "hits": 43,
+      "stake_yen": 132000,
+      "return_yen": 291900,
+      "profit_yen": 159900,
+      "roi": 221.136
+    },
+    "2026-03-21_exacta/HIGH/G1/2026": {
+      "attempts": 89,
+      "verified": 89,
+      "unverifiable": 0,
+      "hits": 64,
+      "stake_yen": 178000,
+      "return_yen": 476800,
+      "profit_yen": 298800,
+      "roi": 267.865
+    },
+    "2026-03-21_exacta/HIGH/G2/2025": {
+      "attempts": 14,
+      "verified": 14,
+      "unverifiable": 0,
+      "hits": 2,
+      "stake_yen": 28000,
+      "return_yen": 10500,
+      "profit_yen": -17500,
+      "roi": 37.5
+    },
+    "2026-03-21_exacta/HIGH/G2/2026": {
+      "attempts": 16,
+      "verified": 16,
+      "unverifiable": 0,
+      "hits": 5,
+      "stake_yen": 32000,
+      "return_yen": 26850,
+      "profit_yen": -5150,
+      "roi": 83.906
+    },
+    "2026-03-21_exacta/HIGH/G3/2025": {
+      "attempts": 241,
+      "verified": 241,
+      "unverifiable": 0,
+      "hits": 111,
+      "stake_yen": 482000,
+      "return_yen": 367350,
+      "profit_yen": -114650,
+      "roi": 76.214
+    },
+    "2026-03-21_exacta/HIGH/G3/2026": {
+      "attempts": 315,
+      "verified": 315,
+      "unverifiable": 0,
+      "hits": 187,
+      "stake_yen": 630000,
+      "return_yen": 797250,
+      "profit_yen": 167250,
+      "roi": 126.548
+    },
+    "2026-03-21_exacta/HIGH/GP/2025": {
+      "attempts": 4,
+      "verified": 4,
+      "unverifiable": 0,
+      "hits": 1,
+      "stake_yen": 8000,
+      "return_yen": 3850,
+      "profit_yen": -4150,
+      "roi": 48.125
+    },
+    "2026-03-21_exacta/HIGH/GP/2026": {
+      "attempts": 8,
+      "verified": 8,
+      "unverifiable": 0,
+      "hits": 3,
+      "stake_yen": 16000,
+      "return_yen": 9700,
+      "profit_yen": -6300,
+      "roi": 60.625
+    },
+    "2026-03-21_exacta/MED+/F1/2025": {
+      "attempts": 372,
+      "verified": 372,
+      "unverifiable": 0,
+      "hits": 158,
+      "stake_yen": 297600,
+      "return_yen": 222880,
+      "profit_yen": -74720,
+      "roi": 74.892
+    },
+    "2026-03-21_exacta/MED+/F1/2026": {
+      "attempts": 628,
+      "verified": 628,
+      "unverifiable": 0,
+      "hits": 273,
+      "stake_yen": 502400,
+      "return_yen": 479240,
+      "profit_yen": -23160,
+      "roi": 95.39
+    },
+    "2026-03-21_exacta/MED+/G1/2025": {
+      "attempts": 14,
+      "verified": 14,
+      "unverifiable": 0,
+      "hits": 2,
+      "stake_yen": 11200,
+      "return_yen": 5380,
+      "profit_yen": -5820,
+      "roi": 48.036
+    },
+    "2026-03-21_exacta/MED+/G1/2026": {
+      "attempts": 7,
+      "verified": 7,
+      "unverifiable": 0,
+      "hits": 2,
+      "stake_yen": 5600,
+      "return_yen": 4600,
+      "profit_yen": -1000,
+      "roi": 82.143
+    },
+    "2026-03-21_exacta/MED+/G2/2025": {
+      "attempts": 6,
+      "verified": 6,
+      "unverifiable": 0,
+      "hits": 2,
+      "stake_yen": 4800,
+      "return_yen": 2440,
+      "profit_yen": -2360,
+      "roi": 50.833
+    },
+    "2026-03-21_exacta/MED+/G2/2026": {
+      "attempts": 10,
+      "verified": 10,
+      "unverifiable": 0,
+      "hits": 3,
+      "stake_yen": 8000,
+      "return_yen": 4740,
+      "profit_yen": -3260,
+      "roi": 59.25
+    },
+    "2026-03-21_exacta/MED+/G3/2025": {
+      "attempts": 73,
+      "verified": 73,
+      "unverifiable": 0,
+      "hits": 24,
+      "stake_yen": 58400,
+      "return_yen": 48360,
+      "profit_yen": -10040,
+      "roi": 82.808
+    },
+    "2026-03-21_exacta/MED+/G3/2026": {
+      "attempts": 117,
+      "verified": 117,
+      "unverifiable": 0,
+      "hits": 48,
+      "stake_yen": 93600,
+      "return_yen": 75720,
+      "profit_yen": -17880,
+      "roi": 80.897
+    },
+    "2026-03-21_exacta/MED+/GP/2025": {
+      "attempts": 3,
+      "verified": 3,
+      "unverifiable": 0,
+      "hits": 1,
+      "stake_yen": 2400,
+      "return_yen": 580,
+      "profit_yen": -1820,
+      "roi": 24.167
+    },
+    "2026-03-21_exacta/MED+/GP/2026": {
+      "attempts": 2,
+      "verified": 2,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 1600,
+      "return_yen": 0,
+      "profit_yen": -1600,
+      "roi": 0.0
+    },
+    "2026-03-21_exacta/MED/F1/2025": {
+      "attempts": 832,
+      "verified": 832,
+      "unverifiable": 0,
+      "hits": 327,
+      "stake_yen": 332800,
+      "return_yen": 291100,
+      "profit_yen": -41700,
+      "roi": 87.47
+    },
+    "2026-03-21_exacta/MED/F1/2026": {
+      "attempts": 1195,
+      "verified": 1195,
+      "unverifiable": 0,
+      "hits": 467,
+      "stake_yen": 478000,
+      "return_yen": 469590,
+      "profit_yen": -8410,
+      "roi": 98.241
+    },
+    "2026-03-21_exacta/MED/G1/2025": {
+      "attempts": 29,
+      "verified": 29,
+      "unverifiable": 0,
+      "hits": 6,
+      "stake_yen": 11600,
+      "return_yen": 10320,
+      "profit_yen": -1280,
+      "roi": 88.966
+    },
+    "2026-03-21_exacta/MED/G1/2026": {
+      "attempts": 36,
+      "verified": 36,
+      "unverifiable": 0,
+      "hits": 10,
+      "stake_yen": 14400,
+      "return_yen": 14030,
+      "profit_yen": -370,
+      "roi": 97.431
+    },
+    "2026-03-21_exacta/MED/G2/2025": {
+      "attempts": 12,
+      "verified": 12,
+      "unverifiable": 0,
+      "hits": 5,
+      "stake_yen": 4800,
+      "return_yen": 5750,
+      "profit_yen": 950,
+      "roi": 119.792
+    },
+    "2026-03-21_exacta/MED/G2/2026": {
+      "attempts": 25,
+      "verified": 25,
+      "unverifiable": 0,
+      "hits": 6,
+      "stake_yen": 10000,
+      "return_yen": 5790,
+      "profit_yen": -4210,
+      "roi": 57.9
+    },
+    "2026-03-21_exacta/MED/G3/2025": {
+      "attempts": 185,
+      "verified": 185,
+      "unverifiable": 0,
+      "hits": 70,
+      "stake_yen": 74000,
+      "return_yen": 89980,
+      "profit_yen": 15980,
+      "roi": 121.595
+    },
+    "2026-03-21_exacta/MED/G3/2026": {
+      "attempts": 248,
+      "verified": 248,
+      "unverifiable": 0,
+      "hits": 79,
+      "stake_yen": 99200,
+      "return_yen": 100980,
+      "profit_yen": 1780,
+      "roi": 101.794
+    },
+    "2026-03-21_exacta/MED/GP/2025": {
+      "attempts": 5,
+      "verified": 5,
+      "unverifiable": 0,
+      "hits": 2,
+      "stake_yen": 2000,
+      "return_yen": 21080,
+      "profit_yen": 19080,
+      "roi": 1054.0
+    },
+    "2026-03-21_exacta/MED/GP/2026": {
+      "attempts": 11,
+      "verified": 11,
+      "unverifiable": 0,
+      "hits": 3,
+      "stake_yen": 4400,
+      "return_yen": 2890,
+      "profit_yen": -1510,
+      "roi": 65.682
+    },
+    "2026-03-21_trifecta/S3-HIGH/F1/2025": {
+      "attempts": 276,
+      "verified": 276,
+      "unverifiable": 0,
+      "hits": 149,
+      "stake_yen": 828000,
+      "return_yen": 2963400,
+      "profit_yen": 2135400,
+      "roi": 357.899
+    },
+    "2026-03-21_trifecta/S3-HIGH/F1/2026": {
+      "attempts": 408,
+      "verified": 408,
+      "unverifiable": 0,
+      "hits": 215,
+      "stake_yen": 1224000,
+      "return_yen": 2795800,
+      "profit_yen": 1571800,
+      "roi": 228.415
+    },
+    "2026-03-21_trifecta/S3-HIGH/G1/2025": {
+      "attempts": 42,
+      "verified": 42,
+      "unverifiable": 0,
+      "hits": 21,
+      "stake_yen": 126000,
+      "return_yen": 282050,
+      "profit_yen": 156050,
+      "roi": 223.849
+    },
+    "2026-03-21_trifecta/S3-HIGH/G1/2026": {
+      "attempts": 64,
+      "verified": 64,
+      "unverifiable": 0,
+      "hits": 27,
+      "stake_yen": 192000,
+      "return_yen": 465750,
+      "profit_yen": 273750,
+      "roi": 242.578
+    },
+    "2026-03-21_trifecta/S3-HIGH/G2/2025": {
+      "attempts": 3,
+      "verified": 3,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 9000,
+      "return_yen": 0,
+      "profit_yen": -9000,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-HIGH/G2/2026": {
+      "attempts": 2,
+      "verified": 2,
+      "unverifiable": 0,
+      "hits": 1,
+      "stake_yen": 6000,
+      "return_yen": 3150,
+      "profit_yen": -2850,
+      "roi": 52.5
+    },
+    "2026-03-21_trifecta/S3-HIGH/G3/2025": {
+      "attempts": 49,
+      "verified": 49,
+      "unverifiable": 0,
+      "hits": 23,
+      "stake_yen": 147000,
+      "return_yen": 147300,
+      "profit_yen": 300,
+      "roi": 100.204
+    },
+    "2026-03-21_trifecta/S3-HIGH/G3/2026": {
+      "attempts": 80,
+      "verified": 80,
+      "unverifiable": 0,
+      "hits": 36,
+      "stake_yen": 240000,
+      "return_yen": 397600,
+      "profit_yen": 157600,
+      "roi": 165.667
+    },
+    "2026-03-21_trifecta/S3-HIGH/GP/2025": {
+      "attempts": 1,
+      "verified": 1,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 3000,
+      "return_yen": 0,
+      "profit_yen": -3000,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-HIGH/GP/2026": {
+      "attempts": 3,
+      "verified": 3,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 9000,
+      "return_yen": 0,
+      "profit_yen": -9000,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-MED+/F1/2025": {
+      "attempts": 204,
+      "verified": 204,
+      "unverifiable": 0,
+      "hits": 58,
+      "stake_yen": 244800,
+      "return_yen": 207540,
+      "profit_yen": -37260,
+      "roi": 84.779
+    },
+    "2026-03-21_trifecta/S3-MED+/F1/2026": {
+      "attempts": 312,
+      "verified": 312,
+      "unverifiable": 0,
+      "hits": 98,
+      "stake_yen": 374400,
+      "return_yen": 275740,
+      "profit_yen": -98660,
+      "roi": 73.649
+    },
+    "2026-03-21_trifecta/S3-MED+/G1/2025": {
+      "attempts": 5,
+      "verified": 5,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 6000,
+      "return_yen": 0,
+      "profit_yen": -6000,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-MED+/G1/2026": {
+      "attempts": 5,
+      "verified": 5,
+      "unverifiable": 0,
+      "hits": 2,
+      "stake_yen": 6000,
+      "return_yen": 4360,
+      "profit_yen": -1640,
+      "roi": 72.667
+    },
+    "2026-03-21_trifecta/S3-MED+/G2/2025": {
+      "attempts": 2,
+      "verified": 2,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 2400,
+      "return_yen": 0,
+      "profit_yen": -2400,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-MED+/G2/2026": {
+      "attempts": 6,
+      "verified": 6,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 7200,
+      "return_yen": 0,
+      "profit_yen": -7200,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-MED+/G3/2025": {
+      "attempts": 48,
+      "verified": 48,
+      "unverifiable": 0,
+      "hits": 8,
+      "stake_yen": 57600,
+      "return_yen": 40980,
+      "profit_yen": -16620,
+      "roi": 71.146
+    },
+    "2026-03-21_trifecta/S3-MED+/G3/2026": {
+      "attempts": 65,
+      "verified": 65,
+      "unverifiable": 0,
+      "hits": 12,
+      "stake_yen": 78000,
+      "return_yen": 47980,
+      "profit_yen": -30020,
+      "roi": 61.513
+    },
+    "2026-03-21_trifecta/S3-MED+/GP/2025": {
+      "attempts": 1,
+      "verified": 1,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 1200,
+      "return_yen": 0,
+      "profit_yen": -1200,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-MED+/GP/2026": {
+      "attempts": 2,
+      "verified": 2,
+      "unverifiable": 0,
+      "hits": 1,
+      "stake_yen": 2400,
+      "return_yen": 4820,
+      "profit_yen": 2420,
+      "roi": 200.833
+    },
+    "2026-03-21_trifecta/S3-MED/F1/2025": {
+      "attempts": 565,
+      "verified": 565,
+      "unverifiable": 0,
+      "hits": 158,
+      "stake_yen": 339000,
+      "return_yen": 319680,
+      "profit_yen": -19320,
+      "roi": 94.301
+    },
+    "2026-03-21_trifecta/S3-MED/F1/2026": {
+      "attempts": 826,
+      "verified": 826,
+      "unverifiable": 0,
+      "hits": 222,
+      "stake_yen": 495600,
+      "return_yen": 510520,
+      "profit_yen": 14920,
+      "roi": 103.01
+    },
+    "2026-03-21_trifecta/S3-MED/G1/2025": {
+      "attempts": 19,
+      "verified": 19,
+      "unverifiable": 0,
+      "hits": 5,
+      "stake_yen": 11400,
+      "return_yen": 13650,
+      "profit_yen": 2250,
+      "roi": 119.737
+    },
+    "2026-03-21_trifecta/S3-MED/G1/2026": {
+      "attempts": 20,
+      "verified": 20,
+      "unverifiable": 0,
+      "hits": 5,
+      "stake_yen": 12000,
+      "return_yen": 13450,
+      "profit_yen": 1450,
+      "roi": 112.083
+    },
+    "2026-03-21_trifecta/S3-MED/G2/2025": {
+      "attempts": 9,
+      "verified": 9,
+      "unverifiable": 0,
+      "hits": 1,
+      "stake_yen": 5400,
+      "return_yen": 700,
+      "profit_yen": -4700,
+      "roi": 12.963
+    },
+    "2026-03-21_trifecta/S3-MED/G2/2026": {
+      "attempts": 8,
+      "verified": 8,
+      "unverifiable": 0,
+      "hits": 1,
+      "stake_yen": 4800,
+      "return_yen": 1270,
+      "profit_yen": -3530,
+      "roi": 26.458
+    },
+    "2026-03-21_trifecta/S3-MED/G3/2025": {
+      "attempts": 144,
+      "verified": 144,
+      "unverifiable": 0,
+      "hits": 22,
+      "stake_yen": 86400,
+      "return_yen": 82960,
+      "profit_yen": -3440,
+      "roi": 96.019
+    },
+    "2026-03-21_trifecta/S3-MED/G3/2026": {
+      "attempts": 170,
+      "verified": 170,
+      "unverifiable": 0,
+      "hits": 38,
+      "stake_yen": 102000,
+      "return_yen": 97940,
+      "profit_yen": -4060,
+      "roi": 96.02
+    },
+    "2026-03-21_trifecta/S3-MED/GP/2025": {
+      "attempts": 2,
+      "verified": 2,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 1200,
+      "return_yen": 0,
+      "profit_yen": -1200,
+      "roi": 0.0
+    },
+    "2026-03-21_trifecta/S3-MED/GP/2026": {
+      "attempts": 3,
+      "verified": 3,
+      "unverifiable": 0,
+      "hits": 0,
+      "stake_yen": 1800,
+      "return_yen": 0,
+      "profit_yen": -1800,
+      "roi": 0.0
+    },
+    "2026-03-22_rule_on_0321_model/HIGH/F1/2025": {
+      "attempts": 480,
+      "verified": 480,
+      "unverifiable": 0,
+      "hits": 359,
+      "stake_yen": 960000,
+      "return_yen": 1885400,
+      "profit_yen": 925400,
+      "roi": 196.396
+    },
+    "2026-03-22_rule_on_0321_model/HIGH/F1/2026": {
+      "attempts": 720,
+      "verified": 720,
+      "unverifiable": 0,
+      "hits": 547,
+      "stake_yen": 1440000,
+      "return_yen": 2756400,
+      "profit_yen": 1316400,
+      "roi": 191.417
+    },
+    "2026-03-22_rule_on_0321_model/HIGH/G1/2025": {
+      "attempts": 47,
+      "verified": 47,
+      "unverifiable": 0,
+      "hits": 34,
+      "stake_yen": 94000,
+      "return_yen": 234900,
+      "profit_yen": 140900,
+      "roi": 249.894
+    },
+    "2026-03-22_rule_on_0321_model/HIGH/G1/2026": {
+      "attempts": 69,
+      "verified": 69,
+      "unverifiable": 0,
+      "hits": 54,
+      "stake_yen": 138000,
+      "return_yen": 422600,
+      "profit_yen": 284600,
+      "roi": 306.232
+    },
+    "2026-03-22_rule_on_0321_model/HIGH/GP/2025": {
+      "attempts": 2,
+      "verified": 2,
+      "unverifiable": 0,
+      "hits": 1,
+      "stake_yen": 4000,
+      "return_yen": 3850,
+      "profit_yen": -150,
+      "roi": 96.25
+    },
+    "2026-03-22_rule_on_0321_model/HIGH/GP/2026": {
+      "attempts": 5,
+      "verified": 5,
+      "unverifiable": 0,
+      "hits": 2,
+      "stake_yen": 10000,
+      "return_yen": 3400,
+      "profit_yen": -6600,
+      "roi": 34.0
+    }
+  },
+  "high_without_largest_winners": {
+    "0": {
+      "attempts": 928,
+      "verified": 928,
+      "unverifiable": 0,
+      "hits": 472,
+      "stake_yen": 2784000,
+      "return_yen": 7055050,
+      "profit_yen": 4271050,
+      "roi": 253.414
+    },
+    "1": {
+      "attempts": 927,
+      "verified": 927,
+      "unverifiable": 0,
+      "hits": 471,
+      "stake_yen": 2781000,
+      "return_yen": 6565700,
+      "profit_yen": 3784700,
+      "roi": 236.091
+    },
+    "3": {
+      "attempts": 925,
+      "verified": 925,
+      "unverifiable": 0,
+      "hits": 469,
+      "stake_yen": 2775000,
+      "return_yen": 5853450,
+      "profit_yen": 3078450,
+      "roi": 210.935
+    },
+    "5": {
+      "attempts": 923,
+      "verified": 923,
+      "unverifiable": 0,
+      "hits": 467,
+      "stake_yen": 2769000,
+      "return_yen": 5469200,
+      "profit_yen": 2700200,
+      "roi": 197.515
+    },
+    "10": {
+      "attempts": 918,
+      "verified": 918,
+      "unverifiable": 0,
+      "hits": 462,
+      "stake_yen": 2754000,
+      "return_yen": 4799600,
+      "profit_yen": 2045600,
+      "roi": 174.277
+    },
+    "20": {
+      "attempts": 908,
+      "verified": 908,
+      "unverifiable": 0,
+      "hits": 452,
+      "stake_yen": 2724000,
+      "return_yen": 4014450,
+      "profit_yen": 1290450,
+      "roi": 147.373
+    },
+    "50": {
+      "attempts": 878,
+      "verified": 878,
+      "unverifiable": 0,
+      "hits": 422,
+      "stake_yen": 2634000,
+      "return_yen": 2783350,
+      "profit_yen": 149350,
+      "roi": 105.67
+    },
+    "100": {
+      "attempts": 828,
+      "verified": 828,
+      "unverifiable": 0,
+      "hits": 372,
+      "stake_yen": 2484000,
+      "return_yen": 1794350,
+      "profit_yen": -689650,
+      "roi": 72.236
+    }
+  },
+  "caveats": [
+    "Arithmetic and archived ledger checked, not independent re-generation of AI picks.",
+    "Archived release ledger intentionally contains no F2 wagers; the 253.414% cannot represent F2-inclusive strategy.",
+    "Historical OOS return is simulated at eventual payout, not real-time bets.",
+    "Choosing tiers based on this holdout introduces selection bias.",
+    "Live feature parity with offline batch feature generation is not proven."
+  ]
+}
