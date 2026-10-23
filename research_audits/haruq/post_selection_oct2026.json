@@ -1,0 +1,453 @@
+{
+  "status": "OCTOBER_AFTER_SELECTION_FROZEN_MODEL_TEST",
+  "model_sha256": "e70690f4538b77e927a042e7ae2db312f8a0a4f16bf72def37e7ccad3568c193",
+  "period": {
+    "start": "2026-10-01",
+    "end": "2026-10-22",
+    "outside_original_holdout": true
+  },
+  "source": {
+    "latest_complete_day": "2026-10-22",
+    "grade_race_counts": {
+      "F2": 734,
+      "F1": 442,
+      "G3": 73,
+      "G1": 40
+    },
+    "race_count": 1289,
+    "quality_valid_races_all_years": 91489
+  },
+  "purchases": {
+    "s3_high_all_grades": {
+      "attempted": 175,
+      "verified": 175,
+      "payout_unverifiable": 0,
+      "hits": 105,
+      "investment_yen": 525000,
+      "return_yen": 1448250,
+      "profit_yen": 923250,
+      "roi_percent": 275.857
+    },
+    "s3_high_f2": {
+      "attempted": 144,
+      "verified": 144,
+      "payout_unverifiable": 0,
+      "hits": 90,
+      "investment_yen": 432000,
+      "return_yen": 1337700,
+      "profit_yen": 905700,
+      "roi_percent": 309.653
+    },
+    "s3_high_non_f2": {
+      "attempted": 31,
+      "verified": 31,
+      "payout_unverifiable": 0,
+      "hits": 15,
+      "investment_yen": 93000,
+      "return_yen": 110550,
+      "profit_yen": 17550,
+      "roi_percent": 118.871
+    },
+    "two_car_exacta_all_grades": {
+      "attempted": 734,
+      "verified": 734,
+      "payout_unverifiable": 0,
+      "hits": 440,
+      "investment_yen": 988000,
+      "return_yen": 1296010,
+      "profit_yen": 308010,
+      "roi_percent": 131.175
+    },
+    "combined_definite": {
+      "attempted": 909,
+      "verified": 909,
+      "payout_unverifiable": 0,
+      "hits": 545,
+      "investment_yen": 1513000,
+      "return_yen": 2744260,
+      "profit_yen": 1231260,
+      "roi_percent": 181.379
+    }
+  },
+  "diagnostic_not_purchased": {
+    "s3_medplus": {
+      "attempted": 77,
+      "verified": 77,
+      "payout_unverifiable": 0,
+      "hits": 29,
+      "investment_yen": 92400,
+      "return_yen": 93900,
+      "profit_yen": 1500,
+      "roi_percent": 101.623
+    },
+    "s3_med": {
+      "attempted": 155,
+      "verified": 155,
+      "payout_unverifiable": 0,
+      "hits": 41,
+      "investment_yen": 93000,
+      "return_yen": 56620,
+      "profit_yen": -36380,
+      "roi_percent": 60.882
+    }
+  },
+  "breakdown": [
+    {
+      "version": "OCT_exacta",
+      "tier": "HIGH",
+      "grade": "F1",
+      "attempted": 104,
+      "verified": 104,
+      "payout_unverifiable": 0,
+      "hits": 56,
+      "investment_yen": 208000,
+      "return_yen": 195300,
+      "profit_yen": -12700,
+      "roi_percent": 93.894
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "HIGH",
+      "grade": "F2",
+      "attempted": 287,
+      "verified": 287,
+      "payout_unverifiable": 0,
+      "hits": 229,
+      "investment_yen": 574000,
+      "return_yen": 888100,
+      "profit_yen": 314100,
+      "roi_percent": 154.721
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "HIGH",
+      "grade": "G1",
+      "attempted": 4,
+      "verified": 4,
+      "payout_unverifiable": 0,
+      "hits": 2,
+      "investment_yen": 8000,
+      "return_yen": 10250,
+      "profit_yen": 2250,
+      "roi_percent": 128.125
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "HIGH",
+      "grade": "G3",
+      "attempted": 12,
+      "verified": 12,
+      "payout_unverifiable": 0,
+      "hits": 6,
+      "investment_yen": 24000,
+      "return_yen": 16750,
+      "profit_yen": -7250,
+      "roi_percent": 69.792
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED",
+      "grade": "F1",
+      "attempted": 83,
+      "verified": 83,
+      "payout_unverifiable": 0,
+      "hits": 39,
+      "investment_yen": 33200,
+      "return_yen": 41130,
+      "profit_yen": 7930,
+      "roi_percent": 123.886
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED",
+      "grade": "F2",
+      "attempted": 111,
+      "verified": 111,
+      "payout_unverifiable": 0,
+      "hits": 50,
+      "investment_yen": 44400,
+      "return_yen": 49300,
+      "profit_yen": 4900,
+      "roi_percent": 111.036
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED",
+      "grade": "G1",
+      "attempted": 8,
+      "verified": 8,
+      "payout_unverifiable": 0,
+      "hits": 2,
+      "investment_yen": 3200,
+      "return_yen": 5920,
+      "profit_yen": 2720,
+      "roi_percent": 185.0
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED",
+      "grade": "G3",
+      "attempted": 17,
+      "verified": 17,
+      "payout_unverifiable": 0,
+      "hits": 8,
+      "investment_yen": 6800,
+      "return_yen": 9480,
+      "profit_yen": 2680,
+      "roi_percent": 139.412
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED+",
+      "grade": "F1",
+      "attempted": 34,
+      "verified": 34,
+      "payout_unverifiable": 0,
+      "hits": 17,
+      "investment_yen": 27200,
+      "return_yen": 27080,
+      "profit_yen": -120,
+      "roi_percent": 99.559
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED+",
+      "grade": "F2",
+      "attempted": 65,
+      "verified": 65,
+      "payout_unverifiable": 0,
+      "hits": 28,
+      "investment_yen": 52000,
+      "return_yen": 49820,
+      "profit_yen": -2180,
+      "roi_percent": 95.808
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED+",
+      "grade": "G1",
+      "attempted": 3,
+      "verified": 3,
+      "payout_unverifiable": 0,
+      "hits": 0,
+      "investment_yen": 2400,
+      "return_yen": 0,
+      "profit_yen": -2400,
+      "roi_percent": 0.0
+    },
+    {
+      "version": "OCT_exacta",
+      "tier": "MED+",
+      "grade": "G3",
+      "attempted": 6,
+      "verified": 6,
+      "payout_unverifiable": 0,
+      "hits": 3,
+      "investment_yen": 4800,
+      "return_yen": 2880,
+      "profit_yen": -1920,
+      "roi_percent": 60.0
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-HIGH",
+      "grade": "F1",
+      "attempted": 27,
+      "verified": 27,
+      "payout_unverifiable": 0,
+      "hits": 14,
+      "investment_yen": 81000,
+      "return_yen": 75700,
+      "profit_yen": -5300,
+      "roi_percent": 93.457
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-HIGH",
+      "grade": "F2",
+      "attempted": 144,
+      "verified": 144,
+      "payout_unverifiable": 0,
+      "hits": 90,
+      "investment_yen": 432000,
+      "return_yen": 1337700,
+      "profit_yen": 905700,
+      "roi_percent": 309.653
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-HIGH",
+      "grade": "G1",
+      "attempted": 1,
+      "verified": 1,
+      "payout_unverifiable": 0,
+      "hits": 1,
+      "investment_yen": 3000,
+      "return_yen": 34850,
+      "profit_yen": 31850,
+      "roi_percent": 1161.667
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-HIGH",
+      "grade": "G3",
+      "attempted": 3,
+      "verified": 3,
+      "payout_unverifiable": 0,
+      "hits": 0,
+      "investment_yen": 9000,
+      "return_yen": 0,
+      "profit_yen": -9000,
+      "roi_percent": 0.0
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-MED",
+      "grade": "F1",
+      "attempted": 58,
+      "verified": 58,
+      "payout_unverifiable": 0,
+      "hits": 11,
+      "investment_yen": 34800,
+      "return_yen": 19700,
+      "profit_yen": -15100,
+      "roi_percent": 56.609
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-MED",
+      "grade": "F2",
+      "attempted": 88,
+      "verified": 88,
+      "payout_unverifiable": 0,
+      "hits": 29,
+      "investment_yen": 52800,
+      "return_yen": 36270,
+      "profit_yen": -16530,
+      "roi_percent": 68.693
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-MED",
+      "grade": "G1",
+      "attempted": 3,
+      "verified": 3,
+      "payout_unverifiable": 0,
+      "hits": 0,
+      "investment_yen": 1800,
+      "return_yen": 0,
+      "profit_yen": -1800,
+      "roi_percent": 0.0
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-MED",
+      "grade": "G3",
+      "attempted": 6,
+      "verified": 6,
+      "payout_unverifiable": 0,
+      "hits": 1,
+      "investment_yen": 3600,
+      "return_yen": 650,
+      "profit_yen": -2950,
+      "roi_percent": 18.056
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-MED+",
+      "grade": "F1",
+      "attempted": 19,
+      "verified": 19,
+      "payout_unverifiable": 0,
+      "hits": 4,
+      "investment_yen": 22800,
+      "return_yen": 16400,
+      "profit_yen": -6400,
+      "roi_percent": 71.93
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-MED+",
+      "grade": "F2",
+      "attempted": 55,
+      "verified": 55,
+      "payout_unverifiable": 0,
+      "hits": 25,
+      "investment_yen": 66000,
+      "return_yen": 77500,
+      "profit_yen": 11500,
+      "roi_percent": 117.424
+    },
+    {
+      "version": "OCT_trifecta",
+      "tier": "S3-MED+",
+      "grade": "G3",
+      "attempted": 3,
+      "verified": 3,
+      "payout_unverifiable": 0,
+      "hits": 0,
+      "investment_yen": 3600,
+      "return_yen": 0,
+      "profit_yen": -3600,
+      "roi_percent": 0.0
+    }
+  ],
+  "high_payout_concentration": {
+    "0": {
+      "attempted": 175,
+      "verified": 175,
+      "payout_unverifiable": 0,
+      "hits": 105,
+      "investment_yen": 525000,
+      "return_yen": 1448250,
+      "profit_yen": 923250,
+      "roi_percent": 275.857
+    },
+    "1": {
+      "attempted": 174,
+      "verified": 174,
+      "payout_unverifiable": 0,
+      "hits": 104,
+      "investment_yen": 522000,
+      "return_yen": 1278600,
+      "profit_yen": 756600,
+      "roi_percent": 244.943
+    },
+    "3": {
+      "attempted": 172,
+      "verified": 172,
+      "payout_unverifiable": 0,
+      "hits": 102,
+      "investment_yen": 516000,
+      "return_yen": 1033800,
+      "profit_yen": 517800,
+      "roi_percent": 200.349
+    },
+    "5": {
+      "attempted": 170,
+      "verified": 170,
+      "payout_unverifiable": 0,
+      "hits": 100,
+      "investment_yen": 510000,
+      "return_yen": 883650,
+      "profit_yen": 373650,
+      "roi_percent": 173.265
+    },
+    "10": {
+      "attempted": 165,
+      "verified": 165,
+      "payout_unverifiable": 0,
+      "hits": 95,
+      "investment_yen": 495000,
+      "return_yen": 656100,
+      "profit_yen": 161100,
+      "roi_percent": 132.545
+    }
+  },
+  "limits": [
+    "This period follows the historical ROI holdout but is retrospective, not timestamped live staking.",
+    "Original model trained only until 2024 and fixed, but historical feature-vs-live parity remains unaudited.",
+    "A single 22-day holdout cannot establish a stable true edge.",
+    "Ticket payouts simulated at recorded winning payout; no true-time odds or market-size constraints verified."
+  ]
+}
