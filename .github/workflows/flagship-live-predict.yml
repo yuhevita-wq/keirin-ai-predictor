@@ -68,11 +68,16 @@ jobs:
           gh release download haruqube-20260321-flagship-v1 \
             --repo "$GITHUB_REPOSITORY" --pattern haruqube_20260321_fresh_model.pkl \
             --dir flagship_inputs
-          gh release download haruqube-20260321-history-cache-v1 \
+          HISTORY_TAG=haruqube-20260321-history-cache-live
+          if ! gh release view "$HISTORY_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            HISTORY_TAG=haruqube-20260321-history-cache-v1
+          fi
+          echo "HISTORY_CACHE_TAG=$HISTORY_TAG"
+          gh release download "$HISTORY_TAG" \
             --repo "$GITHUB_REPOSITORY" \
             --pattern keirin-history.sqlite.gpg \
             --dir flagship_inputs
-          gh release download haruqube-20260321-history-cache-v1 \
+          gh release download "$HISTORY_TAG" \
             --repo "$GITHUB_REPOSITORY" \
             --pattern PLAINTEXT_SHA256.txt \
             --dir flagship_inputs
