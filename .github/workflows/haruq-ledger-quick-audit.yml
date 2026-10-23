@@ -1,0 +1,59 @@
+name: HaruQ Fast Release Ledger Arithmetic and Grade Audit
+on:
+  push:
+    branches: [audit/haruq-20261023-ledger-verification]
+    paths:
+      - .github/workflows/haruq-ledger-quick-audit.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download unchanged archived payout ledger and report
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p original_audit
+          gh release download haruqube-20260321-flagship-v1 \
+            --repo "$GITHUB_REPOSITORY" --pattern holdout_all_selected_tickets.csv \
+            --dir original_audit
+          gh release download haruqube-20260321-flagship-v1 \
+            --repo "$GITHUB_REPOSITORY" --pattern report.json \
+            --dir original_audit
+          printf '%s  %s\n' 3d81d2da529768468b8e1e1d5d3274039802518c72739b8263b815bb1f122fa3 original_audit/holdout_all_selected_tickets.csv | sha256sum -c -
+          printf '%s  %s\n' 955ac1f77cf4d2dad081d3db534db0f571b834ade4ffaed03024c05fe80830d9 original_audit/report.json | sha256sum -c -
+      - name: Validate each published bet and aggregate gross / ROI
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u -m scripts.audit_haruq_ledger_quick \
+            --ledger original_audit/holdout_all_selected_tickets.csv \
+            --report original_audit/report.json \
+            --output haruq_ledger_quick_audit.json | tee haruq_ledger_quick_audit.log
+      - name: Upload audit record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: haruq-archived-ledger-arithmetic-${{ github.run_id }}
+          path: |
+            haruq_ledger_quick_audit.json
+            haruq_ledger_quick_audit.log
+          if-no-files-found: warn
+      - name: Save public audit independent of frozen model
+        if: success()
+        shell: bash
+        run: |
+          mkdir -p research_audits/haruq
+          cp haruq_ledger_quick_audit.json research_audits/haruq/release_ledger_arithmetic_20261023.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f research_audits/haruq/release_ledger_arithmetic_20261023.json
+          git commit -m "Audit released S3-HIGH ROI from every original wager [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "HARUQ_QUICK_AUDIT_REPORT_PUBLISHED"
