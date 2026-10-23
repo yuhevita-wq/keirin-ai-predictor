@@ -1,0 +1,109 @@
+name: HaruQ Historical ROI Audit (Original versus F2 included)
+
+on:
+  push:
+    branches: [production/flagship-haruqube-20260321-live-v1]
+    paths:
+      - .github/workflows/audit-haruq-grade-inclusion.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: haruq-20261023-roi-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Checkout isolated production adapter without touching immutable model
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Restore and verify exact 2026 March21 source in CI only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+          test "$(git hash-object config.py)" = 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          test "$(git hash-object features/builder.py)" = b47b793b5cf763bcb6d05137a115105006e50eba
+          test "$(git hash-object features/line_features.py)" = ecf3ab7c762475946054f806bb1d4b802c889389
+      - name: Install frozen model-compatible runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+      - name: Download published baseline and decrypted independently collected history
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p flagship_inputs db
+          for name in haruqube_20260321_fresh_model.pkl report.json holdout_all_selected_tickets.csv; do
+            gh release download haruqube-20260321-flagship-v1 \
+              --repo "$GITHUB_REPOSITORY" --pattern "$name" --dir flagship_inputs
+          done
+          printf '%s  %s\n' \
+             e70690f4538b77e927a042e7ae2db312f8a0a4f16bf72def37e7ccad3568c193 \
+             flagship_inputs/haruqube_20260321_fresh_model.pkl | sha256sum -c -
+          HISTORY_TAG=haruqube-20260321-history-cache-live
+          if ! gh release view "$HISTORY_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            HISTORY_TAG=haruqube-20260321-history-cache-v1
+          fi
+          for name in keirin-history.sqlite.gpg PLAINTEXT_SHA256.txt; do
+            gh release download "$HISTORY_TAG" \
+               --repo "$GITHUB_REPOSITORY" --pattern "$name" --dir flagship_inputs
+          done
+          printf '%s' "$COLLECTOR_PASSPHRASE" | gpg --batch --yes \
+            --pinentry-mode loopback --passphrase-fd 0 \
+            --output db/keirin.db \
+            --decrypt flagship_inputs/keirin-history.sqlite.gpg
+          ( cd db && sha256sum -c ../flagship_inputs/PLAINTEXT_SHA256.txt )
+      - name: Reproduce 11k ticket records then test all-grades F2 eligibility
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u scripts/audit_haruq_grade_inclusion.py \
+            --model flagship_inputs/haruqube_20260321_fresh_model.pkl \
+            --archived-report flagship_inputs/report.json \
+            --archived-ledger flagship_inputs/holdout_all_selected_tickets.csv \
+            --out haruq_financial_audit.json | tee haruq_financial_audit.log
+      - name: Always retain audit output for inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: haruq-grade-inclusive-roi-audit-${{ github.run_id }}
+          path: |
+            haruq_financial_audit.json
+            haruq_financial_audit.log
+          retention-days: 60
+          if-no-files-found: warn
+      - name: Publish success-validated audit report separate from model files
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research_audits/haruq
+          cp haruq_financial_audit.json research_audits/haruq/f2_inclusive_holdout_audit_20261023.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f research_audits/haruq/f2_inclusive_holdout_audit_20261023.json
+          git commit -m "Independently audit frozen March21 S3 ROI and F2 inclusion [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "HARUQ_ROI_AUDIT_PUBLISHED"
+      - name: Delete decrypted data and cloned model
+        if: always()
+        run: rm -f db/keirin.db flagship_inputs/haruqube_20260321_fresh_model.pkl
