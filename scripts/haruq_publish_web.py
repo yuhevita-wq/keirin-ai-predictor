@@ -45,7 +45,7 @@ def export_result(source: Path, directory: Path, run_id: str, commit: str):
     (directory / f"{race_id}.json").write_text(pretty, encoding="utf-8")
     archives = directory / "runs"
     archives.mkdir(parents=True, exist_ok=True)
-    immutable = archives / f"{run_id}.json"
+    immutable = archives / f"{run_id}-{race_id}.json"
     if immutable.exists():
         raise ValueError("Duplicate run ID; immutable snapshot collision")
     immutable.write_text(pretty, encoding="utf-8")
