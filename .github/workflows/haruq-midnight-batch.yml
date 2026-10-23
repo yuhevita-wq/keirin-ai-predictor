@@ -136,8 +136,17 @@ jobs:
           git add -f docs/haruq/results/*.json docs/haruq/results/runs/*.json
           git diff --cached --quiet && exit 1
           git commit -m "HaruQ midnight batch results ${GITHUB_RUN_ID} [skip ci]"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
-          echo "HARUQ_BATCH_WEB_PUBLISHED"
+          for attempt in 1 2 3 4; do
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "HARUQ_BATCH_WEB_PUBLISHED"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "HaruQ batch push conflict after 4 retry attempts" >&2
+          exit 1
       - name: Remove plaintext history from runner
         if: always()
         run: rm -f db/keirin.db flagship_inputs/haruqube_20260321_fresh_model.pkl
