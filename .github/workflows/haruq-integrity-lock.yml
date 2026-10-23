@@ -1,0 +1,25 @@
+name: HaruQ Locked Baseline Integrity
+on:
+  push:
+    branches: [production/flagship-haruqube-20260321-live-v1]
+  pull_request:
+    branches: [production/flagship-haruqube-20260321-live-v1]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  locked-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify guard has not been replaced
+        run: echo "333e2db9e436002221c806bdd6521354197fb04ba9945e7aa12b14ac66c5a459  scripts/haruq_integrity_guard.py" | sha256sum -c -
+      - name: Verify prediction and publishing checks have not been removed
+        run: |
+          echo "79602dcdb77ce700711347c0ff4faf3f7251c9cc1ac9c3f1c205511c30d84392  .github/workflows/flagship-live-predict.yml" | sha256sum -c -
+          echo "d2febffa6301c6eb81860a2ae633f9456a64ca6a67b60339320255b232d457e9  .github/workflows/haruq-midnight-batch.yml" | sha256sum -c -
+          echo "1a536cd3cc90f91450b43a54bf5c3c4258df59a401f76fca7901e0e5bbb9322f  .github/workflows/haruq-policy-regression.yml" | sha256sum -c -
+      - name: Verify frozen code and strategy
+        run: python3 -m scripts.haruq_integrity_guard
+      - name: Prove unauthorized edits stop execution
+        run: python3 -m unittest scripts.test_haruq_integrity_guard -v

@@ -19,6 +19,9 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from scripts.haruq_integrity_guard import verify_integrity
+if __name__ == "__main__":
+    verify_integrity(runtime=True)
 from config import VELODROME_CODES, CLASS_MAP, DB_PATH, get_bet_category, get_trifecta_category
 from db.schema import get_connection, insert_race, insert_rider, insert_entry
 from data.scraper import KeirinScraper
