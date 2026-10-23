@@ -1,0 +1,46 @@
+name: HaruQ Operating Policy Regression
+
+on:
+  push:
+    branches:
+      - production/flagship-haruqube-20260321-live-v1
+    paths:
+      - scripts/haruq_operating_policy.py
+      - scripts/flagship_live_predict.py
+      - scripts/test_flagship_live.py
+      - .github/workflows/haruq-policy-regression.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-model-and-haruq-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout live adapter without changing original model
+        uses: actions/checkout@v4
+      - name: Install original source compatible interpreter
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Restore exact original 2026-03-21 configuration in temporary runner only
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+          test "$(git hash-object config.py)" = 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          test "$(git hash-object features/builder.py)" = b47b793b5cf763bcb6d05137a115105006e50eba
+          test "$(git hash-object features/line_features.py)" = ecf3ab7c762475946054f806bb1d4b802c889389
+          python -m py_compile scripts/haruq_operating_policy.py scripts/flagship_live_predict.py scripts/test_flagship_live.py
+      - name: Install consistent runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+      - name: Assert original March21 logic unchanged and HaruQ review rules deterministic
+        run: python -m scripts.test_flagship_live
