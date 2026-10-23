@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "model": "FLAGSHIP_HARUQUBE_20260321_V1",
+  "items": [
+    {
+      "race_id": "202610234812",
+      "date": "2026-10-23",
+      "velodrome": "四日市",
+      "race_number": 12,
+      "start_time": "20:30",
+      "confidence": 0.33991765,
+      "s3_decision": "見送り",
+      "trifecta_tier": "LOW",
+      "exacta_tier": "LOW",
+      "total_yen": 0,
+      "updated_at": "2026-10-23T10:43:30Z"
+    }
+  ]
+}
