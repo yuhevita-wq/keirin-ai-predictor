@@ -132,12 +132,15 @@ def record_entries(race_id, data):
     finally:
         conn.close()
 
-def strict_tickets(ordered, gap, grade):
+def strict_tickets(ordered, gap, grade, *, allow_f2=False):
     bikes=[int(v) for v in ordered["bike_number"]]
     if len(bikes)<5 or len(bikes)!=len(set(bikes)):
         raise RuntimeError("予測車番の欠損・重複を検出")
-    ex_label,_,ex_amount=get_bet_category(gap,grade)
-    tri_label,_,tri_amount=get_trifecta_category(gap,grade)
+    # Keep 2026-03-21 baseline untouched. Explicit 2026-10-23 user F2
+    # eligibility affects ONLY purchase tier computation, not model/scores.
+    purchase_grade = "" if allow_f2 and grade == "F2" else grade
+    ex_label,_,ex_amount=get_bet_category(gap,purchase_grade)
+    tri_label,_,tri_amount=get_trifecta_category(gap,purchase_grade)
     # EXACT 2026-03-21 logic: top 1 -> top 2,3,4,5; 4 distinct tickets.
     exacta=[f"{bikes[0]}>{b}" for b in bikes[1:5]] if ex_amount else []
     # EXACT 2026-03-21 logic: top 1 -> permutation of top 2,3,4; 6 tickets.
@@ -199,7 +202,8 @@ def main():
     frame=frame.sort_values(["score","bike_number"],ascending=[False,True],kind="stable")
     gap=float(frame.iloc[0]["score"]-frame.iloc[1]["score"])
     original_bets=strict_tickets(frame,gap,grade)
-    operation=apply_user_policy(original_bets)
+    eligible_bets=strict_tickets(frame,gap,grade,allow_f2=True)
+    operation=apply_user_policy(eligible_bets)
     now=datetime.now(TIMEZONE)
     start=data.get("start_time")
     race_started=None
@@ -225,6 +229,8 @@ def main():
                   for i,(_,row) in enumerate(frame.iterrows())],
         "bets":operation["approved_bets"],
         "original_model_bets":original_bets,
+        "f2_purchase_override_applied":grade == "F2",
+        "f2_all_grades_eligible":True,
         "s3_decision":operation["trifecta_decision_ja"],
         "s3_policy":operation,
         "med_under_review":operation["under_review"]["trifecta"],
