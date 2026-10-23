@@ -69,6 +69,30 @@ for confidence, tier, decision, approved_tri_points, review_tri_points, original
 f2 = apply_user_policy(strict_tickets(ordered, 10.0, "F2"))
 assert f2["approved_total_yen"] == 0
 assert f2["trifecta_decision"] == "SKIP"
+# F2 eligible: the original 03/21 baseline stays SKIP, while HARUQ
+# transparently overrides ONLY the F2 purchase eligibility for both markets.
+for score,expected_label,exacta_per in [(0.50,"LOW",100),(1.0,"S3-MED",500),
+                                        (1.50,"S3-MED+",500),(2.0,"S3-HIGH",500)]:
+    untouched=strict_tickets(ordered,score,"F2")
+    assert untouched["exacta"]["points"] == 0
+    assert untouched["trifecta"]["points"] == 0
+    eligible=strict_tickets(ordered,score,"F2",allow_f2=True)
+    assert eligible["exacta"]["points"] == 4
+    assert eligible["exacta"]["stake_per_ticket_yen"] == exacta_per
+    assert eligible["trifecta"]["label"] == expected_label
+    decision=apply_user_policy(eligible)
+    assert decision["policy_version"].endswith("_F2_ELIGIBLE_V2")
+    if expected_label=="S3-HIGH":
+        assert decision["approved_bets"]["trifecta"]["total_yen"] == 3000
+        assert decision["trifecta_decision"] == "BUY"
+    elif expected_label=="S3-MED+":
+        assert decision["approved_bets"]["trifecta"]["total_yen"] == 0
+        assert decision["trifecta_decision"] == "REJECT"
+    elif expected_label=="S3-MED":
+        assert decision["trifecta_decision"]=="REVIEW"
+        assert decision["under_review"]["trifecta"]["conditional_total_yen"]==600
+print("HARUQ_F2_ELIGIBILITY_TESTS_PASSED")
+
 print("HARUQ_USER_POLICY_TESTS_PASSED")
 
 print("FLAGSHIP_FIXED_LOGIC_TESTS_PASSED")
