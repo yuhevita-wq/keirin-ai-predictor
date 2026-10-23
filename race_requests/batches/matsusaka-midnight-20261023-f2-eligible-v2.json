@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-23",
+  "venue": "松阪",
+  "grade": "F2",
+  "race_ids": [
+    "202610234701",
+    "202610234702",
+    "202610234703",
+    "202610234704",
+    "202610234705",
+    "202610234706",
+    "202610234707"
+  ],
+  "policy": "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_F2_ELIGIBLE_V2",
+  "purpose": "historical prediction rerun with user approved F2 purchase eligibility (not live wagering)"
+}
