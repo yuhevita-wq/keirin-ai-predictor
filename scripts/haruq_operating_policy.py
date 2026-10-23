@@ -6,11 +6,11 @@ re-ranking, new bets, odds filters, or probabilistic judgment here.
 """
 
 DISPLAY_NAME = "ハルキュー"
-POLICY_VERSION = "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_V1"
+POLICY_VERSION = "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_F2_ELIGIBLE_V2"
 
 
 def apply_user_policy(original_bets: dict) -> dict:
-    """Filter only the historical S3 categories; preserve 2車単 unchanged."""
+    """Filter user S3 tiers; called after explicit F2 purchase-eligibility override."""
     exacta = original_bets["exacta"]
     tri = original_bets["trifecta"]
     tier = tri["label"]
