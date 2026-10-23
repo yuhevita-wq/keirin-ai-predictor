@@ -1,0 +1,58 @@
+name: Fixed Base AI versus Market Price Evidence
+
+on:
+  push:
+    paths:
+      - ".github/workflows/fixed-ai-market-edge.yml"
+      - "scripts/test_fixed_ai_market_edge.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  market-edge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover immutable held-out base-AI predictions
+        uses: actions/download-artifact@v4
+        with:
+          name: base-ai-capability-evidence
+          run-id: 39913052085
+          github-token: ${{ github.token }}
+          path: base_cap
+      - name: Recover identical frozen rank-order predictions
+        uses: actions/download-artifact@v4
+        with:
+          name: base-ai-44-improvement-evidence
+          run-id: 39914805810
+          github-token: __GITHUB_TOKEN__
+          path: base_predictions
+      - name: Fetch independently archived market prices and podiums
+        run: |
+          set -euo pipefail
+          mkdir -p market market_edge_outputs
+          for year in 2025 2026; do
+            for item in "data/odds_only/odds_$year.jsonl.gz" "data/result_universe_v2/combined/results_$year.jsonl.gz"; do
+              name=$(basename "$item")
+              curl --fail --location --retry 3 --retry-all-errors \
+                --silent --show-error --max-time 240 \
+                -o "market/$name" "https://raw.githubusercontent.com/yuhevita-wq/keirin-market-analysis-/main/$item"
+              gzip -t "market/$name"
+            done
+          done
+      - name: Verify fixed-experiment syntax
+        run: python -m py_compile scripts/test_fixed_ai_market_edge.py
+      - name: Measure whether frozen AI beats market-implied winning chances
+        run: python -u scripts/test_fixed_ai_market_edge.py
+      - name: Preserve test and limitations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fixed-ai-market-edge-evidence
+          path: market_edge_outputs/
+          retention-days: 90
+          if-no-files-found: warn
