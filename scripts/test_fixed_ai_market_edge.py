@@ -73,7 +73,9 @@ def headline(rows):
     a=sum(x["ai_hit"] for x in rows)
     m=sum(x["market_hit"] for x in rows)
     p=sum(x["implied_ai_win_p"] for x in rows)
+    market_p=sum(x["implied_market_win_p"] for x in rows)
     var=sum(x["implied_ai_win_p"]*(1-x["implied_ai_win_p"]) for x in rows)
+    market_var=sum(x["implied_market_win_p"]*(1-x["implied_market_win_p"]) for x in rows)
     d=[x["ai_hit"]-x["market_hit"] for x in rows]
     diffs=[x["ai_hit"]-x["implied_ai_win_p"] for x in rows]
     discordance=Counter((x["ai_hit"],x["market_hit"]) for x in rows if x["ai_hit"]!=x["market_hit"])
@@ -85,6 +87,9 @@ def headline(rows):
       "ai_vs_market_accuracy_pp":round((a-m)*100/n,3),
       "ai_vs_market_accuracy_diff95_pp":[round(z*100,3) for z in ci_diff(d)],
       "market_implied_ai_top1_hits":round(p,2),
+      "market_implied_market_top1_hits":round(market_p,2),
+      "market_observed_minus_implied_rate_pp":round(100*(m-market_p)/n,3),
+      "market_selection_conditional_z":round((m-market_p)/math.sqrt(market_var),3) if market_var else None,
       "ai_hits_minus_implied":round(a-p,2),
       "ai_selection_conditional_z":round((a-p)/math.sqrt(var),3) if var else None,
       "observed_minus_implied_rate_pp":round(100*(a-p)/n,3),
@@ -266,6 +271,9 @@ def main():
                             "stake_yen":200*n,"returned_yen":round(pay_pair*100),
                             "roi_percent":round(pay_pair*50/n,2)}}
     rois={k:return_stats(v) for k,v in slices.items()}
+    for k in ("2025-10","2025-11","2025-12","2026-01","2026-02","2026-03"):
+        month_rows=[x for x in all_rows if x["period"]==k]
+        rois[k]=return_stats(month_rows)
     report={"hypothesis":"Fixed LambdaRank has no incremental price-adjusted information beyond normalized trifecta market",
        "scope":"2025Q4 through 2026Q1 strictly disjoint from venue identity inference Q3",
        "data_provenance":{"predictions":"previous unmodified base-ai-capability-evidence and base-ai-44-improvement-evidence",
@@ -299,6 +307,8 @@ def main():
         ["all_matched","confidence_ge_1_5","confidence_lt_1_5","2025Q4","2026Q1","ai_disagrees_with_market"]},ensure_ascii=False),flush=True)
     print("ROI HEADLINES",json.dumps({k:rois[k] for k in
         ["all_matched","confidence_ge_1_5","confidence_lt_1_5"]},ensure_ascii=False),flush=True)
+    print("ROI QUARTERLY",json.dumps({k:rois[k] for k in ("2025Q4","2026Q1")},ensure_ascii=False),flush=True)
+    print("ROI MONTHLY",json.dumps({k:rois[k] for k in ("2025-10","2025-11","2025-12","2026-01","2026-02","2026-03")},ensure_ascii=False),flush=True)
     print("COMPLETE",flush=True)
 
 if __name__=="__main__":
