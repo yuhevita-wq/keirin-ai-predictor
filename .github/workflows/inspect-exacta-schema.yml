@@ -1,0 +1,22 @@
+name: Inspect Archived Exacta Payout Schema
+
+on:
+  push:
+    paths:
+      - ".github/workflows/inspect-exacta-schema.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect archived payout CSV header and sample
+        run: |
+          set -euo pipefail
+          for name in "data/2025/s_class_f1_all_parts/2025_q4/payouts.csv" "data/2026_h1/s_class_f1_all/payouts.csv" "data/2025/s_class_yosen/payouts.csv"; do
+            echo "PAYOUT_FILE=$name"
+            curl -fsSL --retry 2 "https://raw.githubusercontent.com/yuhevita-wq/keirin-market-analysis-/main/$name" |
+               head -c 1400 || true
+            echo
+          done
