@@ -1,0 +1,157 @@
+{
+  "system": "FLAGSHIP_HARUQUBE_20260321_V1",
+  "display_name": "ハルキュー",
+  "status": "発走前",
+  "race_id": "202610235311",
+  "date": "2026-10-23",
+  "velodrome": "奈良",
+  "race_number": 11,
+  "start_time": "19:51",
+  "grade": "F1",
+  "history": {
+    "races": 98897,
+    "last_race_date": "2026-10-22"
+  },
+  "confidence": 0.13087504,
+  "ranked": [
+    {
+      "rank": 1,
+      "bike": 4,
+      "name": "西村光太",
+      "score": 1.004559
+    },
+    {
+      "rank": 2,
+      "bike": 7,
+      "name": "岩井芯",
+      "score": 0.873684
+    },
+    {
+      "rank": 3,
+      "bike": 2,
+      "name": "柴崎俊光",
+      "score": -0.76652
+    },
+    {
+      "rank": 4,
+      "bike": 1,
+      "name": "五十嵐綾",
+      "score": -1.112321
+    },
+    {
+      "rank": 5,
+      "bike": 3,
+      "name": "大崎飛雄馬",
+      "score": -1.297654
+    },
+    {
+      "rank": 6,
+      "bike": 5,
+      "name": "西村行貴",
+      "score": -1.32743
+    },
+    {
+      "rank": 7,
+      "bike": 6,
+      "name": "藤田昌宏",
+      "score": -1.720694
+    }
+  ],
+  "bets": {
+    "exacta": {
+      "label": "LOW",
+      "stake_per_ticket_yen": 0,
+      "points": 0,
+      "total_yen": 0,
+      "tickets": []
+    },
+    "trifecta": {
+      "label": "LOW",
+      "decision": "SKIP",
+      "decision_ja": "見送り",
+      "tickets": [],
+      "points": 0,
+      "stake_per_ticket_yen": 0,
+      "total_yen": 0
+    }
+  },
+  "original_model_bets": {
+    "exacta": {
+      "label": "LOW",
+      "stake_per_ticket_yen": 0,
+      "points": 0,
+      "total_yen": 0,
+      "tickets": []
+    },
+    "trifecta": {
+      "label": "LOW",
+      "stake_per_ticket_yen": 0,
+      "points": 0,
+      "total_yen": 0,
+      "tickets": []
+    }
+  },
+  "s3_decision": "見送り",
+  "s3_policy": {
+    "name": "ハルキュー",
+    "policy_version": "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_V1",
+    "trifecta_tier": "LOW",
+    "trifecta_decision": "SKIP",
+    "trifecta_decision_ja": "見送り",
+    "approved_bets": {
+      "exacta": {
+        "label": "LOW",
+        "stake_per_ticket_yen": 0,
+        "points": 0,
+        "total_yen": 0,
+        "tickets": []
+      },
+      "trifecta": {
+        "label": "LOW",
+        "decision": "SKIP",
+        "decision_ja": "見送り",
+        "tickets": [],
+        "points": 0,
+        "stake_per_ticket_yen": 0,
+        "total_yen": 0
+      }
+    },
+    "under_review": {
+      "trifecta": {
+        "label": "LOW",
+        "tickets": [],
+        "points": 0,
+        "stake_per_ticket_yen": 0,
+        "conditional_total_yen": 0,
+        "counts_as_purchase": false,
+        "decision": "なし"
+      }
+    },
+    "approved_total_yen": 0,
+    "never_modify_model": true,
+    "user_review_required_for_med": false
+  },
+  "med_under_review": {
+    "label": "LOW",
+    "tickets": [],
+    "points": 0,
+    "stake_per_ticket_yen": 0,
+    "conditional_total_yen": 0,
+    "counts_as_purchase": false,
+    "decision": "なし"
+  },
+  "total_yen": 0,
+  "feature_source": "historical 2026-03-21 build_race_features",
+  "model_sha256": "e70690f4538b77e927a042e7ae2db312f8a0a4f16bf72def37e7ccad3568c193",
+  "no_manual_selection": true,
+  "no_retraining": true,
+  "line_bonus_applied": false,
+  "torigami_filter_applied": false,
+  "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610235311",
+  "web_record": {
+    "source_run_id": 39941796589,
+    "source_job_id": 120374762303,
+    "created_at": "2026-10-23T10:50:02Z",
+    "origin": "verified-github-actions-output"
+  }
+}
