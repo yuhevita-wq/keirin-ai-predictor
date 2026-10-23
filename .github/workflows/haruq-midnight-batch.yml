@@ -1,0 +1,143 @@
+name: HaruQ Midnight Batch (Frozen March21, No Retraining)
+
+on:
+  push:
+    branches: [production/flagship-haruqube-20260321-live-v1]
+    paths:
+      - "race_requests/batches/*.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flagship-web-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  frozen-model-all-races:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Checkout HaruQ operations branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify historical feature source and load immutable version
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+          test "$(git hash-object config.py)" = 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          test "$(git hash-object features/builder.py)" = b47b793b5cf763bcb6d05137a115105006e50eba
+          test "$(git hash-object features/line_features.py)" = ecf3ab7c762475946054f806bb1d4b802c889389
+      - name: Install original-compatible inference environment
+        shell: bash
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+          python -m scripts.test_flagship_live
+      - name: Download verified frozen model and encrypted rolling history
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p flagship_inputs db
+          gh release download haruqube-20260321-flagship-v1 \
+            --repo "$GITHUB_REPOSITORY" --pattern haruqube_20260321_fresh_model.pkl \
+            --dir flagship_inputs
+          TAG=haruqube-20260321-history-cache-live
+          if ! gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            TAG=haruqube-20260321-history-cache-v1
+          fi
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern keirin-history.sqlite.gpg --dir flagship_inputs
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern PLAINTEXT_SHA256.txt --dir flagship_inputs
+          printf '%s' "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback \
+            --passphrase-fd 0 --output db/keirin.db \
+            --decrypt flagship_inputs/keirin-history.sqlite.gpg
+          ( cd db && sha256sum -c ../flagship_inputs/PLAINTEXT_SHA256.txt )
+      - name: Apply same frozen model independently to every requested race
+        shell: bash
+        env:
+          BEFORE_COMMIT: ${{ github.event.before }}
+          EVENT_COMMIT: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          REQ=$(git diff --name-only "$BEFORE_COMMIT" "$EVENT_COMMIT" | grep '^race_requests/batches/[^/]*\.json$' | tail -n 1)
+          test -n "$REQ" && test -s "$REQ"
+          python - "$REQ" <<'PY'
+          import json, re, sys
+          from pathlib import Path
+          r=json.loads(Path(sys.argv[1]).read_text())
+          race_ids=r.get("race_ids")
+          if not isinstance(race_ids,list) or not 1<=len(race_ids)<=12:
+              raise SystemExit("Request must contain 1 to 12 races")
+          if any(not isinstance(x,str) or not re.fullmatch(r"\d{12}",x) for x in race_ids):
+              raise SystemExit("Invalid race ID")
+          if len(set(race_ids))!=len(race_ids):
+              raise SystemExit("Duplicate race IDs")
+          Path("batch_race_ids.txt").write_text("\n".join(race_ids)+"\n")
+          print("HARUQ_BATCH_REQUEST_VALIDATED",race_ids)
+          PY
+          mkdir -p flagship_batch_results
+          while IFS= read -r RID; do
+            echo "HARUQ_RACE_BEGIN $RID"
+            python -u scripts/flagship_live_predict.py \
+              --race-id "$RID" \
+              --model flagship_inputs/haruqube_20260321_fresh_model.pkl \
+              --out "flagship_batch_results/$RID.json" \
+              | tee "flagship_batch_results/$RID.log"
+            python -m scripts.haruq_publish_web \
+              --source "flagship_batch_results/$RID.json" \
+              --directory docs/haruq/results \
+              --run-id "$GITHUB_RUN_ID" --commit "$EVENT_COMMIT"
+            echo "HARUQ_RACE_DONE $RID"
+          done < batch_race_ids.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          ids=Path("batch_race_ids.txt").read_text().splitlines()
+          index=json.loads(Path("docs/haruq/results/index.json").read_text())
+          found={x["race_id"] for x in index["items"]}
+          assert set(ids).issubset(found), (ids,found)
+          assert all(Path(f"flagship_batch_results/{i}.json").exists() for i in ids)
+          print("HARUQ_BATCH_ALL_RACES_PASSED",len(ids))
+          PY
+      - name: Store per-race machine-readable results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: haruq-midnight-batch-${{ github.run_id }}
+          path: flagship_batch_results/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Push verified results to public HaruQ JSON feed
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f docs/haruq/results/*.json docs/haruq/results/runs/*.json
+          git diff --cached --quiet && exit 1
+          git commit -m "HaruQ midnight batch results ${GITHUB_RUN_ID} [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "HARUQ_BATCH_WEB_PUBLISHED"
+      - name: Remove plaintext history from runner
+        if: always()
+        run: rm -f db/keirin.db flagship_inputs/haruqube_20260321_fresh_model.pkl
