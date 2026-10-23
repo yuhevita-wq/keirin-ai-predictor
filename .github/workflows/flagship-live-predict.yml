@@ -1,0 +1,120 @@
+name: Frozen Flagship Race Prediction (Original March 21)
+
+on:
+  push:
+    branches:
+      - production/flagship-haruqube-20260321-live-v1
+    paths:
+      - race_requests/*.json
+  workflow_dispatch:
+    inputs:
+      race_id:
+        description: 12-digit netkeirin race_id (YYYYMMDD+place+race)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flagship-live-${{ github.ref }}-${{ github.event.inputs.race_id || github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  single-race-prediction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Fetch operational code without changing the fixed model
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify and restore historical March 21 feature and threshold definitions
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          test ! -f db/keirin.db
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+          test "$(git hash-object config.py)" = 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          test "$(git hash-object features/builder.py)" = b47b793b5cf763bcb6d05137a115105006e50eba
+          test "$(git hash-object features/line_features.py)" = ecf3ab7c762475946054f806bb1d4b802c889389
+          python -m py_compile scripts/flagship_live_predict.py
+      - name: Install exact model-compatible Python versions
+        shell: bash
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+      - name: Fetch immutable pretrained model and encrypted historical database
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p flagship_inputs db
+          gh release download haruqube-20260321-flagship-v1 \
+            --repo "$GITHUB_REPOSITORY" --pattern haruqube_20260321_fresh_model.pkl \
+            --dir flagship_inputs
+          gh release download haruqube-20260321-history-cache-v1 \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern keirin-history.sqlite.gpg \
+            --dir flagship_inputs
+          gh release download haruqube-20260321-history-cache-v1 \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern PLAINTEXT_SHA256.txt \
+            --dir flagship_inputs
+          test -s flagship_inputs/haruqube_20260321_fresh_model.pkl
+          test -s flagship_inputs/keirin-history.sqlite.gpg
+          printf '%s' "$COLLECTOR_PASSPHRASE" | gpg --batch --yes \
+            --pinentry-mode loopback --passphrase-fd 0 \
+            --output db/keirin.db --decrypt flagship_inputs/keirin-history.sqlite.gpg
+          ( cd db && sha256sum -c ../flagship_inputs/PLAINTEXT_SHA256.txt )
+      - name: Resolve request deterministically
+        id: input
+        shell: bash
+        env:
+          DISPATCH_RACE_ID: ${{ github.event.inputs.race_id }}
+          EVENT_BEFORE: ${{ github.event.before }}
+          EVENT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ -n "$DISPATCH_RACE_ID" ]; then
+            echo "args=--race-id $DISPATCH_RACE_ID" >> "$GITHUB_OUTPUT"
+          else
+            file=$(git diff --name-only "$EVENT_BEFORE" "$EVENT_SHA" | grep '^race_requests/[^/]*\.json$' | tail -n 1)
+            test -n "$file"
+            test -s "$file"
+            echo "args=--request-json $file" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Single race original model prediction NO manual re-ranking
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u scripts/flagship_live_predict.py \
+            ${{ steps.input.outputs.args }} \
+            --model flagship_inputs/haruqube_20260321_fresh_model.pkl \
+            --out flagship_result.json | tee flagship_result.log
+      - name: Save machine-readable original-strategy prediction
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flagship-20260321-single-race-result
+          path: |
+            flagship_result.json
+            flagship_result.log
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Delete unencrypted history and model copy even on failure
+        if: always()
+        run: rm -f db/keirin.db flagship_inputs/haruqube_20260321_fresh_model.pkl
