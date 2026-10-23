@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "next_date": "2026-10-23",
-  "days_attempted": 1503,
-  "days_archived": 1391,
+  "next_date": "2026-10-24",
+  "days_attempted": 1504,
+  "days_archived": 1392,
   "days_failed": 112,
   "days_partial": 81,
   "failed_dates": [
@@ -15,11 +15,11 @@
     "2023-04-04"
   ],
   "last_batch": {
-    "from": "2026-09-06",
-    "to": "2026-10-22",
-    "attempted": 47,
-    "archived": 47,
-    "partial": 4,
+    "from": "2026-10-23",
+    "to": "2026-10-23",
+    "attempted": 1,
+    "archived": 1,
+    "partial": 0,
     "failed": 0,
     "missing_days": [],
     "manual": false,
