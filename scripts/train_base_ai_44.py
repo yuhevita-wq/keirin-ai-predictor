@@ -22,9 +22,9 @@ from models.trainer import evaluate_test_set
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("base_ai_44")
 OUT = Path("training_outputs")
-TRAIN_END = "2026-04-01"
-VAL_END = "2026-05-01"
-TEST_END = "2026-05-19"
+TRAIN_END = "2025-01-01"
+VAL_END = "2025-07-01"
+TEST_END = "2026-04-01"
 
 
 def sha256(path):
@@ -112,6 +112,7 @@ def main():
     train = df[df["race_date"] < TRAIN_END]
     val = df[(df["race_date"] >= TRAIN_END) & (df["race_date"] < VAL_END)]
     test = df[(df["race_date"] >= VAL_END) & (df["race_date"] < TEST_END)]
+    log.info("Split candidates: train=%s val=%s test=%s", len(train), len(val), len(test))
     assert min(len(train), len(val), len(test)) > 1000
     assert train["race_date"].max() < val["race_date"].min()
     assert val["race_date"].max() < test["race_date"].min()
