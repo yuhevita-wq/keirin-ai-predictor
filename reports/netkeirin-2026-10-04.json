@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-04",
+  "source": "netkeirin",
+  "status": "partial",
+  "races": 69,
+  "entries": 497,
+  "results": 493,
+  "errors": 1,
+  "exit_code": 0,
+  "source_report": {
+    "source": "netkeirin",
+    "date": "2026-10-04",
+    "discovered_races": 70,
+    "races": 69,
+    "entries": 497,
+    "results": 493,
+    "payouts": 69,
+    "ignored_other_date_races": 0,
+    "ignored_other_date_race_ids": [],
+    "errors": 1,
+    "pilot_limit": 0,
+    "missing_payout_races": 0,
+    "missing_races": [
+      {
+        "race_id": "202610041307",
+        "reason": "missing_results"
+      }
+    ],
+    "program_errors": [],
+    "complete": false,
+    "status": "partial"
+  }
+}
