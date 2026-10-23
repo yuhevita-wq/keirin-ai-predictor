@@ -144,6 +144,8 @@ def main():
         results.append({
             "race_id":rid,"race_date":day,"grade":grade,"score_gap":round(gap,5),
             "prediction_top5":"-".join(map(str,bikes[:5])),
+            "prediction_all":"-".join(map(str,bikes)),
+            "score_vector_json":json.dumps(scores,separators=(",",":")),
             "exacta_four":";".join(f"{x}-{y}" for x,y in tickets),
             "actual_exacta":f"{a1}-{a2}","payout_yen_100":odds_yen,
             "qualifies":int(purchased),"hit":hit if purchased else 0,
