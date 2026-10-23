@@ -58,6 +58,8 @@ jobs:
             lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
             scikit-learn==1.7.2 python-dotenv==1.1.1 \
             requests beautifulsoup4 lxml
+      - name: Fail if any frozen March 21 bet rule changes
+        run: python -m scripts.test_flagship_live
       - name: Fetch immutable pretrained model and encrypted historical database
         shell: bash
         run: |
