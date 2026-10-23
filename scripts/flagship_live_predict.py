@@ -24,6 +24,7 @@ from db.schema import get_connection, insert_race, insert_rider, insert_entry
 from data.scraper import KeirinScraper
 from features.builder import FeatureBuilder
 from models.lgbm_ranker import LGBMRanker
+from scripts.haruq_operating_policy import apply_user_policy
 
 MODEL_SHA256 = "e70690f4538b77e927a042e7ae2db312f8a0a4f16bf72def37e7ccad3568c193"
 MODEL_TAG = "haruqube-20260321-flagship-v1"
@@ -197,7 +198,8 @@ def main():
         raise RuntimeError("特徴量と車番の対応が不明")
     frame=frame.sort_values(["score","bike_number"],ascending=[False,True],kind="stable")
     gap=float(frame.iloc[0]["score"]-frame.iloc[1]["score"])
-    bets=strict_tickets(frame,gap,grade)
+    original_bets=strict_tickets(frame,gap,grade)
+    operation=apply_user_policy(original_bets)
     now=datetime.now(TIMEZONE)
     start=data.get("start_time")
     race_started=None
@@ -209,6 +211,7 @@ def main():
 
     result={
         "system":"FLAGSHIP_HARUQUBE_20260321_V1",
+        "display_name":"ハルキュー",
         "status":("過去レースの実験" if race_started else
                   "発走時刻未確認" if start is None else "発走前"),
         "race_id":target,"date":date_iso,
@@ -220,7 +223,12 @@ def main():
                    "name":name_by_rider.get(str(row["rider_id"]),""),
                    "score":round(float(row["score"]),6)}
                   for i,(_,row) in enumerate(frame.iterrows())],
-        "bets":bets,"total_yen":bets["exacta"]["total_yen"]+bets["trifecta"]["total_yen"],
+        "bets":operation["approved_bets"],
+        "original_model_bets":original_bets,
+        "s3_decision":operation["trifecta_decision_ja"],
+        "s3_policy":operation,
+        "med_under_review":operation["under_review"]["trifecta"],
+        "total_yen":operation["approved_total_yen"],
         "feature_source":"historical 2026-03-21 build_race_features",
         "model_sha256":MODEL_SHA256,
         "no_manual_selection":True,"no_retraining":True,"line_bonus_applied":False,
