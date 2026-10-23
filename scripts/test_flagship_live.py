@@ -59,6 +59,17 @@ for score in [0.4,0.5,0.8,1.0,1.5,2.0,2.5]:
     assert result["approved_bets"]["exacta"]["total_yen"]==(2000 if score>=1 else 0)
     assert result["approved_bets"]["trifecta"]["total_yen"]==(3000 if score>=2 else 0)
     assert result["approved_total_yen"]==(2000 if score>=1 else 0)+(3000 if score>=2 else 0)
+# All-L1/unknown class entries: fail closed as girls, before touching SQLite.
+from scripts.flagship_live_predict import record_entries
+for title in ("ガールズ一般","ガールズ決勝"):
+    entries=[{"rider_id":str(i), "bike_number":i, "class":None} for i in range(1,8)]
+    try:
+        record_entries("202610231301",{"entries":entries,"grade":"F2","race_name":title})
+        raise AssertionError("Girls was incorrectly treated as F2 purchasable")
+    except RuntimeError as e:
+        assert "ガールズ" in str(e)
+print("HARUQ_GIRLS_FAIL_CLOSED_PASSED")
+
 print("HARUQ_HIGH_ONLY_V3_TESTS_PASSED")
 print("HARUQ_USER_POLICY_TESTS_PASSED")
 print("FLAGSHIP_FIXED_LOGIC_TESTS_PASSED")
