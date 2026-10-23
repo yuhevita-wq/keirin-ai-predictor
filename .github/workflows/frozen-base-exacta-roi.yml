@@ -1,0 +1,67 @@
+name: Frozen Base AI Exacta 4-Ticket ROI Audit
+on:
+  push:
+    paths:
+      - ".github/workflows/frozen-base-exacta-roi.yml"
+      - "scripts/audit_frozen_exacta_roi.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      OMP_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen 44-feature runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1
+      - name: Download immutable frozen 44-feature model
+        uses: actions/download-artifact@v4
+        with:
+          name: base-ai-44-audit
+          run-id: 39911266752
+          github-token: ${{ github.token }}
+          path: fixed_model
+      - name: Download original DB and official winning-payout archives
+        run: |
+          set -euo pipefail
+          mkdir -p db payouts exacta_outputs
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            --max-time 300 --output db/keirin.db \
+            https://github.com/haruqube/keirin-ai-predictor/releases/download/data-latest/keirin.db
+          root="https://raw.githubusercontent.com/yuhevita-wq/keirin-market-analysis-/main"
+          for quarter in 2025_q3 2025_q4; do
+            curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+              --max-time 240 \
+              --output "payouts/${quarter}.csv" \
+              "$root/data/2025/s_class_f1_all_parts/${quarter}/payouts.csv"
+          done
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            --max-time 240 --output payouts/2026_h1.csv \
+            "$root/data/2026_h1/s_class_f1_all/payouts.csv"
+          for f in payouts/*.csv; do
+            echo "ARCHIVE $f"; head -n 1 "$f"
+          done
+      - name: Verify syntax
+        run: python -m py_compile scripts/audit_frozen_exacta_roi.py
+      - name: Execute original score-gap exacta ROI and audit missing coverage
+        run: python -u scripts/audit_frozen_exacta_roi.py
+      - name: Preserve exacta evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frozen-base-exacta-roi-evidence
+          path: exacta_outputs/
+          if-no-files-found: warn
+          retention-days: 90
