@@ -1,0 +1,72 @@
+name: Haruqube March 21 Historical Strategy Reproduction
+
+on:
+  push:
+    branches:
+      - research/haruqube-20260321-restoration-20261023
+    paths:
+      - scripts/reproduce_haruqube_20260321.py
+      - research_snapshots/haruqube_20260321/**
+      - .github/workflows/haruqube-20260321-reproduction.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: haruqube-20260321-reproduction
+  cancel-in-progress: false
+
+jobs:
+  reproduce-march-21:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Checkout protected research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Restore exact March 21 upstream files in temporary checkout only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          test ! -f db/keirin.db
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+          test "$(git hash-object config.py)" = 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          test "$(git hash-object features/builder.py)" = b47b793b5cf763bcb6d05137a115105006e50eba
+          test "$(git hash-object features/line_features.py)" = ecf3ab7c762475946054f806bb1d4b802c889389
+          python -m py_compile scripts/reproduce_haruqube_20260321.py
+      - name: Fetch encrypted newly collected daily SQLite files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin '+refs/heads/collected-data-*:refs/remotes/origin/collected-data-*'
+          test "$(git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/collected-data-*' | wc -l)" -ge 24
+      - name: Install original-compatible model runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+      - name: Retrain historical model and settle all original 3連単 tickets
+        run: python -u scripts/reproduce_haruqube_20260321.py
+      - name: Save full historical strategy, training metrics, ticket ledger and model
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: haruqube-20260321-original-strategy-evidence
+          path: reproduction_20260321/
+          retention-days: 90
+          if-no-files-found: warn
