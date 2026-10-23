@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-23",
+  "venue": "松阪",
+  "grade": "F2",
+  "event": "前検日コメならウィンチケット杯・最終日",
+  "race_ids": [
+    "202610234701",
+    "202610234702",
+    "202610234703",
+    "202610234704",
+    "202610234705",
+    "202610234706",
+    "202610234707"
+  ],
+  "note": "Run the frozen flagship without exceptions for F2; publish each race's rank, skip and money result."
+}
