@@ -168,6 +168,10 @@ def simulate(holdout, model, features):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    # The shared collector writes to its module-level OUT; point it at this
+    # isolated experiment directory before preparing the database.
+    import scripts.reproduce_haruqube_fresh as fresh_base
+    fresh_base.OUT = OUT
     verify_sources()
     manifest = prepare_db()
     df, feature_names, valid_count = dataset()
