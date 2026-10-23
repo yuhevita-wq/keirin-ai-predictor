@@ -1,0 +1,166 @@
+{
+  "system": "FLAGSHIP_HARUQUBE_20260321_V1",
+  "display_name": "ハルキュー",
+  "status": "発走前",
+  "race_id": "202610243406",
+  "date": "2026-10-24",
+  "velodrome": "川崎",
+  "race_number": 6,
+  "start_time": "22:30",
+  "grade": "F2",
+  "history": {
+    "races": 98962,
+    "last_race_date": "2026-10-24"
+  },
+  "confidence": 0.36517975,
+  "ranked": [
+    {
+      "rank": 1,
+      "bike": 1,
+      "name": "吉田優斗",
+      "score": 0.494724
+    },
+    {
+      "rank": 2,
+      "bike": 2,
+      "name": "岡部芳幸",
+      "score": 0.129544
+    },
+    {
+      "rank": 3,
+      "bike": 3,
+      "name": "山崎敦雄",
+      "score": -0.973076
+    },
+    {
+      "rank": 4,
+      "bike": 4,
+      "name": "宮下一歩",
+      "score": -1.475099
+    },
+    {
+      "rank": 5,
+      "bike": 5,
+      "name": "伊藤大理",
+      "score": -1.892864
+    },
+    {
+      "rank": 6,
+      "bike": 6,
+      "name": "中曽直彦",
+      "score": -2.304551
+    },
+    {
+      "rank": 7,
+      "bike": 7,
+      "name": "矢内良和",
+      "score": -3.163888
+    }
+  ],
+  "bets": {
+    "exacta": {
+      "label": "LOW",
+      "stake_per_ticket_yen": 0,
+      "points": 0,
+      "tickets": [],
+      "total_yen": 0,
+      "decision": "REJECT",
+      "decision_ja": "買わない（HIGH未満）"
+    },
+    "trifecta": {
+      "label": "LOW",
+      "decision": "REJECT",
+      "decision_ja": "買わない（S3-HIGH未満）",
+      "tickets": [],
+      "points": 0,
+      "stake_per_ticket_yen": 0,
+      "total_yen": 0
+    }
+  },
+  "original_model_bets": {
+    "exacta": {
+      "label": "SKIP",
+      "stake_per_ticket_yen": 0,
+      "points": 0,
+      "total_yen": 0,
+      "tickets": []
+    },
+    "trifecta": {
+      "label": "SKIP",
+      "stake_per_ticket_yen": 0,
+      "points": 0,
+      "total_yen": 0,
+      "tickets": []
+    }
+  },
+  "f2_purchase_override_applied": true,
+  "f2_all_grades_eligible": true,
+  "s3_decision": "買わない（S3-HIGH未満）",
+  "s3_policy": {
+    "name": "ハルキュー",
+    "policy_version": "HARUQ_HIGH_ONLY_ALL_MARKETS_F2_ELIGIBLE_V3",
+    "trifecta_tier": "LOW",
+    "trifecta_decision": "REJECT",
+    "trifecta_decision_ja": "買わない（S3-HIGH未満）",
+    "approved_bets": {
+      "exacta": {
+        "label": "LOW",
+        "stake_per_ticket_yen": 0,
+        "points": 0,
+        "tickets": [],
+        "total_yen": 0,
+        "decision": "REJECT",
+        "decision_ja": "買わない（HIGH未満）"
+      },
+      "trifecta": {
+        "label": "LOW",
+        "decision": "REJECT",
+        "decision_ja": "買わない（S3-HIGH未満）",
+        "tickets": [],
+        "points": 0,
+        "stake_per_ticket_yen": 0,
+        "total_yen": 0
+      }
+    },
+    "under_review": {
+      "trifecta": {
+        "label": "LOW",
+        "tickets": [],
+        "points": 0,
+        "stake_per_ticket_yen": 0,
+        "conditional_total_yen": 0,
+        "counts_as_purchase": false,
+        "decision": "なし（MEDも購入対象外）"
+      }
+    },
+    "approved_total_yen": 0,
+    "never_modify_model": true,
+    "user_review_required_for_med": false,
+    "exacta_high_only": true,
+    "trifecta_high_only": true,
+    "f2_eligible": true
+  },
+  "med_under_review": {
+    "label": "LOW",
+    "tickets": [],
+    "points": 0,
+    "stake_per_ticket_yen": 0,
+    "conditional_total_yen": 0,
+    "counts_as_purchase": false,
+    "decision": "なし（MEDも購入対象外）"
+  },
+  "total_yen": 0,
+  "feature_source": "historical 2026-03-21 build_race_features",
+  "model_sha256": "e70690f4538b77e927a042e7ae2db312f8a0a4f16bf72def37e7ccad3568c193",
+  "no_manual_selection": true,
+  "no_retraining": true,
+  "line_bonus_applied": false,
+  "torigami_filter_applied": false,
+  "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610243406",
+  "web_record": {
+    "source_run_id": 39993544283,
+    "source_commit": "c7f936fc542459aff0f68b66eceb7a880264efce",
+    "created_at": "2026-10-23T17:20:31Z",
+    "origin": "verified-github-actions-output"
+  }
+}
