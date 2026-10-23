@@ -1,0 +1,44 @@
+name: Independently Trained Exacta Specialists by Race Type
+on:
+  push:
+    paths:
+      - ".github/workflows/race-type-specialists.yml"
+      - "scripts/learn_per_race_type_specialists.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  specialized:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install isolated purchase-learner dependencies
+        run: |
+          python -m pip install --disable-pip-version-check \
+            numpy==2.2.6 pandas==2.3.3 scikit-learn==1.7.2 joblib==1.5.2
+      - name: Restore classified 7018-race frozen predictions and actual 2車単 payouts
+        uses: actions/download-artifact@v4
+        with:
+          name: race-type-roi-corrected-validations
+          run-id: 39936162009
+          github-token: ${{ github.token }}
+          path: race_type_roi_outputs
+      - name: Train separate models for each supported literal race type, and validate unseen quarters
+        run: |
+          python -m py_compile scripts/learn_per_race_type_specialists.py
+          python -u scripts/learn_per_race_type_specialists.py
+      - name: Save all learned type specialists and holdout tickets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frozen-ai-separate-race-type-specialists
+          path: race_type_roi_outputs/
+          retention-days: 90
+          if-no-files-found: error
