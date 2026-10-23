@@ -1,0 +1,60 @@
+name: Base AI 44-Feature Retraining Audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/base-ai-44-retrain.yml"
+      - "scripts/train_base_ai_44.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: base-ai-44-retraining-audit
+  cancel-in-progress: false
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      GH_TOKEN: \${{ github.token }}
+      OMP_NUM_THREADS: "2"
+    steps:
+      - name: Checkout existing base AI
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install original AI runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1
+
+      - name: Download original database and trained model without overwriting releases
+        run: |
+          set -euo pipefail
+          mkdir -p db results training_outputs
+          gh release download data-latest -R haruqube/keirin-ai-predictor \
+            -p "keirin.db" -D db/
+          gh release download data-latest -R haruqube/keirin-ai-predictor \
+            -p "model_lgbm.pkl" -D results/
+          sha256sum db/keirin.db results/model_lgbm.pkl
+
+      - name: Train original 44-feature LambdaRank and evaluate chronological holdout
+        run: |
+          python scripts/train_base_ai_44.py
+
+      - name: Preserve trained model and audit as separate artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: base-ai-44-audit-\${{ github.run_number }}
+          path: training_outputs/
+          if-no-files-found: warn
+          retention-days: 90
