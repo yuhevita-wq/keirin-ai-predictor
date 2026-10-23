@@ -95,10 +95,9 @@ def record_entries(race_id, data):
     if len(set(map(str,numbers))) != len(entries) or len(set(map(str,riders))) != len(entries):
         raise RuntimeError("選手ID/車番の重複を検出しました")
     race_grade = data.get("grade")
-    girls = all(e.get("class") is None for e in entries)
+    girls = all(e.get("class") is None for e in entries) or any(str(e.get("class") or "").upper().startswith("L") for e in entries) or bool(re.search(r"ガールズ|ガール|ガ決|ガ般|Ｌ級|L級", str(data.get("race_name") or "")))
     if girls:
-        # Upstream real-time reader interprets this as F2.
-        race_grade = "F2"
+        raise RuntimeError("ガールズケイリンはハルキュー購入対象外。L級出走表にS3-HIGHを適用しません。")
     if race_grade not in {"GP","G1","G2","G3","F1","F2"}:
         raise RuntimeError(f"グレードが取得できません: {race_grade!r}。推測して購入しません。")
     day = race_id[:4]+"-"+race_id[4:6]+"-"+race_id[6:8]
