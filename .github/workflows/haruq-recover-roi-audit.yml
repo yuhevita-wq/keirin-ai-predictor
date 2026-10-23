@@ -1,0 +1,68 @@
+name: Recover Verified HaruQ ROI Audit Report
+
+on:
+  push:
+    branches: [production/flagship-haruqube-20260321-live-v1]
+    paths: [.github/workflows/haruq-recover-roi-audit.yml]
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve full completed 30k-race research result, not re-run model
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p recovered
+          gh run download 39947447830 --repo "$GITHUB_REPOSITORY" \
+            --name haruq-grade-inclusive-roi-audit-39947447830 --dir recovered
+          test -s recovered/haruq_financial_audit.json
+          python - <<'PY'
+          import json,math
+          d=json.load(open('recovered/haruq_financial_audit.json'))
+          assert d['verification']['archived_release_ledger']['rows']==11821
+          assert d['verification']['archived_release_ledger']['all_ticket_outcomes_equal']
+          assert d['verification']['archived_report_arithmetic']
+          assert d['source']['holdout_races']==30162
+          assert d['historical_0321']['f2_selected_rows']==0
+          assert d['historical_0321']['s3_high']['attempted']==928
+          assert d['f2_added']['s3_high']['attempted']==3051
+          assert d['new_all_grade_policy']['s3_high_buy']['attempted']==3979
+          for k in ('historical_0321','f2_added','new_all_grade_policy'):
+              for v in d[k].values():
+                  if isinstance(v,dict) and 'attempted' in v:
+                      assert v['investment_yen']>=0
+                      assert v['return_yen']>=0
+                      assert v['attempted']>=v['verified']
+                      assert v['verified']+v['unverified']==v['attempted']
+          print('HARUQ_F2_ROI_RECOVERY_VERIFIED',d['f2_added']['s3_high']['roi_percent'],
+                d['new_all_grade_policy']['s3_high_buy']['roi_percent'])
+          PY
+      - name: Commit complete immutable audit record alongside public source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research_audits/haruq
+          cp recovered/haruq_financial_audit.json research_audits/haruq/f2_inclusive_holdout_audit_20261023.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f research_audits/haruq/f2_inclusive_holdout_audit_20261023.json
+          git commit -m "Archive re-created original ledger parity and F2-inclusive S3 ROI audit [skip ci]"
+          for attempt in 1 2 3 4; do
+            git fetch origin "$GITHUB_REF_NAME"
+            git rebase "origin/$GITHUB_REF_NAME"
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "HARUQ_ROI_AUDIT_ARCHIVED"
+              exit 0
+            fi
+            sleep 2
+          done
+          exit 1
