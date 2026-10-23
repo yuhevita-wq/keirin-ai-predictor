@@ -1,0 +1,110 @@
+name: Archive Frozen Flagship Haruqube 20260321
+
+on:
+  push:
+    branches:
+      - research/haruqube-20260321-restoration-20261023
+    paths:
+      - .github/workflows/archive-flagship-haruqube-20260321.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: archive-frozen-haruqube-20260321-v1
+  cancel-in-progress: false
+
+jobs:
+  archive-flagship:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      FLAGSHIP_TAG: haruqube-20260321-flagship-v1
+      ORIGINAL_RUN_ID: "39934967427"
+      PINNED_SOURCE_COMMIT: 7709f396a885847d0b9bc40034c2cfc7b5e2b012
+    steps:
+      - name: Checkout documentation and archival workflow
+        uses: actions/checkout@v4
+
+      - name: Verify immutable source and fetch the successful original artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" != ""
+          gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${ORIGINAL_RUN_ID}" --jq '.conclusion' | grep -Fx success
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/12494171474" --jq '.expired' | grep -Fx false
+          mkdir -p flagship_archive
+          gh run download "${ORIGINAL_RUN_ID}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --name haruqube-20260321-original-strategy-evidence \
+            --dir flagship_archive
+          for file in report.json collection_manifest.json holdout_all_selected_tickets.csv haruqube_20260321_fresh_model.pkl; do
+            test -s "flagship_archive/${file}"
+          done
+
+      - name: Validate source provenance, trial outcomes and model checksum before freezing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+          root=Path("flagship_archive")
+          data=json.loads((root/"report.json").read_text(encoding="utf-8"))
+          manifest=json.loads((root/"collection_manifest.json").read_text(encoding="utf-8"))
+          assert data["source_upstream_commit"]=="336fbd87b4a04632ffe65c58de91553d431003e2"
+          assert data["races"]["merged"]==98897
+          assert data["races"]["training"]==48297
+          assert data["races"]["validation"]==11741
+          assert data["races"]["holdout"]==30162
+          assert manifest["races_imported"]==98897
+          assert data["holdout_metrics"]["top1_hits"]==15390
+          original=data["holdout_betting"]["2026-03-21_trifecta"]
+          assert original["payout_verified_races"]==3344
+          assert original["invested_yen"]==4623600
+          assert original["returned_yen"]==8676640
+          assert original["roi_percent"]==187.66
+          assert data["holdout_betting"]["2026-03-21_combined"]["roi_percent"]==148.269
+          model=root/"haruqube_20260321_fresh_model.pkl"
+          digest=hashlib.sha256(model.read_bytes()).hexdigest()
+          assert digest==data["model_sha256"], "Model checksum does not match training report"
+          with (root/"holdout_all_selected_tickets.csv").open(encoding="utf-8",newline="") as f:
+            n=sum(1 for _ in csv.DictReader(f))
+          assert n==11821, f"Expected complete ticket ledger, got {n}"
+          print("FLAGSHIP_ARCHIVE_VALID", "model_sha256="+digest, "tickets="+str(n),flush=True)
+          PY
+          ( cd flagship_archive && sha256sum report.json collection_manifest.json holdout_all_selected_tickets.csv haruqube_20260321_fresh_model.pkl > SHA256SUMS.txt )
+          cp research_snapshots/FLAGSHIP_HARUQUBE_20260321_V1.md flagship_archive/FLAGSHIP_FREEZE_MANIFEST.md
+
+      - name: Create independent long-term GitHub Release for flagship model
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "${FLAGSHIP_TAG}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            echo "Release tag already exists; WILL NOT overwrite or replace frozen model."
+            for name in report.json collection_manifest.json holdout_all_selected_tickets.csv haruqube_20260321_fresh_model.pkl SHA256SUMS.txt FLAGSHIP_FREEZE_MANIFEST.md; do
+              gh release view "${FLAGSHIP_TAG}" --repo "${GITHUB_REPOSITORY}" --json assets --jq '.assets[].name' | grep -Fx "${name}"
+            done
+            echo "FLAGSHIP_RELEASE_ALREADY_VERIFIED https://github.com/${GITHUB_REPOSITORY}/releases/tag/${FLAGSHIP_TAG}"
+            exit 0
+          fi
+          gh release create "${FLAGSHIP_TAG}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --target "${PINNED_SOURCE_COMMIT}" \
+            --title "FROZEN FLAGSHIP - Haruqube 2026-03-21 v1" \
+            --notes-file research_snapshots/FLAGSHIP_HARUQUBE_20260321_V1.md \
+            --prerelease \
+            --latest=false \
+            flagship_archive/report.json \
+            flagship_archive/collection_manifest.json \
+            flagship_archive/holdout_all_selected_tickets.csv \
+            flagship_archive/haruqube_20260321_fresh_model.pkl \
+            flagship_archive/SHA256SUMS.txt \
+            flagship_archive/FLAGSHIP_FREEZE_MANIFEST.md
+          for name in report.json collection_manifest.json holdout_all_selected_tickets.csv haruqube_20260321_fresh_model.pkl SHA256SUMS.txt FLAGSHIP_FREEZE_MANIFEST.md; do
+            gh release view "${FLAGSHIP_TAG}" --repo "${GITHUB_REPOSITORY}" --json assets --jq '.assets[].name' | grep -Fx "${name}"
+          done
+          echo "FLAGSHIP_RELEASE_VERIFIED https://github.com/${GITHUB_REPOSITORY}/releases/tag/${FLAGSHIP_TAG}"
