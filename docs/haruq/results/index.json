@@ -9,11 +9,13 @@
       "race_number": 12,
       "start_time": "20:30",
       "confidence": 0.33991765,
+      "status": "発走前",
       "s3_decision": "見送り",
       "trifecta_tier": "LOW",
       "exacta_tier": "LOW",
       "total_yen": 0,
-      "updated_at": "2026-10-23T10:43:30Z"
+      "updated_at": "2026-10-23T10:56:39Z",
+      "run_id": 39942552431
     }
   ]
 }

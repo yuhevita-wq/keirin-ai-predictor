@@ -149,9 +149,9 @@
   "torigami_filter_applied": false,
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610234812",
   "web_record": {
-    "source_run_id": 39940996480,
-    "source_job_id": 120372097656,
-    "created_at": "2026-10-23T10:43:30Z",
+    "source_run_id": 39942552431,
+    "source_commit": "4e920471aa1797656bcc5230f08f03d88d046798",
+    "created_at": "2026-10-23T10:56:39Z",
     "origin": "verified-github-actions-output"
   }
 }
