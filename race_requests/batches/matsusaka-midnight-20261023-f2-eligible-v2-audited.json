@@ -1,0 +1,13 @@
+{
+  "race_ids": [
+    "202610234701",
+    "202610234702",
+    "202610234703",
+    "202610234704",
+    "202610234705",
+    "202610234706",
+    "202610234707"
+  ],
+  "policy": "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_F2_ELIGIBLE_V2",
+  "purpose": "Publish F2-eligible results after fixing CI checkout rebase with original model snapshots."
+}
