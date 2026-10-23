@@ -1,0 +1,109 @@
+name: Refresh Flagship Keirin History (Model Never Retrained)
+
+on:
+  schedule:
+    - cron: '0 19 * * *'
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/flagship-history-daily-refresh.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flagship-live-history-daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Checkout isolated fixed model operational code, never master or frozen model
+        uses: actions/checkout@v4
+        with:
+          ref: production/flagship-haruqube-20260321-live-v1
+
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install original-compatible data parser/runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+
+      - name: Download most recent encrypted history, not the archived model
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          test ! -f db/keirin.db
+          mkdir -p history_live db
+          TAG=haruqube-20260321-history-cache-live
+          if ! gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            TAG=haruqube-20260321-history-cache-v1
+          fi
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+             --pattern keirin-history.sqlite.gpg --dir history_live
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+             --pattern PLAINTEXT_SHA256.txt --dir history_live
+          printf '%s' "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback \
+             --passphrase-fd 0 --output db/keirin.db \
+             --decrypt history_live/keirin-history.sqlite.gpg
+          ( cd db && sha256sum -c ../history_live/PLAINTEXT_SHA256.txt )
+
+      - name: Strictly fetch and verify all missing complete race days
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u scripts/flagship_refresh_history.py --max-days 7
+          ( cd db && sha256sum keirin.db > ../history_live/PLAINTEXT_SHA256.txt )
+          gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 \
+             --cipher-algo AES256 --symmetric \
+             --output history_live/keirin-history.next.gpg \
+             db/keirin.db <<< "${COLLECTOR_PASSPHRASE}"
+          mv history_live/keirin-history.next.gpg history_live/keirin-history.sqlite.gpg
+          ( cd history_live && sha256sum keirin-history.sqlite.gpg > ENCRYPTED_SHA256SUMS.txt )
+          cp history_refresh_report.json history_live/history_refresh_report.json
+
+      - name: Publish only validated encrypted history to mutable cache Release
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG=haruqube-20260321-history-cache-live
+          if ! gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create "$TAG" --repo "$GITHUB_REPOSITORY" \
+              --target production/flagship-haruqube-20260321-live-v1 \
+              --title "Live historical data only, frozen flagship model unchanged" \
+              --notes "Encrypted moving race history for operational features. NO model changes. Daily integrity and full-payout checks." \
+              --prerelease --latest=false \
+              history_live/keirin-history.sqlite.gpg \
+              history_live/PLAINTEXT_SHA256.txt \
+              history_live/ENCRYPTED_SHA256SUMS.txt \
+              history_live/history_refresh_report.json
+          else
+            gh release upload "$TAG" --repo "$GITHUB_REPOSITORY" --clobber \
+              history_live/keirin-history.sqlite.gpg \
+              history_live/PLAINTEXT_SHA256.txt \
+              history_live/ENCRYPTED_SHA256SUMS.txt \
+              history_live/history_refresh_report.json
+          fi
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets \
+            --jq '.assets[].name' | grep -Fx keirin-history.sqlite.gpg
+          echo "FLAGSHIP_LIVE_HISTORY_ARCHIVED"
+
+      - name: Remove all decrypted historical data from runner
+        if: always()
+        run: rm -f db/keirin.db
