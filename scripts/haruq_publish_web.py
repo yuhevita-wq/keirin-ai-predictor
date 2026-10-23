@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 
 from scripts.flagship_live_predict import MODEL_SHA256
+from scripts.haruq_operating_policy import POLICY_VERSION
 
 
 def export_result(source: Path, directory: Path, run_id: str, commit: str):
@@ -24,8 +25,10 @@ def export_result(source: Path, directory: Path, run_id: str, commit: str):
         raise ValueError("Wrong pretrained model: refuse to publish")
     if value.get("display_name") != "ハルキュー":
         raise ValueError("Non-HaruQ result: refuse to publish")
-    if value.get("s3_policy", {}).get("policy_version") != "HARUQ_S3_HIGH_BUY_MEDPLUS_REJECT_MED_REVIEW_V1":
+    if value.get("s3_policy", {}).get("policy_version") != POLICY_VERSION:
         raise ValueError("Unapproved S3 policy: refuse to publish")
+    if value.get("f2_all_grades_eligible") is not True:
+        raise ValueError("F2 purchase-eligibility override not present")
     if value.get("bets") != value["s3_policy"]["approved_bets"]:
         raise ValueError("Published tickets differ from policy output")
     if value.get("total_yen") != value["s3_policy"]["approved_total_yen"]:
