@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-23",
+  "site": "iwakidaira",
+  "description": "Run all seven midnight races with existing frozen HaruQ model and current operating policy; report HIGH only from model score",
+  "race_ids": [
+    "202610231301",
+    "202610231302",
+    "202610231303",
+    "202610231304",
+    "202610231305",
+    "202610231306",
+    "202610231307"
+  ]
+}
