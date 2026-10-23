@@ -14,10 +14,10 @@ on:
         type: string
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: flagship-live-${{ github.ref }}-${{ github.event.inputs.race_id || github.sha }}
+  group: flagship-web-publish-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -122,6 +122,23 @@ jobs:
             flagship_result.log
           if-no-files-found: warn
           retention-days: 30
+      - name: Publish original machine-output JSON to web-only repository path
+        if: success()
+        shell: bash
+        env:
+          ORIGINAL_TRIGGER_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python -m scripts.haruq_publish_web \
+            --source flagship_result.json \
+            --directory docs/haruq/results \
+            --run-id "${GITHUB_RUN_ID}" \
+            --commit "${ORIGINAL_TRIGGER_SHA}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/haruq/results
+          git commit -m "Publish HaruQ ${GITHUB_RUN_ID} result JSON for web dashboard [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Delete unencrypted history and model copy even on failure
         if: always()
         run: rm -f db/keirin.db flagship_inputs/haruqube_20260321_fresh_model.pkl
