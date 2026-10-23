@@ -29,7 +29,7 @@ jobs:
         with:
           name: base-ai-44-improvement-evidence
           run-id: 39914805810
-          github-token: __GITHUB_TOKEN__
+          github-token: ${{ github.token }}
           path: base_predictions
       - name: Fetch independently archived market prices and podiums
         run: |
