@@ -451,9 +451,31 @@ def learn(frame,raceframe,audit,types,provenance,problems):
     print("RACE_TYPE_LEARNING_COMPLETE",flush=True)
 
 def main():
-    if not MODEL.is_file():raise RuntimeError("Missing frozen original retrained model")
-    a,p,b,t=read_archived_sources()
-    frame,raceframe,audit,type_counts=build_scores_and_join(a)
-    learn(frame,raceframe,audit,type_counts,p,b)
+    # Reproducible correction pass: reuse immutable winning settlements and
+    # base-model score vectors rather than needlessly recomputing 44 features.
+    frame_file=ROOT/"all_exacta_ticket_outcomes.csv"
+    race_file=ROOT/"matched_race_types.csv"
+    prev_report=ROOT/"race_type_learning_report.json"
+    if frame_file.is_file() and race_file.is_file() and prev_report.is_file():
+        frame=pd.read_csv(frame_file,dtype={"race_id":str})
+        raceframe=pd.read_csv(race_file,dtype={"race_id":str})
+        for df in [frame,raceframe]:
+            df["stage"]=df["race_type"].apply(stage_of)
+            df["grade"]=df["grade"].astype(str)
+            df["division"]=df["division"].astype(str)
+        metadata=json.loads(prev_report.read_text(encoding="utf-8"))
+        print("CORRECTED_RACE_STAGE_COUNTS",
+              json.dumps(raceframe.groupby("stage").size().to_dict(),ensure_ascii=False),flush=True)
+        corrected_type_counts={str(k):int(v) for k,v in
+            raceframe.groupby(["division","grade","stage","race_type","phase"]).size().items()}
+        raceframe.to_csv(race_file,index=False)
+        frame.to_csv(frame_file,index=False)
+        learn(frame,raceframe,metadata["unmatched_audit"],
+              corrected_type_counts,metadata["archives"],metadata["archive_issues"])
+    else:
+        if not MODEL.is_file():raise RuntimeError("Missing frozen original retrained model")
+        a,p,b,t=read_archived_sources()
+        frame,raceframe,audit,type_counts=build_scores_and_join(a)
+        learn(frame,raceframe,audit,type_counts,p,b)
 
 if __name__=="__main__":main()
