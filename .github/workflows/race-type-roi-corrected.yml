@@ -1,0 +1,41 @@
+name: Race-Type ROI Corrected Label Retraining
+on:
+  push:
+    paths:
+      - ".github/workflows/race-type-roi-corrected.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  corrected-race-type-training:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install policy-model requirements
+        run: |
+          python -m pip install --disable-pip-version-check \
+            numpy==2.2.6 pandas==2.3.3 scikit-learn==1.7.2 lightgbm==4.6.0 python-dotenv==1.1.1
+      - name: Reuse immutable 7018-race full-score and exacta payout evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: race-type-aware-roi-learning-evidence
+          run-id: 39935249101
+          github-token: ${{ github.token }}
+          path: race_type_roi_outputs
+      - name: Correct precise official race types and repeat training and forward validation
+        run: |
+          python -m py_compile scripts/learn_roi_by_race_type.py
+          python -u scripts/learn_roi_by_race_type.py
+      - name: Publish corrected classification and full results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: race-type-roi-corrected-validations
+          path: race_type_roi_outputs/
+          retention-days: 90
+          if-no-files-found: error
