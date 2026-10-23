@@ -250,8 +250,10 @@ def main():
     groups.loc[confirmed & (groups["vs_overall_pp"] < 0), "verdict"] = "lower_signal"
     groups = groups.sort_values(["axis","new_top1_rate"], ascending=[True,False])
 
-    gain = new.feature_importance("gain")
-    split = new.feature_importance("split")
+    gain = (new.feature_importance("gain").set_index("feature")["importance"]
+            .reindex(cols, fill_value=0).to_numpy())
+    split = (new.feature_importance("split").set_index("feature")["importance"]
+             .reindex(cols, fill_value=0).to_numpy())
     importance = pd.DataFrame({"feature": cols, "gain": gain, "split": split})
     importance["gain_share"] = importance["gain"] / max(1.0,float(importance["gain"].sum()))
     importance.sort_values("gain", ascending=False).to_csv(
