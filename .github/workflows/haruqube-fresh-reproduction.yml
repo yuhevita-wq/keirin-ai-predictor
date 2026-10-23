@@ -46,7 +46,7 @@ jobs:
         run: |
           set -euo pipefail
           git fetch --no-tags --depth=1 origin '+refs/heads/collected-data-*:refs/remotes/origin/collected-data-*'
-          git for-each-ref --format='%(refname:short)' refs/remotes/origin/collected-data- | tee /tmp/haruqube-months.txt
+          git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/collected-data-*' | tee /tmp/haruqube-months.txt
           test "$(wc -l < /tmp/haruqube-months.txt)" -ge 24
       - name: Install identical LightGBM / feature-builder runtime
         run: |
