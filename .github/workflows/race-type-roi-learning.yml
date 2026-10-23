@@ -1,0 +1,91 @@
+name: Race-Type-Aware Frozen AI ROI Learning
+on:
+  push:
+    paths:
+      - ".github/workflows/race-type-roi-learning.yml"
+      - "scripts/learn_roi_by_race_type.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: race-type-roi-learning
+  cancel-in-progress: false
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install unchanged ranking runtime and policy learner
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1
+      - name: Recover existing frozen 44-feature ranker (no refit)
+        uses: actions/download-artifact@v4
+        with:
+          name: base-ai-44-audit
+          run-id: 39911266752
+          github-token: ${{ github.token }}
+          path: fixed_model
+      - name: Download original data and ALL available official 2車単 payout categories
+        run: |
+          set -euo pipefail
+          mkdir -p db race_type_payout_sources race_type_roi_outputs
+          curl -fLSs --retry 3 --max-time 300 \
+            --output db/keirin.db \
+            "https://github.com/haruqube/keirin-ai-predictor/releases/download/data-latest/keirin.db"
+          root="https://raw.githubusercontent.com/yuhevita-wq/keirin-market-analysis-/main"
+          get() {
+            local src="$1"
+            local dst="$2"
+            echo "FETCH $src"
+            curl -fLSs --retry 3 --retry-all-errors --max-time 240 -o "race_type_payout_sources/$dst" "$root/$src"
+            test -s "race_type_payout_sources/$dst"
+          }
+          for pair in "01_02" "03_04" "05_06" "07_08" "09_10" "11_12"; do
+            get "data/a_class_12/2025_$pair/payouts.csv" "A12_2025_$pair.csv"
+            get "data/a3_challenge/2025_$pair/payouts.csv" "A3_2025_$pair.csv"
+          done
+          for pair in "01_02" "03_04"; do
+            get "data/a_class_12/2026_$pair/payouts.csv" "A12_2026_$pair.csv"
+            get "data/a3_challenge/2026_$pair/payouts.csv" "A3_2026_$pair.csv"
+          done
+          for q in 1 2 3 4; do
+            get "data/2025/s_class_f1_all_parts/2025_q$q/payouts.csv" "S_F1_2025_q$q.csv"
+            get "data/grade_races/g3/2025/g3-2025-q$q.zip" "G3_2025_q$q.zip"
+          done
+          get "data/2026_h1/s_class_f1_all/payouts.csv" "S_F1_2026_h1.csv"
+          get "data/grade_races/g3/2026_h1/g3-2026-q1.zip" "G3_2026_q1.zip"
+          get "data/grade_races/g1g2/g1-g2-2025-non-girls.zip" "G1_G2_2025.zip"
+          echo "DOWNLOADED COUNT:"
+          find race_type_payout_sources -maxdepth 1 -type f | wc -l
+          echo "CHECK ZIP INTEGRITY:"
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          for p in Path("race_type_payout_sources").glob("*.zip"):
+              with ZipFile(p) as z:
+                  members=z.namelist()
+                  print(p.name,len(members),members[:12])
+                  assert z.testzip() is None
+          PY
+      - name: Validate learner syntax and train/validate/test all classes
+        run: |
+          python -m py_compile scripts/learn_roi_by_race_type.py
+          python -u scripts/learn_roi_by_race_type.py
+      - name: Preserve all class/type evidence regardless of outcome
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: race-type-aware-roi-learning-evidence
+          path: race_type_roi_outputs/
+          retention-days: 90
+          if-no-files-found: warn
