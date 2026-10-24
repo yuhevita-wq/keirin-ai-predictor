@@ -209,6 +209,7 @@ def main():
     parser.add_argument("--report",required=True,type=Path)
     parser.add_argument("--out-dir",required=True,type=Path)
     parser.add_argument("--limit",type=int,default=120)
+    parser.add_argument("--exclude-venues",default="",help="Comma-separated venue codes omitted from this run")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO)
     assert_frozen_v1()
@@ -223,7 +224,8 @@ def main():
     ids=([args.race_id] if args.race_id else
         scraper.scrape_race_list(d.strftime("%Y%m%d")))
     ids=sorted({r for r in ids if re.fullmatch(r"\d{12}",str(r))
-                and str(r).startswith(d.strftime("%Y%m%d"))})
+                and str(r).startswith(d.strftime("%Y%m%d"))
+                and str(r)[8:10] not in set(args.exclude_venues.split(","))})
     if not 0 < len(ids) <= 200:
         raise RuntimeError(f"BAD_RACE_DISCOVERY_COUNT_{len(ids)}")
     out=args.out_dir
