@@ -13,13 +13,13 @@
       "start_time": "16:25",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.3753558038,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.8443781421,
+      "line_pattern": "2-2-1-1-1-1-1",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:24+09:00"
+      "published_at": "2026-10-25T00:42:08+09:00"
     },
     {
       "race_id": "202610258711",
@@ -31,13 +31,13 @@
       "start_time": "15:48",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.9937286612,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.4571033886,
+      "line_pattern": "3-3-3",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:22+09:00"
+      "published_at": "2026-10-25T00:42:06+09:00"
     },
     {
       "race_id": "202610258710",
@@ -49,13 +49,13 @@
       "start_time": "15:16",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.04354244,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.5025515681,
+      "line_pattern": "3-2-2-2",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:20+09:00"
+      "published_at": "2026-10-25T00:42:03+09:00"
     },
     {
       "race_id": "202610258709",
@@ -67,13 +67,13 @@
       "start_time": "14:46",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.4062111579,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.4229720569,
+      "line_pattern": "3-3-3",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:19+09:00"
+      "published_at": "2026-10-25T00:42:02+09:00"
     },
     {
       "race_id": "202610258708",
@@ -85,13 +85,13 @@
       "start_time": "14:16",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.0051036091,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.0930758733,
+      "line_pattern": "3-2-2-2",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:17+09:00"
+      "published_at": "2026-10-25T00:42:00+09:00"
     },
     {
       "race_id": "202610258707",
@@ -103,13 +103,13 @@
       "start_time": "13:46",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.7104553462,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.9245386101,
+      "line_pattern": "3-3-2-1",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:14+09:00"
+      "published_at": "2026-10-25T00:41:58+09:00"
     },
     {
       "race_id": "202610258706",
@@ -121,13 +121,13 @@
       "start_time": "13:18",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.4319036535,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.8862215547,
+      "line_pattern": "3-2-2-2",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:13+09:00"
+      "published_at": "2026-10-25T00:41:56+09:00"
     },
     {
       "race_id": "202610258705",
@@ -139,13 +139,13 @@
       "start_time": "12:50",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.1077163095,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.4578827085,
+      "line_pattern": "3-2-2-1-1",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:11+09:00"
+      "published_at": "2026-10-25T00:41:54+09:00"
     },
     {
       "race_id": "202610258704",
@@ -157,13 +157,13 @@
       "start_time": "12:22",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.616962024,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.6534460948,
+      "line_pattern": "3-2-2-2",
       "rider_count": 9,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:09+09:00"
+      "published_at": "2026-10-25T00:41:52+09:00"
     },
     {
       "race_id": "202610258703",
@@ -175,13 +175,13 @@
       "start_time": "11:54",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.4850550598,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.0177097976,
+      "line_pattern": "4-2-2",
       "rider_count": 8,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:07+09:00"
+      "published_at": "2026-10-25T00:41:50+09:00"
     },
     {
       "race_id": "202610258702",
@@ -193,13 +193,13 @@
       "start_time": "11:26",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 1.5146802683,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.3144274522,
+      "line_pattern": "3-3-1-1",
       "rider_count": 8,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:04+09:00"
+      "published_at": "2026-10-25T00:41:48+09:00"
     },
     {
       "race_id": "202610258701",
@@ -209,15 +209,15 @@
       "race_name": "1R",
       "grade": "G3",
       "start_time": "10:58",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.4663015128,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.1002809301,
+      "line_pattern": "3-2-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:02+09:00"
+      "published_at": "2026-10-25T00:41:46+09:00"
     },
     {
       "race_id": "202610257312",
@@ -227,15 +227,15 @@
       "race_name": "12R",
       "grade": "F1",
       "start_time": "16:03",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.4636594662,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.5498681423,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:02:01+09:00"
+      "published_at": "2026-10-25T00:41:44+09:00"
     },
     {
       "race_id": "202610257311",
@@ -245,15 +245,15 @@
       "race_name": "11R",
       "grade": "F1",
       "start_time": "15:32",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.1041016624,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.879706161,
+      "line_pattern": "3-2-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:58+09:00"
+      "published_at": "2026-10-25T00:41:42+09:00"
     },
     {
       "race_id": "202610257310",
@@ -263,15 +263,15 @@
       "race_name": "10R",
       "grade": "F1",
       "start_time": "15:01",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.6103235898,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.1150374416,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:57+09:00"
+      "published_at": "2026-10-25T00:41:40+09:00"
     },
     {
       "race_id": "202610257309",
@@ -281,15 +281,15 @@
       "race_name": "9R",
       "grade": "F1",
       "start_time": "14:31",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.3174218511,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.0882592339,
+      "line_pattern": "4-1-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:54+09:00"
+      "published_at": "2026-10-25T00:41:39+09:00"
     },
     {
       "race_id": "202610257308",
@@ -299,15 +299,15 @@
       "race_name": "8R",
       "grade": "F1",
       "start_time": "14:01",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.3088984195,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.036421409,
+      "line_pattern": "2-2-2-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:52+09:00"
+      "published_at": "2026-10-25T00:41:37+09:00"
     },
     {
       "race_id": "202610257305",
@@ -317,15 +317,15 @@
       "race_name": "5R",
       "grade": "F1",
       "start_time": "12:36",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.6314881643,
-      "line_pattern": "ライン未確定",
+      "score_gap": 2.1504007689,
+      "line_pattern": "2-2-2-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:46+09:00"
+      "published_at": "2026-10-25T00:41:31+09:00"
     },
     {
       "race_id": "202610257304",
@@ -335,15 +335,15 @@
       "race_name": "4R",
       "grade": "F1",
       "start_time": "12:08",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.3245639887,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.131463508,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:44+09:00"
+      "published_at": "2026-10-25T00:41:29+09:00"
     },
     {
       "race_id": "202610257303",
@@ -353,15 +353,15 @@
       "race_name": "3R",
       "grade": "F1",
       "start_time": "11:40",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.0184654783,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.1132942548,
+      "line_pattern": "2-2-2-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:42+09:00"
+      "published_at": "2026-10-25T00:41:27+09:00"
     },
     {
       "race_id": "202610257302",
@@ -371,15 +371,15 @@
       "race_name": "2R",
       "grade": "F1",
       "start_time": "11:12",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.1330734688,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.8608212213,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:40+09:00"
+      "published_at": "2026-10-25T00:41:26+09:00"
     },
     {
       "race_id": "202610257301",
@@ -389,15 +389,15 @@
       "race_name": "1R",
       "grade": "F1",
       "start_time": "10:45",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.2558777513,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.701623809,
+      "line_pattern": "3-2-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:37+09:00"
+      "published_at": "2026-10-25T00:41:23+09:00"
     },
     {
       "race_id": "202610256307",
@@ -407,15 +407,15 @@
       "race_name": "7R",
       "grade": "F2",
       "start_time": "10:35",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.3545570808,
-      "line_pattern": "ライン未確定",
+      "score_gap": 2.4268613407,
+      "line_pattern": "1-1-1-1-1-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:35+09:00"
+      "published_at": "2026-10-25T00:41:21+09:00"
     },
     {
       "race_id": "202610256306",
@@ -425,15 +425,15 @@
       "race_name": "6R",
       "grade": "F2",
       "start_time": "10:14",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.2481121118,
-      "line_pattern": "ライン未確定",
+      "score_gap": 3.7695706312,
+      "line_pattern": "1-1-1-1-1-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:33+09:00"
+      "published_at": "2026-10-25T00:41:19+09:00"
     },
     {
       "race_id": "202610256305",
@@ -443,15 +443,15 @@
       "race_name": "5R",
       "grade": "F2",
       "start_time": "09:53",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.0123775735,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.4017155825,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:31+09:00"
+      "published_at": "2026-10-25T00:41:18+09:00"
     },
     {
       "race_id": "202610256304",
@@ -461,15 +461,15 @@
       "race_name": "4R",
       "grade": "F2",
       "start_time": "09:32",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.031851182,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.8504080515,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:29+09:00"
+      "published_at": "2026-10-25T00:41:16+09:00"
     },
     {
       "race_id": "202610256303",
@@ -479,15 +479,15 @@
       "race_name": "3R",
       "grade": "F2",
       "start_time": "09:11",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.1216848783,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.2151208819,
+      "line_pattern": "3-1-1-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:26+09:00"
+      "published_at": "2026-10-25T00:41:14+09:00"
     },
     {
       "race_id": "202610256302",
@@ -497,15 +497,15 @@
       "race_name": "2R",
       "grade": "F2",
       "start_time": "08:50",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.3236489638,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.201647211,
+      "line_pattern": "4-1-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:24+09:00"
+      "published_at": "2026-10-25T00:41:12+09:00"
     },
     {
       "race_id": "202610256301",
@@ -515,15 +515,19 @@
       "race_name": "1R",
       "grade": "F2",
       "start_time": "08:30",
-      "status": "line_data_missing",
+      "status": "v1_eligible",
       "race_status": "発走前",
-      "score_gap": 0.8675215474,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.7511369051,
+      "line_pattern": "2-2-2-1",
       "rider_count": 7,
-      "recommendation": null,
-      "points": 0,
-      "total_yen": 0,
-      "published_at": "2026-10-25T00:01:22+09:00"
+      "recommendation": {
+        "stars": 2,
+        "stars_text": "★★☆☆☆",
+        "recommendation": "注意"
+      },
+      "points": 6,
+      "total_yen": 600,
+      "published_at": "2026-10-25T00:41:10+09:00"
     },
     {
       "race_id": "202610255312",
@@ -533,15 +537,15 @@
       "race_name": "12R",
       "grade": "F1",
       "start_time": "20:30",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.4084528634,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.2293484716,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:20+09:00"
+      "published_at": "2026-10-25T00:41:08+09:00"
     },
     {
       "race_id": "202610255311",
@@ -551,15 +555,15 @@
       "race_name": "11R",
       "grade": "F1",
       "start_time": "20:02",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.1225047245,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.4722837036,
+      "line_pattern": "4-2-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:18+09:00"
+      "published_at": "2026-10-25T00:41:06+09:00"
     },
     {
       "race_id": "202610255310",
@@ -569,15 +573,15 @@
       "race_name": "10R",
       "grade": "F1",
       "start_time": "19:35",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.917625944,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.5374280378,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:16+09:00"
+      "published_at": "2026-10-25T00:41:05+09:00"
     },
     {
       "race_id": "202610255309",
@@ -587,15 +591,15 @@
       "race_name": "9R",
       "grade": "F1",
       "start_time": "19:09",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.0641791512,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.2368892727,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:13+09:00"
+      "published_at": "2026-10-25T00:41:03+09:00"
     },
     {
       "race_id": "202610255308",
@@ -605,15 +609,15 @@
       "race_name": "8R",
       "grade": "F1",
       "start_time": "18:43",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.263185789,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.1251193796,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:11+09:00"
+      "published_at": "2026-10-25T00:41:01+09:00"
     },
     {
       "race_id": "202610255307",
@@ -623,15 +627,15 @@
       "race_name": "7R",
       "grade": "F1",
       "start_time": "18:18",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.400628529,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.6575997957,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:09+09:00"
+      "published_at": "2026-10-25T00:40:58+09:00"
     },
     {
       "race_id": "202610255306",
@@ -641,15 +645,15 @@
       "race_name": "6R",
       "grade": "F1",
       "start_time": "17:54",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.6875615281,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.2675018407,
+      "line_pattern": "3-1-1-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:07+09:00"
+      "published_at": "2026-10-25T00:40:56+09:00"
     },
     {
       "race_id": "202610255305",
@@ -659,15 +663,15 @@
       "race_name": "5R",
       "grade": "F1",
       "start_time": "17:30",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.0360014343,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.4967862883,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:05+09:00"
+      "published_at": "2026-10-25T00:40:54+09:00"
     },
     {
       "race_id": "202610255304",
@@ -677,15 +681,15 @@
       "race_name": "4R",
       "grade": "F1",
       "start_time": "17:06",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.6710928826,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.4271031287,
+      "line_pattern": "3-2-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:03+09:00"
+      "published_at": "2026-10-25T00:40:52+09:00"
     },
     {
       "race_id": "202610255303",
@@ -695,15 +699,15 @@
       "race_name": "3R",
       "grade": "F1",
       "start_time": "16:42",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.3204806103,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.9412737555,
+      "line_pattern": "3-2-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:01:01+09:00"
+      "published_at": "2026-10-25T00:40:50+09:00"
     },
     {
       "race_id": "202610255302",
@@ -713,15 +717,15 @@
       "race_name": "2R",
       "grade": "F1",
       "start_time": "16:18",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.4754096196,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.7627803772,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:59+09:00"
+      "published_at": "2026-10-25T00:40:48+09:00"
     },
     {
       "race_id": "202610255301",
@@ -731,15 +735,15 @@
       "race_name": "1R",
       "grade": "F1",
       "start_time": "15:55",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.386215341,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.5247877371,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:57+09:00"
+      "published_at": "2026-10-25T00:40:46+09:00"
     },
     {
       "race_id": "202610254211",
@@ -749,15 +753,15 @@
       "race_name": "11R",
       "grade": "F2",
       "start_time": "20:16",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.7482230511,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.1390234956,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:55+09:00"
+      "published_at": "2026-10-25T00:40:44+09:00"
     },
     {
       "race_id": "202610254210",
@@ -767,15 +771,15 @@
       "race_name": "10R",
       "grade": "F2",
       "start_time": "19:48",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.7260912902,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.7010547332,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:52+09:00"
+      "published_at": "2026-10-25T00:40:42+09:00"
     },
     {
       "race_id": "202610254209",
@@ -785,15 +789,15 @@
       "race_name": "9R",
       "grade": "F2",
       "start_time": "19:22",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.0477019419,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.1724610387,
+      "line_pattern": "3-2-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:50+09:00"
+      "published_at": "2026-10-25T00:40:40+09:00"
     },
     {
       "race_id": "202610254208",
@@ -803,15 +807,15 @@
       "race_name": "8R",
       "grade": "F2",
       "start_time": "18:56",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.5270368074,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.4505620104,
+      "line_pattern": "3-2-1-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:48+09:00"
+      "published_at": "2026-10-25T00:40:38+09:00"
     },
     {
       "race_id": "202610254207",
@@ -821,15 +825,15 @@
       "race_name": "7R",
       "grade": "F2",
       "start_time": "18:30",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.0400782489,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.2003074565,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:46+09:00"
+      "published_at": "2026-10-25T00:40:35+09:00"
     },
     {
       "race_id": "202610254205",
@@ -841,13 +845,13 @@
       "start_time": "17:42",
       "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 1.5905513985,
-      "line_pattern": "ライン未確定",
+      "score_gap": 2.8321952973,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:41+09:00"
+      "published_at": "2026-10-25T00:40:32+09:00"
     },
     {
       "race_id": "202610254204",
@@ -857,15 +861,15 @@
       "race_name": "4R",
       "grade": "F2",
       "start_time": "17:18",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.6339422649,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.0930768864,
+      "line_pattern": "3-2-2",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:39+09:00"
+      "published_at": "2026-10-25T00:40:30+09:00"
     },
     {
       "race_id": "202610254203",
@@ -875,15 +879,15 @@
       "race_name": "3R",
       "grade": "F2",
       "start_time": "16:54",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.5234522866,
-      "line_pattern": "ライン未確定",
+      "score_gap": 0.5609741205,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:37+09:00"
+      "published_at": "2026-10-25T00:40:28+09:00"
     },
     {
       "race_id": "202610254202",
@@ -893,17 +897,17 @@
       "race_name": "2R",
       "grade": "F2",
       "start_time": "16:32",
-      "status": "line_data_missing",
+      "status": "v1_not_applicable",
       "race_status": "発走前",
-      "score_gap": 0.2597793346,
-      "line_pattern": "ライン未確定",
+      "score_gap": 1.4573281737,
+      "line_pattern": "3-3-1",
       "rider_count": 7,
       "recommendation": null,
       "points": 0,
       "total_yen": 0,
-      "published_at": "2026-10-25T00:00:36+09:00"
+      "published_at": "2026-10-25T00:40:26+09:00"
     }
   ],
-  "updated_at": "2026-10-24T15:02:26+00:00",
+  "updated_at": "2026-10-24T15:42:09+00:00",
   "note": "Only independent pre-race forecasts. Never fallback to original HaruQ data."
 }

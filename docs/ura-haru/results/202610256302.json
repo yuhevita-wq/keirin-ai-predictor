@@ -10,79 +10,79 @@
   "grade": "F2",
   "start_time": "08:50",
   "status": "発走前",
-  "score_gap": 0.3236489638,
-  "line_pattern": "ライン未確定",
+  "score_gap": 0.201647211,
+  "line_pattern": "4-1-1-1",
   "rider_count": 7,
   "ranked": [
     {
       "rank": 1,
       "bike": 2,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.3786399
+      "name": "右近陸人",
+      "class": "A3",
+      "line_group": "1",
+      "line_role": "自力",
+      "competition_score": 69.4,
+      "score": -0.3169957
     },
     {
       "rank": 2,
-      "bike": 4,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.7022889
+      "bike": 7,
+      "name": "井山和裕",
+      "class": "A3",
+      "line_group": "1",
+      "line_role": "番手",
+      "competition_score": 67.33,
+      "score": -0.5186429
     },
     {
       "rank": 3,
       "bike": 3,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.7863461
+      "name": "市川博章",
+      "class": "A3",
+      "line_group": "1",
+      "line_role": "3番手",
+      "competition_score": 68.63,
+      "score": -1.2695749
     },
     {
       "rank": 4,
       "bike": 5,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.7926886
+      "name": "安坂洋一",
+      "class": "A3",
+      "line_group": "1",
+      "line_role": "3番手",
+      "competition_score": 70.85,
+      "score": -1.2984023
     },
     {
       "rank": 5,
-      "bike": 1,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.9722406
+      "bike": 4,
+      "name": "齋藤昌太",
+      "class": "A3",
+      "line_group": "3",
+      "line_role": "自力",
+      "competition_score": 69.04,
+      "score": -1.6937559
     },
     {
       "rank": 6,
-      "bike": 7,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.3627283
+      "bike": 1,
+      "name": "木下章",
+      "class": "A3",
+      "line_group": "2",
+      "line_role": "自力",
+      "competition_score": 68.83,
+      "score": -1.9557537
     },
     {
       "rank": 7,
       "bike": 6,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -3.1019945
+      "name": "伊藤司",
+      "class": "A3",
+      "line_group": "4",
+      "line_role": "自力",
+      "competition_score": 64.06,
+      "score": -3.2618115
     }
   ],
   "ura_haru_v1_display": {
@@ -90,23 +90,23 @@
     "frozen_v1_commit": "7adf108f33a16c5043e79b2f6cf737d9bc397095",
     "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
     "advisory_only": true,
-    "status": "line_data_missing",
+    "status": "v1_not_applicable",
     "recommendation": null,
     "tickets": [],
     "points": 0,
     "research_stake_yen": 0,
-    "reason": "出走表のライン予想が未公開・不完全なため、固定V1の対象判定ができません。"
+    "reason": "固定V1の条件不成立（LOW、7車、2-2-2-1、上位同ライン2人）。"
   },
   "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
   "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
   "history_latest": "2026-10-22",
-  "published_at": "2026-10-25T00:01:24+09:00",
+  "published_at": "2026-10-25T00:41:12+09:00",
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610256302",
   "asof_feature_audit_completed": false,
   "original_flagship_data_used": false,
   "web_record": {
     "producer": "independent-ura-haru-github-actions",
-    "run_id": "40104836508",
+    "run_id": "40107855215",
     "public_data_only": true
   }
 }

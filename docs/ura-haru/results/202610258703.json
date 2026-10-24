@@ -10,89 +10,89 @@
   "grade": "G3",
   "start_time": "11:54",
   "status": "発走前",
-  "score_gap": 0.4850550598,
-  "line_pattern": "ライン未確定",
+  "score_gap": 0.0177097976,
+  "line_pattern": "4-2-2",
   "rider_count": 8,
   "ranked": [
     {
       "rank": 1,
-      "bike": 4,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -0.0552119
+      "bike": 7,
+      "name": "竹村勇祐",
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "番手",
+      "competition_score": 103.8,
+      "score": 0.9365176
     },
     {
       "rank": 2,
-      "bike": 2,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -0.5402669
+      "bike": 4,
+      "name": "長田龍拳",
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "自力",
+      "competition_score": 103.15,
+      "score": 0.9188078
     },
     {
       "rank": 3,
-      "bike": 3,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -0.8672693
+      "bike": 2,
+      "name": "長松空吾",
+      "class": "S2",
+      "line_group": "2",
+      "line_role": "自力",
+      "competition_score": 97.82,
+      "score": -0.5924226
     },
     {
       "rank": 4,
-      "bike": 7,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.2800446
+      "bike": 3,
+      "name": "伊藤成紀",
+      "class": "S2",
+      "line_group": "3",
+      "line_role": "自力",
+      "competition_score": 97.05,
+      "score": -0.6617672
     },
     {
       "rank": 5,
-      "bike": 8,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.5516744
+      "bike": 1,
+      "name": "高橋広大",
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "3番手",
+      "competition_score": 99.36,
+      "score": -1.0758213
     },
     {
       "rank": 6,
-      "bike": 1,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.7329452
+      "bike": 8,
+      "name": "小酒大勇",
+      "class": "S2",
+      "line_group": "2",
+      "line_role": "番手",
+      "competition_score": 95.94,
+      "score": -1.4797362
     },
     {
       "rank": 7,
       "bike": 5,
       "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.6265576
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "3番手",
+      "competition_score": 96.33,
+      "score": -1.6878399
     },
     {
       "rank": 8,
       "bike": 6,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.7956144
+      "name": "佐野梅一",
+      "class": "S2",
+      "line_group": "3",
+      "line_role": "番手",
+      "competition_score": 90.79,
+      "score": -2.5613338
     }
   ],
   "ura_haru_v1_display": {
@@ -110,13 +110,13 @@
   "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
   "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
   "history_latest": "2026-10-22",
-  "published_at": "2026-10-25T00:02:07+09:00",
+  "published_at": "2026-10-25T00:41:50+09:00",
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610258703",
   "asof_feature_audit_completed": false,
   "original_flagship_data_used": false,
   "web_record": {
     "producer": "independent-ura-haru-github-actions",
-    "run_id": "40104836508",
+    "run_id": "40107855215",
     "public_data_only": true
   }
 }

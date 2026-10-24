@@ -10,79 +10,79 @@
   "grade": "F2",
   "start_time": "10:14",
   "status": "発走前",
-  "score_gap": 0.2481121118,
-  "line_pattern": "ライン未確定",
+  "score_gap": 3.7695706312,
+  "line_pattern": "1-1-1-1-1-1-1",
   "rider_count": 7,
   "ranked": [
     {
       "rank": 1,
-      "bike": 2,
-      "name": "",
+      "bike": 1,
+      "name": "齊藤萌",
       "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.3890055
+      "line_group": "3",
+      "line_role": "自力",
+      "competition_score": 47.5,
+      "score": 2.7431942
     },
     {
       "rank": 2,
-      "bike": 7,
-      "name": "",
+      "bike": 2,
+      "name": "高橋美沙紀",
       "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.6371176
+      "line_group": "5",
+      "line_role": "自力",
+      "competition_score": 52.61,
+      "score": -1.0263764
     },
     {
       "rank": 3,
-      "bike": 6,
-      "name": "",
+      "bike": 7,
+      "name": "小林真矢香",
       "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.2355737
+      "line_group": "4",
+      "line_role": "自力",
+      "competition_score": 51.45,
+      "score": -1.2451956
     },
     {
       "rank": 4,
-      "bike": 4,
-      "name": "",
+      "bike": 6,
+      "name": "川路遥香",
       "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.3935618
+      "line_group": "6",
+      "line_role": "自力",
+      "competition_score": 49.71,
+      "score": -2.0912048
     },
     {
       "rank": 5,
-      "bike": 1,
-      "name": "",
+      "bike": 4,
+      "name": "寺本愛花",
       "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.4196629
+      "line_group": "1",
+      "line_role": "自力",
+      "competition_score": 47.33,
+      "score": -2.4023125
     },
     {
       "rank": 6,
       "bike": 5,
-      "name": "",
+      "name": "三谷尚子",
       "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.5645333
+      "line_group": "7",
+      "line_role": "自力",
+      "competition_score": 48.73,
+      "score": -2.6620101
     },
     {
       "rank": 7,
       "bike": 3,
-      "name": "",
+      "name": "田口梓乃",
       "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -3.1836053
+      "line_group": "2",
+      "line_role": "自力",
+      "competition_score": 46.83,
+      "score": -3.2149868
     }
   ],
   "ura_haru_v1_display": {
@@ -90,23 +90,23 @@
     "frozen_v1_commit": "7adf108f33a16c5043e79b2f6cf737d9bc397095",
     "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
     "advisory_only": true,
-    "status": "line_data_missing",
+    "status": "v1_not_applicable",
     "recommendation": null,
     "tickets": [],
     "points": 0,
     "research_stake_yen": 0,
-    "reason": "出走表のライン予想が未公開・不完全なため、固定V1の対象判定ができません。"
+    "reason": "固定V1の条件不成立（LOW、7車、2-2-2-1、上位同ライン2人）。"
   },
   "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
   "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
   "history_latest": "2026-10-22",
-  "published_at": "2026-10-25T00:01:33+09:00",
+  "published_at": "2026-10-25T00:41:19+09:00",
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610256306",
   "asof_feature_audit_completed": false,
   "original_flagship_data_used": false,
   "web_record": {
     "producer": "independent-ura-haru-github-actions",
-    "run_id": "40104836508",
+    "run_id": "40107855215",
     "public_data_only": true
   }
 }

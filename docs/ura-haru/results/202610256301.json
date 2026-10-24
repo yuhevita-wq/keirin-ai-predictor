@@ -10,79 +10,79 @@
   "grade": "F2",
   "start_time": "08:30",
   "status": "発走前",
-  "score_gap": 0.8675215474,
-  "line_pattern": "ライン未確定",
+  "score_gap": 0.7511369051,
+  "line_pattern": "2-2-2-1",
   "rider_count": 7,
   "ranked": [
     {
       "rank": 1,
       "bike": 7,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -0.2104959
+      "name": "與古田龍門",
+      "class": "A3",
+      "line_group": "4",
+      "line_role": "自力",
+      "competition_score": 74.05,
+      "score": 0.5959353
     },
     {
       "rank": 2,
-      "bike": 5,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.0780175
+      "bike": 1,
+      "name": "齊藤紳一朗",
+      "class": "A3",
+      "line_group": "3",
+      "line_role": "番手",
+      "competition_score": 69.21,
+      "score": -0.1552016
     },
     {
       "rank": 3,
-      "bike": 2,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.573413
+      "bike": 6,
+      "name": "前島恭平",
+      "class": "A3",
+      "line_group": "3",
+      "line_role": "自力",
+      "competition_score": 64.89,
+      "score": -0.59936
     },
     {
       "rank": 4,
-      "bike": 4,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.1100238
+      "bike": 5,
+      "name": "古川大輔",
+      "class": "A3",
+      "line_group": "1",
+      "line_role": "番手",
+      "competition_score": 72.13,
+      "score": -0.7491106
     },
     {
       "rank": 5,
-      "bike": 1,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.3934672
+      "bike": 2,
+      "name": "友永龍介",
+      "class": "A3",
+      "line_group": "1",
+      "line_role": "自力",
+      "competition_score": 67.29,
+      "score": -1.6528889
     },
     {
       "rank": 6,
-      "bike": 3,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -2.6443878
+      "bike": 4,
+      "name": "亀井道佳",
+      "class": "A3",
+      "line_group": "2",
+      "line_role": "自力",
+      "competition_score": 67.85,
+      "score": -1.9905458
     },
     {
       "rank": 7,
-      "bike": 6,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -3.0856568
+      "bike": 3,
+      "name": "南和夫",
+      "class": "A3",
+      "line_group": "4",
+      "line_role": "番手",
+      "competition_score": 65.81,
+      "score": -2.5222872
     }
   ],
   "ura_haru_v1_display": {
@@ -90,23 +90,72 @@
     "frozen_v1_commit": "7adf108f33a16c5043e79b2f6cf737d9bc397095",
     "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
     "advisory_only": true,
-    "status": "line_data_missing",
-    "recommendation": null,
-    "tickets": [],
-    "points": 0,
-    "research_stake_yen": 0,
-    "reason": "出走表のライン予想が未公開・不完全なため、固定V1の対象判定ができません。"
+    "status": "v1_eligible",
+    "recommendation": {
+      "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
+      "low_quarter": "LOW_0.75_1.00",
+      "score_range": [
+        0.75,
+        1.0
+      ],
+      "stars": 2,
+      "stars_text": "★★☆☆☆",
+      "recommendation": "注意",
+      "reason": "2026年ROI341%は26万8,200円の1的中に依存。指定配当帯では2026年80.03%。",
+      "historical": {
+        "years": [
+          "2024",
+          "2025",
+          "2026-Jan-Sep"
+        ],
+        "active_races": 646,
+        "race_hit_rate_pct": 15.79,
+        "all_payout_roi_pct": [
+          168.95,
+          130.72,
+          341.0
+        ],
+        "target_payout_3000_to_99999_roi_pct": [
+          155.74,
+          115.38,
+          80.03
+        ],
+        "positive_months": [
+          7,
+          8,
+          4
+        ],
+        "months_observed": [
+          12,
+          12,
+          9
+        ]
+      },
+      "advisory_only": true,
+      "not_a_probability_or_ev": true
+    },
+    "tickets": [
+      "1-6-2",
+      "1-6-3",
+      "1-6-4",
+      "6-1-2",
+      "6-1-3",
+      "6-1-4"
+    ],
+    "points": 6,
+    "research_stake_yen": 600,
+    "low_score_gap": 0.7511369051363243
   },
   "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
   "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
   "history_latest": "2026-10-22",
-  "published_at": "2026-10-25T00:01:22+09:00",
+  "published_at": "2026-10-25T00:41:10+09:00",
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610256301",
   "asof_feature_audit_completed": false,
   "original_flagship_data_used": false,
   "web_record": {
     "producer": "independent-ura-haru-github-actions",
-    "run_id": "40104836508",
+    "run_id": "40107855215",
     "public_data_only": true
   }
 }

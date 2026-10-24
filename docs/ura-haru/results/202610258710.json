@@ -10,99 +10,99 @@
   "grade": "G3",
   "start_time": "15:16",
   "status": "発走前",
-  "score_gap": 0.04354244,
-  "line_pattern": "ライン未確定",
+  "score_gap": 0.5025515681,
+  "line_pattern": "3-2-2-2",
   "rider_count": 9,
   "ranked": [
     {
       "rank": 1,
       "bike": 1,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": 0.1759391
+      "name": "菅田壱道",
+      "class": "S1",
+      "line_group": "3",
+      "line_role": "番手",
+      "competition_score": 115.63,
+      "score": 1.8228592
     },
     {
       "rank": 2,
-      "bike": 2,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": 0.1323966
+      "bike": 5,
+      "name": "木村皆斗",
+      "class": "S1",
+      "line_group": "2",
+      "line_role": "自力",
+      "competition_score": 110.16,
+      "score": 1.3203076
     },
     {
       "rank": 3,
-      "bike": 5,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -0.3534329
+      "bike": 9,
+      "name": "山田久徳",
+      "class": "S1",
+      "line_group": "1",
+      "line_role": "番手",
+      "competition_score": 109.63,
+      "score": 1.0376291
     },
     {
       "rank": 4,
-      "bike": 8,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -0.5562599
+      "bike": 4,
+      "name": "松川高大",
+      "class": "S1",
+      "line_group": "4",
+      "line_role": "番手",
+      "competition_score": 104.75,
+      "score": 0.6076112
     },
     {
       "rank": 5,
-      "bike": 9,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -0.5822282
+      "bike": 3,
+      "name": "宿口陽一",
+      "class": "S1",
+      "line_group": "2",
+      "line_role": "番手",
+      "competition_score": 107.3,
+      "score": 0.4691149
     },
     {
       "rank": 6,
-      "bike": 4,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.0152387
+      "bike": 2,
+      "name": "福永大智",
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "自力",
+      "competition_score": 106.27,
+      "score": 0.1696156
     },
     {
       "rank": 7,
-      "bike": 3,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.0187088
+      "bike": 8,
+      "name": "野中龍之介",
+      "class": "S2",
+      "line_group": "4",
+      "line_role": "自力",
+      "competition_score": 103.81,
+      "score": -0.0486956
     },
     {
       "rank": 8,
-      "bike": 6,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.2637789
+      "bike": 7,
+      "name": "中村圭志",
+      "class": "S1",
+      "line_group": "4",
+      "line_role": "3番手",
+      "competition_score": 104.83,
+      "score": -0.5619038
     },
     {
       "rank": 9,
-      "bike": 7,
-      "name": "",
-      "class": null,
-      "line_group": "",
-      "line_role": null,
-      "competition_score": 0.0,
-      "score": -1.5620812
+      "bike": 6,
+      "name": "伊東翔貴",
+      "class": "S2",
+      "line_group": "3",
+      "line_role": "自力",
+      "competition_score": 100.88,
+      "score": -1.3198127
     }
   ],
   "ura_haru_v1_display": {
@@ -120,13 +120,13 @@
   "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
   "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
   "history_latest": "2026-10-22",
-  "published_at": "2026-10-25T00:02:20+09:00",
+  "published_at": "2026-10-25T00:42:03+09:00",
   "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610258710",
   "asof_feature_audit_completed": false,
   "original_flagship_data_used": false,
   "web_record": {
     "producer": "independent-ura-haru-github-actions",
-    "run_id": "40104836508",
+    "run_id": "40107855215",
     "public_data_only": true
   }
 }
