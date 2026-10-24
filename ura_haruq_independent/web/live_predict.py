@@ -71,8 +71,8 @@ def verify_history(day: str):
 
 def persist_entries(rid: str, data: dict):
     entries = data.get("entries") or []
-    if len(entries) != 7:
-        raise RuntimeError(f"V1_REQUIRES_SEVEN_ENTRIES_{len(entries)}")
+    if not 7 <= len(entries) <= 9:
+        raise RuntimeError(f"RANKER_REQUIRES_SEVEN_TO_NINE_ENTRIES_{len(entries)}")
     if any(str(e.get("class") or "").upper().startswith("L") for e in entries) or \
        re.search(r"ガールズ|ガ決|ガ般|Ｌ級|L級",str(data.get("race_name") or "")):
         raise RuntimeError("GIRLS_NOT_ELIGIBLE")
@@ -80,17 +80,14 @@ def persist_entries(rid: str, data: dict):
         raise RuntimeError("NO_TRUSTWORTHY_GRADE")
     bikes = [int(e.get("bike_number") or 0) for e in entries]
     riders = [str(e.get("rider_id") or "") for e in entries]
-    if len(set(bikes)) != 7 or min(bikes) <= 0 or len(set(riders)) != 7 or "" in riders:
+    if len(set(bikes)) != len(entries) or min(bikes) <= 0 or len(set(riders)) != len(entries) or "" in riders:
         raise RuntimeError("BAD_ENTRY_BIKES_OR_RIDERS")
     lines = {}
     for e in entries:
         group = str(e.get("line_group") or "").strip()
-        if not group:
-            raise RuntimeError("MISSING_PRERACE_LINE_ASSIGNMENTS")
         lines[int(e["bike_number"])] = group
     from collections import Counter
-    if sorted(Counter(lines.values()).values(), reverse=True) != [2, 2, 2, 1]:
-        raise RuntimeError("NOT_2221_LINE_TOPOLOGY")
+    # Inapplicable line patterns remain visible, without V1 tickets.
     conn = get_connection()
     try:
         # The archive is a temporary copy on an isolated runner. A historical
@@ -104,7 +101,7 @@ def persist_entries(rid: str, data: dict):
             "race_number": int(rid[10:]),
             "race_name": data.get("race_name"),
             "grade": data["grade"],
-            "rider_count": 7,
+            "rider_count": len(entries),
             "start_time": data.get("start_time"),
         })
         for e in entries:
@@ -140,13 +137,13 @@ def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict) -
         raise RuntimeError("ENTRY_NOT_FOUND")
     lines = persist_entries(rid, data)
     features = builder.build_race_features(rid, day)
-    if len(features) != 7:
+    if len(features) != len(data["entries"]):
         raise RuntimeError("INCORRECT_FEATURE_ROW_COUNT")
     ordered_features = features[builder.feature_names].apply(pd.to_numeric, errors="coerce")
     if ordered_features.isna().all(axis=1).any():
         raise RuntimeError("EMPTY_FEATURES_FOR_A_RIDER")
     scores = model.predict(ordered_features.fillna(0.0))
-    if len(scores) != 7 or not all(math.isfinite(float(s)) for s in scores):
+    if len(scores) != len(data["entries"]) or not all(math.isfinite(float(s)) for s in scores):
         raise RuntimeError("BAD_MODEL_SCORES")
     rank_table = features.copy()
     rank_table["score"] = scores.to_numpy()
@@ -181,6 +178,9 @@ def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict) -
     if re.fullmatch(r"\d{1,2}:\d{2}",str(start)):
         local_dt = datetime.strptime(day+"T"+start,"%Y-%m-%dT%H:%M").replace(tzinfo=ZONE)
         status = "発走前" if now < local_dt else "発走後・参考"
+    from collections import Counter
+    group_counts = Counter(v for v in lines.values() if v)
+    line_pattern="-".join(map(str,sorted(group_counts.values(),reverse=True))) if len(group_counts) and sum(group_counts.values()) == len(lines) else "ライン未確定"
     return {
       "schema_version":1,
       "system":SYSTEM_ID,"display_name":"裏ハルキュー",
@@ -188,7 +188,7 @@ def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict) -
       "race_name":data.get("race_name"),"race_number":int(rid[-2:]),
       "grade":data.get("grade"),"start_time":start,
       "status":status,"score_gap":round(gap,10),
-      "line_pattern":"2-2-2-1",
+      "line_pattern":line_pattern,"rider_count":len(data["entries"]),
       "ranked":ranked,"ura_haru_v1_display":rec,
       "model_role":"INDEPENDENT_CHRONOLOGICAL_2026",
       "model_sha256":model_sha,
