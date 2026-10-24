@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "system": "URA_HARU_V1_20261024",
+  "source": "independent-model-only",
+  "items": [],
+  "updated_at": null,
+  "note": "Only independent pre-race forecasts. Never fallback to original HaruQ data."
+}
