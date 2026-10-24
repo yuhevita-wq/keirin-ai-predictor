@@ -18,6 +18,10 @@ from pathlib import Path
 import re
 import sqlite3
 import statistics
+import sys
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 import numpy as np
 import pandas as pd
