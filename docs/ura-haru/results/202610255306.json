@@ -90,12 +90,12 @@
     "frozen_v1_commit": "7adf108f33a16c5043e79b2f6cf737d9bc397095",
     "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
     "advisory_only": true,
-    "status": "v1_not_applicable",
+    "status": "line_data_missing",
     "recommendation": null,
     "tickets": [],
     "points": 0,
     "research_stake_yen": 0,
-    "reason": "固定V1の条件不成立（LOW、7車、2-2-2-1、上位同ライン2人）。"
+    "reason": "出走表のライン予想が未公開・不完全なため、固定V1の対象判定ができません。"
   },
   "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
   "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
