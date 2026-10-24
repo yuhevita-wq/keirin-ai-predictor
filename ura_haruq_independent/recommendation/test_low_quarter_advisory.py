@@ -54,12 +54,13 @@ class LowQuarterAdvisoryTests(unittest.TestCase):
         self.assertEqual(len(json.dumps(evaluated, ensure_ascii=False)), len(json.dumps(json.loads(json.dumps(evaluated, ensure_ascii=False)), ensure_ascii=False)))
 
     def test_research_only_no_rating_if_not_eligible(self):
-        for gap in (-0.01, 1.0, None):
+        for gap in (-0.01, 1.0):
             source = {**BASIC, "score_gap": gap}
             result = evaluate_record(source)
             self.assertEqual(result["status"], "v1_not_applicable")
             self.assertIsNone(result["recommendation"])
             self.assertEqual(result["points"], 0)
+        self.assertEqual(evaluate_record({**BASIC, "score_gap": None})["status"], "invalid_input")
         lines = "3:A;5:B;1:C;2:A;6:B;7:C;4:D"
         result = evaluate_record({**BASIC, "line_groups_by_bike": lines})
         self.assertEqual(result["status"], "v1_not_applicable")
