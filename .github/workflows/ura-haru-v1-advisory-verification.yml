@@ -1,0 +1,58 @@
+name: Ura Haru V1 - Recommendation Display Verification
+
+on:
+  push:
+    branches:
+      - ura-haruq/independent-train-20261024
+    paths:
+      - .github/workflows/ura-haru-v1-advisory-verification.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  advisory-only-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify frozen V1 source checksum
+        run: |
+          echo "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818  ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py" | sha256sum -c -
+      - name: Test display-only recommendations
+        run: python -m unittest ura_haruq_independent.recommendation.test_low_quarter_advisory -v
+      - name: Generate sample advisory without input overwrite
+        shell: bash
+        run: |
+          cat > /tmp/ura_v1_advisory_input.json <<'JSON'
+          {
+            "race_id": "example-only",
+            "score_gap": 0.37,
+            "predicted_bikes_by_rank": "3-5-1-2-6-7-4",
+            "line_groups_by_bike": "3:A;5:A;1:B;2:B;6:C;7:C;4:D"
+          }
+          JSON
+          python -m ura_haruq_independent.recommendation.low_quarter_advisory --input /tmp/ura_v1_advisory_input.json --output /tmp/ura_v1_advisory_output.json
+          python - <<'PY'
+          import json
+          x=json.load(open("/tmp/ura_v1_advisory_output.json", encoding="utf-8"))
+          y=x["ura_haru_v1_display"]
+          assert y["status"]=="v1_eligible"
+          assert y["recommendation"]["stars"]==5
+          assert y["points"]==6
+          assert y["research_stake_yen"]==600
+          assert x["original_input"]["race_id"]=="example-only"
+          print("V1_ADVISORY_PASSED", y["recommendation"]["stars_text"], y["points"])
+          PY
+          cp /tmp/ura_v1_advisory_output.json ura-haru-v1-advisory-sample.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ura-haru-v1-advisory-sample
+          path: ura-haru-v1-advisory-sample.json
+          retention-days: 90
