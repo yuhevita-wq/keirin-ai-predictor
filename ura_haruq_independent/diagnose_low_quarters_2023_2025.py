@@ -69,7 +69,7 @@ def rank_bin(index, n):
 def type_tickets(ordered_bikes, bounds):
     n = len(ordered_bikes)
     # Original independent V3 restriction: at least one bottom-half rank.
-    bottom_start = n // 2
+    bottom_start = (n + 1) // 2
     choices = [
         [i for i in range(n) if lo <= rank_bin(i, n) <= hi]
         for lo, hi in bounds
@@ -269,7 +269,7 @@ def main():
             name: [list(b) for b in bounds] for name, bounds in V3.items()
         },
         "normalized_rank_bin_zero_based": "floor(7 * predicted_rank_index_zero_based / field_size)",
-        "lower_rank_requirement": "at least one rider index >= floor(field_size/2)",
+        "lower_rank_requirement": "at least one rider index >= floor((field_size+1)/2)",
         "stake_per_ticket_yen": STAKE_PER_TICKET,
         "denominators": {
             "full_history_quality_valid_before_7to9_filter": valid_history,
