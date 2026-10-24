@@ -60,3 +60,16 @@ jobs:
           name: ura-haru-v1-advisory-sample
           path: ura-haru-v1-advisory-sample.json
           retention-days: 90
+
+      - name: Bundle standalone Ura advisory implementation and preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: ura-haru-v1-advisory-implementation
+          path: |
+            ura_haruq_independent/recommendation/low_quarter_advisory.py
+            ura_haruq_independent/recommendation/test_low_quarter_advisory.py
+            ura_haruq_independent/recommendation/advisory_viewer.html
+            ura_haruq_independent/recommendation/README.md
+            ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py
+            ura-haru-v1-advisory-sample.json
+          retention-days: 90
