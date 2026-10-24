@@ -1,0 +1,51 @@
+name: Ura Haru - Standalone Web Bundle
+on:
+  push:
+    branches: [ura-haruq/independent-train-20261024]
+    paths: [.github/workflows/ura-haru-web-static-bundle.yml]
+permissions:
+  contents: read
+jobs:
+  static-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify site isolation and javascript
+        shell: bash
+        run: |
+          test -s docs/ura-haru/index.html
+          test -s docs/ura-haru/results/index.json
+          python - <<'PY'
+          import json,re,pathlib
+          d=pathlib.Path("docs/ura-haru")
+          h=(d/"index.html").read_text()
+          m=json.loads((d/"results/index.json").read_text())
+          assert m["system"]=="URA_HARU_V1_20261024"
+          assert "prediction_detail" not in h and "eyJhbGciOiJIUzI1Ni" not in h
+          assert "裏ハルキュー" in h and "URA_HARU_V1_20261024" in h
+          script=re.search(r"<script>([\s\S]*?)</script>",h)
+          assert script
+          pathlib.Path("/tmp/ura_site.js").write_text(script.group(1))
+          assert len(m["items"])>0,"No independently generated published races"
+          for r in m["items"]:
+            path=d/"results"/(r["race_id"]+".json")
+            assert path.is_file()
+            doc=json.loads(path.read_text())
+            assert doc["system"]==m["system"]
+            assert doc["original_flagship_data_used"] is False
+          print("URA_STANDALONE_WEB_OK","RACES",len(m["items"]))
+          PY
+          node --check /tmp/ura_site.js
+      - name: Create standalone ZIP with independent race details
+        run: |
+          cd docs
+          zip -q -r "$RUNNER_TEMP/ura-haru-standalone-site.zip" ura-haru
+          ls -lh "$RUNNER_TEMP/ura-haru-standalone-site.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ura-haru-complete-web-and-50-races
+          path: docs/ura-haru/
+          retention-days: 90
