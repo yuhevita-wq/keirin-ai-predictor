@@ -1,0 +1,97 @@
+{
+  "system": "ura_v5_chronological_v3_shapes",
+  "research_only": true,
+  "not_approved_for_live_purchases": true,
+  "predictions_run_id": 40076792952,
+  "training_period": "2024-01-01..2024-12-31",
+  "selection_period": "2025-01-01..2025-12-31",
+  "test_period": "2026-01-01..2026-09-30",
+  "candidate_count": 21952,
+  "unit_stake_yen": 100,
+  "selection_lock_sha256": "0e789247c2b812a67ad663ff9d5085d7516a218e30f101c5e994d7c407d341c3",
+  "selection": "Same V4 greedy: >100% marginal ROI in both 2024 and 2025, >=5 incremental hits each, avg 1..24 extra tickets/race, no overlaps, max 5 per quarter; tie min annual ROI, 2025 profit, 2025 hits",
+  "quarters": {
+    "LOW_0.00_0.25": {
+      "candidate_ids": [
+        21209,
+        19831,
+        10962,
+        526
+      ],
+      "forms": [
+        "7/1-2/3",
+        "6/2-3/2",
+        "3/7/3-4",
+        "1/4/5"
+      ],
+      "races_2026": 3722,
+      "roi_2026": 56.0048,
+      "profit_2026": -913120
+    },
+    "LOW_0.25_0.50": {
+      "candidate_ids": [
+        14838
+      ],
+      "forms": [
+        "4/6/6-7"
+      ],
+      "races_2026": 3127,
+      "roi_2026": 54.6645,
+      "profit_2026": -156090
+    },
+    "LOW_0.50_0.75": {
+      "candidate_ids": [
+        6188,
+        774,
+        17636,
+        19865
+      ],
+      "forms": [
+        "2/6/1",
+        "1/7/4",
+        "5/3/5-7",
+        "6/2-4/3"
+      ],
+      "races_2026": 2345,
+      "roi_2026": 66.6566,
+      "profit_2026": -507120
+    },
+    "LOW_0.75_1.00": {
+      "candidate_ids": [
+        774,
+        629,
+        630
+      ],
+      "forms": [
+        "1/7/4",
+        "1/5/3",
+        "1/5/3-4"
+      ],
+      "races_2026": 1864,
+      "roi_2026": 104.4004,
+      "profit_2026": 29720
+    }
+  },
+  "summary": {
+    "y2024": {
+      "roi": 127.9058,
+      "profit": 1856380
+    },
+    "y2025": {
+      "roi": 120.0934,
+      "profit": 1304320
+    },
+    "y2026": {
+      "races": 11058,
+      "roi": 66.4953,
+      "profit": -1546610,
+      "tickets": 46161,
+      "hits": 144
+    }
+  },
+  "warnings": [
+    "2026 already evaluated; future retuning cannot reuse 2026 as untouched holdout",
+    "Feature availability at pre-race point unverified",
+    "Frozen HaruQ, V3, V4 and purchase policy unchanged"
+  ]
+}
