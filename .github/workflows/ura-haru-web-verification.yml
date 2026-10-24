@@ -1,0 +1,56 @@
+name: Ura Haru - Independent Web Verification
+
+on:
+  push:
+    branches:
+      - ura-haruq/independent-train-20261024
+    paths:
+      - .github/workflows/ura-haru-web-verification.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ura-web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install model-compatible dependencies
+        run: |
+          python -m pip install --disable-pip-version-check lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 scikit-learn==1.7.2 python-dotenv==1.1.1 requests beautifulsoup4 lxml
+      - name: Freeze proof
+        run: |
+          echo "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818  ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py" | sha256sum -c -
+      - name: Test independent publication and unchanged V1
+        run: |
+          python -m unittest ura_haruq_independent.recommendation.test_low_quarter_advisory ura_haruq_independent.web.test_ura_web -v
+      - name: Check generated static page JavaScript
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          x=Path('docs/ura-haru/index.html').read_text()
+          m=re.search(r'<script>([\s\S]*?)</script>',x)
+          assert m,'Missing standalone web javascript'
+          Path('/tmp/ura_web_script.js').write_text(m.group(1))
+          assert 'prediction_detail' not in x
+          assert 'URA_HARU_V1_20261024' in x
+          print('INDEPENDENT_SITE_SCRIPT_EXTRACTED')
+          PY
+          node --check /tmp/ura_web_script.js
+      - name: Save independent web preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: ura-haru-standalone-web-preview
+          path: |
+            docs/ura-haru/index.html
+            docs/ura-haru/results/index.json
+          retention-days: 90
