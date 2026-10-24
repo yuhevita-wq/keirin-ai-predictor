@@ -1,0 +1,104 @@
+name: Ura Haru V1 - Independent Live Web
+on:
+  push:
+    branches: [ura-haruq/independent-train-20261024]
+    paths: [.github/workflows/ura-haru-live-web.yml]
+  workflow_dispatch:
+    inputs:
+      race_id:
+        description: Optional official 12-digit race ID
+        required: false
+        type: string
+      date:
+        description: Optional YYYY-MM-DD (JST)
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: ura-haru-live-web
+  cancel-in-progress: false
+jobs:
+  independent-inference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify fixed rule and temporarily stage the original 44 features
+        run: |
+          set -euo pipefail
+          test -n "$COLLECTOR_PASSPHRASE"
+          echo "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818  ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py" | sha256sum -c -
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+          test "$(git hash-object config.py)" = 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          test "$(git hash-object features/builder.py)" = b47b793b5cf763bcb6d05137a115105006e50eba
+          test "$(git hash-object features/line_features.py)" = ecf3ab7c762475946054f806bb1d4b802c889389
+      - name: Install inference dependencies
+        run: pip install lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 scikit-learn==1.7.2 python-dotenv==1.1.1 requests beautifulsoup4 lxml
+      - name: Download independent 2026 trained model
+        run: |
+          mkdir -p "$RUNNER_TEMP/ura-model"
+          gh run download 40076792952 --repo "$GITHUB_REPOSITORY" --name ura-chronological-rankers-2024-2026 --dir "$RUNNER_TEMP/ura-model"
+          test -s "$RUNNER_TEMP/ura-model/report.json"
+          test -s "$RUNNER_TEMP/ura-model/independent_models/ranker_predict_2026.pkl"
+      - name: Restore verified encrypted history in ephemeral runner
+        run: |
+          set -euo pipefail
+          mkdir -p db "$RUNNER_TEMP/ura-db"
+          test ! -f db/keirin.db
+          gh release download haruqube-20260321-history-cache-live --repo "$GITHUB_REPOSITORY" --pattern keirin-history.sqlite.gpg --pattern PLAINTEXT_SHA256.txt --pattern ENCRYPTED_SHA256SUMS.txt --dir "$RUNNER_TEMP/ura-db"
+          (cd "$RUNNER_TEMP/ura-db"; sha256sum -c ENCRYPTED_SHA256SUMS.txt)
+          printf '%s' "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output db/keirin.db --decrypt "$RUNNER_TEMP/ura-db/keirin-history.sqlite.gpg"
+          (cd db; sha256sum -c "$RUNNER_TEMP/ura-db/PLAINTEXT_SHA256.txt")
+          chmod 600 db/keirin.db
+      - name: Select requested event or tomorrow JST
+        id: event
+        env:
+          RACE: ${{ github.event.inputs.race_id }}
+          DATE: ${{ github.event.inputs.date }}
+        run: |
+          set -euo pipefail
+          if [ -n "$RACE" ]; then
+            [[ "$RACE" =~ ^[0-9]{12}$ ]]
+            echo "flag=race-id" >> "$GITHUB_OUTPUT"
+            echo "value=$RACE" >> "$GITHUB_OUTPUT"
+          else
+            DAY="$DATE"
+            if [ -z "$DAY" ]; then DAY=$(TZ=Asia/Tokyo date -d tomorrow +%F); fi
+            [[ "$DAY" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
+            echo "flag=date" >> "$GITHUB_OUTPUT"
+            echo "value=$DAY" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run independent model and frozen V1 recommendation
+        env:
+          SELECTED_FLAG: ${{ steps.event.outputs.flag }}
+          SELECTED_VALUE: ${{ steps.event.outputs.value }}
+        run: |
+          python -u -m ura_haruq_independent.web.live_predict --"$SELECTED_FLAG" "$SELECTED_VALUE" --model "$RUNNER_TEMP/ura-model/independent_models/ranker_predict_2026.pkl" --report "$RUNNER_TEMP/ura-model/report.json" --out-dir "$RUNNER_TEMP/ura-live" --limit 140
+      - name: Update ONLY independent Ura feed
+        run: |
+          set -euo pipefail
+          python -m ura_haruq_independent.web.publish --source "$RUNNER_TEMP/ura-live" --target docs/ura-haru/results --run-id "$GITHUB_RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ura-haru/results/
+          test -z "$(git diff --cached --name-only | grep -v '^docs/ura-haru/results/' || true)"
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish independent Ura predictions [skip ci]"
+            git push origin HEAD:ura-haruq/independent-train-20261024
+          fi
+      - name: Clear decrypted history and model from runner
+        if: always()
+        run: rm -rf db/keirin.db "$RUNNER_TEMP/ura-db" "$RUNNER_TEMP/ura-model"
