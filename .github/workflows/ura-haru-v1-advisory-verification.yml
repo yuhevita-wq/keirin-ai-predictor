@@ -25,6 +25,10 @@ jobs:
       - name: Verify frozen V1 source checksum
         run: |
           echo "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818  ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py" | sha256sum -c -
+      - name: Verify separate Ura recommendation viewer exists
+        run: |
+          test -s ura_haruq_independent/recommendation/advisory_viewer.html
+          grep -q 'URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024' ura_haruq_independent/recommendation/advisory_viewer.html
       - name: Test display-only recommendations
         run: python -m unittest ura_haruq_independent.recommendation.test_low_quarter_advisory -v
       - name: Generate sample advisory without input overwrite
