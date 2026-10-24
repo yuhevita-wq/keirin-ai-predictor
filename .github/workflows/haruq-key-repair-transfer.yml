@@ -1,0 +1,48 @@
+name: HARUQ key repair - encrypt exact history for new repository
+on:
+  push:
+    branches: [operations/haruq-daily-20261024]
+    paths: [.github/workflows/haruq-key-repair-transfer.yml]
+permissions:
+  contents: write
+concurrency:
+  group: haruq-key-repair-transfer
+  cancel-in-progress: false
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      GNUPGHOME: /tmp/haruq-key-repair
+    steps:
+      - name: Verify recipient and original encrypted history
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir -p "$GNUPGHOME" source transfer recipient db
+          gh release download haruq-key-repair-recipient-20261024 --repo yuhevita-wq/haruq --pattern recipient.asc --dir recipient
+          echo 'c79954ee8bfbe620de5acd419484e7669f00b0af30fd8f5cac18bef2cd82b532  recipient/recipient.asc' | sha256sum -c -
+          gpg --batch --import recipient/recipient.asc
+          gh release download haruqube-20260321-history-cache-live --repo "$GITHUB_REPOSITORY" --dir source
+          (cd source && sha256sum -c ENCRYPTED_SHA256SUMS.txt)
+      - name: Rewrap byte-identical history using only the new public recipient
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'rm -f db/keirin.db' EXIT
+          printf '%s' "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output db/keirin.db --decrypt source/keirin-history.sqlite.gpg
+          (cd db && sha256sum -c ../source/PLAINTEXT_SHA256.txt)
+          RECIPIENT=$(gpg --with-colons --list-keys | awk -F: '$1=="fpr" {print $10; exit}')
+          test "${#RECIPIENT}" = 40
+          gpg --batch --yes --trust-model always --recipient "$RECIPIENT" --cipher-algo AES256 --output transfer/keirin-history.transfer.gpg --encrypt db/keirin.db
+          cp source/PLAINTEXT_SHA256.txt transfer/
+          (cd transfer && sha256sum keirin-history.transfer.gpg > ENCRYPTED_SHA256SUMS.txt)
+          gh release create haruq-key-repair-transfer-20261024 transfer/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "HARUQ encrypted history transfer to independent repository" --notes "Original plaintext SHA256 verified. Only encrypted history and checksums; no credentials or plaintext. Original releases and frozen production branch untouched." --latest=false
+      - name: Remove plaintext and temporary keys
+        if: always()
+        run: |
+          gpgconf --kill all || true
+          rm -rf "$GNUPGHOME" db source transfer recipient
