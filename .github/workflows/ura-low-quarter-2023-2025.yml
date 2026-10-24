@@ -1,4 +1,5 @@
 name: Ura HaruQ LOW Quarter Diagnosis 2023-2025
+# Authorized single retry after fixing import, V3 lower-rank parity and trifecta settlement join.
 
 on:
   push:
