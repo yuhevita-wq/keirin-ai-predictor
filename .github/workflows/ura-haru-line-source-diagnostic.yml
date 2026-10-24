@@ -1,0 +1,19 @@
+name: Ura Haru - Verify Live Line Source
+on:
+  push:
+    branches: [ura-haruq/independent-train-20261024]
+    paths: [.github/workflows/ura-haru-line-source-diagnostic.yml]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests beautifulsoup4 lxml
+      - name: Inspect publicly available markup for race line information
+        run: python -u -m ura_haruq_independent.web.diagnose_line_source
