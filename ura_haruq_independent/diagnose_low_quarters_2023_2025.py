@@ -164,11 +164,16 @@ def main():
             raise RuntimeError(f"HISTORY_TABLES_MISSING: {sorted(need-present)}")
         metadata = pd.read_sql_query(
             "SELECT race_id,race_name,rider_count FROM races", conn)
+        tri_pay = pd.read_sql_query(
+            "SELECT race_id,sanrentan_combo,sanrentan_payout FROM race_payouts", conn)
+        if tri_pay["race_id"].duplicated().any():
+            raise RuntimeError("DUPLICATE_TRIFECTA_PAYOUT_RACE_ID")
     metadata = metadata.drop_duplicates("race_id").set_index("race_id")
 
     model = LGBMRanker()
     model.load(str(args.model))
     frame, names, valid_history = dataset()  # Archived history only; NO retraining.
+    frame = frame.merge(tri_pay, on="race_id", how="left", validate="many_to_one")
     if len(names) != 44 or list(model.feature_names) != list(names):
         raise RuntimeError("FROZEN_44_FEATURE_CONTRACT_MISMATCH")
     frame = frame[
