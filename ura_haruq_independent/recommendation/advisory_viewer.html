@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>裏ハル V1｜LOWおすすめ度</title>
+<style>
+:root {color-scheme:light;--ink:#1a2939;--muted:#637388;--line:#dde4eb;--bg:#f3f6fa;--deep:#162c41;--green:#127a57}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;color:var(--ink)}
+main{max-width:900px;margin:24px auto;padding:0 20px 40px}
+header{border-radius:16px;background:var(--deep);color:white;padding:24px 28px;margin-bottom:20px}
+header small{letter-spacing:.1em;font-weight:700;color:#bbdcf3}h1{margin:9px 0;font-size:29px}header p{margin:0;color:#d3e2ee;font-size:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+h2{font-size:18px;margin:0 0 15px}p{line-height:1.65}.sub{font-size:13px;color:var(--muted)}table{width:100%;border-collapse:collapse;text-align:left;font-size:13px}
+th,td{border-bottom:1px solid #e5eaf0;padding:12px 8px}th{color:var(--muted);font-size:12px}td:first-child{white-space:nowrap;font-weight:700}
+.stars{color:#a66c00;letter-spacing:.06em;white-space:nowrap}.meta{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+textarea{width:100%;height:155px;border:1px solid #bac6d2;border-radius:10px;padding:12px;font:12px/1.5 ui-monospace,Consolas,monospace;resize:vertical}
+button,.pick{display:inline-block;border:0;border-radius:9px;background:#1d6594;color:#fff;font-size:14px;font-weight:700;padding:11px 18px;cursor:pointer;margin-top:12px}
+.pick{background:#586b7d;cursor:pointer;margin-left:8px}.pick input{display:none}
+#result{margin-top:15px;border:1px solid var(--line);border-radius:12px;padding:18px;background:#f9fbfc;display:none}
+#result h3{margin:0 0 10px;font-size:19px}.big{font-weight:800;font-size:24px}
+.tickets{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.ticket{border-radius:8px;padding:7px 11px;background:#e2ecf5;font-weight:700;font-variant-numeric:tabular-nums}
+.note{background:#fff7e9;border:1px solid #f2dcb5;border-radius:10px;padding:14px;font-size:13px;line-height:1.55}
+@media(max-width:600px){main{margin:0;padding:12px 12px 26px}header{padding:20px 18px}h1{font-size:23px}.card{padding:16px}table{font-size:11px}th,td{padding:10px 4px}.meta{gap:7px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <small>URA-HARU · FROZEN V1</small>
+  <h1>裏ハル｜LOWおすすめ度</h1>
+  <p>4区間の実績を追加表示。固定V1の買い目・点数・購入判断・配分は変更しない。</p>
+</header>
+<section class="card">
+<h2>LOW区間別・おすすめ度</h2>
+<table>
+<thead><tr><th>スコア差</th><th>おすすめ度</th><th>2026年<br>指定配当ROI</th><th>3年の的中率</th></tr></thead>
+<tbody>
+<tr><td>0.00–0.25</td><td><span class="stars">★★★☆☆</span> 標準</td><td>126.44%</td><td>14.26%</td></tr>
+<tr><td>0.25–0.50</td><td><span class="stars">★★★★★</span> 最優先</td><td>206.97%</td><td>17.49%</td></tr>
+<tr><td>0.50–0.75</td><td><span class="stars">★★★★☆</span> 優先</td><td>129.65%</td><td>16.23%</td></tr>
+<tr><td>0.75–1.00</td><td><span class="stars">★★☆☆☆</span> 注意</td><td>80.03%</td><td>15.79%</td></tr>
+</tbody>
+</table>
+<p class="sub">2026年は1〜9月。指定配当ROI＝確定払戻3,000〜99,999円の的中だけを計上し、投資額は全額計上。参考実績であり、将来の確率・期待値とは異なる。</p>
+</section>
+<section class="card">
+<h2>裏ハルV1の出力を表示する</h2>
+<p class="sub">独立予測モデルの発走前データを <code>low_quarter_advisory.py</code> に渡したJSONを貼り付けるか、ファイルを選択してください。本画面はJSONを表示するだけで、独自の買い目計算や賭け金変更は行いません。</p>
+<textarea id="jsonInput" spellcheck="false" placeholder='{"original_input": {...}, "ura_haru_v1_display": {"status": "v1_eligible", "recommendation": {...}, "tickets": [...]}}'></textarea>
+<div>
+<button id="render">おすすめ度を表示</button>
+<label class="pick">JSONファイルを選択 <input id="pick" type="file" accept=".json,application/json"></label>
+</div>
+<div id="result" aria-live="polite"></div>
+</section>
+<div class="note"><strong>注意：</strong> 星は過去成績に基づく閲覧用の相対評価です。「注意」でも固定V1の買い目は消しません。「最優先」でも購入金額は増やしません。元ハルキューとは別の研究版です。V1の出走前データの時点監査と完全な未知期間での収益再検証は未完了です。</div>
+<p class="sub">固定ベースライン commit: <code>7adf108f33a16c5043e79b2f6cf737d9bc397095</code> ／ おすすめ度: URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024</p>
+</main>
+<script>
+"use strict";
+function tag(name, text, cls) {
+  const e=document.createElement(name);
+  if (cls) e.className=cls;
+  if (text!==undefined) e.textContent=String(text);
+  return e;
+}
+function show() {
+  const box=document.getElementById("result");
+  box.style.display="block";
+  box.replaceChildren();
+  let value;
+  try { value=JSON.parse(document.getElementById("jsonInput").value); }
+  catch(e){box.append(tag("p","JSON形式が正しくありません。","sub"));return;}
+  const d=value && value.ura_haru_v1_display;
+  if (!d || typeof d!=="object") {box.append(tag("p","裏ハルV1の出力JSONを読み込んでください。","sub"));return;}
+  if (d.advisory_version!=="URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024") {
+    box.append(tag("p","対象外の評価バージョンです。","sub"));return;
+  }
+  if(d.status!=="v1_eligible"||!d.recommendation){
+    box.append(tag("h3","固定V1：評価対象外"));
+    box.append(tag("p",d.reason||"出走前情報不足または固定V1条件に該当しません。","sub"));
+    return;
+  }
+  const g=d.recommendation;
+  box.append(tag("h3","固定V1：対象レース"));
+  box.append(tag("div",(g.stars_text||"")+"　"+(g.recommendation||""),"big"));
+  box.append(tag("p",String(g.reason||""),"sub"));
+  box.append(tag("div","LOW "+g.score_range.join("–")+" ／ "+d.points+"点 ／ 研究仮定 "+d.research_stake_yen+"円","meta"));
+  if(g.historical){
+    box.append(tag("p","2024/2025/2026の指定配当ROI："+
+      g.historical.target_payout_3000_to_99999_roi_pct.join(" / ")+"%","sub"));
+  }
+  const wrapper=tag("div",undefined,"tickets");
+  for(const t of (Array.isArray(d.tickets)?d.tickets:[])) wrapper.append(tag("span",t,"ticket"));
+  box.append(wrapper);
+}
+document.getElementById("render").addEventListener("click",show);
+document.getElementById("pick").addEventListener("change",async e=>{
+  const file=e.target.files?.[0];if(!file)return;
+  document.getElementById("jsonInput").value=await file.text();
+  show();
+});
+</script>
+</body>
+</html>
