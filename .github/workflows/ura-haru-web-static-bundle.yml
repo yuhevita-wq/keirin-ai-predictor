@@ -46,6 +46,6 @@ jobs:
           ls -lh "$RUNNER_TEMP/ura-haru-standalone-site.zip"
       - uses: actions/upload-artifact@v4
         with:
-          name: ura-haru-complete-web-and-50-races
+          name: ura-haru-v1-standalone-site-complete
           path: docs/ura-haru/
           retention-days: 90
