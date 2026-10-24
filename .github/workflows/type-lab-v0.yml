@@ -1,0 +1,88 @@
+name: Type Lab v0 - isolated research boot
+
+on:
+  pull_request:
+    paths:
+      - "research/type_lab_v0/**"
+      - ".github/workflows/type-lab-v0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout research adapter (no production modifications)
+        uses: actions/checkout@v4
+        with:
+          path: research-repo
+          persist-credentials: false
+
+      - name: Checkout original Type Lab at immutable revision
+        uses: actions/checkout@v4
+        with:
+          repository: nyanta-kun/kiseki
+          ref: 6c30a77612848ba241cd6d2b2a40c957a7c37b51
+          path: upstream-kiseki
+          persist-credentials: false
+
+      - name: Verify upstream commit identity
+        run: |
+          test "$(git -C upstream-kiseki rev-parse HEAD)" = "6c30a77612848ba241cd6d2b2a40c957a7c37b51"
+          test -f upstream-kiseki/keirin/src/type_lab.py
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run genuine-original A-F, 7-car, 9-car and CLI tests
+        working-directory: research-repo
+        env:
+          TYPE_LAB_SOURCE: ../upstream-kiseki/keirin
+        run: python -m unittest discover -s research/type_lab_v0 -p "test_*.py" -v
+
+      - name: Boot original engine with generated synthetic pre-race board
+        working-directory: research-repo
+        env:
+          TYPE_LAB_SOURCE: ../upstream-kiseki/keirin
+        run: |
+          python -c 'import json,sys;sys.path.insert(0,"research/type_lab_v0");from test_boot import make_race;print(json.dumps(make_race()))' > type_lab_v0_smoke.json
+          python research/type_lab_v0/boot.py --input type_lab_v0_smoke.json --output type_lab_v0_result.json > /dev/null
+          python -c 'import json;d=json.load(open("type_lab_v0_result.json"));assert d["type"] == "A" and d["legs"] and d["bets_submitted"] is False;print("BOOT_OK", d["type"], d["plan"], len(d["legs"]), d["stake_total_yen"])'
+
+      - name: Save inspectable boot output (synthetic, research only)
+        uses: actions/upload-artifact@v4
+        with:
+          name: type-lab-v0-smoke
+          path: |
+            research-repo/type_lab_v0_smoke.json
+            research-repo/type_lab_v0_result.json
+          retention-days: 14
+
+  
+  source-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-repo
+          persist-credentials: false
+      - name: Checkout source Git tree only (all paths, no odds/secret transfer)
+        shell: bash
+        run: |
+          git clone --filter=blob:none --no-checkout --depth 1 \
+            https://github.com/yuhevita-wq/keirin-market-analysis-.git source-repo
+      - name: Inventory full immutable source tree
+        run: |
+          python research-repo/research/type_lab_v0/inventory.py source-repo source-inventory
+      - name: Store full inventory with checksums and source revision
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-archive-file-inventory
+          path: source-inventory/
+          retention-days: 30
