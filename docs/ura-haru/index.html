@@ -1259,7 +1259,7 @@ function quarters(){
 return '<div class="ura-quarters">'+bandDefs.map(b=>'<div class="ura-quarter"><div>LOW '+b[0]+'</div><strong class="ura-stars">'+b[1]+'</strong><div>'+b[2]+'</div><p class="ura-caption">2026年指定配当ROI '+b[3]+'<br>3年的中率 '+b[4]+'</p></div>').join("")+'</div>';
 }
 function tile(r){
-const status=eligible(r)?'<span class="ura-badge">'+esc(stars(r))+' '+esc(rating(r))+'</span>':'<span class="ura-status">対象外／未予測</span>';
+const status=eligible(r)?'<span class="ura-badge">'+esc(stars(r))+' '+esc(rating(r))+'</span>':'<span class="ura-status">V1対象外</span>';
 return '<button type="button" class="ura-tile" data-race="'+esc(r.race_id)+'"><div class="ura-tile-top"><div class="ura-tile-title">'+esc(r.velodrome)+' '+int(r.race_number)+'R <span class="ura-status">'+esc(r.grade||"")+'</span></div>'+status+'</div><div class="ura-tile-sub">'+esc(r.start_time||"時刻未取得")+' 発走 ／ '+esc(r.race_name||"")+' ／ '+(r.score_gap==null?"LOW未判定":"スコア差 "+int(r.score_gap).toFixed(3))+' ／ '+int(r.points)+'点</div></button>';
 }
 function venueList(rows){
@@ -1308,7 +1308,7 @@ if(!d){$("ura-content").innerHTML='<section class="ura-panel"><h2>予測詳細�
 const ev=d.ura_haru_v1_display||{},rec=ev.recommendation||null;
 let html='<section class="ura-panel"><button class="ura-tile" type="button" data-back="true">← 一覧へ戻る</button><h2>'+esc(d.velodrome)+' '+int(d.race_number)+'R <span class="ura-status">'+esc(d.grade||"")+'</span></h2>'+
 '<div class="ura-meta"><span>'+esc(d.date||"")+'</span><span>発走 '+esc(d.start_time||"未取得")+'</span><span>'+esc(d.status||"")+'</span></div>'+
-'<div class="ura-stack"><span>7車・2-2-2-1対象構造</span><span>スコア差 '+(d.score_gap==null?"未計算":Number(d.score_gap).toFixed(3))+'</span><span>固定版 V1</span></div></section>';
+'<div class="ura-stack"><span>'+int(d.rider_count)+'車・ライン '+esc(d.line_pattern||'未確定')+'</span><span>スコア差 '+(d.score_gap==null?"未計算":Number(d.score_gap).toFixed(3))+'</span><span>固定版 V1</span></div></section>';
 html+='<section class="ura-panel"><h2>裏ハルおすすめ度</h2>'+
 (rec?'<div class="ura-stars" style="font-size:23px">'+esc(rec.stars_text)+' '+esc(rec.recommendation)+'</div><p class="ura-note">'+esc(rec.reason)+'</p>'+
 '<div class="ura-meta"><span>的中率（過去） '+esc(rec.historical?.race_hit_rate_pct)+'%</span><span>2026年対象配当ROI '+esc(rec.historical?.target_payout_3000_to_99999_roi_pct?.[2])+'%</span></div>':
