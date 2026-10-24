@@ -1,0 +1,115 @@
+name: Ura HaruQ LOW Quarter Diagnosis 2023-2025
+
+on:
+  push:
+    branches:
+      - ura-haruq/independent-train-20261024
+    paths:
+      - .github/workflows/ura-low-quarter-2023-2025.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ura-low-quarter-diagnostic-2023-2025
+  cancel-in-progress: false
+
+jobs:
+  diagnose-low-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Check out the independent Ura branch only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate original model and source contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          test ! -e db/keirin.db
+          git hash-object research_snapshots/haruqube_20260321/config.py | grep -Fx 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          git hash-object research_snapshots/haruqube_20260321/features/builder.py | grep -Fx b47b793b5cf763bcb6d05137a115105006e50eba
+          git hash-object research_snapshots/haruqube_20260321/features/line_features.py | grep -Fx ecf3ab7c762475946054f806bb1d4b802c889389
+          python -m py_compile ura_haruq_independent/diagnose_low_quarters_2023_2025.py
+
+      - name: Download immutable frozen model and encrypted historical race cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/ura-v3-inputs/model" "$RUNNER_TEMP/ura-v3-inputs/history"
+          gh release download haruqube-20260321-flagship-v1 --repo "$GITHUB_REPOSITORY" \
+            --pattern haruqube_20260321_fresh_model.pkl \
+            --dir "$RUNNER_TEMP/ura-v3-inputs/model"
+          gh release download haruqube-20260321-history-cache-v1 --repo "$GITHUB_REPOSITORY" \
+            --pattern keirin-history.sqlite.gpg \
+            --pattern ENCRYPTED_SHA256SUMS.txt \
+            --pattern PLAINTEXT_SHA256.txt \
+            --dir "$RUNNER_TEMP/ura-v3-inputs/history"
+          printf '%s  %s\n' \
+            e70690f4538b77e927a042e7ae2db312f8a0a4f16bf72def37e7ccad3568c193 \
+            "$RUNNER_TEMP/ura-v3-inputs/model/haruqube_20260321_fresh_model.pkl" \
+            | sha256sum -c -
+          (
+            cd "$RUNNER_TEMP/ura-v3-inputs/history"
+            sha256sum -c ENCRYPTED_SHA256SUMS.txt
+          )
+
+      - name: Restore source files in temporary checkout and decrypt only in runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+          mkdir -p db
+          printf %s "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback \
+            --passphrase-fd 0 --output db/keirin.db --decrypt \
+            "$RUNNER_TEMP/ura-v3-inputs/history/keirin-history.sqlite.gpg"
+          (
+            cd db
+            sha256sum -c "$RUNNER_TEMP/ura-v3-inputs/history/PLAINTEXT_SHA256.txt"
+          )
+          chmod 600 db/keirin.db
+
+      - name: Install original prediction runtime
+        shell: bash
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+
+      - name: Analyze all 2023-2025 races (V3-1 / V3-2, 0.25 LOW bands)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u ura_haruq_independent/diagnose_low_quarters_2023_2025.py \
+            --model "$RUNNER_TEMP/ura-v3-inputs/model/haruqube_20260321_fresh_model.pkl"
+          test -s ura_haruq_independent/diagnostics/low_quarter_2023_2025/report.json
+
+      - name: Publish diagnostic artifacts only (no decrypted DB, no model)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ura-low-quarter-2023-2025-diagnostic
+          path: ura_haruq_independent/diagnostics/low_quarter_2023_2025/
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Remove decrypted runner-only history
+        if: always()
+        run: rm -f db/keirin.db
