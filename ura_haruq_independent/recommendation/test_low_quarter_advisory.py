@@ -69,7 +69,7 @@ class LowQuarterAdvisoryTests(unittest.TestCase):
     def test_missing_or_bad_input_never_guess(self):
         self.assertEqual(evaluate_record({})["status"], "insufficient_input")
         self.assertEqual(evaluate_record({**BASIC, "score_gap": "bad"})["status"], "invalid_input")
-        self.assertEqual(evaluate_record({**BASIC, "line_groups_by_bike": ""})["status"], "v1_not_applicable")
+        self.assertEqual(evaluate_record({**BASIC, "line_groups_by_bike": ""})["status"], "line_data_missing")
 
 if __name__ == "__main__":
     unittest.main()
