@@ -1,0 +1,126 @@
+name: Ura HaruQ - Independent Chronological Rankers 2024-2026
+
+# Only this research-only workflow file triggers an Actions run.
+# Training code updates alone cannot launch further runs.
+on:
+  push:
+    branches:
+      - ura-haruq/independent-train-20261024
+    paths:
+      - .github/workflows/ura-chronological-rankers-2024-2026.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ura-walkforward-2024-2026
+  cancel-in-progress: false
+
+jobs:
+  fit-then-forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Checkout independent Ura branch only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify unmodified original 44-feature source and training script
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e db/keirin.db
+          python -m py_compile ura_haruq_independent/train_walkforward_rankers_2024_2026.py
+          git hash-object research_snapshots/haruqube_20260321/config.py | grep -Fx 011c2091816d16358dfe478726bcb0ff2bc74bf9
+          git hash-object research_snapshots/haruqube_20260321/features/builder.py | grep -Fx b47b793b5cf763bcb6d05137a115105006e50eba
+          git hash-object research_snapshots/haruqube_20260321/features/line_features.py | grep -Fx ecf3ab7c762475946054f806bb1d4b802c889389
+
+      - name: Download encrypted and checksummed historical database release
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          mkdir -p "$RUNNER_TEMP/ura-chronological-history"
+          gh release download haruqube-20260321-history-cache-v1 --repo "$GITHUB_REPOSITORY" \
+            --pattern keirin-history.sqlite.gpg \
+            --pattern ENCRYPTED_SHA256SUMS.txt \
+            --pattern PLAINTEXT_SHA256.txt \
+            --dir "$RUNNER_TEMP/ura-chronological-history"
+          (
+            cd "$RUNNER_TEMP/ura-chronological-history"
+            sha256sum -c ENCRYPTED_SHA256SUMS.txt
+          )
+
+      - name: Install original model runtime versions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+
+      - name: Restore frozen 44-feature source into temporary checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+
+      - name: Self test strict chronological splits and LOW quarter boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u ura_haruq_independent/train_walkforward_rankers_2024_2026.py --self-test
+
+      - name: Decrypt verified history temporarily in runner only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p db
+          printf %s "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback \
+            --passphrase-fd 0 --output db/keirin.db --decrypt \
+            "$RUNNER_TEMP/ura-chronological-history/keirin-history.sqlite.gpg"
+          (
+            cd db
+            sha256sum -c "$RUNNER_TEMP/ura-chronological-history/PLAINTEXT_SHA256.txt"
+          )
+          chmod 600 db/keirin.db
+
+      - name: Fit separate ranker on each past period then forecast next year
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u ura_haruq_independent/train_walkforward_rankers_2024_2026.py
+          test -s ura_haruq_independent/diagnostics/walkforward_2024_2026/report.json
+          test -s ura_haruq_independent/diagnostics/walkforward_2024_2026/race_level_chronological_predictions_2024_2026.csv.gz
+          test -s ura_haruq_independent/diagnostics/walkforward_2024_2026/independent_models/ranker_predict_2024.pkl
+          test -s ura_haruq_independent/diagnostics/walkforward_2024_2026/independent_models/ranker_predict_2025.pkl
+          test -s ura_haruq_independent/diagnostics/walkforward_2024_2026/independent_models/ranker_predict_2026.pkl
+
+      - name: Publish research predictions and independent rankers only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ura-chronological-rankers-2024-2026
+          path: ura_haruq_independent/diagnostics/walkforward_2024_2026/
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Remove decrypted historical database
+        if: always()
+        shell: bash
+        run: rm -f db/keirin.db
