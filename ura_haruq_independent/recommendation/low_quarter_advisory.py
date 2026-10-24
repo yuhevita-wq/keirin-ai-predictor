@@ -148,6 +148,10 @@ def evaluate_record(input_record: dict[str, Any]) -> dict[str, Any]:
         gap = float(input_record["score_gap"])
         bikes = _normalize_bikes(input_record["predicted_bikes_by_rank"])
         lines = _normalize_lines(input_record["line_groups_by_bike"])
+        if len(bikes) == 7 and 0 <= gap < 1 and any(not str(lines.get(b, "")).strip() for b in bikes):
+            result["status"] = "line_data_missing"
+            result["reason"] = "出走表のライン予想が未公開・不完全なため、固定V1の対象判定ができません。"
+            return result
         tickets = formation(bikes, lines, gap)  # exact frozen source, never reimplement
     except (TypeError, ValueError, OverflowError) as exc:
         result["status"] = "invalid_input"
