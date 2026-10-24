@@ -93,7 +93,8 @@ jobs:
           python -m ura_haruq_independent.web.publish --source "$RUNNER_TEMP/ura-live" --target docs/ura-haru/results --run-id "$GITHUB_RUN_ID"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/ura-haru/results/
+          git add -f docs/ura-haru/results/index.json
+          find docs/ura-haru/results -maxdepth 1 -type f -name '[0-9]*.json' -print0 | xargs -0 -r git add -f
           test -z "$(git diff --cached --name-only | grep -v '^docs/ura-haru/results/' || true)"
           if ! git diff --cached --quiet; then
             git commit -m "Publish independent Ura predictions [skip ci]"
