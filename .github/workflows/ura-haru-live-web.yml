@@ -76,7 +76,7 @@ jobs:
             echo "value=$RACE" >> "$GITHUB_OUTPUT"
           else
             DAY="$DATE"
-            if [ -z "$DAY" ]; then DAY=2026-10-25; fi
+            if [ -z "$DAY" ]; then DAY=2026-10-26; fi
             [[ "$DAY" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
             echo "flag=date" >> "$GITHUB_OUTPUT"
             echo "value=$DAY" >> "$GITHUB_OUTPUT"
@@ -86,7 +86,7 @@ jobs:
           SELECTED_FLAG: ${{ steps.event.outputs.flag }}
           SELECTED_VALUE: ${{ steps.event.outputs.value }}
         run: |
-          python -u -m ura_haruq_independent.web.live_predict --"$SELECTED_FLAG" "$SELECTED_VALUE" --model "$RUNNER_TEMP/ura-model/independent_models/ranker_predict_2026.pkl" --report "$RUNNER_TEMP/ura-model/report.json" --out-dir "$RUNNER_TEMP/ura-live" --limit 140 --exclude-venues 87,53,73,63,42
+          python -u -m ura_haruq_independent.web.live_predict --"$SELECTED_FLAG" "$SELECTED_VALUE" --model "$RUNNER_TEMP/ura-model/independent_models/ranker_predict_2026.pkl" --report "$RUNNER_TEMP/ura-model/report.json" --out-dir "$RUNNER_TEMP/ura-live" --limit 140
       - name: Update ONLY independent Ura feed
         run: |
           set -euo pipefail
