@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "system": "URA_HARU_V1_20261024",
+  "display_name": "裏ハルキュー",
+  "race_id": "202610262706",
+  "date": "2026-10-26",
+  "velodrome": "京王閣",
+  "race_name": "6R",
+  "race_number": 6,
+  "grade": "F1",
+  "start_time": "17:51",
+  "status": "発走前",
+  "score_gap": 0.3342417568,
+  "line_pattern": "3-2-2",
+  "rider_count": 7,
+  "ranked": [
+    {
+      "rank": 1,
+      "bike": 3,
+      "name": "須永優太",
+      "class": "S1",
+      "line_group": "3",
+      "line_role": "番手",
+      "competition_score": 107.46,
+      "score": 0.6196859
+    },
+    {
+      "rank": 2,
+      "bike": 7,
+      "name": "斉藤樂",
+      "class": "S2",
+      "line_group": "3",
+      "line_role": "自力",
+      "competition_score": 103.09,
+      "score": 0.2854441
+    },
+    {
+      "rank": 3,
+      "bike": 1,
+      "name": "櫻井学",
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "番手",
+      "competition_score": 97.36,
+      "score": 0.1817908
+    },
+    {
+      "rank": 4,
+      "bike": 2,
+      "name": "三浦貴大",
+      "class": "S2",
+      "line_group": "2",
+      "line_role": "番手",
+      "competition_score": 97.88,
+      "score": -0.5768167
+    },
+    {
+      "rank": 5,
+      "bike": 6,
+      "name": "柿本大貴",
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "自力",
+      "competition_score": 94.82,
+      "score": -0.9937183
+    },
+    {
+      "rank": 6,
+      "bike": 4,
+      "name": "菱田浩二",
+      "class": "S2",
+      "line_group": "2",
+      "line_role": "自力",
+      "competition_score": 97.21,
+      "score": -1.2526231
+    },
+    {
+      "rank": 7,
+      "bike": 5,
+      "name": "関貴之",
+      "class": "S2",
+      "line_group": "1",
+      "line_role": "3番手",
+      "competition_score": 96.2,
+      "score": -1.5943471
+    }
+  ],
+  "ura_haru_v1_display": {
+    "policy_id": "URA_HARU_V1_20261024",
+    "frozen_v1_commit": "7adf108f33a16c5043e79b2f6cf737d9bc397095",
+    "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
+    "advisory_only": true,
+    "status": "v1_not_applicable",
+    "recommendation": null,
+    "tickets": [],
+    "points": 0,
+    "research_stake_yen": 0,
+    "reason": "固定V1の条件不成立（LOW、7車、2-2-2-1、上位同ライン2人）。"
+  },
+  "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
+  "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
+  "history_latest": "2026-10-22",
+  "published_at": "2026-10-26T00:57:12+09:00",
+  "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610262706",
+  "asof_feature_audit_completed": false,
+  "original_flagship_data_used": false,
+  "web_record": {
+    "producer": "independent-ura-haru-github-actions",
+    "run_id": "40209180513",
+    "public_data_only": true
+  }
+}
