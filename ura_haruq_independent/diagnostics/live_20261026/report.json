@@ -1,0 +1,17 @@
+{
+  "date": "20261026",
+  "asof_utc": "2026-10-26T05:38:37.988833+00:00",
+  "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
+  "policy_id": "URA_HARU_V1_20261024",
+  "frozen_v1_sha256": "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818",
+  "selector": "skill_spread<=7.1 & third_skill_mean>95.8767 (research-only)",
+  "totals": {
+    "SKIP": 69,
+    "OK": 3
+  },
+  "v1_eligible": 3,
+  "selector_eligible": 0,
+  "source_races": 72,
+  "historical_snapshot_only_through": "2026-09-30",
+  "warning": "No result or payoff used in decision. May be retrospective for already-started events. No live odds confirmation. Production model unchanged."
+}
