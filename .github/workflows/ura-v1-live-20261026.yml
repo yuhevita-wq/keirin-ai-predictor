@@ -1,0 +1,78 @@
+name: Apply Immutable Ura V1 - 2026-10-26 Read Only
+on:
+  push:
+    branches:
+      - research/ura-v1-profit-race-selection-20261026
+    paths:
+      - .github/workflows/ura-v1-live-20261026.yml
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  apply-today:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen research dependencies and verify V1
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e db/keirin.db
+          echo 'b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818  ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py' | sha256sum -c -
+          python -m py_compile ura_haruq_independent/apply_frozen_v1_live_20261026.py
+          pip install --disable-pip-version-check lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 scikit-learn==1.7.2 python-dotenv==1.1.1 requests beautifulsoup4 lxml
+      - name: Restore identical original historical 44 feature implementations
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp research_snapshots/haruqube_20260321/config.py config.py
+          cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
+          cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
+      - name: Download frozen independent 2026 ranker
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/2026_ranker"
+          gh run download 40076792952 --repo "$GITHUB_REPOSITORY" --name ura-chronological-rankers-2024-2026 --dir "$RUNNER_TEMP/2026_ranker"
+          echo '8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47  '"$RUNNER_TEMP"'/2026_ranker/independent_models/ranker_predict_2026.pkl' | sha256sum -c -
+      - name: Download and decrypt checksum-verified history to runner only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          mkdir -p "$RUNNER_TEMP/history" db
+          gh release download haruqube-20260321-history-cache-v1 --repo "$GITHUB_REPOSITORY" --pattern keirin-history.sqlite.gpg --pattern ENCRYPTED_SHA256SUMS.txt --pattern PLAINTEXT_SHA256.txt --dir "$RUNNER_TEMP/history"
+          (cd "$RUNNER_TEMP/history" && sha256sum -c ENCRYPTED_SHA256SUMS.txt)
+          printf %s "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output db/keirin.db --decrypt "$RUNNER_TEMP/history/keirin-history.sqlite.gpg"
+          (cd db && sha256sum -c "$RUNNER_TEMP/history/PLAINTEXT_SHA256.txt")
+          chmod 600 db/keirin.db
+      - name: Apply frozen V1 without reading outcomes, then research selector
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u -m ura_haruq_independent.apply_frozen_v1_live_20261026 --model "$RUNNER_TEMP/2026_ranker/independent_models/ranker_predict_2026.pkl"
+          test -s ura_haruq_independent/diagnostics/live_20261026/report.json
+      - name: Upload all 72 race decisions and failure diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ura-v1-fixed-20261026-race-application
+          path: ura_haruq_independent/diagnostics/live_20261026/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Erase temporary decrypted history
+        if: always()
+        run: rm -f db/keirin.db
