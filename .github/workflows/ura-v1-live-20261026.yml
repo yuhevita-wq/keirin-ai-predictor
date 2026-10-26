@@ -7,7 +7,7 @@ on:
       - .github/workflows/ura-v1-live-20261026.yml
 
 permissions:
-  contents: read
+  contents: write
   actions: read
 
 jobs:
@@ -65,6 +65,14 @@ jobs:
           set -euo pipefail
           python -u -m ura_haruq_independent.apply_frozen_v1_live_20261026 --model "$RUNNER_TEMP/2026_ranker/independent_models/ranker_predict_2026.pkl"
           test -s ura_haruq_independent/diagnostics/live_20261026/report.json
+      - name: Commit isolated read-only research output for permanent review
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in ura_haruq_independent/diagnostics/live_20261026/report.json ura_haruq_independent/diagnostics/live_20261026/every_race.csv; do
+            gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/$f" -f message="Record frozen V1 October 26 predictions: $f" -f content="$(base64 -w0 "$f")" -f branch="$GITHUB_REF_NAME" > /dev/null
+          done
       - name: Upload all 72 race decisions and failure diagnostics
         if: always()
         uses: actions/upload-artifact@v4
