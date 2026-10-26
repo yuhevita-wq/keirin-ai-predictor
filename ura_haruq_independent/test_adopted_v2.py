@@ -38,7 +38,8 @@ class AdoptedParticipationTests(unittest.TestCase):
         self.assertEqual(r["decision"], "BET")
 
     def test_over_limit_preserves_base_but_suppresses_purchase(self):
-        scores = dict(self.scores, **{3: 100.1})
+        scores = dict(self.scores)
+        scores[3] = 100.1
         r = decide(self.bikes, self.lines, 0.1, scores)
         self.assertEqual(r["decision"], "NO_BET")
         self.assertEqual(r["reason"], "SKILL_SPREAD_EXCEEDS_7_1")
