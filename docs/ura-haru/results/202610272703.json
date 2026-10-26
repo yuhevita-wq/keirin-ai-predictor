@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "system": "URA_HARU_V1_20261024",
+  "display_name": "裏ハルキュー",
+  "race_id": "202610272703",
+  "date": "2026-10-27",
+  "velodrome": "京王閣",
+  "race_name": "3R",
+  "race_number": 3,
+  "grade": "F1",
+  "start_time": "16:33",
+  "status": "発走前",
+  "score_gap": 0.0118938025,
+  "line_pattern": "2-2-2-1",
+  "rider_count": 7,
+  "ranked": [
+    {
+      "rank": 1,
+      "bike": 1,
+      "name": "小林則之",
+      "class": "A1",
+      "line_group": "1",
+      "line_role": "自力",
+      "competition_score": 90.96,
+      "score": 1.7216845
+    },
+    {
+      "rank": 2,
+      "bike": 4,
+      "name": "石橋慎太郎",
+      "class": "A1",
+      "line_group": "1",
+      "line_role": "番手",
+      "competition_score": 94.48,
+      "score": 1.7097907
+    },
+    {
+      "rank": 3,
+      "bike": 3,
+      "name": "日野博幸",
+      "class": "A1",
+      "line_group": "3",
+      "line_role": "自力",
+      "competition_score": 89.61,
+      "score": 0.3067673
+    },
+    {
+      "rank": 4,
+      "bike": 2,
+      "name": "",
+      "class": "A1",
+      "line_group": "2",
+      "line_role": "番手",
+      "competition_score": 89.52,
+      "score": -0.1120667
+    },
+    {
+      "rank": 5,
+      "bike": 5,
+      "name": "山本修平",
+      "class": "A2",
+      "line_group": "2",
+      "line_role": "自力",
+      "competition_score": 86.14,
+      "score": -0.8776537
+    },
+    {
+      "rank": 6,
+      "bike": 6,
+      "name": "市村昌樹",
+      "class": "A1",
+      "line_group": "4",
+      "line_role": "自力",
+      "competition_score": 85.23,
+      "score": -0.8843202
+    },
+    {
+      "rank": 7,
+      "bike": 7,
+      "name": "川又裕樹",
+      "class": "A2",
+      "line_group": "3",
+      "line_role": "番手",
+      "competition_score": 85.27,
+      "score": -1.1489628
+    }
+  ],
+  "ura_haru_v1_display": {
+    "policy_id": "URA_HARU_V1_20261024",
+    "frozen_v1_commit": "7adf108f33a16c5043e79b2f6cf737d9bc397095",
+    "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
+    "advisory_only": true,
+    "status": "v1_eligible",
+    "recommendation": {
+      "advisory_version": "URA_HARU_V1_LOW_QUARTER_DISPLAY_20261024",
+      "low_quarter": "LOW_0.00_0.25",
+      "score_range": [
+        0.0,
+        0.25
+      ],
+      "stars": 3,
+      "stars_text": "★★★☆☆",
+      "recommendation": "標準",
+      "reason": "全期間で黒字。ただし2025年の指定配当帯ROIは101.09%と余裕が小さい。",
+      "historical": {
+        "years": [
+          "2024",
+          "2025",
+          "2026-Jan-Sep"
+        ],
+        "active_races": 1150,
+        "race_hit_rate_pct": 14.26,
+        "all_payout_roi_pct": [
+          213.76,
+          116.68,
+          144.54
+        ],
+        "target_payout_3000_to_99999_roi_pct": [
+          201.62,
+          101.09,
+          126.44
+        ],
+        "positive_months": [
+          12,
+          6,
+          6
+        ],
+        "months_observed": [
+          12,
+          12,
+          9
+        ]
+      },
+      "advisory_only": true,
+      "not_a_probability_or_ev": true
+    },
+    "tickets": [
+      "1-4-5",
+      "1-4-6",
+      "1-4-7",
+      "4-1-5",
+      "4-1-6",
+      "4-1-7"
+    ],
+    "points": 6,
+    "research_stake_yen": 600,
+    "low_score_gap": 0.011893802516639074
+  },
+  "model_role": "INDEPENDENT_CHRONOLOGICAL_2026",
+  "model_sha256": "8921afb65e87132a4ccc39eee2869423a1dc29cc2d27bdb1e8287ca98adb6c47",
+  "history_latest": "2026-10-22",
+  "published_at": "2026-10-27T00:42:21+09:00",
+  "input_url": "https://keirin.netkeiba.com/race/entry/?race_id=202610272703",
+  "asof_feature_audit_completed": false,
+  "original_flagship_data_used": false,
+  "web_record": {
+    "producer": "independent-ura-haru-github-actions",
+    "run_id": "40351558947",
+    "public_data_only": true
+  }
+}
