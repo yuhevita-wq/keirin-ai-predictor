@@ -1,0 +1,71 @@
+name: Research Frozen Ura V1 Profit vs Loss
+
+on:
+  push:
+    branches: [research/ura-v1-profit-race-selection-20261026]
+    paths: [.github/workflows/ura-v1-profit-race-selector.yml]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify frozen V1 and install read-only dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e db/keirin.db
+          test -n "$COLLECTOR_PASSPHRASE"
+          echo "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818  ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py" | sha256sum -c -
+          python -m py_compile ura_haruq_independent/research_v1_race_selector.py
+          python -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.3.3
+      - name: Download prior verified chronological forecasts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v1pred"
+          gh run download 40076792952 --repo yuhevita-wq/keirin-ai-predictor --name ura-chronological-rankers-2024-2026 --dir "$RUNNER_TEMP/v1pred"
+          test "$(find "$RUNNER_TEMP/v1pred" -name race_level_chronological_predictions_2024_2026.csv.gz | wc -l)" -eq 1
+      - name: Restore checksum-protected historic payouts and entries
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v1history" db
+          gh release download haruqube-20260321-history-cache-v1 --repo "$GITHUB_REPOSITORY" --pattern keirin-history.sqlite.gpg --pattern ENCRYPTED_SHA256SUMS.txt --pattern PLAINTEXT_SHA256.txt --dir "$RUNNER_TEMP/v1history"
+          (cd "$RUNNER_TEMP/v1history" && sha256sum -c ENCRYPTED_SHA256SUMS.txt)
+          printf '%s' "$COLLECTOR_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output db/keirin.db --decrypt "$RUNNER_TEMP/v1history/keirin-history.sqlite.gpg"
+          (cd db && sha256sum -c "$RUNNER_TEMP/v1history/PLAINTEXT_SHA256.txt")
+          chmod 600 db/keirin.db
+      - name: Apply exact V1 to every eligible historic forecast then select races
+        shell: bash
+        run: |
+          set -euo pipefail
+          FORECASTS=$(find "$RUNNER_TEMP/v1pred" -name race_level_chronological_predictions_2024_2026.csv.gz -print -quit)
+          python -u -m ura_haruq_independent.research_v1_race_selector --predictions "$FORECASTS" --db db/keirin.db --source-run 40076792952 --out ura_haruq_independent/diagnostics/v1_race_selector_20261026
+          test -s ura_haruq_independent/diagnostics/v1_race_selector_20261026/report.json
+      - name: Upload research-only metrics, never the DB or secrets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ura-v1-profit-loss-selection-chronological-audit-20261026
+          path: ura_haruq_independent/diagnostics/v1_race_selector_20261026/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Erase decrypted historical DB
+        if: always()
+        run: rm -f db/keirin.db
