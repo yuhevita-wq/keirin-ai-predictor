@@ -44,7 +44,7 @@ TRAIN_YEAR, VALID_YEAR, HOLDOUT_YEAR = "2024", "2025", "2026"
 
 
 def assert_rule() -> None:
-    p = Path(__file__).resolve().parents[1] / "frozen_ura_haru_v1" / "URA_HARU_V1_FROZEN_RULE.py"
+    p = Path(__file__).resolve().parent / "frozen_ura_haru_v1" / "URA_HARU_V1_FROZEN_RULE.py"
     actual = hashlib.sha256(p.read_bytes()).hexdigest()
     if actual != EXPECTED_RULE_SHA:
         raise RuntimeError("FROZEN_V1_RULE_SHA_CHANGED: "+actual)
