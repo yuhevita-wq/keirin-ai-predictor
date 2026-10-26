@@ -1,0 +1,31 @@
+{
+  "policy": "URA_HARU_V2_SKILL_SPREAD_7_1_20261026",
+  "race_rows_audited": 3501,
+  "scope": "retrospective same known 2024–2026 dataset, not newly blind",
+  "yearly": {
+    "2024": {
+      "races": 313,
+      "investment_yen": 187800,
+      "return_yen": 419090,
+      "hits": 52,
+      "roi_pct": 223.1576,
+      "profit_yen": 231290
+    },
+    "2025": {
+      "races": 291,
+      "investment_yen": 174600,
+      "return_yen": 371080,
+      "hits": 48,
+      "roi_pct": 212.5315,
+      "profit_yen": 196480
+    },
+    "2026": {
+      "races": 209,
+      "investment_yen": 125400,
+      "return_yen": 280200,
+      "hits": 35,
+      "roi_pct": 223.445,
+      "profit_yen": 154800
+    }
+  }
+}
