@@ -76,7 +76,7 @@ jobs:
             echo "value=$RACE" >> "$GITHUB_OUTPUT"
           else
             DAY="$DATE"
-            if [ -z "$DAY" ]; then DAY=2026-10-26; fi
+            if [ -z "$DAY" ]; then DAY=2026-10-27; fi
             [[ "$DAY" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
             echo "flag=date" >> "$GITHUB_OUTPUT"
             echo "value=$DAY" >> "$GITHUB_OUTPUT"
