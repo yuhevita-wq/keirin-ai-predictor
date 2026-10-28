@@ -1,0 +1,22 @@
+{
+  "period": [
+    "2023-01-01",
+    "2023-01-07"
+  ],
+  "frozen_races": 597,
+  "input_exclusions": 0,
+  "settled": 0,
+  "unresolved": 597,
+  "stake_yen": 0,
+  "paid_yen": 0,
+  "profit_yen": 0,
+  "return_pct": null,
+  "profitable_races": 0,
+  "loss_races": 0,
+  "hit_count_distribution": {},
+  "unresolved_reasons": {
+    "missing_result_table": 597
+  },
+  "stop_reason": null,
+  "not_out_of_sample": "Jan 1 race 1 was previously observed; other races not tuned"
+}
