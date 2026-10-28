@@ -1,0 +1,44 @@
+name: Week 2 Locked Trifecta Validation
+on:
+  push:
+    branches: [research/formation-cover-20230101]
+    paths: [.github/workflows/lotto-week2-trifecta-validation.yml]
+permissions:
+  contents: write
+concurrency:
+  group: lotto-week2-trifecta-validation
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: collected-data-2023-01
+          path: source
+      - name: Validate script syntax
+        run: python -m py_compile scripts/lotto_week2_trifecta_validation.py
+      - name: Apply locked templates to January 8-14
+        env:
+          COLLECTION_KEY: ${{ secrets.COLLECTOR_PASSPHRASE }}
+        run: python -u scripts/lotto_week2_trifecta_validation.py
+      - name: Save evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: week2-locked-trifecta-validation
+          path: research/formation_cover/week2_trifecta_validation/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit validation outputs
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/formation_cover/week2_trifecta_validation/
+          if ! git diff --cached --quiet; then
+            git commit -m "Save untouched second-week results for frozen first-week templates"
+            git push origin HEAD:research/formation-cover-20230101
+          fi
