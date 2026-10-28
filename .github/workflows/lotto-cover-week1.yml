@@ -22,6 +22,24 @@ jobs:
         run: python -m pip install requests beautifulsoup4
       - name: Validate syntax
         run: python -m py_compile scripts/lotto_cover_week1.py
+      - name: Verify actual result-table parser against first-race known payout
+        run: |
+          python - <<'PY'
+          import requests
+          from bs4 import BeautifulSoup
+          r=requests.get("https://keirin.netkeiba.com/race/result/?race_id=202301016201",timeout=35)
+          r.raise_for_status()
+          s=BeautifulSoup(r.content,"html.parser")
+          t=s.select_one("table#All_Result_Table")
+          assert t is not None and "選手名" in t.get_text()
+          pays={}
+          for tr in s.select("tr.Wide"):
+              pair=tr.select_one(".Result").get_text(strip=True)
+              amount=int(tr.select_one(".Payout").get_text(strip=True).replace("円","").replace(",",""))
+              pays[pair]=amount
+          assert pays=={"3-6":120,"4-6":200,"3-4":170},pays
+          print("Regression passed: result table and wide payouts 120+200+170=490")
+          PY
       - name: Freeze all tickets then settle week in chronological order
         env:
           COLLECTION_KEY: ${{ secrets.COLLECTOR_PASSPHRASE }}
