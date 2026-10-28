@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 
 OUT=Path("research/formation_cover/week_20230101_20230107")
 OUT.mkdir(parents=True,exist_ok=True)
+previous_frozen=json.loads((OUT/"frozen_tickets.json").read_text()) if (OUT/"frozen_tickets.json").exists() else None
 frozen=[]; exclusions=[]
 for day in range(1,8):
     ds=f"2023-01-{day:02d}"
@@ -42,6 +43,8 @@ for day in range(1,8):
         c.close()
     finally: db.unlink(missing_ok=True)
 frozen.sort(key=lambda r:(r["date"],r["start_time"],r["race_id"]))
+if previous_frozen is not None and previous_frozen != json.loads(json.dumps(frozen)):
+    raise RuntimeError("Frozen tickets changed; refusing retrospective rule change")
 (OUT/"frozen_tickets.json").write_text(json.dumps(frozen,ensure_ascii=False,indent=2))
 (OUT/"prerace_exclusions.json").write_text(json.dumps(exclusions,ensure_ascii=False,indent=2))
 print("FROZEN",len(frozen),"EXCLUDED_INPUT",len(exclusions),flush=True)
@@ -50,7 +53,7 @@ rows=[]; stop_reason=None
 session=requests.Session()
 for r in frozen:
     row={k:r[k] for k in ("date","start_time","race_id","velodrome","n","stake","day_report_status")}
-    row.update(tickets=json.dumps(r["tickets"]),status="unresolved",paid="",profit="",hits="",reason="")
+    row.update(tickets=json.dumps(r["tickets"]),status="unresolved",paid="",profit="",hits="",reason="",wide_payouts="")
     url=f"https://keirin.netkeiba.com/race/result/?race_id={r['race_id']}"
     row["source_url"]=url
     if stop_reason:
@@ -80,13 +83,16 @@ for r in frozen:
         if len(top)!=3 or set(pays)!=set(combinations(sorted(top),2)):
             raise ValueError("tie_or_inconsistent_wide_payout")
         # Missing finishers / refunds are audited against the visible result table.
-        result_tables=[t for t in soup.select("table") if "着順" in t.get_text() and "選手名" in t.get_text()]
+        result_tables=soup.select("table#All_Result_Table")
         if not result_tables:raise ValueError("missing_result_table")
         result_text=result_tables[0].get_text(" ",strip=True)
         if any(w in result_text for w in ("欠場","欠車","棄権","不成立","返還")):
             raise ValueError("refund_or_special_result_needs_review")
         payout_table=soup.select_one("tr.Wide").find_parent("table")
         if "返還" in payout_table.get_text():raise ValueError("refund_needs_review")
+        row["wide_payouts"]=json.dumps({f"{p[0]}-{p[1]}":v for p,v in pays.items()})
+        if r["race_id"]=="202301016201":
+            assert sum(v for p,v in pays.items() if p in {tuple(p) for p in r["tickets"]}) == 490, "First-race regression failed"
         chosen={tuple(p) for p in r["tickets"]}
         paid=sum(v for p,v in pays.items() if p in chosen)
         hits=len(chosen&set(pays))
@@ -142,3 +148,6 @@ for n in sorted(set(r["n"] for r in settled)):
     lines.append(f"|{n}|{len(rr)}|{st}|{pa}|{pa-st}|")
 (OUT/"REPORT.md").write_text("\n".join(lines))
 print("SUMMARY",json.dumps(summary,ensure_ascii=False),flush=True)
+
+if not settled:
+    raise SystemExit("No settled races: calculation failed, zero values are not financial results")
