@@ -52,4 +52,9 @@ jobs:
               raw=c.execute("select payload from source_records where race_id=?",(first["race_id"],)).fetchone()
               if raw:
                   print("FIRST_RAW_ENTRY",json.dumps(json.loads(raw[0]).get("entry"),ensure_ascii=False))
+              print("FIRST_RESULTS",json.dumps([dict(r) for r in c.execute("select bike_number,rider_name,finish_position from race_results where race_id=? order by finish_position",(first["race_id"],))],ensure_ascii=False))
+              if raw:
+                  payload=json.loads(raw[0])
+                  print("FIRST_PAYOUTS",json.dumps(payload.get("payouts"),ensure_ascii=False))
+                  print("RESULT_PAYOUTS",json.dumps(payload.get("result",{}).get("payouts"),ensure_ascii=False))
           PY
