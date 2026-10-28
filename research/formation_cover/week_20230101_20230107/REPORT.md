@@ -15,6 +15,13 @@
 
 |日付|照合済みR|投資円|払戻円|収支円|
 |---|---:|---:|---:|---:|
+|2023-01-01|92|71800|50790|-21010|
+|2023-01-02|98|78600|51350|-27250|
+|2023-01-03|99|78600|73200|-5400|
+|2023-01-04|59|57500|34420|-23080|
+|2023-01-05|64|63500|43770|-19730|
+|2023-01-06|81|77800|64560|-13240|
+|2023-01-07|77|73100|47330|-25770|
 
 {
   "period": [
@@ -23,17 +30,20 @@
   ],
   "frozen_races": 597,
   "input_exclusions": 0,
-  "settled": 0,
-  "unresolved": 597,
-  "stake_yen": 0,
-  "paid_yen": 0,
-  "profit_yen": 0,
-  "return_pct": null,
-  "profitable_races": 0,
-  "loss_races": 0,
-  "hit_count_distribution": {},
+  "settled": 570,
+  "unresolved": 27,
+  "stake_yen": 500900,
+  "paid_yen": 365420,
+  "profit_yen": -135480,
+  "return_pct": 72.95268516669994,
+  "profitable_races": 112,
+  "loss_races": 457,
+  "hit_count_distribution": {
+    "3": 180,
+    "1": 390
+  },
   "unresolved_reasons": {
-    "missing_result_table": 597
+    "refund_or_special_result_needs_review": 27
   },
   "stop_reason": null,
   "not_out_of_sample": "Jan 1 race 1 was previously observed; other races not tuned"
@@ -48,3 +58,7 @@
 
 |人数|R数|投資円|払戻円|収支円|
 |---|---:|---:|---:|---:|
+|5|26|10400|9420|-980|
+|6|102|61200|43750|-17450|
+|7|397|357300|257460|-99840|
+|9|45|72000|54790|-17210|

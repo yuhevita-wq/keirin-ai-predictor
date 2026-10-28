@@ -5,17 +5,20 @@
   ],
   "frozen_races": 597,
   "input_exclusions": 0,
-  "settled": 0,
-  "unresolved": 597,
-  "stake_yen": 0,
-  "paid_yen": 0,
-  "profit_yen": 0,
-  "return_pct": null,
-  "profitable_races": 0,
-  "loss_races": 0,
-  "hit_count_distribution": {},
+  "settled": 570,
+  "unresolved": 27,
+  "stake_yen": 500900,
+  "paid_yen": 365420,
+  "profit_yen": -135480,
+  "return_pct": 72.95268516669994,
+  "profitable_races": 112,
+  "loss_races": 457,
+  "hit_count_distribution": {
+    "3": 180,
+    "1": 390
+  },
   "unresolved_reasons": {
-    "missing_result_table": 597
+    "refund_or_special_result_needs_review": 27
   },
   "stop_reason": null,
   "not_out_of_sample": "Jan 1 race 1 was previously observed; other races not tuned"
