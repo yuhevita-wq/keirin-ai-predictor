@@ -1,0 +1,63 @@
+name: Lottery Cover Week 2 Input Audit
+on:
+  push:
+    branches: [research/formation-cover-20230101]
+    paths: [.github/workflows/lotto-cover-week2-audit.yml]
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: collected-data-2023-01
+          path: source
+      - name: Audit January 8-14 input coverage without examining outcomes
+        env:
+          COLLECTION_KEY: ${{ secrets.COLLECTOR_PASSPHRASE }}
+        run: |
+          python - <<'PY'
+          import json,sqlite3,subprocess,os,re
+          from pathlib import Path
+          out=Path("research/formation_cover/week_20230108_20230114");out.mkdir(parents=True,exist_ok=True)
+          records=[]
+          for day in range(8,15):
+              ds=f"2023-01-{day:02d}";p=Path("/tmp/week2-audit.sqlite")
+              subprocess.run(["gpg","--batch","--yes","--quiet","--pinentry-mode","loopback","--passphrase-fd","0","--output",str(p),"--decrypt",f"source/encrypted/netkeirin-{ds}.sqlite.gpg"],input=os.environ["COLLECTION_KEY"].encode(),check=True)
+              try:
+                  c=sqlite3.connect(f"file:{p}?mode=ro",uri=True)
+                  tables=[x[0] for x in c.execute("select name from sqlite_master where type='table'")]
+                  schemas={t:[x[1] for x in c.execute('pragma table_info("'+t+'")')] for t in tables}
+                  rows=c.execute("select race_id,start_time from races where date=?",(ds,)).fetchall()
+                  timed=sum(bool(re.fullmatch(r"\d{2}:\d{2}",r[1] or "")) for r in rows)
+                  entry_races=c.execute("select count(distinct race_id) from entries").fetchone()[0]
+                  keys=set();entrykeys=set();oddskeys=set()
+                  for (payload,) in c.execute("select payload from source_records"):
+                      obj=json.loads(payload);keys.update(obj.keys())
+                      entry=obj.get("entry") or {};entrykeys.update(entry.keys())
+                      for k in entry:
+                          if "odds" in k.lower():oddskeys.add(k)
+                  records.append(dict(date=ds,races=len(rows),valid_start_times=timed,entry_races=entry_races,
+                                      tables=schemas,source_top_keys=sorted(keys),entry_keys=sorted(entrykeys),
+                                      entry_odds_keys=sorted(oddskeys),dedicated_odds_tables=[t for t in tables if "odds" in t.lower()]))
+                  c.close()
+              finally:p.unlink(missing_ok=True)
+          (out/"input_audit.json").write_text(json.dumps(records,ensure_ascii=False,indent=2))
+          print(json.dumps(records,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lottery-cover-week2-input-audit
+          path: research/formation_cover/week_20230108_20230114/
+      - name: Save input audit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/formation_cover/week_20230108_20230114/
+          if ! git diff --cached --quiet; then
+            git commit -m "Audit week-two inputs before choosing common cover conditions"
+            git push origin HEAD:research/formation-cover-20230101
+          fi
