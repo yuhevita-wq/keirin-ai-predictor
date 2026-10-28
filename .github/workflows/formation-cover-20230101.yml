@@ -49,4 +49,7 @@ jobs:
               entries=[dict(r) for r in c.execute("select "+",".join(chosen)+" from entries where race_id=? order by bike_number",(first["race_id"],))]
               print("FIRST_RACE",json.dumps(first,ensure_ascii=False))
               print("FIRST_ENTRIES",json.dumps(entries,ensure_ascii=False))
+              raw=c.execute("select payload from source_records where race_id=?",(first["race_id"],)).fetchone()
+              if raw:
+                  print("FIRST_RAW_ENTRY",json.dumps(json.loads(raw[0]).get("entry"),ensure_ascii=False))
           PY
