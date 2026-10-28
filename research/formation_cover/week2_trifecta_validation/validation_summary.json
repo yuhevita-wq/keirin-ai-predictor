@@ -1,0 +1,23 @@
+{
+  "all302": {
+    "templates": 302,
+    "applicable_week2": 269,
+    "week2_positive": 14,
+    "week2_negative": 255,
+    "week2_zero": 33
+  },
+  "week1_profitable26": {
+    "templates": 26,
+    "applicable_week2": 26,
+    "week2_positive": 2,
+    "week2_negative": 24,
+    "week2_zero": 0
+  },
+  "week1_without_max_profitable4": {
+    "templates": 4,
+    "applicable_week2": 4,
+    "week2_positive": 1,
+    "week2_negative": 3,
+    "week2_zero": 0
+  }
+}

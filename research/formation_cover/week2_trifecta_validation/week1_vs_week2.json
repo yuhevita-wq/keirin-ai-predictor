@@ -1,0 +1,8156 @@
+[
+  {
+    "template": "P3-P3-P2",
+    "week1": {
+      "template": "P3-P3-P2",
+      "races": 166,
+      "hits": 2,
+      "stake": 94000,
+      "paid": 320210,
+      "profit": 226210,
+      "return_pct": 340.6489361702128,
+      "largest_payout": 247390,
+      "profit_without_largest_hit": -21180
+    },
+    "week2": {
+      "template": "P3-P3-P2",
+      "races": 149,
+      "hits": 0,
+      "stake": 80400,
+      "paid": 0,
+      "profit": -80400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -80400
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P4-P1",
+    "week1": {
+      "template": "P2-P4-P1",
+      "races": 57,
+      "hits": 2,
+      "stake": 23700,
+      "paid": 235770,
+      "profit": 212070,
+      "return_pct": 994.8101265822785,
+      "largest_payout": 202020,
+      "profit_without_largest_hit": 10050
+    },
+    "week2": {
+      "template": "P2-P4-P1",
+      "races": 55,
+      "hits": 0,
+      "stake": 20700,
+      "paid": 0,
+      "profit": -20700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -20700
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": true
+  },
+  {
+    "template": "ALL-P4-P1",
+    "week1": {
+      "template": "ALL-P4-P1",
+      "races": 57,
+      "hits": 3,
+      "stake": 58500,
+      "paid": 266690,
+      "profit": 208190,
+      "return_pct": 455.88034188034186,
+      "largest_payout": 202020,
+      "profit_without_largest_hit": 6170
+    },
+    "week2": {
+      "template": "ALL-P4-P1",
+      "races": 55,
+      "hits": 0,
+      "stake": 52800,
+      "paid": 0,
+      "profit": -52800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": true
+  },
+  {
+    "template": "SOLO-SOLO-P2",
+    "week1": {
+      "template": "SOLO-SOLO-P2",
+      "races": 54,
+      "hits": 3,
+      "stake": 28400,
+      "paid": 215350,
+      "profit": 186950,
+      "return_pct": 758.2746478873239,
+      "largest_payout": 116280,
+      "profit_without_largest_hit": 70670
+    },
+    "week2": {
+      "template": "SOLO-SOLO-P2",
+      "races": 64,
+      "hits": 2,
+      "stake": 30400,
+      "paid": 44950,
+      "profit": 14550,
+      "return_pct": 147.86184210526315,
+      "largest_payout": 26520,
+      "profit_without_largest_hit": -11970
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": true
+  },
+  {
+    "template": "P2-P4-ALL",
+    "week1": {
+      "template": "P2-P4-ALL",
+      "races": 57,
+      "hits": 3,
+      "stake": 58500,
+      "paid": 239700,
+      "profit": 181200,
+      "return_pct": 409.7435897435897,
+      "largest_payout": 202020,
+      "profit_without_largest_hit": -20820
+    },
+    "week2": {
+      "template": "P2-P4-ALL",
+      "races": 55,
+      "hits": 0,
+      "stake": 52800,
+      "paid": 0,
+      "profit": -52800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P3-ALL",
+    "week1": {
+      "template": "P3-P3-ALL",
+      "races": 166,
+      "hits": 3,
+      "stake": 223200,
+      "paid": 402570,
+      "profit": 179370,
+      "return_pct": 180.36290322580646,
+      "largest_payout": 247390,
+      "profit_without_largest_hit": -68020
+    },
+    "week2": {
+      "template": "P3-P3-ALL",
+      "races": 149,
+      "hits": 0,
+      "stake": 193400,
+      "paid": 0,
+      "profit": -193400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -193400
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-SOLO-ALL",
+    "week1": {
+      "template": "SOLO-SOLO-ALL",
+      "races": 91,
+      "hits": 41,
+      "stake": 855000,
+      "paid": 979950,
+      "profit": 124950,
+      "return_pct": 114.6140350877193,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -456370
+    },
+    "week2": {
+      "template": "SOLO-SOLO-ALL",
+      "races": 90,
+      "hits": 28,
+      "stake": 621200,
+      "paid": 354340,
+      "profit": -266860,
+      "return_pct": 57.04121056020605,
+      "largest_payout": 54030,
+      "profit_without_largest_hit": -320890
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P3-P1",
+    "week1": {
+      "template": "P4-P3-P1",
+      "races": 57,
+      "hits": 1,
+      "stake": 18600,
+      "paid": 140560,
+      "profit": 121960,
+      "return_pct": 755.6989247311828,
+      "largest_payout": 140560,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P4-P3-P1",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-SOLO-P2",
+    "week1": {
+      "template": "ALL-SOLO-P2",
+      "races": 223,
+      "hits": 10,
+      "stake": 289000,
+      "paid": 406780,
+      "profit": 117780,
+      "return_pct": 140.75432525951558,
+      "largest_payout": 116280,
+      "profit_without_largest_hit": 1500
+    },
+    "week2": {
+      "template": "ALL-SOLO-P2",
+      "races": 220,
+      "hits": 6,
+      "stake": 294800,
+      "paid": 233040,
+      "profit": -61760,
+      "return_pct": 79.05020352781547,
+      "largest_payout": 98000,
+      "profit_without_largest_hit": -159760
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": true
+  },
+  {
+    "template": "P1-P1-SOLO",
+    "week1": {
+      "template": "P1-P1-SOLO",
+      "races": 210,
+      "hits": 4,
+      "stake": 66400,
+      "paid": 179720,
+      "profit": 113320,
+      "return_pct": 270.66265060240966,
+      "largest_payout": 149420,
+      "profit_without_largest_hit": -36100
+    },
+    "week2": {
+      "template": "P1-P1-SOLO",
+      "races": 207,
+      "hits": 4,
+      "stake": 66000,
+      "paid": 121740,
+      "profit": 55740,
+      "return_pct": 184.45454545454547,
+      "largest_payout": 94870,
+      "profit_without_largest_hit": -39130
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P4-ALL",
+    "week1": {
+      "template": "ALL-P4-ALL",
+      "races": 57,
+      "hits": 4,
+      "stake": 175400,
+      "paid": 270620,
+      "profit": 95220,
+      "return_pct": 154.2873432155074,
+      "largest_payout": 202020,
+      "profit_without_largest_hit": -106800
+    },
+    "week2": {
+      "template": "ALL-P4-ALL",
+      "races": 55,
+      "hits": 1,
+      "stake": 164400,
+      "paid": 5150,
+      "profit": -159250,
+      "return_pct": 3.132603406326034,
+      "largest_payout": 5150,
+      "profit_without_largest_hit": -164400
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P3-ALL",
+    "week1": {
+      "template": "P4-P3-ALL",
+      "races": 57,
+      "hits": 1,
+      "stake": 46300,
+      "paid": 140560,
+      "profit": 94260,
+      "return_pct": 303.585313174946,
+      "largest_payout": 140560,
+      "profit_without_largest_hit": -46300
+    },
+    "week2": {
+      "template": "P4-P3-ALL",
+      "races": 55,
+      "hits": 0,
+      "stake": 40700,
+      "paid": 0,
+      "profit": -40700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -40700
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-ALL-P1",
+    "week1": {
+      "template": "P4-ALL-P1",
+      "races": 57,
+      "hits": 1,
+      "stake": 58500,
+      "paid": 140560,
+      "profit": 82060,
+      "return_pct": 240.27350427350427,
+      "largest_payout": 140560,
+      "profit_without_largest_hit": -58500
+    },
+    "week2": {
+      "template": "P4-ALL-P1",
+      "races": 55,
+      "hits": 0,
+      "stake": 52800,
+      "paid": 0,
+      "profit": -52800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-SOLO-P1",
+    "week1": {
+      "template": "P1-SOLO-P1",
+      "races": 210,
+      "hits": 1,
+      "stake": 66400,
+      "paid": 119670,
+      "profit": 53270,
+      "return_pct": 180.22590361445782,
+      "largest_payout": 119670,
+      "profit_without_largest_hit": -66400
+    },
+    "week2": {
+      "template": "P1-SOLO-P1",
+      "races": 207,
+      "hits": 0,
+      "stake": 66000,
+      "paid": 0,
+      "profit": -66000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -66000
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P1-P3",
+    "week1": {
+      "template": "P4-P1-P3",
+      "races": 57,
+      "hits": 1,
+      "stake": 18600,
+      "paid": 58710,
+      "profit": 40110,
+      "return_pct": 315.64516129032256,
+      "largest_payout": 58710,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P4-P1-P3",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-SOLO-P2",
+    "week1": {
+      "template": "P2-SOLO-P2",
+      "races": 210,
+      "hits": 3,
+      "stake": 66400,
+      "paid": 97920,
+      "profit": 31520,
+      "return_pct": 147.46987951807228,
+      "largest_payout": 86790,
+      "profit_without_largest_hit": -55270
+    },
+    "week2": {
+      "template": "P2-SOLO-P2",
+      "races": 207,
+      "hits": 1,
+      "stake": 66000,
+      "paid": 57800,
+      "profit": -8200,
+      "return_pct": 87.57575757575758,
+      "largest_payout": 57800,
+      "profit_without_largest_hit": -66000
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-ALL-ALL",
+    "week1": {
+      "template": "P4-ALL-ALL",
+      "races": 57,
+      "hits": 2,
+      "stake": 175400,
+      "paid": 199270,
+      "profit": 23870,
+      "return_pct": 113.60889395667047,
+      "largest_payout": 140560,
+      "profit_without_largest_hit": -116690
+    },
+    "week2": {
+      "template": "P4-ALL-ALL",
+      "races": 55,
+      "hits": 0,
+      "stake": 164400,
+      "paid": 0,
+      "profit": -164400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -164400
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P1-SOLO",
+    "week1": {
+      "template": "ALL-P1-SOLO",
+      "races": 223,
+      "hits": 21,
+      "stake": 289000,
+      "paid": 311470,
+      "profit": 22470,
+      "return_pct": 107.77508650519032,
+      "largest_payout": 149420,
+      "profit_without_largest_hit": -126950
+    },
+    "week2": {
+      "template": "ALL-P1-SOLO",
+      "races": 220,
+      "hits": 12,
+      "stake": 294800,
+      "paid": 233100,
+      "profit": -61700,
+      "return_pct": 79.07055630936227,
+      "largest_payout": 94870,
+      "profit_without_largest_hit": -156570
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P4-P1",
+    "week1": {
+      "template": "P1-P4-P1",
+      "races": 55,
+      "hits": 1,
+      "stake": 12200,
+      "paid": 30920,
+      "profit": 18720,
+      "return_pct": 253.44262295081967,
+      "largest_payout": 30920,
+      "profit_without_largest_hit": -12200
+    },
+    "week2": {
+      "template": "P1-P4-P1",
+      "races": 49,
+      "hits": 0,
+      "stake": 10200,
+      "paid": 0,
+      "profit": -10200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -10200
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P1-P5",
+    "week1": {
+      "template": "P2-P1-P5",
+      "races": 4,
+      "hits": 1,
+      "stake": 1600,
+      "paid": 14620,
+      "profit": 13020,
+      "return_pct": 913.75,
+      "largest_payout": 14620,
+      "profit_without_largest_hit": -1600
+    },
+    "week2": {
+      "template": "P2-P1-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 1200,
+      "paid": 0,
+      "profit": -1200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1200
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-ALL-P3",
+    "week1": {
+      "template": "P4-ALL-P3",
+      "races": 57,
+      "hits": 1,
+      "stake": 46300,
+      "paid": 58710,
+      "profit": 12410,
+      "return_pct": 126.80345572354211,
+      "largest_payout": 58710,
+      "profit_without_largest_hit": -46300
+    },
+    "week2": {
+      "template": "P4-ALL-P3",
+      "races": 55,
+      "hits": 0,
+      "stake": 40700,
+      "paid": 0,
+      "profit": -40700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -40700
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P1-P5",
+    "week1": {
+      "template": "ALL-P1-P5",
+      "races": 4,
+      "hits": 1,
+      "stake": 4400,
+      "paid": 14620,
+      "profit": 10220,
+      "return_pct": 332.27272727272725,
+      "largest_payout": 14620,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "ALL-P1-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-ALL-P5",
+    "week1": {
+      "template": "P2-ALL-P5",
+      "races": 4,
+      "hits": 1,
+      "stake": 4400,
+      "paid": 14620,
+      "profit": 10220,
+      "return_pct": 332.27272727272725,
+      "largest_payout": 14620,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P2-ALL-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P1-SOLO",
+    "week1": {
+      "template": "SOLO-P1-SOLO",
+      "races": 54,
+      "hits": 4,
+      "stake": 28400,
+      "paid": 30130,
+      "profit": 1730,
+      "return_pct": 106.09154929577464,
+      "largest_payout": 12600,
+      "profit_without_largest_hit": -10870
+    },
+    "week2": {
+      "template": "SOLO-P1-SOLO",
+      "races": 64,
+      "hits": 1,
+      "stake": 30400,
+      "paid": 2570,
+      "profit": -27830,
+      "return_pct": 8.453947368421053,
+      "largest_payout": 2570,
+      "profit_without_largest_hit": -30400
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P1-ALL",
+    "week1": {
+      "template": "P4-P1-ALL",
+      "races": 57,
+      "hits": 1,
+      "stake": 58500,
+      "paid": 58710,
+      "profit": 210,
+      "return_pct": 100.35897435897436,
+      "largest_payout": 58710,
+      "profit_without_largest_hit": -58500
+    },
+    "week2": {
+      "template": "P4-P1-ALL",
+      "races": 55,
+      "hits": 0,
+      "stake": 52800,
+      "paid": 0,
+      "profit": -52800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-ALL-P5",
+    "week1": {
+      "template": "ALL-ALL-P5",
+      "races": 4,
+      "hits": 1,
+      "stake": 14600,
+      "paid": 14620,
+      "profit": 20,
+      "return_pct": 100.13698630136986,
+      "largest_payout": 14620,
+      "profit_without_largest_hit": -14600
+    },
+    "week2": {
+      "template": "ALL-ALL-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 9000,
+      "paid": 0,
+      "profit": -9000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9000
+    },
+    "selected_week1_profit": true,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P5-SOLO",
+    "week1": {
+      "template": "P3-P5-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P3-P5-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-SOLO-P5",
+    "week1": {
+      "template": "P3-SOLO-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P3-SOLO-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P5-SOLO",
+    "week1": {
+      "template": "P4-P5-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P4-P5-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-SOLO-P5",
+    "week1": {
+      "template": "P4-SOLO-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P4-SOLO-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P3-SOLO",
+    "week1": {
+      "template": "P5-P3-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P5-P3-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P4-SOLO",
+    "week1": {
+      "template": "P5-P4-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P5-P4-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-SOLO-P3",
+    "week1": {
+      "template": "P5-SOLO-P3",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P5-SOLO-P3",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-SOLO-P4",
+    "week1": {
+      "template": "P5-SOLO-P4",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P5-SOLO-P4",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-SOLO-SOLO",
+    "week1": {
+      "template": "P5-SOLO-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "P5-SOLO-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P3-P5",
+    "week1": {
+      "template": "SOLO-P3-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "SOLO-P3-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P4-P5",
+    "week1": {
+      "template": "SOLO-P4-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "SOLO-P4-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P5-P3",
+    "week1": {
+      "template": "SOLO-P5-P3",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "SOLO-P5-P3",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P5-P4",
+    "week1": {
+      "template": "SOLO-P5-P4",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "SOLO-P5-P4",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P5-SOLO",
+    "week1": {
+      "template": "SOLO-P5-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "SOLO-P5-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-SOLO-P5",
+    "week1": {
+      "template": "SOLO-SOLO-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 200,
+      "paid": 0,
+      "profit": -200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -200
+    },
+    "week2": {
+      "template": "SOLO-SOLO-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P5-SOLO",
+    "week1": {
+      "template": "P1-P5-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P1-P5-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-SOLO-P5",
+    "week1": {
+      "template": "P1-SOLO-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P1-SOLO-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P5-SOLO",
+    "week1": {
+      "template": "P2-P5-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P2-P5-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-SOLO-P5",
+    "week1": {
+      "template": "P2-SOLO-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P2-SOLO-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P4-P5",
+    "week1": {
+      "template": "P3-P4-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P3-P4-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 300,
+      "paid": 0,
+      "profit": -300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -300
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P5-P4",
+    "week1": {
+      "template": "P3-P5-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P3-P5-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 300,
+      "paid": 0,
+      "profit": -300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -300
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P3-P5",
+    "week1": {
+      "template": "P4-P3-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P4-P3-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 300,
+      "paid": 0,
+      "profit": -300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -300
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P5-P3",
+    "week1": {
+      "template": "P4-P5-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P4-P5-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 300,
+      "paid": 0,
+      "profit": -300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -300
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P1-SOLO",
+    "week1": {
+      "template": "P5-P1-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P5-P1-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P2-SOLO",
+    "week1": {
+      "template": "P5-P2-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P5-P2-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P3-P4",
+    "week1": {
+      "template": "P5-P3-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P5-P3-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 300,
+      "paid": 0,
+      "profit": -300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -300
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P4-P3",
+    "week1": {
+      "template": "P5-P4-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P5-P4-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 300,
+      "paid": 0,
+      "profit": -300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -300
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-SOLO-P1",
+    "week1": {
+      "template": "P5-SOLO-P1",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P5-SOLO-P1",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-SOLO-P2",
+    "week1": {
+      "template": "P5-SOLO-P2",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "P5-SOLO-P2",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P1-P5",
+    "week1": {
+      "template": "SOLO-P1-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "SOLO-P1-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P2-P5",
+    "week1": {
+      "template": "SOLO-P2-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "SOLO-P2-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P5-P1",
+    "week1": {
+      "template": "SOLO-P5-P1",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "SOLO-P5-P1",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P5-P2",
+    "week1": {
+      "template": "SOLO-P5-P2",
+      "races": 1,
+      "hits": 0,
+      "stake": 400,
+      "paid": 0,
+      "profit": -400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -400
+    },
+    "week2": {
+      "template": "SOLO-P5-P2",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P1-P5",
+    "week1": {
+      "template": "P1-P1-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P1-P1-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P3-P5",
+    "week1": {
+      "template": "P1-P3-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P1-P3-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P4-P5",
+    "week1": {
+      "template": "P1-P4-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P1-P4-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P5-P1",
+    "week1": {
+      "template": "P1-P5-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P1-P5-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P5-P3",
+    "week1": {
+      "template": "P1-P5-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P1-P5-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P5-P4",
+    "week1": {
+      "template": "P1-P5-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P1-P5-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P2-P5",
+    "week1": {
+      "template": "P2-P2-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P2-P2-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P3-P5",
+    "week1": {
+      "template": "P2-P3-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P2-P3-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P4-P5",
+    "week1": {
+      "template": "P2-P4-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P2-P4-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P5-P2",
+    "week1": {
+      "template": "P2-P5-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P2-P5-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P5-P3",
+    "week1": {
+      "template": "P2-P5-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P2-P5-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P5-P4",
+    "week1": {
+      "template": "P2-P5-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P2-P5-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P1-P5",
+    "week1": {
+      "template": "P3-P1-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P3-P1-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P2-P5",
+    "week1": {
+      "template": "P3-P2-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P3-P2-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P5-P1",
+    "week1": {
+      "template": "P3-P5-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P3-P5-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P5-P2",
+    "week1": {
+      "template": "P3-P5-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P3-P5-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P1-P5",
+    "week1": {
+      "template": "P4-P1-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P4-P1-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P2-P5",
+    "week1": {
+      "template": "P4-P2-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P4-P2-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P5-P1",
+    "week1": {
+      "template": "P4-P5-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P4-P5-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P5-P2",
+    "week1": {
+      "template": "P4-P5-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P4-P5-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P1-P1",
+    "week1": {
+      "template": "P5-P1-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P1-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P1-P3",
+    "week1": {
+      "template": "P5-P1-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P1-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P1-P4",
+    "week1": {
+      "template": "P5-P1-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P1-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P2-P2",
+    "week1": {
+      "template": "P5-P2-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P2-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P2-P3",
+    "week1": {
+      "template": "P5-P2-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P2-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P2-P4",
+    "week1": {
+      "template": "P5-P2-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P2-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P3-P1",
+    "week1": {
+      "template": "P5-P3-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P3-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P3-P2",
+    "week1": {
+      "template": "P5-P3-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P3-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P4-P1",
+    "week1": {
+      "template": "P5-P4-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P4-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P4-P2",
+    "week1": {
+      "template": "P5-P4-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 800,
+      "paid": 0,
+      "profit": -800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -800
+    },
+    "week2": {
+      "template": "P5-P4-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 600,
+      "paid": 0,
+      "profit": -600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P5-SOLO",
+    "week1": {
+      "template": "ALL-P5-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "ALL-P5-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-SOLO-P5",
+    "week1": {
+      "template": "ALL-SOLO-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "ALL-SOLO-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-SOLO-SOLO",
+    "week1": {
+      "template": "P4-SOLO-SOLO",
+      "races": 3,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "P4-SOLO-SOLO",
+      "races": 6,
+      "hits": 0,
+      "stake": 2000,
+      "paid": 0,
+      "profit": -2000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-ALL-SOLO",
+    "week1": {
+      "template": "P5-ALL-SOLO",
+      "races": 1,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "P5-ALL-SOLO",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-SOLO-ALL",
+    "week1": {
+      "template": "P5-SOLO-ALL",
+      "races": 1,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "P5-SOLO-ALL",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-ALL-P5",
+    "week1": {
+      "template": "SOLO-ALL-P5",
+      "races": 1,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "SOLO-ALL-P5",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P4-SOLO",
+    "week1": {
+      "template": "SOLO-P4-SOLO",
+      "races": 3,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "SOLO-P4-SOLO",
+      "races": 6,
+      "hits": 0,
+      "stake": 2000,
+      "paid": 0,
+      "profit": -2000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P5-ALL",
+    "week1": {
+      "template": "SOLO-P5-ALL",
+      "races": 1,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "SOLO-P5-ALL",
+      "races": 0,
+      "hits": 0,
+      "stake": 0,
+      "paid": 0,
+      "profit": 0,
+      "return_pct": null,
+      "largest_payout": 0,
+      "profit_without_largest_hit": 0
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-SOLO-P4",
+    "week1": {
+      "template": "SOLO-SOLO-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 1400,
+      "paid": 0,
+      "profit": -1400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1400
+    },
+    "week2": {
+      "template": "SOLO-SOLO-P4",
+      "races": 6,
+      "hits": 0,
+      "stake": 2000,
+      "paid": 0,
+      "profit": -2000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P2-P5",
+    "week1": {
+      "template": "P1-P2-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 1600,
+      "paid": 0,
+      "profit": -1600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1600
+    },
+    "week2": {
+      "template": "P1-P2-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 1200,
+      "paid": 0,
+      "profit": -1200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P5-P2",
+    "week1": {
+      "template": "P1-P5-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 1600,
+      "paid": 0,
+      "profit": -1600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1600
+    },
+    "week2": {
+      "template": "P1-P5-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 1200,
+      "paid": 0,
+      "profit": -1200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P5-P1",
+    "week1": {
+      "template": "P2-P5-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 1600,
+      "paid": 0,
+      "profit": -1600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1600
+    },
+    "week2": {
+      "template": "P2-P5-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 1200,
+      "paid": 0,
+      "profit": -1200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P1-P2",
+    "week1": {
+      "template": "P5-P1-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 1600,
+      "paid": 0,
+      "profit": -1600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1600
+    },
+    "week2": {
+      "template": "P5-P1-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 1200,
+      "paid": 0,
+      "profit": -1200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P2-P1",
+    "week1": {
+      "template": "P5-P2-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 1600,
+      "paid": 0,
+      "profit": -1600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1600
+    },
+    "week2": {
+      "template": "P5-P2-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 1200,
+      "paid": 0,
+      "profit": -1200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P4-SOLO",
+    "week1": {
+      "template": "P3-P4-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 1900,
+      "paid": 0,
+      "profit": -1900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1900
+    },
+    "week2": {
+      "template": "P3-P4-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 3600,
+      "paid": 0,
+      "profit": -3600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-SOLO-P4",
+    "week1": {
+      "template": "P3-SOLO-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 1900,
+      "paid": 0,
+      "profit": -1900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1900
+    },
+    "week2": {
+      "template": "P3-SOLO-P4",
+      "races": 26,
+      "hits": 0,
+      "stake": 3600,
+      "paid": 0,
+      "profit": -3600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P3-SOLO",
+    "week1": {
+      "template": "P4-P3-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 1900,
+      "paid": 0,
+      "profit": -1900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1900
+    },
+    "week2": {
+      "template": "P4-P3-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 3600,
+      "paid": 0,
+      "profit": -3600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-SOLO-P3",
+    "week1": {
+      "template": "P4-SOLO-P3",
+      "races": 14,
+      "hits": 0,
+      "stake": 1900,
+      "paid": 0,
+      "profit": -1900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1900
+    },
+    "week2": {
+      "template": "P4-SOLO-P3",
+      "races": 26,
+      "hits": 0,
+      "stake": 3600,
+      "paid": 0,
+      "profit": -3600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P3-P4",
+    "week1": {
+      "template": "SOLO-P3-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 1900,
+      "paid": 0,
+      "profit": -1900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1900
+    },
+    "week2": {
+      "template": "SOLO-P3-P4",
+      "races": 26,
+      "hits": 0,
+      "stake": 3600,
+      "paid": 0,
+      "profit": -3600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P4-P3",
+    "week1": {
+      "template": "SOLO-P4-P3",
+      "races": 14,
+      "hits": 0,
+      "stake": 1900,
+      "paid": 0,
+      "profit": -1900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1900
+    },
+    "week2": {
+      "template": "SOLO-P4-P3",
+      "races": 26,
+      "hits": 0,
+      "stake": 3600,
+      "paid": 0,
+      "profit": -3600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P3-P5",
+    "week1": {
+      "template": "ALL-P3-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "ALL-P3-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P4-P5",
+    "week1": {
+      "template": "ALL-P4-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "ALL-P4-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P5-P3",
+    "week1": {
+      "template": "ALL-P5-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "ALL-P5-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P5-P4",
+    "week1": {
+      "template": "ALL-P5-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "ALL-P5-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-ALL-P5",
+    "week1": {
+      "template": "P3-ALL-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P3-ALL-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P5-ALL",
+    "week1": {
+      "template": "P3-P5-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P3-P5-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-ALL-P5",
+    "week1": {
+      "template": "P4-ALL-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P4-ALL-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P5-ALL",
+    "week1": {
+      "template": "P4-P5-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P4-P5-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-ALL-P3",
+    "week1": {
+      "template": "P5-ALL-P3",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P5-ALL-P3",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-ALL-P4",
+    "week1": {
+      "template": "P5-ALL-P4",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P5-ALL-P4",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P3-ALL",
+    "week1": {
+      "template": "P5-P3-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P5-P3-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P4-ALL",
+    "week1": {
+      "template": "P5-P4-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 2200,
+      "paid": 0,
+      "profit": -2200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -2200
+    },
+    "week2": {
+      "template": "P5-P4-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 1500,
+      "paid": 0,
+      "profit": -1500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -1500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P2-P1",
+    "week1": {
+      "template": "P2-P2-P1",
+      "races": 520,
+      "hits": 29,
+      "stake": 604600,
+      "paid": 602120,
+      "profit": -2480,
+      "return_pct": 99.58981144558386,
+      "largest_payout": 83490,
+      "profit_without_largest_hit": -85970
+    },
+    "week2": {
+      "template": "P2-P2-P1",
+      "races": 478,
+      "hits": 14,
+      "stake": 581400,
+      "paid": 131750,
+      "profit": -449650,
+      "return_pct": 22.660818713450293,
+      "largest_payout": 23600,
+      "profit_without_largest_hit": -473250
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-SOLO-P3",
+    "week1": {
+      "template": "P1-SOLO-P3",
+      "races": 184,
+      "hits": 1,
+      "stake": 65500,
+      "paid": 62980,
+      "profit": -2520,
+      "return_pct": 96.1526717557252,
+      "largest_payout": 62980,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "P1-SOLO-P3",
+      "races": 187,
+      "hits": 3,
+      "stake": 67600,
+      "paid": 17630,
+      "profit": -49970,
+      "return_pct": 26.079881656804734,
+      "largest_payout": 13160,
+      "profit_without_largest_hit": -63130
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P4-SOLO",
+    "week1": {
+      "template": "P1-P4-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P1-P4-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-SOLO-P4",
+    "week1": {
+      "template": "P1-SOLO-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P1-SOLO-P4",
+      "races": 26,
+      "hits": 1,
+      "stake": 5500,
+      "paid": 71710,
+      "profit": 66210,
+      "return_pct": 1303.8181818181818,
+      "largest_payout": 71710,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P4-SOLO",
+    "week1": {
+      "template": "P2-P4-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P2-P4-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-SOLO-P4",
+    "week1": {
+      "template": "P2-SOLO-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P2-SOLO-P4",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P1-SOLO",
+    "week1": {
+      "template": "P4-P1-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P4-P1-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P2-SOLO",
+    "week1": {
+      "template": "P4-P2-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P4-P2-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-SOLO-P1",
+    "week1": {
+      "template": "P4-SOLO-P1",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P4-SOLO-P1",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-SOLO-P2",
+    "week1": {
+      "template": "P4-SOLO-P2",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "P4-SOLO-P2",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P1-P4",
+    "week1": {
+      "template": "SOLO-P1-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "SOLO-P1-P4",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P2-P4",
+    "week1": {
+      "template": "SOLO-P2-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "SOLO-P2-P4",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P4-P1",
+    "week1": {
+      "template": "SOLO-P4-P1",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "SOLO-P4-P1",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P4-P2",
+    "week1": {
+      "template": "SOLO-P4-P2",
+      "races": 14,
+      "hits": 0,
+      "stake": 3200,
+      "paid": 0,
+      "profit": -3200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3200
+    },
+    "week2": {
+      "template": "SOLO-P4-P2",
+      "races": 26,
+      "hits": 0,
+      "stake": 5500,
+      "paid": 0,
+      "profit": -5500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P2-P5",
+    "week1": {
+      "template": "ALL-P2-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "ALL-P2-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P5-P1",
+    "week1": {
+      "template": "ALL-P5-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "ALL-P5-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P5-P2",
+    "week1": {
+      "template": "ALL-P5-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "ALL-P5-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-ALL-P5",
+    "week1": {
+      "template": "P1-ALL-P5",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P1-ALL-P5",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P5-ALL",
+    "week1": {
+      "template": "P1-P5-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P1-P5-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P5-ALL",
+    "week1": {
+      "template": "P2-P5-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P2-P5-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-ALL-P1",
+    "week1": {
+      "template": "P5-ALL-P1",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P5-ALL-P1",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-ALL-P2",
+    "week1": {
+      "template": "P5-ALL-P2",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P5-ALL-P2",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P1-ALL",
+    "week1": {
+      "template": "P5-P1-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P5-P1-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-P2-ALL",
+    "week1": {
+      "template": "P5-P2-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 4400,
+      "paid": 0,
+      "profit": -4400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -4400
+    },
+    "week2": {
+      "template": "P5-P2-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 3000,
+      "paid": 0,
+      "profit": -3000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -3000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P3-P4",
+    "week1": {
+      "template": "P3-P3-P4",
+      "races": 34,
+      "hits": 0,
+      "stake": 6800,
+      "paid": 0,
+      "profit": -6800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -6800
+    },
+    "week2": {
+      "template": "P3-P3-P4",
+      "races": 26,
+      "hits": 0,
+      "stake": 5200,
+      "paid": 0,
+      "profit": -5200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P4-P3",
+    "week1": {
+      "template": "P3-P4-P3",
+      "races": 34,
+      "hits": 0,
+      "stake": 6800,
+      "paid": 0,
+      "profit": -6800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -6800
+    },
+    "week2": {
+      "template": "P3-P4-P3",
+      "races": 26,
+      "hits": 0,
+      "stake": 5200,
+      "paid": 0,
+      "profit": -5200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P3-P3",
+    "week1": {
+      "template": "P4-P3-P3",
+      "races": 34,
+      "hits": 0,
+      "stake": 6800,
+      "paid": 0,
+      "profit": -6800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -6800
+    },
+    "week2": {
+      "template": "P4-P3-P3",
+      "races": 26,
+      "hits": 0,
+      "stake": 5200,
+      "paid": 0,
+      "profit": -5200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -5200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P4-SOLO",
+    "week1": {
+      "template": "ALL-P4-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 9900,
+      "paid": 0,
+      "profit": -9900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9900
+    },
+    "week2": {
+      "template": "ALL-P4-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-SOLO-P4",
+    "week1": {
+      "template": "ALL-SOLO-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 9900,
+      "paid": 0,
+      "profit": -9900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9900
+    },
+    "week2": {
+      "template": "ALL-SOLO-P4",
+      "races": 26,
+      "hits": 1,
+      "stake": 16600,
+      "paid": 71710,
+      "profit": 55110,
+      "return_pct": 431.9879518072289,
+      "largest_payout": 71710,
+      "profit_without_largest_hit": -16600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-ALL-SOLO",
+    "week1": {
+      "template": "P4-ALL-SOLO",
+      "races": 14,
+      "hits": 0,
+      "stake": 9900,
+      "paid": 0,
+      "profit": -9900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9900
+    },
+    "week2": {
+      "template": "P4-ALL-SOLO",
+      "races": 26,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-SOLO-ALL",
+    "week1": {
+      "template": "P4-SOLO-ALL",
+      "races": 14,
+      "hits": 0,
+      "stake": 9900,
+      "paid": 0,
+      "profit": -9900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9900
+    },
+    "week2": {
+      "template": "P4-SOLO-ALL",
+      "races": 26,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-ALL-P4",
+    "week1": {
+      "template": "SOLO-ALL-P4",
+      "races": 14,
+      "hits": 0,
+      "stake": 9900,
+      "paid": 0,
+      "profit": -9900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9900
+    },
+    "week2": {
+      "template": "SOLO-ALL-P4",
+      "races": 26,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P4-ALL",
+    "week1": {
+      "template": "SOLO-P4-ALL",
+      "races": 14,
+      "hits": 0,
+      "stake": 9900,
+      "paid": 0,
+      "profit": -9900,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9900
+    },
+    "week2": {
+      "template": "SOLO-P4-ALL",
+      "races": 26,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P3-P3",
+    "week1": {
+      "template": "P3-P3-P3",
+      "races": 18,
+      "hits": 0,
+      "stake": 10800,
+      "paid": 0,
+      "profit": -10800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -10800
+    },
+    "week2": {
+      "template": "P3-P3-P3",
+      "races": 14,
+      "hits": 0,
+      "stake": 8400,
+      "paid": 0,
+      "profit": -8400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -8400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P3-P1",
+    "week1": {
+      "template": "P3-P3-P1",
+      "races": 166,
+      "hits": 1,
+      "stake": 94000,
+      "paid": 82360,
+      "profit": -11640,
+      "return_pct": 87.61702127659575,
+      "largest_payout": 82360,
+      "profit_without_largest_hit": -94000
+    },
+    "week2": {
+      "template": "P3-P3-P1",
+      "races": 149,
+      "hits": 0,
+      "stake": 80400,
+      "paid": 0,
+      "profit": -80400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -80400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P1-P4",
+    "week1": {
+      "template": "P1-P1-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 12200,
+      "paid": 0,
+      "profit": -12200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -12200
+    },
+    "week2": {
+      "template": "P1-P1-P4",
+      "races": 49,
+      "hits": 0,
+      "stake": 10200,
+      "paid": 0,
+      "profit": -10200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -10200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P2-P4",
+    "week1": {
+      "template": "P2-P2-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 12200,
+      "paid": 0,
+      "profit": -12200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -12200
+    },
+    "week2": {
+      "template": "P2-P2-P4",
+      "races": 49,
+      "hits": 0,
+      "stake": 10200,
+      "paid": 0,
+      "profit": -10200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -10200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P4-P2",
+    "week1": {
+      "template": "P2-P4-P2",
+      "races": 55,
+      "hits": 0,
+      "stake": 12200,
+      "paid": 0,
+      "profit": -12200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -12200
+    },
+    "week2": {
+      "template": "P2-P4-P2",
+      "races": 49,
+      "hits": 0,
+      "stake": 10200,
+      "paid": 0,
+      "profit": -10200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -10200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P1-P1",
+    "week1": {
+      "template": "P4-P1-P1",
+      "races": 55,
+      "hits": 0,
+      "stake": 12200,
+      "paid": 0,
+      "profit": -12200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -12200
+    },
+    "week2": {
+      "template": "P4-P1-P1",
+      "races": 49,
+      "hits": 0,
+      "stake": 10200,
+      "paid": 0,
+      "profit": -10200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -10200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P2-P2",
+    "week1": {
+      "template": "P4-P2-P2",
+      "races": 55,
+      "hits": 0,
+      "stake": 12200,
+      "paid": 0,
+      "profit": -12200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -12200
+    },
+    "week2": {
+      "template": "P4-P2-P2",
+      "races": 49,
+      "hits": 0,
+      "stake": 10200,
+      "paid": 0,
+      "profit": -10200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -10200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P3-P4",
+    "week1": {
+      "template": "P2-P3-P4",
+      "races": 57,
+      "hits": 3,
+      "stake": 18600,
+      "paid": 5890,
+      "profit": -12710,
+      "return_pct": 31.666666666666668,
+      "largest_payout": 3820,
+      "profit_without_largest_hit": -16530
+    },
+    "week2": {
+      "template": "P2-P3-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P5-ALL",
+    "week1": {
+      "template": "ALL-P5-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 14600,
+      "paid": 0,
+      "profit": -14600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -14600
+    },
+    "week2": {
+      "template": "ALL-P5-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 9000,
+      "paid": 0,
+      "profit": -9000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P5-ALL-ALL",
+    "week1": {
+      "template": "P5-ALL-ALL",
+      "races": 4,
+      "hits": 0,
+      "stake": 14600,
+      "paid": 0,
+      "profit": -14600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -14600
+    },
+    "week2": {
+      "template": "P5-ALL-ALL",
+      "races": 3,
+      "hits": 0,
+      "stake": 9000,
+      "paid": 0,
+      "profit": -9000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -9000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P4-P3",
+    "week1": {
+      "template": "P2-P4-P3",
+      "races": 57,
+      "hits": 1,
+      "stake": 18600,
+      "paid": 3930,
+      "profit": -14670,
+      "return_pct": 21.129032258064516,
+      "largest_payout": 3930,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P2-P4-P3",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-SOLO-SOLO",
+    "week1": {
+      "template": "SOLO-SOLO-SOLO",
+      "races": 51,
+      "hits": 38,
+      "stake": 780000,
+      "paid": 764600,
+      "profit": -15400,
+      "return_pct": 98.02564102564102,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -596720
+    },
+    "week2": {
+      "template": "SOLO-SOLO-SOLO",
+      "races": 38,
+      "hits": 26,
+      "stake": 544200,
+      "paid": 309390,
+      "profit": -234810,
+      "return_pct": 56.85226019845645,
+      "largest_payout": 54030,
+      "profit_without_largest_hit": -288840
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-SOLO-SOLO",
+    "week1": {
+      "template": "P3-SOLO-SOLO",
+      "races": 49,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "week2": {
+      "template": "P3-SOLO-SOLO",
+      "races": 58,
+      "hits": 0,
+      "stake": 14200,
+      "paid": 0,
+      "profit": -14200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -14200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P3-SOLO",
+    "week1": {
+      "template": "SOLO-P3-SOLO",
+      "races": 49,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "week2": {
+      "template": "SOLO-P3-SOLO",
+      "races": 58,
+      "hits": 0,
+      "stake": 14200,
+      "paid": 0,
+      "profit": -14200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -14200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-SOLO-P3",
+    "week1": {
+      "template": "SOLO-SOLO-P3",
+      "races": 49,
+      "hits": 0,
+      "stake": 16600,
+      "paid": 0,
+      "profit": -16600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -16600
+    },
+    "week2": {
+      "template": "SOLO-SOLO-P3",
+      "races": 58,
+      "hits": 0,
+      "stake": 14200,
+      "paid": 0,
+      "profit": -14200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -14200
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P3-SOLO",
+    "week1": {
+      "template": "P3-P3-SOLO",
+      "races": 84,
+      "hits": 0,
+      "stake": 17600,
+      "paid": 0,
+      "profit": -17600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -17600
+    },
+    "week2": {
+      "template": "P3-P3-SOLO",
+      "races": 94,
+      "hits": 0,
+      "stake": 19000,
+      "paid": 0,
+      "profit": -19000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -19000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-SOLO-P3",
+    "week1": {
+      "template": "P3-SOLO-P3",
+      "races": 84,
+      "hits": 0,
+      "stake": 17600,
+      "paid": 0,
+      "profit": -17600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -17600
+    },
+    "week2": {
+      "template": "P3-SOLO-P3",
+      "races": 94,
+      "hits": 0,
+      "stake": 19000,
+      "paid": 0,
+      "profit": -19000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -19000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P3-P3",
+    "week1": {
+      "template": "SOLO-P3-P3",
+      "races": 84,
+      "hits": 0,
+      "stake": 17600,
+      "paid": 0,
+      "profit": -17600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -17600
+    },
+    "week2": {
+      "template": "SOLO-P3-P3",
+      "races": 94,
+      "hits": 0,
+      "stake": 19000,
+      "paid": 0,
+      "profit": -19000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -19000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P3-P4",
+    "week1": {
+      "template": "P1-P3-P4",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P1-P3-P4",
+      "races": 55,
+      "hits": 1,
+      "stake": 15800,
+      "paid": 8080,
+      "profit": -7720,
+      "return_pct": 51.139240506329116,
+      "largest_payout": 8080,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P4-P3",
+    "week1": {
+      "template": "P1-P4-P3",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P1-P4-P3",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P1-P4",
+    "week1": {
+      "template": "P3-P1-P4",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P3-P1-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P2-P4",
+    "week1": {
+      "template": "P3-P2-P4",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P3-P2-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P4-P1",
+    "week1": {
+      "template": "P3-P4-P1",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P3-P4-P1",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P4-P2",
+    "week1": {
+      "template": "P3-P4-P2",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P3-P4-P2",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P2-P3",
+    "week1": {
+      "template": "P4-P2-P3",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P4-P2-P3",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P3-P2",
+    "week1": {
+      "template": "P4-P3-P2",
+      "races": 57,
+      "hits": 0,
+      "stake": 18600,
+      "paid": 0,
+      "profit": -18600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -18600
+    },
+    "week2": {
+      "template": "P4-P3-P2",
+      "races": 55,
+      "hits": 0,
+      "stake": 15800,
+      "paid": 0,
+      "profit": -15800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -15800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P2-P4",
+    "week1": {
+      "template": "P1-P2-P4",
+      "races": 57,
+      "hits": 2,
+      "stake": 23700,
+      "paid": 3630,
+      "profit": -20070,
+      "return_pct": 15.316455696202532,
+      "largest_payout": 2990,
+      "profit_without_largest_hit": -23060
+    },
+    "week2": {
+      "template": "P1-P2-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 20700,
+      "paid": 0,
+      "profit": -20700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -20700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-SOLO-P2",
+    "week1": {
+      "template": "P3-SOLO-P2",
+      "races": 184,
+      "hits": 1,
+      "stake": 65500,
+      "paid": 44860,
+      "profit": -20640,
+      "return_pct": 68.4885496183206,
+      "largest_payout": 44860,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "P3-SOLO-P2",
+      "races": 187,
+      "hits": 1,
+      "stake": 67600,
+      "paid": 98000,
+      "profit": 30400,
+      "return_pct": 144.97041420118344,
+      "largest_payout": 98000,
+      "profit_without_largest_hit": -67600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P2-SOLO",
+    "week1": {
+      "template": "P3-P2-SOLO",
+      "races": 184,
+      "hits": 1,
+      "stake": 65500,
+      "paid": 43920,
+      "profit": -21580,
+      "return_pct": 67.05343511450381,
+      "largest_payout": 43920,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "P3-P2-SOLO",
+      "races": 187,
+      "hits": 1,
+      "stake": 67600,
+      "paid": 20760,
+      "profit": -46840,
+      "return_pct": 30.71005917159763,
+      "largest_payout": 20760,
+      "profit_without_largest_hit": -67600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-SOLO-SOLO",
+    "week1": {
+      "template": "P2-SOLO-SOLO",
+      "races": 54,
+      "hits": 1,
+      "stake": 28400,
+      "paid": 6130,
+      "profit": -22270,
+      "return_pct": 21.58450704225352,
+      "largest_payout": 6130,
+      "profit_without_largest_hit": -28400
+    },
+    "week2": {
+      "template": "P2-SOLO-SOLO",
+      "races": 64,
+      "hits": 2,
+      "stake": 30400,
+      "paid": 41580,
+      "profit": 11180,
+      "return_pct": 136.77631578947367,
+      "largest_payout": 27340,
+      "profit_without_largest_hit": -16160
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-ALL-P2",
+    "week1": {
+      "template": "SOLO-ALL-P2",
+      "races": 223,
+      "hits": 8,
+      "stake": 289000,
+      "paid": 266400,
+      "profit": -22600,
+      "return_pct": 92.17993079584775,
+      "largest_payout": 116280,
+      "profit_without_largest_hit": -138880
+    },
+    "week2": {
+      "template": "SOLO-ALL-P2",
+      "races": 220,
+      "hits": 15,
+      "stake": 294800,
+      "paid": 482550,
+      "profit": 187750,
+      "return_pct": 163.68724559023067,
+      "largest_payout": 119690,
+      "profit_without_largest_hit": 68060
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P1-SOLO",
+    "week1": {
+      "template": "P2-P1-SOLO",
+      "races": 223,
+      "hits": 13,
+      "stake": 125100,
+      "paid": 101620,
+      "profit": -23480,
+      "return_pct": 81.23101518784972,
+      "largest_payout": 30210,
+      "profit_without_largest_hit": -53690
+    },
+    "week2": {
+      "template": "P2-P1-SOLO",
+      "races": 220,
+      "hits": 4,
+      "stake": 125300,
+      "paid": 8950,
+      "profit": -116350,
+      "return_pct": 7.142857142857143,
+      "largest_payout": 3710,
+      "profit_without_largest_hit": -120060
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P4-P2",
+    "week1": {
+      "template": "P1-P4-P2",
+      "races": 57,
+      "hits": 0,
+      "stake": 23700,
+      "paid": 0,
+      "profit": -23700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -23700
+    },
+    "week2": {
+      "template": "P1-P4-P2",
+      "races": 55,
+      "hits": 1,
+      "stake": 20700,
+      "paid": 5150,
+      "profit": -15550,
+      "return_pct": 24.879227053140095,
+      "largest_payout": 5150,
+      "profit_without_largest_hit": -20700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P1-P4",
+    "week1": {
+      "template": "P2-P1-P4",
+      "races": 57,
+      "hits": 0,
+      "stake": 23700,
+      "paid": 0,
+      "profit": -23700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -23700
+    },
+    "week2": {
+      "template": "P2-P1-P4",
+      "races": 55,
+      "hits": 1,
+      "stake": 20700,
+      "paid": 830,
+      "profit": -19870,
+      "return_pct": 4.009661835748792,
+      "largest_payout": 830,
+      "profit_without_largest_hit": -20700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P1-P2",
+    "week1": {
+      "template": "P4-P1-P2",
+      "races": 57,
+      "hits": 0,
+      "stake": 23700,
+      "paid": 0,
+      "profit": -23700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -23700
+    },
+    "week2": {
+      "template": "P4-P1-P2",
+      "races": 55,
+      "hits": 0,
+      "stake": 20700,
+      "paid": 0,
+      "profit": -20700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -20700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P2-P1",
+    "week1": {
+      "template": "P4-P2-P1",
+      "races": 57,
+      "hits": 0,
+      "stake": 23700,
+      "paid": 0,
+      "profit": -23700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -23700
+    },
+    "week2": {
+      "template": "P4-P2-P1",
+      "races": 55,
+      "hits": 0,
+      "stake": 20700,
+      "paid": 0,
+      "profit": -20700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -20700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-SOLO-SOLO",
+    "week1": {
+      "template": "P1-SOLO-SOLO",
+      "races": 54,
+      "hits": 1,
+      "stake": 28400,
+      "paid": 1540,
+      "profit": -26860,
+      "return_pct": 5.422535211267606,
+      "largest_payout": 1540,
+      "profit_without_largest_hit": -28400
+    },
+    "week2": {
+      "template": "P1-SOLO-SOLO",
+      "races": 64,
+      "hits": 1,
+      "stake": 30400,
+      "paid": 11810,
+      "profit": -18590,
+      "return_pct": 38.848684210526315,
+      "largest_payout": 11810,
+      "profit_without_largest_hit": -30400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P4-ALL",
+    "week1": {
+      "template": "P1-P4-ALL",
+      "races": 57,
+      "hits": 1,
+      "stake": 58500,
+      "paid": 30920,
+      "profit": -27580,
+      "return_pct": 52.85470085470085,
+      "largest_payout": 30920,
+      "profit_without_largest_hit": -58500
+    },
+    "week2": {
+      "template": "P1-P4-ALL",
+      "races": 55,
+      "hits": 1,
+      "stake": 52800,
+      "paid": 5150,
+      "profit": -47650,
+      "return_pct": 9.753787878787879,
+      "largest_payout": 5150,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P2-SOLO",
+    "week1": {
+      "template": "SOLO-P2-SOLO",
+      "races": 54,
+      "hits": 0,
+      "stake": 28400,
+      "paid": 0,
+      "profit": -28400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -28400
+    },
+    "week2": {
+      "template": "SOLO-P2-SOLO",
+      "races": 64,
+      "hits": 3,
+      "stake": 30400,
+      "paid": 94700,
+      "profit": 64300,
+      "return_pct": 311.5131578947368,
+      "largest_payout": 60080,
+      "profit_without_largest_hit": 4220
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-SOLO-P1",
+    "week1": {
+      "template": "SOLO-SOLO-P1",
+      "races": 54,
+      "hits": 0,
+      "stake": 28400,
+      "paid": 0,
+      "profit": -28400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -28400
+    },
+    "week2": {
+      "template": "SOLO-SOLO-P1",
+      "races": 64,
+      "hits": 0,
+      "stake": 30400,
+      "paid": 0,
+      "profit": -30400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -30400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-ALL-SOLO",
+    "week1": {
+      "template": "P1-ALL-SOLO",
+      "races": 223,
+      "hits": 19,
+      "stake": 289000,
+      "paid": 254840,
+      "profit": -34160,
+      "return_pct": 88.17993079584775,
+      "largest_payout": 149420,
+      "profit_without_largest_hit": -183580
+    },
+    "week2": {
+      "template": "P1-ALL-SOLO",
+      "races": 220,
+      "hits": 15,
+      "stake": 294800,
+      "paid": 242200,
+      "profit": -52600,
+      "return_pct": 82.15739484396201,
+      "largest_payout": 94870,
+      "profit_without_largest_hit": -147470
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P3-P4",
+    "week1": {
+      "template": "ALL-P3-P4",
+      "races": 57,
+      "hits": 3,
+      "stake": 46300,
+      "paid": 5890,
+      "profit": -40410,
+      "return_pct": 12.721382289416846,
+      "largest_payout": 3820,
+      "profit_without_largest_hit": -44230
+    },
+    "week2": {
+      "template": "ALL-P3-P4",
+      "races": 55,
+      "hits": 1,
+      "stake": 40700,
+      "paid": 8080,
+      "profit": -32620,
+      "return_pct": 19.852579852579854,
+      "largest_payout": 8080,
+      "profit_without_largest_hit": -40700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P3-SOLO",
+    "week1": {
+      "template": "P1-P3-SOLO",
+      "races": 184,
+      "hits": 1,
+      "stake": 65500,
+      "paid": 23550,
+      "profit": -41950,
+      "return_pct": 35.954198473282446,
+      "largest_payout": 23550,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "P1-P3-SOLO",
+      "races": 187,
+      "hits": 1,
+      "stake": 67600,
+      "paid": 76810,
+      "profit": 9210,
+      "return_pct": 113.62426035502959,
+      "largest_payout": 76810,
+      "profit_without_largest_hit": -67600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P4-P3",
+    "week1": {
+      "template": "ALL-P4-P3",
+      "races": 57,
+      "hits": 1,
+      "stake": 46300,
+      "paid": 3930,
+      "profit": -42370,
+      "return_pct": 8.488120950323975,
+      "largest_payout": 3930,
+      "profit_without_largest_hit": -46300
+    },
+    "week2": {
+      "template": "ALL-P4-P3",
+      "races": 55,
+      "hits": 0,
+      "stake": 40700,
+      "paid": 0,
+      "profit": -40700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -40700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-SOLO-P3",
+    "week1": {
+      "template": "P2-SOLO-P3",
+      "races": 184,
+      "hits": 3,
+      "stake": 65500,
+      "paid": 21970,
+      "profit": -43530,
+      "return_pct": 33.541984732824424,
+      "largest_payout": 8970,
+      "profit_without_largest_hit": -52500
+    },
+    "week2": {
+      "template": "P2-SOLO-P3",
+      "races": 187,
+      "hits": 3,
+      "stake": 67600,
+      "paid": 13240,
+      "profit": -54360,
+      "return_pct": 19.585798816568047,
+      "largest_payout": 6700,
+      "profit_without_largest_hit": -61060
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-ALL-P4",
+    "week1": {
+      "template": "P3-ALL-P4",
+      "races": 57,
+      "hits": 0,
+      "stake": 46300,
+      "paid": 0,
+      "profit": -46300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -46300
+    },
+    "week2": {
+      "template": "P3-ALL-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 40700,
+      "paid": 0,
+      "profit": -40700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -40700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P4-ALL",
+    "week1": {
+      "template": "P3-P4-ALL",
+      "races": 57,
+      "hits": 0,
+      "stake": 46300,
+      "paid": 0,
+      "profit": -46300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -46300
+    },
+    "week2": {
+      "template": "P3-P4-ALL",
+      "races": 55,
+      "hits": 0,
+      "stake": 40700,
+      "paid": 0,
+      "profit": -40700,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -40700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P1-P3",
+    "week1": {
+      "template": "P2-P1-P3",
+      "races": 478,
+      "hits": 40,
+      "stake": 403700,
+      "paid": 353830,
+      "profit": -49870,
+      "return_pct": 87.6467674015358,
+      "largest_payout": 179050,
+      "profit_without_largest_hit": -228920
+    },
+    "week2": {
+      "template": "P2-P1-P3",
+      "races": 451,
+      "hits": 52,
+      "stake": 377700,
+      "paid": 146910,
+      "profit": -230790,
+      "return_pct": 38.89594916600477,
+      "largest_payout": 21020,
+      "profit_without_largest_hit": -251810
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-ALL-P4",
+    "week1": {
+      "template": "P2-ALL-P4",
+      "races": 57,
+      "hits": 3,
+      "stake": 58500,
+      "paid": 5890,
+      "profit": -52610,
+      "return_pct": 10.068376068376068,
+      "largest_payout": 3820,
+      "profit_without_largest_hit": -56430
+    },
+    "week2": {
+      "template": "P2-ALL-P4",
+      "races": 55,
+      "hits": 1,
+      "stake": 52800,
+      "paid": 830,
+      "profit": -51970,
+      "return_pct": 1.571969696969697,
+      "largest_payout": 830,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P1-P1",
+    "week1": {
+      "template": "P1-P1-P1",
+      "races": 264,
+      "hits": 3,
+      "stake": 174600,
+      "paid": 120610,
+      "profit": -53990,
+      "return_pct": 69.077892325315,
+      "largest_payout": 105630,
+      "profit_without_largest_hit": -159620
+    },
+    "week2": {
+      "template": "P1-P1-P1",
+      "races": 253,
+      "hits": 5,
+      "stake": 173400,
+      "paid": 77410,
+      "profit": -95990,
+      "return_pct": 44.64244521337947,
+      "largest_payout": 39460,
+      "profit_without_largest_hit": -135450
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P3-SOLO",
+    "week1": {
+      "template": "P2-P3-SOLO",
+      "races": 184,
+      "hits": 3,
+      "stake": 65500,
+      "paid": 10790,
+      "profit": -54710,
+      "return_pct": 16.47328244274809,
+      "largest_payout": 4940,
+      "profit_without_largest_hit": -59650
+    },
+    "week2": {
+      "template": "P2-P3-SOLO",
+      "races": 187,
+      "hits": 2,
+      "stake": 67600,
+      "paid": 5140,
+      "profit": -62460,
+      "return_pct": 7.603550295857988,
+      "largest_payout": 4370,
+      "profit_without_largest_hit": -66830
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P2-P4",
+    "week1": {
+      "template": "ALL-P2-P4",
+      "races": 57,
+      "hits": 2,
+      "stake": 58500,
+      "paid": 3630,
+      "profit": -54870,
+      "return_pct": 6.205128205128205,
+      "largest_payout": 2990,
+      "profit_without_largest_hit": -57860
+    },
+    "week2": {
+      "template": "ALL-P2-P4",
+      "races": 55,
+      "hits": 0,
+      "stake": 52800,
+      "paid": 0,
+      "profit": -52800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-ALL-P4",
+    "week1": {
+      "template": "P1-ALL-P4",
+      "races": 57,
+      "hits": 2,
+      "stake": 58500,
+      "paid": 3630,
+      "profit": -54870,
+      "return_pct": 6.205128205128205,
+      "largest_payout": 2990,
+      "profit_without_largest_hit": -57860
+    },
+    "week2": {
+      "template": "P1-ALL-P4",
+      "races": 55,
+      "hits": 2,
+      "stake": 52800,
+      "paid": 79790,
+      "profit": 26990,
+      "return_pct": 151.11742424242425,
+      "largest_payout": 71710,
+      "profit_without_largest_hit": -44720
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P2-P2",
+    "week1": {
+      "template": "SOLO-P2-P2",
+      "races": 210,
+      "hits": 1,
+      "stake": 66400,
+      "paid": 11080,
+      "profit": -55320,
+      "return_pct": 16.686746987951807,
+      "largest_payout": 11080,
+      "profit_without_largest_hit": -66400
+    },
+    "week2": {
+      "template": "SOLO-P2-P2",
+      "races": 207,
+      "hits": 0,
+      "stake": 66000,
+      "paid": 0,
+      "profit": -66000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -66000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-SOLO-ALL",
+    "week1": {
+      "template": "P1-SOLO-ALL",
+      "races": 223,
+      "hits": 6,
+      "stake": 289000,
+      "paid": 232840,
+      "profit": -56160,
+      "return_pct": 80.5674740484429,
+      "largest_payout": 119670,
+      "profit_without_largest_hit": -175830
+    },
+    "week2": {
+      "template": "P1-SOLO-ALL",
+      "races": 220,
+      "hits": 7,
+      "stake": 294800,
+      "paid": 133440,
+      "profit": -161360,
+      "return_pct": 45.26458616010855,
+      "largest_payout": 71710,
+      "profit_without_largest_hit": -233070
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P1-P4",
+    "week1": {
+      "template": "ALL-P1-P4",
+      "races": 57,
+      "hits": 0,
+      "stake": 58500,
+      "paid": 0,
+      "profit": -58500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -58500
+    },
+    "week2": {
+      "template": "ALL-P1-P4",
+      "races": 55,
+      "hits": 1,
+      "stake": 52800,
+      "paid": 830,
+      "profit": -51970,
+      "return_pct": 1.571969696969697,
+      "largest_payout": 830,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P4-P2",
+    "week1": {
+      "template": "ALL-P4-P2",
+      "races": 57,
+      "hits": 0,
+      "stake": 58500,
+      "paid": 0,
+      "profit": -58500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -58500
+    },
+    "week2": {
+      "template": "ALL-P4-P2",
+      "races": 55,
+      "hits": 1,
+      "stake": 52800,
+      "paid": 5150,
+      "profit": -47650,
+      "return_pct": 9.753787878787879,
+      "largest_payout": 5150,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-ALL-P2",
+    "week1": {
+      "template": "P4-ALL-P2",
+      "races": 57,
+      "hits": 0,
+      "stake": 58500,
+      "paid": 0,
+      "profit": -58500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -58500
+    },
+    "week2": {
+      "template": "P4-ALL-P2",
+      "races": 55,
+      "hits": 0,
+      "stake": 52800,
+      "paid": 0,
+      "profit": -52800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P4-P2-ALL",
+    "week1": {
+      "template": "P4-P2-ALL",
+      "races": 57,
+      "hits": 0,
+      "stake": 58500,
+      "paid": 0,
+      "profit": -58500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -58500
+    },
+    "week2": {
+      "template": "P4-P2-ALL",
+      "races": 55,
+      "hits": 0,
+      "stake": 52800,
+      "paid": 0,
+      "profit": -52800,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -52800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-ALL-SOLO",
+    "week1": {
+      "template": "SOLO-ALL-SOLO",
+      "races": 91,
+      "hits": 42,
+      "stake": 855000,
+      "paid": 794730,
+      "profit": -60270,
+      "return_pct": 92.95087719298246,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -641590
+    },
+    "week2": {
+      "template": "SOLO-ALL-SOLO",
+      "races": 90,
+      "hits": 30,
+      "stake": 621200,
+      "paid": 406660,
+      "profit": -214540,
+      "return_pct": 65.4636188023181,
+      "largest_payout": 60080,
+      "profit_without_largest_hit": -274620
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P2-P2",
+    "week1": {
+      "template": "P2-P2-P2",
+      "races": 264,
+      "hits": 4,
+      "stake": 174600,
+      "paid": 110410,
+      "profit": -64190,
+      "return_pct": 63.235967926689575,
+      "largest_payout": 71480,
+      "profit_without_largest_hit": -135670
+    },
+    "week2": {
+      "template": "P2-P2-P2",
+      "races": 253,
+      "hits": 3,
+      "stake": 173400,
+      "paid": 83680,
+      "profit": -89720,
+      "return_pct": 48.25836216839677,
+      "largest_payout": 47540,
+      "profit_without_largest_hit": -137260
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P1-SOLO",
+    "week1": {
+      "template": "P3-P1-SOLO",
+      "races": 184,
+      "hits": 0,
+      "stake": 65500,
+      "paid": 0,
+      "profit": -65500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "P3-P1-SOLO",
+      "races": 187,
+      "hits": 3,
+      "stake": 67600,
+      "paid": 99840,
+      "profit": 32240,
+      "return_pct": 147.69230769230768,
+      "largest_payout": 50270,
+      "profit_without_largest_hit": -18030
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-SOLO-P1",
+    "week1": {
+      "template": "P3-SOLO-P1",
+      "races": 184,
+      "hits": 0,
+      "stake": 65500,
+      "paid": 0,
+      "profit": -65500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "P3-SOLO-P1",
+      "races": 187,
+      "hits": 1,
+      "stake": 67600,
+      "paid": 29390,
+      "profit": -38210,
+      "return_pct": 43.476331360946745,
+      "largest_payout": 29390,
+      "profit_without_largest_hit": -67600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P1-P3",
+    "week1": {
+      "template": "SOLO-P1-P3",
+      "races": 184,
+      "hits": 0,
+      "stake": 65500,
+      "paid": 0,
+      "profit": -65500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "SOLO-P1-P3",
+      "races": 187,
+      "hits": 0,
+      "stake": 67600,
+      "paid": 0,
+      "profit": -67600,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -67600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P2-P3",
+    "week1": {
+      "template": "SOLO-P2-P3",
+      "races": 184,
+      "hits": 0,
+      "stake": 65500,
+      "paid": 0,
+      "profit": -65500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "SOLO-P2-P3",
+      "races": 187,
+      "hits": 1,
+      "stake": 67600,
+      "paid": 10270,
+      "profit": -57330,
+      "return_pct": 15.192307692307692,
+      "largest_payout": 10270,
+      "profit_without_largest_hit": -67600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P3-P1",
+    "week1": {
+      "template": "SOLO-P3-P1",
+      "races": 184,
+      "hits": 0,
+      "stake": 65500,
+      "paid": 0,
+      "profit": -65500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "SOLO-P3-P1",
+      "races": 187,
+      "hits": 1,
+      "stake": 67600,
+      "paid": 59750,
+      "profit": -7850,
+      "return_pct": 88.38757396449704,
+      "largest_payout": 59750,
+      "profit_without_largest_hit": -67600
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P3-P2",
+    "week1": {
+      "template": "SOLO-P3-P2",
+      "races": 184,
+      "hits": 0,
+      "stake": 65500,
+      "paid": 0,
+      "profit": -65500,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -65500
+    },
+    "week2": {
+      "template": "SOLO-P3-P2",
+      "races": 187,
+      "hits": 3,
+      "stake": 67600,
+      "paid": 193480,
+      "profit": 125880,
+      "return_pct": 286.2130177514793,
+      "largest_payout": 119690,
+      "profit_without_largest_hit": 6190
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P2-SOLO",
+    "week1": {
+      "template": "P2-P2-SOLO",
+      "races": 210,
+      "hits": 0,
+      "stake": 66400,
+      "paid": 0,
+      "profit": -66400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -66400
+    },
+    "week2": {
+      "template": "P2-P2-SOLO",
+      "races": 207,
+      "hits": 1,
+      "stake": 66000,
+      "paid": 32670,
+      "profit": -33330,
+      "return_pct": 49.5,
+      "largest_payout": 32670,
+      "profit_without_largest_hit": -66000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P1-P1",
+    "week1": {
+      "template": "SOLO-P1-P1",
+      "races": 210,
+      "hits": 0,
+      "stake": 66400,
+      "paid": 0,
+      "profit": -66400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -66400
+    },
+    "week2": {
+      "template": "SOLO-P1-P1",
+      "races": 207,
+      "hits": 0,
+      "stake": 66000,
+      "paid": 0,
+      "profit": -66000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -66000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P2-SOLO",
+    "week1": {
+      "template": "P1-P2-SOLO",
+      "races": 223,
+      "hits": 13,
+      "stake": 125100,
+      "paid": 50030,
+      "profit": -75070,
+      "return_pct": 39.99200639488409,
+      "largest_payout": 21260,
+      "profit_without_largest_hit": -96330
+    },
+    "week2": {
+      "template": "P1-P2-SOLO",
+      "races": 220,
+      "hits": 9,
+      "stake": 125300,
+      "paid": 31840,
+      "profit": -93460,
+      "return_pct": 25.411013567438147,
+      "largest_payout": 11440,
+      "profit_without_largest_hit": -104900
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-SOLO-P2",
+    "week1": {
+      "template": "P1-SOLO-P2",
+      "races": 223,
+      "hits": 3,
+      "stake": 125100,
+      "paid": 48650,
+      "profit": -76450,
+      "return_pct": 38.888888888888886,
+      "largest_payout": 38860,
+      "profit_without_largest_hit": -115310
+    },
+    "week2": {
+      "template": "P1-SOLO-P2",
+      "races": 220,
+      "hits": 2,
+      "stake": 125300,
+      "paid": 32290,
+      "profit": -93010,
+      "return_pct": 25.770151636073425,
+      "largest_payout": 22420,
+      "profit_without_largest_hit": -115430
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P3-P2",
+    "week1": {
+      "template": "P2-P3-P2",
+      "races": 465,
+      "hits": 10,
+      "stake": 244400,
+      "paid": 166060,
+      "profit": -78340,
+      "return_pct": 67.94599018003274,
+      "largest_payout": 85030,
+      "profit_without_largest_hit": -163370
+    },
+    "week2": {
+      "template": "P2-P3-P2",
+      "races": 439,
+      "hits": 5,
+      "stake": 229400,
+      "paid": 28180,
+      "profit": -201220,
+      "return_pct": 12.284219703574543,
+      "largest_payout": 10770,
+      "profit_without_largest_hit": -211990
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P3-P3",
+    "week1": {
+      "template": "P2-P3-P3",
+      "races": 166,
+      "hits": 1,
+      "stake": 94000,
+      "paid": 11930,
+      "profit": -82070,
+      "return_pct": 12.691489361702128,
+      "largest_payout": 11930,
+      "profit_without_largest_hit": -94000
+    },
+    "week2": {
+      "template": "P2-P3-P3",
+      "races": 149,
+      "hits": 0,
+      "stake": 80400,
+      "paid": 0,
+      "profit": -80400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -80400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-SOLO-P3",
+    "week1": {
+      "template": "ALL-SOLO-P3",
+      "races": 184,
+      "hits": 4,
+      "stake": 167300,
+      "paid": 84950,
+      "profit": -82350,
+      "return_pct": 50.77704722056186,
+      "largest_payout": 62980,
+      "profit_without_largest_hit": -145330
+    },
+    "week2": {
+      "template": "ALL-SOLO-P3",
+      "races": 187,
+      "hits": 6,
+      "stake": 172000,
+      "paid": 30870,
+      "profit": -141130,
+      "return_pct": 17.947674418604652,
+      "largest_payout": 13160,
+      "profit_without_largest_hit": -154290
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P2-P1",
+    "week1": {
+      "template": "SOLO-P2-P1",
+      "races": 223,
+      "hits": 4,
+      "stake": 125100,
+      "paid": 42590,
+      "profit": -82510,
+      "return_pct": 34.04476418864908,
+      "largest_payout": 28030,
+      "profit_without_largest_hit": -110540
+    },
+    "week2": {
+      "template": "SOLO-P2-P1",
+      "races": 220,
+      "hits": 2,
+      "stake": 125300,
+      "paid": 9100,
+      "profit": -116200,
+      "return_pct": 7.262569832402234,
+      "largest_payout": 6370,
+      "profit_without_largest_hit": -122570
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-SOLO-SOLO",
+    "week1": {
+      "template": "ALL-SOLO-SOLO",
+      "races": 91,
+      "hits": 40,
+      "stake": 855000,
+      "paid": 772270,
+      "profit": -82730,
+      "return_pct": 90.32397660818714,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -664050
+    },
+    "week2": {
+      "template": "ALL-SOLO-SOLO",
+      "races": 90,
+      "hits": 29,
+      "stake": 621200,
+      "paid": 362780,
+      "profit": -258420,
+      "return_pct": 58.39987121699936,
+      "largest_payout": 54030,
+      "profit_without_largest_hit": -312450
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P1-P3",
+    "week1": {
+      "template": "P1-P1-P3",
+      "races": 465,
+      "hits": 6,
+      "stake": 244400,
+      "paid": 160880,
+      "profit": -83520,
+      "return_pct": 65.8265139116203,
+      "largest_payout": 93640,
+      "profit_without_largest_hit": -177160
+    },
+    "week2": {
+      "template": "P1-P1-P3",
+      "races": 439,
+      "hits": 3,
+      "stake": 229400,
+      "paid": 33140,
+      "profit": -196260,
+      "return_pct": 14.446381865736704,
+      "largest_payout": 19750,
+      "profit_without_largest_hit": -216010
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P1-P2",
+    "week1": {
+      "template": "SOLO-P1-P2",
+      "races": 223,
+      "hits": 4,
+      "stake": 125100,
+      "paid": 39970,
+      "profit": -85130,
+      "return_pct": 31.950439648281375,
+      "largest_payout": 16920,
+      "profit_without_largest_hit": -102050
+    },
+    "week2": {
+      "template": "SOLO-P1-P2",
+      "races": 220,
+      "hits": 10,
+      "stake": 125300,
+      "paid": 244120,
+      "profit": 118820,
+      "return_pct": 194.82841181165205,
+      "largest_payout": 104320,
+      "profit_without_largest_hit": 14500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P3-P3",
+    "week1": {
+      "template": "P1-P3-P3",
+      "races": 166,
+      "hits": 0,
+      "stake": 94000,
+      "paid": 0,
+      "profit": -94000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -94000
+    },
+    "week2": {
+      "template": "P1-P3-P3",
+      "races": 149,
+      "hits": 0,
+      "stake": 80400,
+      "paid": 0,
+      "profit": -80400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -80400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P1-P3",
+    "week1": {
+      "template": "P3-P1-P3",
+      "races": 166,
+      "hits": 0,
+      "stake": 94000,
+      "paid": 0,
+      "profit": -94000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -94000
+    },
+    "week2": {
+      "template": "P3-P1-P3",
+      "races": 149,
+      "hits": 1,
+      "stake": 80400,
+      "paid": 50430,
+      "profit": -29970,
+      "return_pct": 62.723880597014926,
+      "largest_payout": 50430,
+      "profit_without_largest_hit": -80400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P2-P3",
+    "week1": {
+      "template": "P3-P2-P3",
+      "races": 166,
+      "hits": 0,
+      "stake": 94000,
+      "paid": 0,
+      "profit": -94000,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -94000
+    },
+    "week2": {
+      "template": "P3-P2-P3",
+      "races": 149,
+      "hits": 0,
+      "stake": 80400,
+      "paid": 0,
+      "profit": -80400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -80400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-SOLO-P1",
+    "week1": {
+      "template": "P2-SOLO-P1",
+      "races": 223,
+      "hits": 5,
+      "stake": 125100,
+      "paid": 25000,
+      "profit": -100100,
+      "return_pct": 19.984012789768187,
+      "largest_payout": 8550,
+      "profit_without_largest_hit": -108650
+    },
+    "week2": {
+      "template": "P2-SOLO-P1",
+      "races": 220,
+      "hits": 8,
+      "stake": 125300,
+      "paid": 78940,
+      "profit": -46360,
+      "return_pct": 63.000798084596966,
+      "largest_payout": 22250,
+      "profit_without_largest_hit": -68610
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P3-P1",
+    "week1": {
+      "template": "P2-P3-P1",
+      "races": 478,
+      "hits": 20,
+      "stake": 403700,
+      "paid": 282070,
+      "profit": -121630,
+      "return_pct": 69.8711914788209,
+      "largest_payout": 132050,
+      "profit_without_largest_hit": -253680
+    },
+    "week2": {
+      "template": "P2-P3-P1",
+      "races": 451,
+      "hits": 20,
+      "stake": 377700,
+      "paid": 254860,
+      "profit": -122840,
+      "return_pct": 67.47683346571353,
+      "largest_payout": 133160,
+      "profit_without_largest_hit": -256000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-SOLO-ALL",
+    "week1": {
+      "template": "P3-SOLO-ALL",
+      "races": 184,
+      "hits": 1,
+      "stake": 167300,
+      "paid": 44860,
+      "profit": -122440,
+      "return_pct": 26.814106395696353,
+      "largest_payout": 44860,
+      "profit_without_largest_hit": -167300
+    },
+    "week2": {
+      "template": "P3-SOLO-ALL",
+      "races": 187,
+      "hits": 2,
+      "stake": 172000,
+      "paid": 127390,
+      "profit": -44610,
+      "return_pct": 74.06395348837209,
+      "largest_payout": 98000,
+      "profit_without_largest_hit": -142610
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-ALL-SOLO",
+    "week1": {
+      "template": "P3-ALL-SOLO",
+      "races": 184,
+      "hits": 1,
+      "stake": 167300,
+      "paid": 43920,
+      "profit": -123380,
+      "return_pct": 26.252241482367005,
+      "largest_payout": 43920,
+      "profit_without_largest_hit": -167300
+    },
+    "week2": {
+      "template": "P3-ALL-SOLO",
+      "races": 187,
+      "hits": 4,
+      "stake": 172000,
+      "paid": 120600,
+      "profit": -51400,
+      "return_pct": 70.11627906976744,
+      "largest_payout": 50270,
+      "profit_without_largest_hit": -101670
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P3-SOLO",
+    "week1": {
+      "template": "ALL-P3-SOLO",
+      "races": 184,
+      "hits": 4,
+      "stake": 167300,
+      "paid": 34340,
+      "profit": -132960,
+      "return_pct": 20.526001195457262,
+      "largest_payout": 23550,
+      "profit_without_largest_hit": -156510
+    },
+    "week2": {
+      "template": "ALL-P3-SOLO",
+      "races": 187,
+      "hits": 3,
+      "stake": 172000,
+      "paid": 81950,
+      "profit": -90050,
+      "return_pct": 47.645348837209305,
+      "largest_payout": 76810,
+      "profit_without_largest_hit": -166860
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P2-P2",
+    "week1": {
+      "template": "P3-P2-P2",
+      "races": 465,
+      "hits": 2,
+      "stake": 244400,
+      "paid": 107230,
+      "profit": -137170,
+      "return_pct": 43.87479541734861,
+      "largest_payout": 79760,
+      "profit_without_largest_hit": -216930
+    },
+    "week2": {
+      "template": "P3-P2-P2",
+      "races": 439,
+      "hits": 3,
+      "stake": 229400,
+      "paid": 67870,
+      "profit": -161530,
+      "return_pct": 29.585876198779424,
+      "largest_payout": 58640,
+      "profit_without_largest_hit": -220170
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-SOLO-ALL",
+    "week1": {
+      "template": "P2-SOLO-ALL",
+      "races": 223,
+      "hits": 12,
+      "stake": 289000,
+      "paid": 151020,
+      "profit": -137980,
+      "return_pct": 52.2560553633218,
+      "largest_payout": 86790,
+      "profit_without_largest_hit": -224770
+    },
+    "week2": {
+      "template": "P2-SOLO-ALL",
+      "races": 220,
+      "hits": 14,
+      "stake": 294800,
+      "paid": 191560,
+      "profit": -103240,
+      "return_pct": 64.9796472184532,
+      "largest_payout": 57800,
+      "profit_without_largest_hit": -161040
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P2-P1",
+    "week1": {
+      "template": "P3-P2-P1",
+      "races": 478,
+      "hits": 9,
+      "stake": 403700,
+      "paid": 262500,
+      "profit": -141200,
+      "return_pct": 65.02353232598465,
+      "largest_payout": 80220,
+      "profit_without_largest_hit": -221420
+    },
+    "week2": {
+      "template": "P3-P2-P1",
+      "races": 451,
+      "hits": 6,
+      "stake": 377700,
+      "paid": 84660,
+      "profit": -293040,
+      "return_pct": 22.414614773629864,
+      "largest_payout": 42690,
+      "profit_without_largest_hit": -335730
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-SOLO-P1",
+    "week1": {
+      "template": "ALL-SOLO-P1",
+      "races": 223,
+      "hits": 6,
+      "stake": 289000,
+      "paid": 144670,
+      "profit": -144330,
+      "return_pct": 50.05882352941177,
+      "largest_payout": 119670,
+      "profit_without_largest_hit": -264000
+    },
+    "week2": {
+      "template": "ALL-SOLO-P1",
+      "races": 220,
+      "hits": 9,
+      "stake": 294800,
+      "paid": 108330,
+      "profit": -186470,
+      "return_pct": 36.74694708276798,
+      "largest_payout": 29390,
+      "profit_without_largest_hit": -215860
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P2-P3",
+    "week1": {
+      "template": "P1-P2-P3",
+      "races": 478,
+      "hits": 66,
+      "stake": 403700,
+      "paid": 246610,
+      "profit": -157090,
+      "return_pct": 61.08744116918504,
+      "largest_payout": 41390,
+      "profit_without_largest_hit": -198480
+    },
+    "week2": {
+      "template": "P1-P2-P3",
+      "races": 451,
+      "hits": 64,
+      "stake": 377700,
+      "paid": 144610,
+      "profit": -233090,
+      "return_pct": 38.287000264760394,
+      "largest_payout": 26300,
+      "profit_without_largest_hit": -259390
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P2-P3",
+    "week1": {
+      "template": "P2-P2-P3",
+      "races": 465,
+      "hits": 11,
+      "stake": 244400,
+      "paid": 84430,
+      "profit": -159970,
+      "return_pct": 34.54582651391162,
+      "largest_payout": 15430,
+      "profit_without_largest_hit": -175400
+    },
+    "week2": {
+      "template": "P2-P2-P3",
+      "races": 439,
+      "hits": 6,
+      "stake": 229400,
+      "paid": 85210,
+      "profit": -144190,
+      "return_pct": 37.14472537053182,
+      "largest_payout": 30050,
+      "profit_without_largest_hit": -174240
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-ALL-P4",
+    "week1": {
+      "template": "ALL-ALL-P4",
+      "races": 57,
+      "hits": 5,
+      "stake": 175400,
+      "paid": 9520,
+      "profit": -165880,
+      "return_pct": 5.427594070695553,
+      "largest_payout": 3820,
+      "profit_without_largest_hit": -169700
+    },
+    "week2": {
+      "template": "ALL-ALL-P4",
+      "races": 55,
+      "hits": 3,
+      "stake": 164400,
+      "paid": 80620,
+      "profit": -83780,
+      "return_pct": 49.038929440389296,
+      "largest_payout": 71710,
+      "profit_without_largest_hit": -155490
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-ALL-P3",
+    "week1": {
+      "template": "SOLO-ALL-P3",
+      "races": 184,
+      "hits": 0,
+      "stake": 167300,
+      "paid": 0,
+      "profit": -167300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -167300
+    },
+    "week2": {
+      "template": "SOLO-ALL-P3",
+      "races": 187,
+      "hits": 1,
+      "stake": 172000,
+      "paid": 10270,
+      "profit": -161730,
+      "return_pct": 5.97093023255814,
+      "largest_payout": 10270,
+      "profit_without_largest_hit": -172000
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P3-ALL",
+    "week1": {
+      "template": "SOLO-P3-ALL",
+      "races": 184,
+      "hits": 0,
+      "stake": 167300,
+      "paid": 0,
+      "profit": -167300,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -167300
+    },
+    "week2": {
+      "template": "SOLO-P3-ALL",
+      "races": 187,
+      "hits": 4,
+      "stake": 172000,
+      "paid": 253230,
+      "profit": 81230,
+      "return_pct": 147.22674418604652,
+      "largest_payout": 119690,
+      "profit_without_largest_hit": -38460
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-ALL-SOLO",
+    "week1": {
+      "template": "P2-ALL-SOLO",
+      "races": 223,
+      "hits": 17,
+      "stake": 289000,
+      "paid": 118540,
+      "profit": -170460,
+      "return_pct": 41.017301038062286,
+      "largest_payout": 30210,
+      "profit_without_largest_hit": -200670
+    },
+    "week2": {
+      "template": "P2-ALL-SOLO",
+      "races": 220,
+      "hits": 9,
+      "stake": 294800,
+      "paid": 88340,
+      "profit": -206460,
+      "return_pct": 29.96607869742198,
+      "largest_payout": 32670,
+      "profit_without_largest_hit": -239130
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P1-P2",
+    "week1": {
+      "template": "P1-P1-P2",
+      "races": 520,
+      "hits": 47,
+      "stake": 604600,
+      "paid": 418440,
+      "profit": -186160,
+      "return_pct": 69.20939464108501,
+      "largest_payout": 47430,
+      "profit_without_largest_hit": -233590
+    },
+    "week2": {
+      "template": "P1-P1-P2",
+      "races": 478,
+      "hits": 36,
+      "stake": 581400,
+      "paid": 411620,
+      "profit": -169780,
+      "return_pct": 70.79807361541107,
+      "largest_payout": 79000,
+      "profit_without_largest_hit": -248780
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P2-SOLO",
+    "week1": {
+      "template": "ALL-P2-SOLO",
+      "races": 223,
+      "hits": 14,
+      "stake": 289000,
+      "paid": 93950,
+      "profit": -195050,
+      "return_pct": 32.50865051903114,
+      "largest_payout": 43920,
+      "profit_without_largest_hit": -238970
+    },
+    "week2": {
+      "template": "ALL-P2-SOLO",
+      "races": 220,
+      "hits": 14,
+      "stake": 294800,
+      "paid": 179970,
+      "profit": -114830,
+      "return_pct": 61.04816824966079,
+      "largest_payout": 60080,
+      "profit_without_largest_hit": -174910
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P3-P1",
+    "week1": {
+      "template": "P1-P3-P1",
+      "races": 465,
+      "hits": 2,
+      "stake": 244400,
+      "paid": 44140,
+      "profit": -200260,
+      "return_pct": 18.060556464811786,
+      "largest_payout": 25080,
+      "profit_without_largest_hit": -225340
+    },
+    "week2": {
+      "template": "P1-P3-P1",
+      "races": 439,
+      "hits": 6,
+      "stake": 229400,
+      "paid": 191770,
+      "profit": -37630,
+      "return_pct": 83.59633827375762,
+      "largest_payout": 45490,
+      "profit_without_largest_hit": -83120
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-SOLO-ALL",
+    "week1": {
+      "template": "ALL-SOLO-ALL",
+      "races": 260,
+      "hits": 60,
+      "stake": 1611600,
+      "paid": 1408670,
+      "profit": -202930,
+      "return_pct": 87.40816579796476,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -784250
+    },
+    "week2": {
+      "template": "ALL-SOLO-ALL",
+      "races": 246,
+      "hits": 51,
+      "stake": 1399400,
+      "paid": 806730,
+      "profit": -592670,
+      "return_pct": 57.648277833357156,
+      "largest_payout": 98000,
+      "profit_without_largest_hit": -690670
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P2-P1",
+    "week1": {
+      "template": "P1-P2-P1",
+      "races": 520,
+      "hits": 56,
+      "stake": 604600,
+      "paid": 395600,
+      "profit": -209000,
+      "return_pct": 65.43169037380086,
+      "largest_payout": 94950,
+      "profit_without_largest_hit": -303950
+    },
+    "week2": {
+      "template": "P1-P2-P1",
+      "races": 478,
+      "hits": 43,
+      "stake": 581400,
+      "paid": 207780,
+      "profit": -373620,
+      "return_pct": 35.73787409700722,
+      "largest_payout": 37010,
+      "profit_without_largest_hit": -410630
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P3-P3",
+    "week1": {
+      "template": "ALL-P3-P3",
+      "races": 166,
+      "hits": 1,
+      "stake": 223200,
+      "paid": 11930,
+      "profit": -211270,
+      "return_pct": 5.344982078853047,
+      "largest_payout": 11930,
+      "profit_without_largest_hit": -223200
+    },
+    "week2": {
+      "template": "ALL-P3-P3",
+      "races": 149,
+      "hits": 0,
+      "stake": 193400,
+      "paid": 0,
+      "profit": -193400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -193400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P1-ALL",
+    "week1": {
+      "template": "SOLO-P1-ALL",
+      "races": 223,
+      "hits": 8,
+      "stake": 289000,
+      "paid": 70100,
+      "profit": -218900,
+      "return_pct": 24.2560553633218,
+      "largest_payout": 16920,
+      "profit_without_largest_hit": -235820
+    },
+    "week2": {
+      "template": "SOLO-P1-ALL",
+      "races": 220,
+      "hits": 11,
+      "stake": 294800,
+      "paid": 246690,
+      "profit": -48110,
+      "return_pct": 83.68046132971506,
+      "largest_payout": 104320,
+      "profit_without_largest_hit": -152430
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-ALL-P3",
+    "week1": {
+      "template": "P3-ALL-P3",
+      "races": 166,
+      "hits": 0,
+      "stake": 223200,
+      "paid": 0,
+      "profit": -223200,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -223200
+    },
+    "week2": {
+      "template": "P3-ALL-P3",
+      "races": 149,
+      "hits": 1,
+      "stake": 193400,
+      "paid": 50430,
+      "profit": -142970,
+      "return_pct": 26.075491209927613,
+      "largest_payout": 50430,
+      "profit_without_largest_hit": -193400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P1-ALL",
+    "week1": {
+      "template": "P1-P1-ALL",
+      "races": 520,
+      "hits": 60,
+      "stake": 1103000,
+      "paid": 879650,
+      "profit": -223350,
+      "return_pct": 79.75067996373527,
+      "largest_payout": 149420,
+      "profit_without_largest_hit": -372770
+    },
+    "week2": {
+      "template": "P1-P1-ALL",
+      "races": 478,
+      "hits": 48,
+      "stake": 1061000,
+      "paid": 643910,
+      "profit": -417090,
+      "return_pct": 60.688972667295005,
+      "largest_payout": 94870,
+      "profit_without_largest_hit": -511960
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-P2-ALL",
+    "week1": {
+      "template": "SOLO-P2-ALL",
+      "races": 223,
+      "hits": 5,
+      "stake": 289000,
+      "paid": 53670,
+      "profit": -235330,
+      "return_pct": 18.570934256055363,
+      "largest_payout": 28030,
+      "profit_without_largest_hit": -263360
+    },
+    "week2": {
+      "template": "SOLO-P2-ALL",
+      "races": 220,
+      "hits": 6,
+      "stake": 294800,
+      "paid": 114070,
+      "profit": -180730,
+      "return_pct": 38.69402985074627,
+      "largest_payout": 60080,
+      "profit_without_largest_hit": -240810
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P3-P2",
+    "week1": {
+      "template": "ALL-P3-P2",
+      "races": 478,
+      "hits": 23,
+      "stake": 827000,
+      "paid": 588760,
+      "profit": -238240,
+      "return_pct": 71.19226118500605,
+      "largest_payout": 247390,
+      "profit_without_largest_hit": -485630
+    },
+    "week2": {
+      "template": "ALL-P3-P2",
+      "races": 451,
+      "hits": 22,
+      "stake": 771500,
+      "paid": 410830,
+      "profit": -360670,
+      "return_pct": 53.25081011017498,
+      "largest_payout": 119690,
+      "profit_without_largest_hit": -480360
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P1-P1",
+    "week1": {
+      "template": "P3-P1-P1",
+      "races": 465,
+      "hits": 0,
+      "stake": 244400,
+      "paid": 0,
+      "profit": -244400,
+      "return_pct": 0.0,
+      "largest_payout": 0,
+      "profit_without_largest_hit": -244400
+    },
+    "week2": {
+      "template": "P3-P1-P1",
+      "races": 439,
+      "hits": 1,
+      "stake": 229400,
+      "paid": 27900,
+      "profit": -201500,
+      "return_pct": 12.162162162162161,
+      "largest_payout": 27900,
+      "profit_without_largest_hit": -229400
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-ALL-P1",
+    "week1": {
+      "template": "SOLO-ALL-P1",
+      "races": 223,
+      "hits": 4,
+      "stake": 289000,
+      "paid": 42590,
+      "profit": -246410,
+      "return_pct": 14.737024221453288,
+      "largest_payout": 28030,
+      "profit_without_largest_hit": -274440
+    },
+    "week2": {
+      "template": "SOLO-ALL-P1",
+      "races": 220,
+      "hits": 3,
+      "stake": 294800,
+      "paid": 68850,
+      "profit": -225950,
+      "return_pct": 23.35481682496608,
+      "largest_payout": 59750,
+      "profit_without_largest_hit": -285700
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P1-P3",
+    "week1": {
+      "template": "ALL-P1-P3",
+      "races": 478,
+      "hits": 47,
+      "stake": 827000,
+      "paid": 573420,
+      "profit": -253580,
+      "return_pct": 69.33736396614269,
+      "largest_payout": 179050,
+      "profit_without_largest_hit": -432630
+    },
+    "week2": {
+      "template": "ALL-P1-P3",
+      "races": 451,
+      "hits": 56,
+      "stake": 771500,
+      "paid": 230480,
+      "profit": -541020,
+      "return_pct": 29.874270900842514,
+      "largest_payout": 50430,
+      "profit_without_largest_hit": -591450
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P1-P1",
+    "week1": {
+      "template": "P2-P1-P1",
+      "races": 520,
+      "hits": 27,
+      "stake": 604600,
+      "paid": 338650,
+      "profit": -265950,
+      "return_pct": 56.012239497188226,
+      "largest_payout": 103170,
+      "profit_without_largest_hit": -369120
+    },
+    "week2": {
+      "template": "P2-P1-P1",
+      "races": 478,
+      "hits": 37,
+      "stake": 581400,
+      "paid": 469610,
+      "profit": -111790,
+      "return_pct": 80.77227382180942,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -283500
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P2-P2",
+    "week1": {
+      "template": "P1-P2-P2",
+      "races": 520,
+      "hits": 59,
+      "stake": 604600,
+      "paid": 327780,
+      "profit": -276820,
+      "return_pct": 54.21435659940457,
+      "largest_payout": 31380,
+      "profit_without_largest_hit": -308200
+    },
+    "week2": {
+      "template": "P1-P2-P2",
+      "races": 478,
+      "hits": 53,
+      "stake": 581400,
+      "paid": 308310,
+      "profit": -273090,
+      "return_pct": 53.02889576883385,
+      "largest_payout": 41980,
+      "profit_without_largest_hit": -315070
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P3-P1",
+    "week1": {
+      "template": "ALL-P3-P1",
+      "races": 478,
+      "hits": 24,
+      "stake": 827000,
+      "paid": 549130,
+      "profit": -277870,
+      "return_pct": 66.40024183796857,
+      "largest_payout": 140560,
+      "profit_without_largest_hit": -418430
+    },
+    "week2": {
+      "template": "ALL-P3-P1",
+      "races": 451,
+      "hits": 27,
+      "stake": 771500,
+      "paid": 506380,
+      "profit": -265120,
+      "return_pct": 65.63577446532729,
+      "largest_payout": 133160,
+      "profit_without_largest_hit": -398280
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-ALL-P1",
+    "week1": {
+      "template": "P2-ALL-P1",
+      "races": 533,
+      "hits": 83,
+      "stake": 1763300,
+      "paid": 1483610,
+      "profit": -279690,
+      "return_pct": 84.13826348324164,
+      "largest_payout": 202020,
+      "profit_without_largest_hit": -481710
+    },
+    "week2": {
+      "template": "P2-ALL-P1",
+      "races": 491,
+      "hits": 79,
+      "stake": 1687700,
+      "paid": 935160,
+      "profit": -752540,
+      "return_pct": 55.410321739645674,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -924250
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P1-P2",
+    "week1": {
+      "template": "P2-P1-P2",
+      "races": 520,
+      "hits": 39,
+      "stake": 604600,
+      "paid": 306600,
+      "profit": -298000,
+      "return_pct": 50.711214025802185,
+      "largest_payout": 46130,
+      "profit_without_largest_hit": -344130
+    },
+    "week2": {
+      "template": "P2-P1-P2",
+      "races": 478,
+      "hits": 42,
+      "stake": 581400,
+      "paid": 374070,
+      "profit": -207330,
+      "return_pct": 64.33952528379773,
+      "largest_payout": 76860,
+      "profit_without_largest_hit": -284190
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P3-P2",
+    "week1": {
+      "template": "P1-P3-P2",
+      "races": 478,
+      "hits": 11,
+      "stake": 403700,
+      "paid": 102490,
+      "profit": -301210,
+      "return_pct": 25.387664107010156,
+      "largest_payout": 20910,
+      "profit_without_largest_hit": -322120
+    },
+    "week2": {
+      "template": "P1-P3-P2",
+      "races": 451,
+      "hits": 14,
+      "stake": 377700,
+      "paid": 189170,
+      "profit": -188530,
+      "return_pct": 50.08472332539052,
+      "largest_payout": 87150,
+      "profit_without_largest_hit": -275680
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P2-ALL",
+    "week1": {
+      "template": "P2-P2-ALL",
+      "races": 520,
+      "hits": 44,
+      "stake": 1103000,
+      "paid": 796960,
+      "profit": -306040,
+      "return_pct": 72.25385312783318,
+      "largest_payout": 83490,
+      "profit_without_largest_hit": -389530
+    },
+    "week2": {
+      "template": "P2-P2-ALL",
+      "races": 478,
+      "hits": 24,
+      "stake": 1061000,
+      "paid": 333310,
+      "profit": -727690,
+      "return_pct": 31.414703110273326,
+      "largest_payout": 47540,
+      "profit_without_largest_hit": -775230
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-ALL-P2",
+    "week1": {
+      "template": "P3-ALL-P2",
+      "races": 478,
+      "hits": 10,
+      "stake": 827000,
+      "paid": 511410,
+      "profit": -315590,
+      "return_pct": 61.83917775090689,
+      "largest_payout": 247390,
+      "profit_without_largest_hit": -562980
+    },
+    "week2": {
+      "template": "P3-ALL-P2",
+      "races": 451,
+      "hits": 7,
+      "stake": 771500,
+      "paid": 337420,
+      "profit": -434080,
+      "return_pct": 43.73558003888529,
+      "largest_payout": 149570,
+      "profit_without_largest_hit": -583650
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P3-ALL",
+    "week1": {
+      "template": "P2-P3-ALL",
+      "races": 478,
+      "hits": 37,
+      "stake": 827000,
+      "paid": 476740,
+      "profit": -350260,
+      "return_pct": 57.646916565900845,
+      "largest_payout": 132050,
+      "profit_without_largest_hit": -482310
+    },
+    "week2": {
+      "template": "P2-P3-ALL",
+      "races": 451,
+      "hits": 27,
+      "stake": 771500,
+      "paid": 288180,
+      "profit": -483320,
+      "return_pct": 37.35320803629293,
+      "largest_payout": 133160,
+      "profit_without_largest_hit": -616480
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-ALL-P3",
+    "week1": {
+      "template": "P2-ALL-P3",
+      "races": 478,
+      "hits": 56,
+      "stake": 827000,
+      "paid": 476090,
+      "profit": -350910,
+      "return_pct": 57.5683192261185,
+      "largest_payout": 179050,
+      "profit_without_largest_hit": -529960
+    },
+    "week2": {
+      "template": "P2-ALL-P3",
+      "races": 451,
+      "hits": 61,
+      "stake": 771500,
+      "paid": 245360,
+      "profit": -526140,
+      "return_pct": 31.802981205443942,
+      "largest_payout": 30050,
+      "profit_without_largest_hit": -556190
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-ALL-P3",
+    "week1": {
+      "template": "P1-ALL-P3",
+      "races": 478,
+      "hits": 73,
+      "stake": 827000,
+      "paid": 470470,
+      "profit": -356530,
+      "return_pct": 56.88875453446191,
+      "largest_payout": 93640,
+      "profit_without_largest_hit": -450170
+    },
+    "week2": {
+      "template": "P1-ALL-P3",
+      "races": 451,
+      "hits": 70,
+      "stake": 771500,
+      "paid": 195380,
+      "profit": -576120,
+      "return_pct": 25.324692158133505,
+      "largest_payout": 26300,
+      "profit_without_largest_hit": -602420
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P1-P2",
+    "week1": {
+      "template": "P3-P1-P2",
+      "races": 478,
+      "hits": 5,
+      "stake": 403700,
+      "paid": 39110,
+      "profit": -364590,
+      "return_pct": 9.687887044835273,
+      "largest_payout": 12440,
+      "profit_without_largest_hit": -377030
+    },
+    "week2": {
+      "template": "P3-P1-P2",
+      "races": 451,
+      "hits": 3,
+      "stake": 377700,
+      "paid": 171550,
+      "profit": -206150,
+      "return_pct": 45.41964522107493,
+      "largest_payout": 149570,
+      "profit_without_largest_hit": -355720
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-ALL-P1",
+    "week1": {
+      "template": "P1-ALL-P1",
+      "races": 520,
+      "hits": 63,
+      "stake": 1103000,
+      "paid": 710940,
+      "profit": -392060,
+      "return_pct": 64.45512239347235,
+      "largest_payout": 119670,
+      "profit_without_largest_hit": -511730
+    },
+    "week2": {
+      "template": "P1-ALL-P1",
+      "races": 478,
+      "hits": 54,
+      "stake": 1061000,
+      "paid": 476960,
+      "profit": -584040,
+      "return_pct": 44.953817153628655,
+      "largest_payout": 45490,
+      "profit_without_largest_hit": -629530
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-ALL-SOLO",
+    "week1": {
+      "template": "ALL-ALL-SOLO",
+      "races": 260,
+      "hits": 79,
+      "stake": 1611600,
+      "paid": 1212030,
+      "profit": -399570,
+      "return_pct": 75.2066269545793,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -980890
+    },
+    "week2": {
+      "template": "ALL-ALL-SOLO",
+      "races": 246,
+      "hits": 58,
+      "stake": 1399400,
+      "paid": 857800,
+      "profit": -541600,
+      "return_pct": 61.29769901386308,
+      "largest_payout": 94870,
+      "profit_without_largest_hit": -636470
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P2-ALL",
+    "week1": {
+      "template": "P3-P2-ALL",
+      "races": 478,
+      "hits": 12,
+      "stake": 827000,
+      "paid": 413650,
+      "profit": -413350,
+      "return_pct": 50.01813784764208,
+      "largest_payout": 80220,
+      "profit_without_largest_hit": -493570
+    },
+    "week2": {
+      "template": "P3-P2-ALL",
+      "races": 451,
+      "hits": 10,
+      "stake": 771500,
+      "paid": 173290,
+      "profit": -598210,
+      "return_pct": 22.46143875567077,
+      "largest_payout": 58640,
+      "profit_without_largest_hit": -656850
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-ALL-P2",
+    "week1": {
+      "template": "P2-ALL-P2",
+      "races": 520,
+      "hits": 56,
+      "stake": 1103000,
+      "paid": 680990,
+      "profit": -422010,
+      "return_pct": 61.739800543970986,
+      "largest_payout": 86790,
+      "profit_without_largest_hit": -508800
+    },
+    "week2": {
+      "template": "P2-ALL-P2",
+      "races": 478,
+      "hits": 51,
+      "stake": 1061000,
+      "paid": 543730,
+      "profit": -517270,
+      "return_pct": 51.24693685202639,
+      "largest_payout": 76860,
+      "profit_without_largest_hit": -594130
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P2-P1",
+    "week1": {
+      "template": "ALL-P2-P1",
+      "races": 533,
+      "hits": 98,
+      "stake": 1763300,
+      "paid": 1302810,
+      "profit": -460490,
+      "return_pct": 73.88476152668292,
+      "largest_payout": 94950,
+      "profit_without_largest_hit": -555440
+    },
+    "week2": {
+      "template": "ALL-P2-P1",
+      "races": 491,
+      "hits": 65,
+      "stake": 1687700,
+      "paid": 433290,
+      "profit": -1254410,
+      "return_pct": 25.673401670913076,
+      "largest_payout": 42690,
+      "profit_without_largest_hit": -1297100
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-ALL-P1",
+    "week1": {
+      "template": "P3-ALL-P1",
+      "races": 478,
+      "hits": 10,
+      "stake": 827000,
+      "paid": 344860,
+      "profit": -482140,
+      "return_pct": 41.70012091898428,
+      "largest_payout": 82360,
+      "profit_without_largest_hit": -564500
+    },
+    "week2": {
+      "template": "P3-ALL-P1",
+      "races": 451,
+      "hits": 8,
+      "stake": 771500,
+      "paid": 141950,
+      "profit": -629550,
+      "return_pct": 18.399222294232015,
+      "largest_payout": 42690,
+      "profit_without_largest_hit": -672240
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P2-P3",
+    "week1": {
+      "template": "ALL-P2-P3",
+      "races": 478,
+      "hits": 77,
+      "stake": 827000,
+      "paid": 331040,
+      "profit": -495960,
+      "return_pct": 40.02902055622733,
+      "largest_payout": 41390,
+      "profit_without_largest_hit": -537350
+    },
+    "week2": {
+      "template": "ALL-P2-P3",
+      "races": 451,
+      "hits": 71,
+      "stake": 771500,
+      "paid": 240090,
+      "profit": -531410,
+      "return_pct": 31.1198963058976,
+      "largest_payout": 30050,
+      "profit_without_largest_hit": -561460
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "SOLO-ALL-ALL",
+    "week1": {
+      "template": "SOLO-ALL-ALL",
+      "races": 260,
+      "hits": 54,
+      "stake": 1611600,
+      "paid": 1103720,
+      "profit": -507880,
+      "return_pct": 68.48597666914867,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -1089200
+    },
+    "week2": {
+      "template": "SOLO-ALL-ALL",
+      "races": 246,
+      "hits": 49,
+      "stake": 1399400,
+      "paid": 968330,
+      "profit": -431070,
+      "return_pct": 69.19608403601544,
+      "largest_payout": 119690,
+      "profit_without_largest_hit": -550760
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P2-P2",
+    "week1": {
+      "template": "ALL-P2-P2",
+      "races": 520,
+      "hits": 66,
+      "stake": 1103000,
+      "paid": 556500,
+      "profit": -546500,
+      "return_pct": 50.453309156844966,
+      "largest_payout": 79760,
+      "profit_without_largest_hit": -626260
+    },
+    "week2": {
+      "template": "ALL-P2-P2",
+      "races": 478,
+      "hits": 59,
+      "stake": 1061000,
+      "paid": 459860,
+      "profit": -601140,
+      "return_pct": 43.342130065975496,
+      "largest_payout": 58640,
+      "profit_without_largest_hit": -659780
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P1-P1",
+    "week1": {
+      "template": "ALL-P1-P1",
+      "races": 520,
+      "hits": 30,
+      "stake": 1103000,
+      "paid": 459260,
+      "profit": -643740,
+      "return_pct": 41.637352674524024,
+      "largest_payout": 105630,
+      "profit_without_largest_hit": -749370
+    },
+    "week2": {
+      "template": "ALL-P1-P1",
+      "races": 478,
+      "hits": 43,
+      "stake": 1061000,
+      "paid": 574920,
+      "profit": -486080,
+      "return_pct": 54.186616399623,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -657790
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-P1-ALL",
+    "week1": {
+      "template": "P2-P1-ALL",
+      "races": 533,
+      "hits": 120,
+      "stake": 1763300,
+      "paid": 1115320,
+      "profit": -647980,
+      "return_pct": 63.25185731299268,
+      "largest_payout": 179050,
+      "profit_without_largest_hit": -827030
+    },
+    "week2": {
+      "template": "P2-P1-ALL",
+      "races": 491,
+      "hits": 136,
+      "stake": 1687700,
+      "paid": 1000370,
+      "profit": -687330,
+      "return_pct": 59.27416009954376,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -859040
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P3-ALL",
+    "week1": {
+      "template": "P1-P3-ALL",
+      "races": 478,
+      "hits": 14,
+      "stake": 827000,
+      "paid": 170180,
+      "profit": -656820,
+      "return_pct": 20.577992744860943,
+      "largest_payout": 25080,
+      "profit_without_largest_hit": -681900
+    },
+    "week2": {
+      "template": "P1-P3-ALL",
+      "races": 451,
+      "hits": 22,
+      "stake": 771500,
+      "paid": 465830,
+      "profit": -305670,
+      "return_pct": 60.379779650032404,
+      "largest_payout": 87150,
+      "profit_without_largest_hit": -392820
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-P2-ALL",
+    "week1": {
+      "template": "P1-P2-ALL",
+      "races": 533,
+      "hits": 196,
+      "stake": 1763300,
+      "paid": 1023650,
+      "profit": -739650,
+      "return_pct": 58.05308228889015,
+      "largest_payout": 94950,
+      "profit_without_largest_hit": -834600
+    },
+    "week2": {
+      "template": "P1-P2-ALL",
+      "races": 491,
+      "hits": 169,
+      "stake": 1687700,
+      "paid": 692540,
+      "profit": -995160,
+      "return_pct": 41.03454405403804,
+      "largest_payout": 41980,
+      "profit_without_largest_hit": -1037140
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-P1-ALL",
+    "week1": {
+      "template": "P3-P1-ALL",
+      "races": 478,
+      "hits": 5,
+      "stake": 827000,
+      "paid": 39110,
+      "profit": -787890,
+      "return_pct": 4.729141475211608,
+      "largest_payout": 12440,
+      "profit_without_largest_hit": -800330
+    },
+    "week2": {
+      "template": "P3-P1-ALL",
+      "races": 451,
+      "hits": 8,
+      "stake": 771500,
+      "paid": 349720,
+      "profit": -421780,
+      "return_pct": 45.3298768632534,
+      "largest_payout": 149570,
+      "profit_without_largest_hit": -571350
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-ALL-P2",
+    "week1": {
+      "template": "P1-ALL-P2",
+      "races": 533,
+      "hits": 120,
+      "stake": 1763300,
+      "paid": 897360,
+      "profit": -865940,
+      "return_pct": 50.890943118017354,
+      "largest_payout": 47430,
+      "profit_without_largest_hit": -913370
+    },
+    "week2": {
+      "template": "P1-ALL-P2",
+      "races": 491,
+      "hits": 106,
+      "stake": 1687700,
+      "paid": 946540,
+      "profit": -741160,
+      "return_pct": 56.08461219411033,
+      "largest_payout": 87150,
+      "profit_without_largest_hit": -828310
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P3-ALL",
+    "week1": {
+      "template": "ALL-P3-ALL",
+      "races": 478,
+      "hits": 55,
+      "stake": 2093000,
+      "paid": 1190050,
+      "profit": -902950,
+      "return_pct": 56.85857620640229,
+      "largest_payout": 247390,
+      "profit_without_largest_hit": -1150340
+    },
+    "week2": {
+      "template": "ALL-P3-ALL",
+      "races": 451,
+      "hits": 53,
+      "stake": 1950600,
+      "paid": 1007240,
+      "profit": -943360,
+      "return_pct": 51.63744488875218,
+      "largest_payout": 133160,
+      "profit_without_largest_hit": -1076520
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P1-P2",
+    "week1": {
+      "template": "ALL-P1-P2",
+      "races": 533,
+      "hits": 95,
+      "stake": 1763300,
+      "paid": 804120,
+      "profit": -959180,
+      "return_pct": 45.60313049396019,
+      "largest_payout": 47430,
+      "profit_without_largest_hit": -1006610
+    },
+    "week2": {
+      "template": "ALL-P1-P2",
+      "races": 491,
+      "hits": 91,
+      "stake": 1687700,
+      "paid": 1201360,
+      "profit": -486340,
+      "return_pct": 71.1832671683356,
+      "largest_payout": 149570,
+      "profit_without_largest_hit": -635910
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-ALL-P3",
+    "week1": {
+      "template": "ALL-ALL-P3",
+      "races": 478,
+      "hits": 130,
+      "stake": 2093000,
+      "paid": 1005270,
+      "profit": -1087730,
+      "return_pct": 48.03010033444816,
+      "largest_payout": 179050,
+      "profit_without_largest_hit": -1266780
+    },
+    "week2": {
+      "template": "ALL-ALL-P3",
+      "races": 451,
+      "hits": 133,
+      "stake": 1950600,
+      "paid": 501440,
+      "profit": -1449160,
+      "return_pct": 25.706961960422433,
+      "largest_payout": 50430,
+      "profit_without_largest_hit": -1499590
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P3-ALL-ALL",
+    "week1": {
+      "template": "P3-ALL-ALL",
+      "races": 478,
+      "hits": 21,
+      "stake": 2093000,
+      "paid": 900190,
+      "profit": -1192810,
+      "return_pct": 43.00955566172957,
+      "largest_payout": 247390,
+      "profit_without_largest_hit": -1440200
+    },
+    "week2": {
+      "template": "P3-ALL-ALL",
+      "races": 451,
+      "hits": 20,
+      "stake": 1950600,
+      "paid": 650400,
+      "profit": -1300200,
+      "return_pct": 33.34358658874193,
+      "largest_payout": 149570,
+      "profit_without_largest_hit": -1449770
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P2-ALL-ALL",
+    "week1": {
+      "template": "P2-ALL-ALL",
+      "races": 533,
+      "hits": 216,
+      "stake": 4045200,
+      "paid": 2779740,
+      "profit": -1265460,
+      "return_pct": 68.71699792346485,
+      "largest_payout": 202020,
+      "profit_without_largest_hit": -1467480
+    },
+    "week2": {
+      "template": "P2-ALL-ALL",
+      "races": 491,
+      "hits": 201,
+      "stake": 3870800,
+      "paid": 1813420,
+      "profit": -2057380,
+      "return_pct": 46.84871344424925,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -2229090
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-ALL-P1",
+    "week1": {
+      "template": "ALL-ALL-P1",
+      "races": 533,
+      "hits": 161,
+      "stake": 4045200,
+      "paid": 2722560,
+      "profit": -1322640,
+      "return_pct": 67.30347078018391,
+      "largest_payout": 202020,
+      "profit_without_largest_hit": -1524660
+    },
+    "week2": {
+      "template": "ALL-ALL-P1",
+      "races": 491,
+      "hits": 144,
+      "stake": 3870800,
+      "paid": 1622920,
+      "profit": -2247880,
+      "return_pct": 41.92725018084117,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -2419590
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-ALL-P2",
+    "week1": {
+      "template": "ALL-ALL-P2",
+      "races": 533,
+      "hits": 194,
+      "stake": 4045200,
+      "paid": 2356160,
+      "profit": -1689040,
+      "return_pct": 58.245822209037875,
+      "largest_payout": 247390,
+      "profit_without_largest_hit": -1936430
+    },
+    "week2": {
+      "template": "ALL-ALL-P2",
+      "races": 491,
+      "hits": 179,
+      "stake": 3870800,
+      "paid": 2310240,
+      "profit": -1560560,
+      "return_pct": 59.68378629740622,
+      "largest_payout": 149570,
+      "profit_without_largest_hit": -1710130
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "P1-ALL-ALL",
+    "week1": {
+      "template": "P1-ALL-ALL",
+      "races": 533,
+      "hits": 277,
+      "stake": 4045200,
+      "paid": 2337240,
+      "profit": -1707960,
+      "return_pct": 57.778107386532184,
+      "largest_payout": 149420,
+      "profit_without_largest_hit": -1857380
+    },
+    "week2": {
+      "template": "P1-ALL-ALL",
+      "races": 491,
+      "hits": 247,
+      "stake": 3870800,
+      "paid": 1940870,
+      "profit": -1929930,
+      "return_pct": 50.141314456959805,
+      "largest_payout": 94870,
+      "profit_without_largest_hit": -2024800
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P2-ALL",
+    "week1": {
+      "template": "ALL-P2-ALL",
+      "races": 533,
+      "hits": 257,
+      "stake": 4045200,
+      "paid": 2287930,
+      "profit": -1757270,
+      "return_pct": 56.55913181054089,
+      "largest_payout": 94950,
+      "profit_without_largest_hit": -1852220
+    },
+    "week2": {
+      "template": "ALL-P2-ALL",
+      "races": 491,
+      "hits": 209,
+      "stake": 3870800,
+      "paid": 1313210,
+      "profit": -2557590,
+      "return_pct": 33.92606179601116,
+      "largest_payout": 60080,
+      "profit_without_largest_hit": -2617670
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-P1-ALL",
+    "week1": {
+      "template": "ALL-P1-ALL",
+      "races": 533,
+      "hits": 194,
+      "stake": 4045200,
+      "paid": 2162890,
+      "profit": -1882310,
+      "return_pct": 53.46806091169781,
+      "largest_payout": 179050,
+      "profit_without_largest_hit": -2061360
+    },
+    "week2": {
+      "template": "ALL-P1-ALL",
+      "races": 491,
+      "hits": 203,
+      "stake": 3870800,
+      "paid": 2240690,
+      "profit": -1630110,
+      "return_pct": 57.88700010333781,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -1801820
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  },
+  {
+    "template": "ALL-ALL-ALL",
+    "week1": {
+      "template": "ALL-ALL-ALL",
+      "races": 570,
+      "hits": 570,
+      "stake": 11985000,
+      "paid": 7320160,
+      "profit": -4664840,
+      "return_pct": 61.07768043387568,
+      "largest_payout": 581320,
+      "profit_without_largest_hit": -5246160
+    },
+    "week2": {
+      "template": "ALL-ALL-ALL",
+      "races": 517,
+      "hits": 517,
+      "stake": 11265000,
+      "paid": 5373020,
+      "profit": -5891980,
+      "return_pct": 47.69658233466489,
+      "largest_payout": 171710,
+      "profit_without_largest_hit": -6063690
+    },
+    "selected_week1_profit": false,
+    "selected_week1_without_max": false
+  }
+]
