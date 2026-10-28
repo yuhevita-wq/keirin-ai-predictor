@@ -1,0 +1,13 @@
+{
+  "period": [
+    "2023-01-01",
+    "2023-01-07"
+  ],
+  "races": 570,
+  "formations": 41796,
+  "prior_special_exclusions": 27,
+  "other_exclusions": [],
+  "frozen_sha256": "8439837df5f763b25424deabf035e7fd829f4ecaa4f4b93dbab9786661b76a7f",
+  "status": "exploratory_in_sample_not_trading_policy",
+  "week2_used": false
+}
