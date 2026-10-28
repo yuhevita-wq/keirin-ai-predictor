@@ -102,6 +102,9 @@ for r in frozen:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
     if len(rows)%20==0:print("PROGRESS",len(rows),"/",len(frozen),flush=True)
 
+if rows:
+    with (OUT/"races.csv").open("w",newline="") as f:
+        w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
 settled=[r for r in rows if r["status"]=="settled"]
 stake=sum(r["stake"] for r in settled);paid=sum(r["paid"] for r in settled)
 summary={"period":["2023-01-01","2023-01-07"],"frozen_races":len(frozen),"input_exclusions":len(exclusions),
