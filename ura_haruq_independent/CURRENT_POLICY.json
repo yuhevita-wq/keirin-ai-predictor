@@ -1,0 +1,11 @@
+{
+  "policy_id": "URA_MANUAL_FORMATIONS_V1_20261030",
+  "engine_repository": "yuhevita-wq/ura-haruq",
+  "engine_commit": "9199355d67b920958c15440815f4632fd18b35e4",
+  "live_purchase_source": "manual_formations_only",
+  "legacy_formations_used": false,
+  "ranker_unchanged": true,
+  "compatible_independent_joint_probabilities_required": true,
+  "prestart_full_odds_required": true,
+  "profitability_validated": false
+}

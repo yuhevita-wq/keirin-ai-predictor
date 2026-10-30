@@ -1,7 +1,7 @@
 """Unit tests for the explicitly adopted 2026-10-26 Ura V2 selector."""
 import unittest
 
-from ura_haruq_independent.adopted_v2 import (
+from ura_haruq_independent.legacy.adopted_v2 import (
     BASE_POLICY_ID, MAX_COMPETITION_SCORE_SPREAD, POLICY_ID, decide,
 )
 from ura_haruq_independent.frozen_ura_haru_v1.URA_HARU_V1_FROZEN_RULE import formation
@@ -79,3 +79,4 @@ class AdoptedParticipationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

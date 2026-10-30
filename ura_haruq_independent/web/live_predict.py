@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Dedicated independent Ura-Haru V1 LIVE forecast. NEVER calls flagship model.
+"""Independent Ura LIVE forecast with textbook formations. NEVER calls flagship model.
 
 Uses a verified chronological independent 2026 ranker, preserved 44 pre-race
-feature definitions, fixed V1 formation, and a display-only recommendation.
+feature definitions and the textbook whole-formation policy. No V1 tickets.
 The only publication output is docs/ura-haru/results/, not docs/haruq/.
 """
 from __future__ import annotations
@@ -27,18 +27,16 @@ from data.scraper import KeirinScraper
 from db.schema import get_connection, insert_entry, insert_race, insert_rider
 from features.builder import FeatureBuilder
 from models.lgbm_ranker import LGBMRanker
-from ura_haruq_independent.recommendation.low_quarter_advisory import evaluate_record
+from ura.manual_formations import evaluate_race as manual_decision, POLICY_ID
 
 ZONE = ZoneInfo("Asia/Tokyo")
-EXPECTED_FROZEN_V1_SHA256 = "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818"
-SYSTEM_ID = "URA_HARU_V1_20261024"
-log = logging.getLogger("ura-haru-v1-live")
+SYSTEM_ID = "URA_MANUAL_FORMATIONS_V1_20261030"
+log = logging.getLogger("ura-haru-manual-live")
 
 
-def assert_frozen_v1():
-    path = ROOT / "ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py"
-    if hashlib.sha256(path.read_bytes()).hexdigest() != EXPECTED_FROZEN_V1_SHA256:
-        raise RuntimeError("FIXED_V1_HASH_MISMATCH")
+def assert_manual_engine():
+    if POLICY_ID != SYSTEM_ID:
+        raise RuntimeError("MANUAL_POLICY_VERSION_MISMATCH")
 
 
 def load_model(path: Path, report: Path):
@@ -120,7 +118,7 @@ def persist_entries(rid: str, data: dict):
     return lines
 
 
-def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict) -> dict:
+def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict, manual_snapshot=None) -> dict:
     if re.fullmatch(r"\d{12}",rid) is None:
         raise ValueError("INVALID_RACE_ID")
     try:
@@ -132,6 +130,7 @@ def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict) -
         raise ValueError("INVALID_VENUE_OR_RACE")
     if abs((event_date - datetime.now(ZONE).date()).days) > 3:
         raise ValueError("RACE_DATE_TOO_FAR_FROM_NOW")
+    lineup_observed_at = datetime.now(ZONE).isoformat(timespec="seconds")
     data = scraper.scrape_race_entry(rid)
     if not data or not data.get("entries"):
         raise RuntimeError("ENTRY_NOT_FOUND")
@@ -156,11 +155,6 @@ def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict) -
        ascending=[False,True],kind="stable")
     gap = float(rank_table.iloc[0]["score"] - rank_table.iloc[1]["score"])
     bikes = [int(b) for b in rank_table["bike_number"]]
-    rec = evaluate_record({
-       "score_gap": gap,
-       "predicted_bikes_by_rank": bikes,
-       "line_groups_by_bike": lines,
-    })
     ranked=[]
     for i,(_,r) in enumerate(rank_table.iterrows()):
         entry = id_to_entry[str(r["rider_id"])]
@@ -178,18 +172,34 @@ def one_race(rid: str, scraper, model, builder, model_sha: str, history: dict) -
     if re.fullmatch(r"\d{1,2}:\d{2}",str(start)):
         local_dt = datetime.strptime(day+"T"+start,"%Y-%m-%dT%H:%M").replace(tzinfo=ZONE)
         status = "発走前" if now < local_dt else "発走後・参考"
+    snapshot = dict(manual_snapshot or {})
+    # Scores/model/lineup always come from this verified run, never the sidecar.
+    allowed = ('trifecta_odds','trifecta_probabilities','probability_provenance',
+               'odds_observed_at','odds_kind')
+    manual_input = {k:snapshot[k] for k in allowed if k in snapshot}
+    manual_input.update(race_id=rid, grade=data.get('grade'),
+        race_class='/'.join(sorted({str(e.get('class') or '') for e in data['entries']})),
+        ranked=[{'bike':r['bike'],'score':r['score']} for r in ranked],
+        confidence=round(gap,10), model_sha256=model_sha,
+        model_role='INDEPENDENT_CHRONOLOGICAL_2026',
+        line_formation=[[int(m['bike_number']) for m in line] for line in data.get('line_formation',[])],
+        start_at=local_dt.isoformat() if re.fullmatch(r"\d{1,2}:\d{2}",str(start)) else None,
+        prediction_at=now.isoformat(timespec='seconds'),lineup_at=lineup_observed_at)
+    if snapshot and str(snapshot.get('race_id','')) != rid:
+        raise ValueError('MANUAL_SNAPSHOT_RACE_MISMATCH')
+    rec=manual_decision(manual_input)
     from collections import Counter
     group_counts = Counter(v for v in lines.values() if v)
     line_pattern="-".join(map(str,sorted(group_counts.values(),reverse=True))) if len(group_counts) and sum(group_counts.values()) == len(lines) else "ライン未確定"
     return {
-      "schema_version":1,
+      "schema_version":2,
       "system":SYSTEM_ID,"display_name":"裏ハルキュー",
       "race_id":rid,"date":day,"velodrome":VELODROME_CODES[rid[8:10]],
       "race_name":data.get("race_name"),"race_number":int(rid[-2:]),
       "grade":data.get("grade"),"start_time":start,
       "status":status,"score_gap":round(gap,10),
       "line_pattern":line_pattern,"rider_count":len(data["entries"]),
-      "ranked":ranked,"ura_haru_v1_display":rec,
+      "ranked":ranked,"manual_input":manual_input,"ura_haru_manual_display":rec,
       "model_role":"INDEPENDENT_CHRONOLOGICAL_2026",
       "model_sha256":model_sha,
       "history_latest":history["last_date"],
@@ -210,9 +220,10 @@ def main():
     parser.add_argument("--out-dir",required=True,type=Path)
     parser.add_argument("--limit",type=int,default=120)
     parser.add_argument("--exclude-venues",default="",help="Comma-separated venue codes omitted from this run")
+    parser.add_argument("--manual-snapshots-dir",type=Path,help="Compatible independent joint probabilities and pre-start odds snapshots by race ID")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO)
-    assert_frozen_v1()
+    assert_manual_engine()
     model,builder,sha=load_model(args.model,args.report)
     now_date=datetime.now(ZONE).date()
     d = datetime.strptime(args.date,"%Y-%m-%d").date() if args.date else \
@@ -234,11 +245,13 @@ def main():
     skip=[]
     for rid in ids[:args.limit]:
         try:
-            result=one_race(rid,scraper,model,builder,sha,history)
+            snapshot_path=args.manual_snapshots_dir/(rid+'.json') if args.manual_snapshots_dir else None
+            snapshot=json.loads(snapshot_path.read_text()) if snapshot_path and snapshot_path.exists() else None
+            result=one_race(rid,scraper,model,builder,sha,history,snapshot)
             (out/(rid+".json")).write_text(
                json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
             count+=1
-            print("URA_RACE_PROCESSED",rid,result["ura_haru_v1_display"]["status"])
+            print("URA_RACE_PROCESSED",rid,result["ura_haru_manual_display"]["reason"])
         except Exception as exc:
             skip.append({"race_id":rid,"error":str(exc)[:180]})
             log.warning("URA_RACE_SKIPPED %s %s",rid,exc)
@@ -252,3 +265,4 @@ def main():
 
 if __name__=="__main__":
     main()
+

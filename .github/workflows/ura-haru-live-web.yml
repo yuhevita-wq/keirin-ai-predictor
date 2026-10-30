@@ -1,4 +1,4 @@
-name: Ura Haru V1 - Independent Live Web
+name: Ura Haru - Textbook Formation Live Web
 on:
   push:
     branches: [ura-haruq/independent-train-20261024]
@@ -27,18 +27,24 @@ jobs:
       COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
       OMP_NUM_THREADS: "2"
       OPENBLAS_NUM_THREADS: "2"
+      PYTHONPATH: ${{ github.workspace }}/manual_engine
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
+      - uses: actions/checkout@v4
+        with:
+          repository: yuhevita-wq/ura-haruq
+          ref: 9199355d67b920958c15440815f4632fd18b35e4
+          path: manual_engine
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Verify fixed rule and temporarily stage the original 44 features
+      - name: Verify textbook engine and temporarily stage preserved 44 features
         run: |
           set -euo pipefail
           test -n "$COLLECTOR_PASSPHRASE"
-          echo "b0891724787f3c300a2b58d0d19cc6cf4ff421225ea53c81b94ab3add7194818  ura_haruq_independent/frozen_ura_haru_v1/URA_HARU_V1_FROZEN_RULE.py" | sha256sum -c -
+          test "$(git -C manual_engine rev-parse HEAD)" = 9199355d67b920958c15440815f4632fd18b35e4
           cp research_snapshots/haruqube_20260321/config.py config.py
           cp research_snapshots/haruqube_20260321/features/builder.py features/builder.py
           cp research_snapshots/haruqube_20260321/features/line_features.py features/line_features.py
@@ -47,6 +53,8 @@ jobs:
           test "$(git hash-object features/line_features.py)" = ecf3ab7c762475946054f806bb1d4b802c889389
       - name: Install inference dependencies
         run: pip install lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 scikit-learn==1.7.2 python-dotenv==1.1.1 requests beautifulsoup4 lxml
+      - name: Verify textbook selection and publication contracts
+        run: python -m unittest ura_haruq_independent.web.test_ura_web -v
       - name: Download independent 2026 trained model
         run: |
           mkdir -p "$RUNNER_TEMP/ura-model"
@@ -76,17 +84,17 @@ jobs:
             echo "value=$RACE" >> "$GITHUB_OUTPUT"
           else
             DAY="$DATE"
-            if [ -z "$DAY" ]; then DAY=2026-10-27; fi
+            if [ -z "$DAY" ]; then DAY=$(TZ=Asia/Tokyo date +%F); fi
             [[ "$DAY" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
             echo "flag=date" >> "$GITHUB_OUTPUT"
             echo "value=$DAY" >> "$GITHUB_OUTPUT"
           fi
-      - name: Run independent model and frozen V1 recommendation
+      - name: Run independent scores and textbook whole-formation selection
         env:
           SELECTED_FLAG: ${{ steps.event.outputs.flag }}
           SELECTED_VALUE: ${{ steps.event.outputs.value }}
         run: |
-          python -u -m ura_haruq_independent.web.live_predict --"$SELECTED_FLAG" "$SELECTED_VALUE" --model "$RUNNER_TEMP/ura-model/independent_models/ranker_predict_2026.pkl" --report "$RUNNER_TEMP/ura-model/report.json" --out-dir "$RUNNER_TEMP/ura-live" --limit 140
+          python -u -m ura_haruq_independent.web.live_predict --"$SELECTED_FLAG" "$SELECTED_VALUE" --model "$RUNNER_TEMP/ura-model/independent_models/ranker_predict_2026.pkl" --report "$RUNNER_TEMP/ura-model/report.json" --out-dir "$RUNNER_TEMP/ura-live" --limit 200 --manual-snapshots-dir ura_haruq_independent/manual_snapshots
       - name: Update ONLY independent Ura feed
         run: |
           set -euo pipefail
@@ -103,3 +111,4 @@ jobs:
       - name: Clear decrypted history and model from runner
         if: always()
         run: rm -rf db/keirin.db "$RUNNER_TEMP/ura-db" "$RUNNER_TEMP/ura-model"
+

@@ -1,69 +1,59 @@
-"""Independent UI/feed assertions. Never queries flagship, writes only temp dirs."""
-from __future__ import annotations
-import copy
-import json
-import tempfile
+"""Current manual feed: verify recomputation, no old six-ticket fallback."""
+import copy,json,tempfile,unittest
 from pathlib import Path
-import unittest
-
+from ura.manual_formations import evaluate_race
 from ura_haruq_independent.web.live_predict import SYSTEM_ID
-from ura_haruq_independent.web.publish import publish_batch, verify_document
-from ura_haruq_independent.recommendation.low_quarter_advisory import evaluate_record
+from ura_haruq_independent.web.publish import verify_document,publish_batch
 
-class UraWebTests(unittest.TestCase):
-    def _document(self, gap=0.31, entries=7):
-        bikes=[3,5,1,2,6,7,4]
-        data={"score_gap":gap,"predicted_bikes_by_rank":bikes,
-          "line_groups_by_bike":"3:A;5:A;1:B;2:B;6:C;7:C;4:D"}
-        ev=evaluate_record(data)
-        return {"system":SYSTEM_ID,"original_flagship_data_used":False,
-          "race_id":"202610255501","date":"2026-10-25","velodrome":"佐世保",
-          "race_number":1,"grade":"F2","start_time":"20:00","status":"発走前",
-          "score_gap":gap,"line_pattern":"2-2-2-1",
-          "rider_count":entries,"ranked":[{"rank":i+1,"bike":b,"name":"Rider "+str(i+1),"score":10-i}
-              for i,b in enumerate(bikes)],
-          "ura_haru_v1_display":ev}
-    def test_v1_ok(self):
-        row=self._document()
-        self.assertEqual(verify_document(row), "202610255501")
-        self.assertEqual(row["ura_haru_v1_display"]["points"],6)
-    def test_non_eligible_has_no_recommendation(self):
-        row=self._document(gap=1.25)
-        self.assertEqual(row["ura_haru_v1_display"]["status"],"v1_not_applicable")
-        self.assertEqual(verify_document(row),row["race_id"])
-        self.assertIsNone(row["ura_haru_v1_display"]["recommendation"])
-    def test_refuse_original_data(self):
-        row=self._document()
-        row["original_flagship_data_used"]=True
-        with self.assertRaisesRegex(ValueError,"ORIGINAL_MODEL"):
-            verify_document(row)
-    def test_reject_mutated_tickets(self):
-        row=self._document()
-        row["ura_haru_v1_display"]["tickets"].append("1-2-3")
-        with self.assertRaisesRegex(ValueError,"TICKET_COUNT"):
-            verify_document(row)
-    def test_publisher_makes_independent_manifest(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            source=Path(tmp)/"source"
-            dest=Path(tmp)/"docs/ura-haru/results"
-            source.mkdir()
-            row=self._document()
-            (source/"202610255501.json").write_text(json.dumps(row,ensure_ascii=False))
-            manifest=publish_batch(source,dest,"123")
-            self.assertEqual(len(manifest["items"]),1)
-            summary=manifest["items"][0]
-            self.assertEqual(summary["recommendation"]["stars"],5)
-            self.assertEqual(summary["points"],6)
-            self.assertTrue((dest/"202610255501.json").is_file())
-            self.assertFalse((Path(tmp)/"docs/haruq").exists())
-    def test_frontend_does_not_reference_flagship_data(self):
-        page=Path(__file__).resolve().parents[2]/"docs/ura-haru/index.html"
-        s=page.read_text(encoding="utf-8")
-        self.assertIn("裏ハルキュー",s)
-        self.assertIn("URA_HARU_V1_20261024",s)
-        self.assertNotIn("supabase",s.lower().replace("supabase／本番予測", ""))
-        self.assertNotIn("prediction_detail",s)
-        self.assertNotIn('src="https://cdn.jsdelivr.net/npm/@supabase/',s)
+class ManualWebTests(unittest.TestCase):
+    def document(self):
+        ranked=[{'bike':b,'score':.8-i*.1} for i,b in enumerate(range(1,8))]
+        src={'race_id':'202610305501','grade':'F2','race_class':'A1/A2','ranked':ranked,
+            'confidence':.1,'model_sha256':'independent-sha','model_role':'INDEPENDENT_CHRONOLOGICAL_2026',
+            'line_formation':[[1,2,3],[4,5],[6,7]]}
+        return {'system':SYSTEM_ID,'race_id':src['race_id'],'date':'2026-10-30',
+            'original_flagship_data_used':False,'model_sha256':'independent-sha','ranked':ranked,
+            'manual_input':src,'ura_haru_manual_display':evaluate_race(src)}
+    def test_missing_independent_probability_shows_no_bet_not_v1(self):
+        row=self.document();self.assertEqual(verify_document(row),row['race_id'])
+        self.assertEqual(row['ura_haru_manual_display']['tickets'],[])
+        self.assertEqual(row['ura_haru_manual_display']['reason'],'MISSING_COMPATIBLE_INDEPENDENT_PROBABILITIES')
+    def test_mutated_ticket_rejected(self):
+        row=self.document();row['ura_haru_manual_display']['tickets']=['1-2-3']
+        with self.assertRaises(ValueError):verify_document(row)
+    def test_rank_mismatch_rejected(self):
+        row=self.document();row['manual_input']=copy.deepcopy(row['manual_input'])
+        row['manual_input']['ranked'][0]['score']=100
+        with self.assertRaises(ValueError):verify_document(row)
+    def test_only_ura_feed_migrates_from_legacy(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);source=root/'source';target=root/'docs/ura-haru/results'
+            source.mkdir();target.mkdir(parents=True)
+            (target/'index.json').write_text(json.dumps({'system':'URA_HARU_V1_20261024','items':[{'race_id':'old'}]}))
+            row=self.document();(source/(row['race_id']+'.json')).write_text(json.dumps(row))
+            manifest=publish_batch(source,target,'123')
+            self.assertEqual(len(manifest['items']),1);self.assertEqual(manifest['items'][0]['points'],0)
+            self.assertFalse((root/'docs/haruq').exists())
 
-if __name__=="__main__":
-    unittest.main()
+class LiveRoutingTests(unittest.TestCase):
+    def test_independent_live_run_routes_to_manual_without_legacy_tickets(self):
+        from unittest.mock import patch,Mock
+        from datetime import datetime,timedelta
+        import pandas as pd
+        from ura_haruq_independent.web import live_predict as live
+        day=(datetime.now(live.ZONE)+timedelta(days=1)).date()
+        rid=day.strftime('%Y%m%d')+'5501'
+        data={'grade':'F2','race_name':'A級一般','start_time':'23:30',
+            'entries':[{'rider_id':str(b),'bike_number':b,'class':'A1','rider_name':str(b)} for b in range(1,8)],
+            'line_formation':[[{'bike_number':b} for b in line] for line in [[1,2,3],[4,5],[6,7]]]}
+        scraper=Mock();scraper.scrape_race_entry.return_value=data
+        builder=Mock();builder.feature_names=['input_feature']
+        builder.build_race_features.return_value=pd.DataFrame({'rider_id':[str(b) for b in range(1,8)],'input_feature':[0]*7})
+        model=Mock();model.predict.return_value=pd.Series([.8,.7,.6,.5,.4,.3,.2])
+        with patch.object(live,'persist_entries',return_value={1:'A',2:'A',3:'A',4:'B',5:'B',6:'C',7:'C'}):
+            out=live.one_race(rid,scraper,model,builder,'independent-test-sha',{'last_date':day.isoformat()})
+        self.assertNotIn('ura_haru_v1_display',out)
+        self.assertEqual(out['ura_haru_manual_display']['reason'],'MISSING_COMPATIBLE_INDEPENDENT_PROBABILITIES')
+        self.assertEqual(out['ura_haru_manual_display']['tickets'],[])
+        self.assertEqual(out['line_pattern'],'3-2-2')
+        self.assertEqual(verify_document(out),rid)

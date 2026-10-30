@@ -11,7 +11,7 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-from ura_haruq_independent.adopted_v2 import MAX_COMPETITION_SCORE_SPREAD, POLICY_ID
+from ura_haruq_independent.legacy.adopted_v2 import MAX_COMPETITION_SCORE_SPREAD, POLICY_ID
 
 GOLDEN = {
     "2024": {"races":313,"investment_yen":187800,"return_yen":419090,"hits":52},
@@ -59,3 +59,4 @@ if __name__=="__main__":
     ap.add_argument("--historical-csv",required=True)
     args=ap.parse_args()
     print(json.dumps(replay(args.historical_csv),ensure_ascii=False,indent=2))
+
