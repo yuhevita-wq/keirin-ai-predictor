@@ -1,0 +1,67 @@
+name: Haruqube Fresh Data Faithful Reproduction
+
+on:
+  push:
+    branches:
+      - research/haruqube-fresh-reproduction-20261023
+    paths:
+      - scripts/reproduce_haruqube_fresh.py
+      - .github/workflows/haruqube-fresh-reproduction.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: haruqube-fresh-reproduction
+  cancel-in-progress: false
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      COLLECTOR_PASSPHRASE: ${{ secrets.COLLECTOR_PASSPHRASE }}
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - name: Checkout unchanged haruqube-compatible source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check original configuration and isolated database
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${#COLLECTOR_PASSPHRASE}" -ge 32
+          test ! -f db/keirin.db
+          python -m py_compile scripts/reproduce_haruqube_fresh.py
+      - name: Fetch freshly collected encrypted month branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin '+refs/heads/collected-data-*:refs/remotes/origin/collected-data-*'
+          git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/collected-data-*' | tee /tmp/haruqube-months.txt
+          test "$(wc -l < /tmp/haruqube-months.txt)" -ge 24
+      - name: Install identical LightGBM / feature-builder runtime
+        run: |
+          python -m pip install --disable-pip-version-check \
+            lightgbm==4.6.0 pandas==2.3.3 numpy==2.2.6 \
+            scikit-learn==1.7.2 python-dotenv==1.1.1 \
+            requests beautifulsoup4 lxml
+      - name: Decrypt, merge, train and perform independent holdout test
+        run: python -u scripts/reproduce_haruqube_fresh.py
+      - name: Save metrics, every holdout selected ticket and isolated model
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: haruqube-fresh-reproduction-evidence
+          path: |
+            reproduction_outputs/
+          retention-days: 90
+          if-no-files-found: warn
