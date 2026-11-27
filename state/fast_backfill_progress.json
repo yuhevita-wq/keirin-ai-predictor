@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "next_date": "2026-11-27",
-  "days_attempted": 1538,
-  "days_archived": 1426,
+  "next_date": "2026-11-28",
+  "days_attempted": 1539,
+  "days_archived": 1427,
   "days_failed": 112,
   "days_partial": 84,
   "failed_dates": [
@@ -15,8 +15,8 @@
     "2023-04-04"
   ],
   "last_batch": {
-    "from": "2026-11-26",
-    "to": "2026-11-26",
+    "from": "2026-11-27",
+    "to": "2026-11-27",
     "attempted": 1,
     "archived": 1,
     "partial": 0,
